@@ -1,4 +1,4 @@
-Temática del E-commerce:  "Vivero"
+Temática del Market place:  "Vivero"
 
 *Los productos con los que vamos a trabajar, son plantas de todo tipo de espacios porque creemos que son vitales para la sustentabilidad y cuidado del medio ambiente, también macetas, todo para armarse una huerta y todos los productos para su cuidado! 
 
