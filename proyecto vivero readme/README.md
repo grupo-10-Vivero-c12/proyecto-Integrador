@@ -2,7 +2,7 @@ Temática del Market place:  "Vivero"
 
 *Los productos con los que vamos a trabajar, son plantas de todo tipo de espacios porque creemos que son vitales para la sustentabilidad y cuidado del medio ambiente, también macetas, todo para armarse una huerta y todos los productos para su cuidado! 
 
-*Nuestros potenciales clientes? Todas aquellas personal que quieran promover lo natural, las personas que quieran decorar sus espacios, los que quieran aprender de las plantas y todos los que no hayan tenido una
+*¿Nuestros potenciales clientes? Todas aquellas personal que quieran promover lo natural, las personas que quieran decorar sus espacios, los que quieran aprender de las plantas y todos los que no hayan tenido una
 experiencia con plantas nunca, se sientan motivados a comenzar a tener plantas en su casa.
 
 *Nuestra temática va a ser una experiencia relajada y colorida que deje con ganas de ver y saber más. Con un mensaje inspirador que los anime a adentrarse en el mundo de lo natural y sustentable.
