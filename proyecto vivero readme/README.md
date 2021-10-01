@@ -29,6 +29,8 @@ Integrantes:
 
 *Daniela Guardia, 34 años, emprendedora, dueña de un vivero, estudiante de Licenciatura en Ciencias Económicas.
 
+*Gabriela Apaza, 22 años, estudiante de analista de sistema.
+
 
 
 
