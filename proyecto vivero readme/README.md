@@ -11,6 +11,15 @@ Referentes del mercado que nos inspiraron:
 
 https://tienda.viveromario.com.ar/ El diseño de página extendida.
 
+https://www.viverospinelli.com.ar/ La variedad de categorías.
+
+https://viveroverdevida.com.ar/ Los colores.
+
+https://viverolosmaitenes.com.ar/ La forma de brindar información, nosotros lo hicimos como tips.
+
+https://www.nuevohanasono.com.ar/ La variedad de productos.
+
+
 Descripción del equipo:
 
 Somos un Vivero que nos gusta promover el cuidado de las plantas, brindándoles toda la información necesaria para que su planta esté saludable y vuelvan por otra planta. Siendo ellos nuestras mayor publicidad.
