@@ -1,0 +1,22 @@
+{
+  "name": "vivero",
+  "version": "1.0.0",
+  "description": "pagina web de vivero",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grupo-10-Vivero-c12/proyecto-Integrador.git"
+  },
+  "author": "grupo-10",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grupo-10-Vivero-c12/proyecto-Integrador/issues"
+  },
+  "homepage": "https://github.com/grupo-10-Vivero-c12/proyecto-Integrador#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
