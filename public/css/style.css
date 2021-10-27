@@ -1,5 +1,6 @@
 /* Fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100&family=Rum+Raisin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ruluko&family=Rum+Raisin&display=swap');
 
 /* Variable */
 @import url("variables.css");
@@ -18,3 +19,9 @@
 
 @import url("shopping-cart.css");
 
+/*Generales*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
