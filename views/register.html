@@ -18,43 +18,53 @@
             <a href="/register">Crear cuenta</a>
         </div>
 
-        <h2>Inicio de sesión</h2>
+        <h2>Crear Cuenta</h2>
         <div class="form-container">
             <form action="">
-
                 <div class="form">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com" required>
-                    <span class="error-message">Ingrese un email registrado</span>
+                    <div class="input-container">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" placeholder="Nombre" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com" required>
+                        <span class="error-message">Ya existe una cuenta registrada con ese email</span>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="pass">Contraseña</label>
+                        <input type="password" id="pass" name="password" placeholder="password" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="pass">Confirmar contraseña</label>
+                        <input type="password" id="pass" name="password" placeholder="password" required>
+                        <span class="error-message">Las contraseñas no coinciden</span>
+                    </div>
+
+                    <div class="button-submit">
+                        <button type="submit">Crear</button>
+                    </div>
+
+                    <div class="create-count">
+                        <a href="/login">¿Ya tenés cuenta? Iniciá sesión</a>
+                    </div>
+                
+
+                    <hr>
+
                 </div>
 
-                <div class="form">
-                    <label for="pass">Contraseña</label>
-                    <input type="password" id="pass" name="password" placeholder="password" required>
-                    <span class="error-message">Contraseña no valida</span>
+                
 
-                    
-                </div>
-
-                <div class="recover-password">
-                    <a href="#">¿Olvidaste la Contraseña?</a>
-                </div>
-
-                <div class="button-submit">
-                    <button type="submit">Iniciar</button>
-                </div>
-
-                <div class="create-count">
-                    <a href="#">¿No tienes una cuenta? Crea una</a>
-                </div>
 
         
             </form>  
             
-            <hr>
+           
             
             <div class="log-in-google">
-                <a href="#">Iniciar con Google</a>
+                <a href="#"><img src="images/logo-google.png" alt="google"> Iniciar con Google</a>
             </div> 
         </div>
     </main>
