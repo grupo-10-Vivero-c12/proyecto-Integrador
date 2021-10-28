@@ -2,11 +2,18 @@
     margin: 0;
     padding: 0;
 }
+body{
+    background-color: rgba(255, 243, 228, 1);
+/* }
 .conteiner{
-    height: 300px;
+    height: 150px;
     width: auto;
-    overflow: hidden;
+    overflow: hidden; 
 
+}
+img{
+    height: auto;
+    width: 100%;
 }
 .carrusel{
     height: 100%;
@@ -23,5 +30,80 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+     */
 }
+/* Categorias */
+body{
+    padding: 20px;
+}
+.conteinerProduct h2{
+    font-family: var(--font-rum);
+    font-size: 55px;
+}
+.conteinerProduct span{
+    font-family: var(--font-roboto);
+    font-size: 20px;
+
+}
+.conteinerProduct {
+    width: 100%px;
+    height: auto;
+    display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 1rem;
+}
+.conteinerProduct img{
+    border-radius: 15px;
+    width: 320px;
+    height: 300px;
+    display: flex;
+    filter: blur(1px);
+    filter: brightness(80%);
+}
+.categoriaMacetas{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.data{
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.categoriaSemillas{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.data1{
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} 
+.categoriaPlantas{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.data2{
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+} 
