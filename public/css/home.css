@@ -46,6 +46,7 @@ img{
 .conteinerProduct {
     width: 100%px;
     height: auto;
+    padding-top: 15px;
     display: flex;
    flex-wrap: wrap;
    justify-content: center;
@@ -60,6 +61,7 @@ img{
     filter: brightness(80%);
 }
 .categoriaMacetas{
+    
     display: flex;
     flex-direction: column;
     position: relative;
@@ -105,17 +107,134 @@ img{
     flex-direction: column;
     text-align: center;
 } 
-.productosDestacados h3{
-    padding: 15px;
-    text-align: center;
-    font-family: var(--font-rum);
-    font-size: 30px;
+
+
+/* Prductos destacados*/
+
+/*related-products*/
+.related-products{
+    margin: 5px;
 }
-.productosDestacados{
+.related-products h2{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.related-products .products{
     display: flex;
-     width: 320px;
-    height: 180px; 
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.related-products .products .product{
+    width: 43%;
+    margin-bottom: 20px;
+    background-color: rgba(216, 179, 132, 0.2);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.49);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap:5px
+}
+
+.related-products .products .product img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.related-products .products .product button{
+    margin-top: 5px;
+}
+
+.related-products .products .product p {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* QUERIES */
+
+/*Tablet*/
+@media (min-width:768px){
+
+    /*Detalle producto*/
+    .btn{
+        font-size: 22px;
+    }
+
+    /*Detail top*/
+    .detail-top{
+        flex-direction: row;
+        margin: 15px auto;
+    }
+
+    .detail-top .img-content{
+        width: 50%;
+    }
+
+    .detail-top .sale-detail{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .detail-top .sale-detail p{
+        font-size: 32px;
+    }
+
+    .detail-top .sale-detail{
+    font-size: 20px;
+    padding: 15px;
+    }
+
+    /*detail-bot*/
+    .detail-bot{
+        flex-direction: row;
+        margin: 15px auto;
+    }
+
+    .detail-bot .description{
+        width: 50%;
+    }
+
+    .detail-bot .description p{
+        font-size: 16px;
+        margin: 10px;
+    }
+    .detail-bot .opinions{
+        width: 50%;
+    }
+
+    .detail-bot .opinions p{
+        font-size: 16px;
+    }
+
+    /*related-products*/
+    
+    .related-products .products .product{
+        width: 30%;
+    }
+
+    .related-products .products .product p {
+        font-size: 22px;
+    }
+}
+
+/*Desktop*/
+@media (min-width:900px){
+    /*Detalle producto*/
+    .content{
+        max-width:900px ;
+    }
+    .product-detail .content h3{
+        font-size: 24px;
+    }
+
+    /*related-products*/
+    .related-products .products .product{
+        width: 22%;
+    }
 }
