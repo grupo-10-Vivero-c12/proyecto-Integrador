@@ -6,7 +6,7 @@ let PORT = 3000;
 
 app.use(express.static('public'));
 
-app.get('/home', function (req, res) {
+app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, './views/home.html'))
 })
 
@@ -18,9 +18,9 @@ app.get('/header', function (req, res) {
     res.sendFile(path.join(__dirname, './views/header.html'))
 })
 
-app.get('/index', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/index.html'))
-})
+// app.get('/index', function (req, res) {
+//     res.sendFile(path.join(__dirname, './views/index.html'))
+// })
 
 app.get('/login', function (req, res) {
     res.sendFile(path.join(__dirname, './views/login.html'))
