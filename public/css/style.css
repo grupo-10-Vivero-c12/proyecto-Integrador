@@ -27,6 +27,15 @@
   box-sizing: border-box;
 }
 
+body {
+  margin-top: 100px;
+}
+
+.content {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .btn {
   width: 100%;
   padding: 10px;
