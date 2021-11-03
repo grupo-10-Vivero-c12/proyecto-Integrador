@@ -1,5 +1,6 @@
 .footer {
   background-color: var(--dark-brown);
+  width: 100%;
 }
 
 .main_footer {
