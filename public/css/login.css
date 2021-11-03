@@ -181,12 +181,12 @@ main .log-in-google a:active{
 
 
 hr{
-    width: 400px;
+    width: 100%;
 }
 
 
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
     main .form-container .form .input-container label{
         font-size: 1.5rem;
     }
