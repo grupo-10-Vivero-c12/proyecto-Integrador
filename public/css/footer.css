@@ -1,8 +1,6 @@
 .footer {
   background-color: var(--dark-brown);
-  width: 100%;
 }
-
 .main_footer {
   color: white;
   font-family: var(--font-ruluko);

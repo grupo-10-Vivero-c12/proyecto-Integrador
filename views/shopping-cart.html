@@ -6,8 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
+    <div class="header">
+        <div class="content">
+            <header class="main-header">
+                <div class="burger_menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+    
+                <div class="logo_container">
+                    <a href="/">
+                        <img src="images/Logo.png" alt="logo">
+                    </a>
+                </div>
+    
+                <nav class="navbar_main_header">
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Locales</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                    </ul>
+                </nav>
+    
+                <div class="search">
+                    <form action="">
+                        <input type="text" name="search" id="search" placeholder="Buscar">
+                        <button>
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+    
+                <nav class="user_navbar">
+                    <a href="/login"><i class="far fa-user-circle"></i></a>
+                    <a href="/shopping-cart"><i class="fas fa-shopping-cart"></i></a>
+                </nav>
+            </header>
+        </div>
+    </div>
+
     <main class="shopping">
         <h2>Mi Carrito</h2>
         <div class="list-products">
@@ -102,5 +143,38 @@
             <button class="btn paid" type="submit">Pagar</button>
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="content">
+            <div class="main_footer">
+                <nav class="main_navbar_footer">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Locales</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                    </ul>
+                </nav>
+                <nav class="contacts">
+                    <h4>Contáctanos</h4>
+                    <ul>
+                        <li><a href="#">Teléfono</a></li>
+                        <li><a href="#">e-mail</a></li>
+                        <li><a href="#">Ubicación</a></li>
+                    </ul>
+                </nav>
+                <nav class="social">
+                    <h4>Redes Sociales</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                    </ul>
+                </nav>
+                <p>© Todos los derechos reservados. Marca Registrada</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
