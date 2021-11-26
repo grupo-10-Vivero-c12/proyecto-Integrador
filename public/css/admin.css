@@ -37,6 +37,7 @@ li{
     width: 100%;
     display: none;
     position: absolute;
+    z-index: 20;
 }
 
 .menu-dropdown li a, .menu-dropdown li{
@@ -52,7 +53,7 @@ li{
 }
 
 .menu-btn-list{
-    background-color: rgba(104, 103, 103, 0.78);
+    background-color: rgb(104, 104, 104);
     display: none;
 }
 
@@ -63,9 +64,12 @@ li{
     text-align: center;
 }
 .menu-btn-list li:hover, .product-btn:hover{
-    background-color: rgba(131, 131, 131, 0.712);
+    background-color: rgb(131, 131, 131);
 }
 
+.burger-menu{
+    cursor: pointer;
+}
 
 @media (min-width: 480px) {
     .menu-dropdown{
@@ -99,7 +103,7 @@ li{
 
 @media (min-width: 1100px){
     .menu-dropdown{
-        min-width: 140px;
+        min-width: 160px;
         width: 10%;
         height: 100vh;
         border-radius: none;

@@ -1,0 +1,57 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+.all-productos{
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+}
+
+.all-productos h3{
+    text-align: center;
+}
+.list-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    overflow-x: auto;
+}
+table {
+    border-collapse: collapse;
+    width: 50%;
+    border-top: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    
+
+}
+  
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+}
+  
+td button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    text-align: center;
+    
+}
+.modi i{
+    color: rgb(0, 161, 0);
+}
+
+.delete{
+    color: red;
+}
+tr:hover {background-color: #D6EEEE;}
+
+

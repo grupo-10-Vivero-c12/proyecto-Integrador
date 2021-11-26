@@ -26,8 +26,8 @@
                 <li class="menu-btn" onclick="dropSubCategory1()" >Productos</li>
             </ul>
             <ul class="menu-btn-list" id="btn-product" >
-                <li><a href="">Ver Productos</a> </li>
-                <li><a href="">Agregar Productos</a> </li>
+                <li><a href="./allProducts.html">Ver Productos</a> </li>
+                <li><a href="./admin.html">Agregar Productos</a> </li>
                 <li><a href="">Ver Categorias</a></li>
                 <li><a href="">Agregar Categoria</a></li>
                 <li><a href="">Productos y categorias eliminados</a></li>
@@ -52,7 +52,7 @@
             
                 <div class="form-contain name-form">
                     <label for="nom">Nombre del producto</label>
-                    <input type="text" id="nom">
+                    <input type="text" id="nom" required>
                 </div>
                 
                 <div class="form-contain descripcion-form">
@@ -62,14 +62,14 @@
                 
                 <div class="form-contain img-form">
                     <label for="img">Imagen</label>
-                    <input type="file" id="img">
+                    <input type="file" id="img" accept=".jpg, .png" multiple required>
                 </div>
                 
                 <div class="form-contain categ-form">
                     <p>Categoria</p>
-                    <label for="cat1"><input type="radio" name="cat" id="cat1">Categoria1</label>
-                    <label for="cat2"><input type="radio" name="cat" id="cat2">Categoria2</label>
-                    <label for="cat3"><input type="radio" name="cat" id="cat3">Categoria3</label>
+                    <label for="cat1"><input type="radio" name="cat" id="cat1" required>Categoria1</label>
+                    <label for="cat2"><input type="radio" name="cat" id="cat2" required>Categoria2</label>
+                    <label for="cat3"><input type="radio" name="cat" id="cat3" required>Categoria3</label>
                 </div>
                 
                 <div class="form-contain colo-form">
@@ -79,7 +79,12 @@
 
                 <div class="form-contain price-form">
                     <label for="precio">Precio</label>
-                    <input type="number" id="precio"> 
+                    <input type="number" id="precio" required> 
+                </div>
+
+                <div class="form-contain price-form">
+                    <label for="cant">Cantidad</label>
+                    <input type="number" id="cant" required> 
                 </div>
 
                 <div class="btn-admin">
