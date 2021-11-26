@@ -1,0 +1,133 @@
+.main-admin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.main-admin h2{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.form-create{
+    width: 90%;
+}
+
+.form-create, .form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-container{
+    width: 100%;
+    max-width: 600px;
+}
+.form-contain{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.form-contain label, .form-contain p{
+    padding-bottom: 10px;
+}
+
+.form-contain p{
+    padding-bottom: 10;
+}
+
+.form-contain input, .form-contain textarea{
+    outline: none;
+    border: none;
+    background-color: rgb(156, 156, 156);
+    border-radius: 10px;
+    padding: 9px;
+    color: white;
+}
+
+.form-contain textarea{
+    width: 100%;
+    height: 60px;
+}
+
+.btn-admin{
+    width: 100%;
+}
+.btn-admin button{
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    background-color: rgb(233, 107, 107);
+    border-radius: 7px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+
+@media (min-width: 1100px){
+    .main-admin{
+        position: absolute;
+        top: 100px;
+
+    }
+    .name-form{
+        width: 200px;
+        order: 1;
+    }
+
+    .colo-form{
+        order: 2;
+        width: 200px;
+        margin-left: 20px ;
+    }
+
+    .descripcion-form{
+        order: 3;
+    }
+
+    .img-form{
+        order: 6;
+        width: fit-content;
+        width: -moz-fit-content;
+    }
+
+    .price-form{
+        order: 5;
+        width: fit-content;
+        width: -moz-fit-content;
+
+    }
+
+    .categ-form{
+        order: 5;
+        width: 300px
+    }
+    .form-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-admin{
+        width: 100%;
+        order: 7;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-admin button{
+        width: 20%;
+    }
+}

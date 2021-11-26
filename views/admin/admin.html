@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administracion</title>
+    <link rel="stylesheet" href="../../public/css/admin.css">
+    <link rel="stylesheet" href="../../public/css/createProduct.css">
+    <script src="https://kit.fontawesome.com/f102f36a5d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-admin">
+            <ul>
+                <li class="burger-menu" onclick="dropMenu()"><i class="fas fa-bars"></i></li>
+                <li><a href=""><i class="fas fa-home"></i></a></li>
+                <li><a href=""><i class="far fa-comments"></i></a></li>
+                <li><a href=""><i class="fas fa-dollar-sign"></i></a></li>
+                <li><a href=""><i class="fas fa-truck-loading"></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="menu-dropdown" id="navigation-bar-mobile">
+            <ul class="product-btn">
+                <li class="menu-btn" onclick="dropSubCategory1()" >Productos</li>
+            </ul>
+            <ul class="menu-btn-list" id="btn-product" >
+                <li><a href="">Ver Productos</a> </li>
+                <li><a href="">Agregar Productos</a> </li>
+                <li><a href="">Ver Categorias</a></li>
+                <li><a href="">Agregar Categoria</a></li>
+                <li><a href="">Productos y categorias eliminados</a></li>
+            </ul>
+
+            <ul class="product-btn">
+                <li class="menu-btn" onclick="dropSubCategory2()">Usuarios</li>
+            </ul>
+            <ul class="menu-btn-list" id="btn-user">
+                <li><a href="">Ver Usuarios</a></li>
+                <li><a href="">Agregar Usuario</a></li>
+                <li><a href="">Usuarios desabilitados</a></li>
+                
+            </ul>
+        </div>
+    </header>
+
+    <main class="main-admin">
+        <h2>Crear Producto</h2>
+        <div class="form-create">
+            <form action="" class="form-container">
+            
+                <div class="form-contain name-form">
+                    <label for="nom">Nombre del producto</label>
+                    <input type="text" id="nom">
+                </div>
+                
+                <div class="form-contain descripcion-form">
+                    <label for="des">Descripción</label>
+                    <textarea name="" id="des" cols="30" rows="10" ></textarea>
+                </div>
+                
+                <div class="form-contain img-form">
+                    <label for="img">Imagen</label>
+                    <input type="file" id="img">
+                </div>
+                
+                <div class="form-contain categ-form">
+                    <p>Categoria</p>
+                    <label for="cat1"><input type="radio" name="cat" id="cat1">Categoria1</label>
+                    <label for="cat2"><input type="radio" name="cat" id="cat2">Categoria2</label>
+                    <label for="cat3"><input type="radio" name="cat" id="cat3">Categoria3</label>
+                </div>
+                
+                <div class="form-contain colo-form">
+                    <label for="color">Color</label>
+                    <input type="text" id="color">
+                </div>
+
+                <div class="form-contain price-form">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio"> 
+                </div>
+
+                <div class="btn-admin">
+                    <button type="submit">Crear</button>
+                </div>
+            </form>               
+        </div>
+        
+    </main>
+
+    <script src="../public/js/menuAdmin.js"></script>
+</body>
+</html>
