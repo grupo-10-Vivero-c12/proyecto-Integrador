@@ -1,42 +1,30 @@
 let express = require('Express');
 let app = express();
 let path = require('path');
-
 let PORT = 3000;
+
+/* Enrutadores */
+let homeController = require('./controllers/homeController');
+let loginController = require('./controllers/loginController');
+let productDetailController = require('./controllers/productDetailController');
+let registerController = require('./controllers/registerController');
+let shoppingCartController = require('./controllers/shoppingCartController');
 
 app.use(express.static('public'));
 
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/home.html'))
-})
-
-app.get('/footer', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/footer.html'))
-})
-
-app.get('/header', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/header.html'))
-})
+app.get('/', homeController.index)
 
 // app.get('/index', function (req, res) {
 //     res.sendFile(path.join(__dirname, './views/index.html'))
 // })
 
-app.get('/login', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/login.html'))
-})
+app.get('/login', loginController.index)
 
-app.get('/productDetail', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/productDetail.html'))
-})
+app.get('/productDetail', productDetailController.index)
 
-app.get('/register', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/register.html'))
-})
+app.get('/register', registerController.index)
 
-app.get('/shopping-cart', function (req, res) {
-    res.sendFile(path.join(__dirname, './views/shopping-cart.html'))
-})
+app.get('/shoppingCart', shoppingCartController.index)
 
 app.listen(PORT, () => console.log(`
 Servidor levantado en el puerto ${PORT}
