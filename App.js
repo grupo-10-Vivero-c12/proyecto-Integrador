@@ -19,6 +19,7 @@ app.use('/productDetail', productDetailRouter)
 app.use('/register', registerRouter)
 app.use('/shoppingCart', shoppingRouter)
 
+
 app.listen(PORT, () => console.log(`
 Servidor levantado en el puerto ${PORT}
 http://localhost:${PORT}
