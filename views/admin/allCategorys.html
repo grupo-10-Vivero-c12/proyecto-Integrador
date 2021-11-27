@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
     <link rel="stylesheet" href="../../public/css/admin.css">
+    <link rel="stylesheet" href="../../public/css/adminListCategory.css">
     <link rel="stylesheet" href="../../public/css/adminListProducts.css">
     <script src="https://kit.fontawesome.com/f102f36a5d.js" crossorigin="anonymous"></script>
 </head>
@@ -46,30 +47,49 @@
 
 
 
-    <main class="all-productos">
-        <h3>Listado de Productos</h3>
-        <div class="list-container">
-            
-            <table>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Categoria</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td>15646</td>
-                  <td>Rosas</td>
-                  <td>Plantas</td>
-                  <td>54</td>
-                  <td>$500</td>
-                  <td><button class="btn-table modi"><i class="far fa-edit"></i></button>
-                      <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>
-                </tr>
-              </table>
+    <main class="all-categorys">
+        <h3>Listado de Categorias</h3>
+        <div class="list-category">
+            <div class="category-detail">
+                <div class="vist-category">
+                    <div class="name-category">
+                        <p>Categoria</p>
+                    </div>
+                    <div class="edit-delete-category">
+                        <button class="btn-table modi" onclick="editButtonDrop()"><i class="far fa-edit"></i></button>
+                        <button class="btn-table delete"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                </div>
+                
+                <div class="edit-category">
+                    <form action="">
+                        <div class="form-edit-dropdown" id="form-drop-edit">
+                            <input type="text" value="Categoria">
+                            <button type="submit">Editar</button>
+                        </div>
 
+                    </form>
+                </div>
+                
+                <hr>
+            </div>
+            
+
+
+        </div>
+
+        <div class="btn-add-category" onclick="addButtonDrop()">
+            <button><i class="fas fa-plus"></i></button>
+        </div>
+
+        <div class="add-category">
+            <form action="">
+                <div class="form-add-dropdown" id="form-drop-add">
+                    <input type="text" value="Categoria">
+                    <button type="submit">Agregar</button>
+                </div>
+
+            </form>
         </div>
     </main>
     <script src="../../public/js/menuAdmin.js"></script>

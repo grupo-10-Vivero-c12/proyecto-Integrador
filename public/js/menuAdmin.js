@@ -30,3 +30,28 @@ function dropSubCategory2(){
         btnUsers.style.display = "block";
     }
 }
+
+
+/* EVENTOS CATEGORIAS */
+
+let editBtn = document.querySelector("#form-drop-edit")
+let addBtn = document.querySelector("#form-drop-add")
+
+function editButtonDrop(){
+    if (editBtn.style.display === "block"){
+        editBtn.style.display = "none";
+        
+    } else{
+        editBtn.style.display = "block";
+    }
+}
+
+
+
+function addButtonDrop(){
+    if (addBtn.style.display === "block"){
+        addBtn.style.display = "none";
+    } else{
+        addBtn.style.display = "block";
+    }
+}
