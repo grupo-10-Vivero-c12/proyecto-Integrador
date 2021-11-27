@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/grupo-10-Vivero-c12/proyecto-Integrador#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "i": "^0.3.7",
     "nodemon": "^2.0.14"
-  }
+  },
+  "keywords": []
 }
