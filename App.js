@@ -10,6 +10,10 @@ let productDetailRouter = require('./routes/productDetail');
 let registerRouter = require('./routes/register');
 let shoppingRouter = require('./routes/shoppingCart');
 
+/* set para ejs  */
+app.set('view engine','ejs')
+app.set('views', __dirname + '/src/views')
+
 app.use(express.static('public'));
 
 /* Middlewares de rutas */
