@@ -2,7 +2,7 @@
   "name": "vivero",
   "version": "1.0.0",
   "description": "pagina web de vivero",
-  "main": "App.js",
+  "main": "src/App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

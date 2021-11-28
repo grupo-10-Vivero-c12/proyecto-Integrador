@@ -1,0 +1,104 @@
+[
+    {
+        "nombre": "Rosa China",
+        "precio" : 250,
+        "color" : ["rojo", "verde", "rosa"],
+        "cantidad" : 50,
+        "categoria" : "plantas",
+        "imagen" : "rosa-china.jpg",
+        "descripcion" : {
+            "ubicacion" : "Dentro de la casa",
+            "sustrato" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "floracion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "observaciones" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim augue ultrices diam rutrum, id efficitur mauris porttitor. Cras quis erat turpis. Maecenas aliquet, justo in mattis pulvinar, eros tellus accumsan augue, eu pharetra magna urna vitae purus. Fusce faucibus ac diam at imperdiet "
+        },
+        "opiniones" : {
+            "opinion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "valoracion" : 4
+        },
+        "oferta" : false
+
+    },
+    {
+        "nombre": "Malvón Italiano",
+        "precio" : 650,
+        "color" : ["rojo", "verde", "rosa"],
+        "cantidad" : 50,
+        "categoria" : "plantas",
+        "imagen" : "malvón-italiano.png",
+        "descripcion" : {
+            "ubicacion" : "Dentro de la casa",
+            "sustrato" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "floracion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "observaciones" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim augue ultrices diam rutrum, id efficitur mauris porttitor. Cras quis erat turpis. Maecenas aliquet, justo in mattis pulvinar, eros tellus accumsan augue, eu pharetra magna urna vitae purus. Fusce faucibus ac diam at imperdiet "
+        },
+        "opiniones" : {
+            "opinion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "valoracion" : 4
+        },
+        "oferta" : false
+
+    },
+    {
+        "nombre": "Orquidea Dendrobium",
+        "precio" : 2900,
+        "color" : ["rojo", "verde", "rosa"],
+        "cantidad" : 50,
+        "categoria" : "plantas",
+        "imagen" : "orquidea-dendrobium.jpeg",
+        "descripcion" : {
+            "ubicacion" : "Dentro de la casa",
+            "sustrato" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "floracion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "observaciones" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim augue ultrices diam rutrum, id efficitur mauris porttitor. Cras quis erat turpis. Maecenas aliquet, justo in mattis pulvinar, eros tellus accumsan augue, eu pharetra magna urna vitae purus. Fusce faucibus ac diam at imperdiet "
+        },
+        "opiniones" : {
+            "opinion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "valoracion" : 4
+        },
+        "oferta" : false
+
+    },
+    {
+        "nombre": "Canasto con Asas",
+        "precio" : 3200,
+        "color" : ["rojo", "verde", "rosa"],
+        "cantidad" : 50,
+        "categoria" : "macetas",
+        "imagen" : "canasto-con-asas.jpeg",
+        "descripcion" : {
+            "ubicacion" : "Dentro de la casa",
+            "sustrato" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "floracion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "observaciones" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim augue ultrices diam rutrum, id efficitur mauris porttitor. Cras quis erat turpis. Maecenas aliquet, justo in mattis pulvinar, eros tellus accumsan augue, eu pharetra magna urna vitae purus. Fusce faucibus ac diam at imperdiet "
+        },
+        "opiniones" : {
+            "opinion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "valoracion" : 4
+        },
+        "oferta" : false
+
+    },
+    {
+        "nombre": "Maceta",
+        "precio" : 2900,
+        "color" : ["rojo", "verde", "rosa"],
+        "cantidad" : 50,
+        "categoria" : "macetas",
+        "imagen" : "orquidea-dendrobium.jpeg",
+        "descripcion" : {
+            "ubicacion" : "Dentro de la casa",
+            "sustrato" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "floracion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "observaciones" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim augue ultrices diam rutrum, id efficitur mauris porttitor. Cras quis erat turpis. Maecenas aliquet, justo in mattis pulvinar, eros tellus accumsan augue, eu pharetra magna urna vitae purus. Fusce faucibus ac diam at imperdiet "
+        },
+        "opiniones" : {
+            "opinion" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "valoracion" : 4
+        },
+        "oferta" : false
+
+    }
+    
+        
+]

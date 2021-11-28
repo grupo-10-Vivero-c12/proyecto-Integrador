@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./headAdmin')  %>
+<body>
+    <%- include('./headerAdmin')  %>
+
+
+
+    <main class="all-productos">
+        <h3>Listado de Productos</h3>
+        <div class="list-container">
+            
+            <table>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Categoria</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td>15646</td>
+                  <td>Rosas</td>
+                  <td>Plantas</td>
+                  <td>54</td>
+                  <td>$500</td>
+                  <td><button class="btn-table modi"><i class="far fa-edit"></i></button>
+                      <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>
+                </tr>
+              </table>
+
+        </div>
+    </main>
+    <script src="../js/menuAdmin.js"></script>
+</body>
+</html>
