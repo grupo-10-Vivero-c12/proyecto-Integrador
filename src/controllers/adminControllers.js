@@ -1,4 +1,4 @@
-let {getProductos} = require('../data/dateBase')
+// let {getProductos} = require('../data/dateBase')
 
 let controller = {
     home:(req, res) =>{
