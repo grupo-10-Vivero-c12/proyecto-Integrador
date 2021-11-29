@@ -1,7 +1,12 @@
-[{
+[
+    {
         "nombre": "Rosa China",
         "precio": 250,
-        "color": ["rojo", "verde", "rosa"],
+        "color": [
+            "rojo",
+            "verde",
+            "rosa"
+        ],
         "cantidad": 50,
         "categoria": "plantas",
         "imagen": "rosa-china.jpg",
@@ -16,12 +21,15 @@
             "valoracion": 4
         },
         "oferta": false
-
     },
     {
         "nombre": "Malvón Italiano",
         "precio": 650,
-        "color": ["rojo", "verde", "rosa"],
+        "color": [
+            "rojo",
+            "verde",
+            "rosa"
+        ],
         "cantidad": 50,
         "categoria": "plantas",
         "imagen": "malvón-italiano.png",
@@ -36,12 +44,15 @@
             "valoracion": 4
         },
         "oferta": false
-
     },
     {
         "nombre": "Orquidea Dendrobium",
         "precio": 2900,
-        "color": ["rojo", "verde", "rosa"],
+        "color": [
+            "rojo",
+            "verde",
+            "rosa"
+        ],
         "cantidad": 50,
         "categoria": "plantas",
         "imagen": "orquidea-dendrobium.jpeg",
@@ -56,12 +67,15 @@
             "valoracion": 4
         },
         "oferta": false
-
     },
     {
         "nombre": "Canasto con Asas",
         "precio": 3200,
-        "color": ["rojo", "verde", "rosa"],
+        "color": [
+            "rojo",
+            "verde",
+            "rosa"
+        ],
         "cantidad": 50,
         "categoria": "macetas",
         "imagen": "canasto-con-asas.jpeg",
@@ -76,12 +90,15 @@
             "valoracion": 4
         },
         "oferta": false
-
     },
     {
         "nombre": "Maceta",
         "precio": 2900,
-        "color": ["rojo", "verde", "rosa"],
+        "color": [
+            "rojo",
+            "verde",
+            "rosa"
+        ],
         "cantidad": 50,
         "categoria": "macetas",
         "imagen": "orquidea-dendrobium.jpeg",
@@ -96,6 +113,5 @@
             "valoracion": 4
         },
         "oferta": false
-
     }
 ]

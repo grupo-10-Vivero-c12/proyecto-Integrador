@@ -1,5 +1,4 @@
-let {getProductos} = require('../data/dateBase.js')
-
+let productos = require('../data/dataBase.js')
 let controller = {
     home:(req, res) =>{
         res.render('admin/adminHome')
