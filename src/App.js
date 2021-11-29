@@ -10,6 +10,7 @@ let productDetailRouter = require('./routes/productDetail');
 let registerRouter = require('./routes/register');
 let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
+let payRouter = require('./routes/payRouter')
 
 /* set para ejs  */
 app.set('view engine','ejs')
@@ -24,6 +25,7 @@ app.use('/productDetail', productDetailRouter)
 app.use('/register', registerRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
+app.use('/payment', payRouter)
 
 app.listen(PORT, () => console.log(`
 Servidor levantado en el puerto ${PORT}
