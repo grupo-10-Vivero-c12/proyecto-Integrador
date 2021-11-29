@@ -1,12 +1,9 @@
 [
     {
+        "id" : 1,
         "nombre": "Rosa China",
         "precio": 250,
-        "color": [
-            "rojo",
-            "verde",
-            "rosa"
-        ],
+        "color": "rojo",
         "cantidad": 50,
         "categoria": "plantas",
         "imagen": "rosa-china.jpg",
@@ -23,13 +20,10 @@
         "oferta": false
     },
     {
+        "id" : 2,
         "nombre": "Malvón Italiano",
         "precio": 650,
-        "color": [
-            "rojo",
-            "verde",
-            "rosa"
-        ],
+        "color": "rosa",
         "cantidad": 50,
         "categoria": "plantas",
         "imagen": "malvón-italiano.png",
@@ -46,13 +40,10 @@
         "oferta": false
     },
     {
+        "id" : 3,
         "nombre": "Orquidea Dendrobium",
         "precio": 2900,
-        "color": [
-            "rojo",
-            "verde",
-            "rosa"
-        ],
+        "color": "verde",
         "cantidad": 50,
         "categoria": "plantas",
         "imagen": "orquidea-dendrobium.jpeg",
@@ -69,13 +60,10 @@
         "oferta": false
     },
     {
+        "id" : 4,
         "nombre": "Canasto con Asas",
         "precio": 3200,
-        "color": [
-            "rojo",
-            "verde",
-            "rosa"
-        ],
+        "color": "rojo",
         "cantidad": 50,
         "categoria": "macetas",
         "imagen": "canasto-con-asas.jpeg",
@@ -91,14 +79,11 @@
         },
         "oferta": false
     },
-    {
+    {   
+        "id" : 5,
         "nombre": "Maceta",
         "precio": 2900,
-        "color": [
-            "rojo",
-            "verde",
-            "rosa"
-        ],
+        "color":  "rosa",
         "cantidad": 50,
         "categoria": "macetas",
         "imagen": "orquidea-dendrobium.jpeg",

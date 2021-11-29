@@ -5,11 +5,10 @@
 <body>
     <%- include('./headerAdmin')  %>
 
-
-
     <main class="all-productos">
         <h3>Listado de Productos</h3>
         <div class="list-container">
+                 
             
             <table>
                 <tr>
@@ -20,15 +19,17 @@
                   <th>Precio</th>
                   <th></th>
                 </tr>
-                <tr>
-                  <td>15646</td>
-                  <td>Rosas</td>
-                  <td>Plantas</td>
-                  <td>54</td>
-                  <td>$500</td>
-                  <td><button class="btn-table modi"><i class="far fa-edit"></i></button>
-                      <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>
-                </tr>
+                <% productos.forEach(element => {%>
+                    <tr>
+                        <td><%= element.id %></td>
+                        <td><%= element.nombre %></td>
+                        <td><%= element.categoria %></td>
+                        <td><%= element.cantidad %></td>
+                        <td><%= element.precio %></td>
+                        <td><a href="editProduct/<%- element.id %> "><button class="btn-table modi"><i class="far fa-edit"></i></button></a>
+                            <a href=""><button class="btn-table delete"><i class="far fa-trash-alt"></i></button></a></td>
+                    </tr>
+                <% }); %>     
               </table>
 
         </div>

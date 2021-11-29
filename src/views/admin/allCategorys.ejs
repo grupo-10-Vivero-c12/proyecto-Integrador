@@ -5,38 +5,42 @@
     <%- include('./headerAdmin')  %>
     <main class="all-categorys">
         <h3>Listado de Categorias</h3>
-        <div class="list-category">
-            <div class="category-detail">
-                <div class="vist-category">
-                    <div class="name-category">
-                        <p>Categoria</p>
-                    </div>
-                    <div class="edit-delete-category">
-                        <button class="btn-table modi" onclick="editButtonDrop()"><i class="far fa-edit"></i></button>
-                        <button class="btn-table delete"><i class="far fa-trash-alt"></i></button>
-                    </div>
-                </div>
-                
-                <div class="edit-category">
-                    <form action="">
-                        <div class="form-edit-dropdown" id="form-drop-edit">
-                            <input type="text" value="Categoria">
-                            <button type="submit">Editar</button>
+        
+        <% categorias.forEach(cate => {%>
+            <div class="list-category">
+                <div class="category-detail">
+                    <div class="vist-category">
+                        <div class="name-category">
+                            <p><%= cate %> </p>
                         </div>
+                        <div class="edit-delete-category">
+                            <button class="btn-table modi" onclick="editButtonDrop()"><i class="far fa-edit"></i></button>
+                            <button class="btn-table delete"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="edit-category">
+                        <form action="">
+                            <div class="form-edit-dropdown" id="form-drop-edit">
+                                <input type="text" value="Categoria">
+                                <button type="submit">Editar</button>
+                            </div>
 
-                    </form>
-                </div>
-                
-                <hr>
-            </div>
+                        </form>
+                    </div>
             
-
-
-        </div>
+                    <hr>
+                </div>
+            </div>
+      
+        <% }); %>     
 
         <div class="btn-add-category" onclick="addButtonDrop()">
             <button><i class="fas fa-plus"></i></button>
         </div>
+        
+
+        
 
         <div class="add-category">
             <form action="">

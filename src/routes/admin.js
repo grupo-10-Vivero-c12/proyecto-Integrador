@@ -7,5 +7,6 @@ router.get("/", controller.home)
 router.get("/add", controller.add)
 router.get("/list-product", controller.allProducts)
 router.get("/all-category", controller.allCategory)
+router.get("/editProduct/:id", controller.edit)
 
 module.exports = router

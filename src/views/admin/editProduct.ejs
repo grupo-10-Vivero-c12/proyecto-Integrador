@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./headAdmin')  %>
+<body>
+    <%- include('./headerAdmin')  %>
+
+    <main class="main-admin">
+        <h2>Editar Producto</h2>
+        <div class="form-create">
+            <form action="" class="form-container">
+            
+                <div class="form-contain name-form">
+                    <label for="nom">Nombre del producto</label>
+                    <input type="text" id="nom" value="<%- p.nombre %> " required>
+                </div>
+                
+                <div class="form-contain descripcion-form">
+                    <label for="des">Descripción</label>
+                    <textarea name="" id="des" cols="30" rows="10" style="height: 130px;" ><%- p.descripcion.observaciones  %> </textarea>
+                </div>
+                
+                <div class="form-contain img-form">
+                    <label for="img">Imagen</label>
+                    <input type="file" id="img" accept=".jpg, .png" multiple required>
+                </div>
+                
+                <div class="form-contain categ-form">
+                    <p>Categoria</p>
+                    <label for="cat1"><input type="radio" name="cat" id="cat1" required>Categoria1</label>
+                    <label for="cat2"><input type="radio" name="cat" id="cat2" required>Categoria2</label>
+                    <label for="cat3"><input type="radio" name="cat" id="cat3" required>Categoria3</label>
+                </div>
+                
+                <div class="form-contain colo-form">
+                    <label for="color">Color</label>
+                    <input type="text" id="color" value="<%- p.color%>">
+                </div>
+
+                <div class="form-contain price-form">
+                    <label for="precio">Precio</label>
+                    <input type="number" id="precio" value="<%- p.precio%>" required> 
+                </div>
+
+                <div class="form-contain price-form">
+                    <label for="cant">Cantidad</label>
+                    <input type="number" id="cant" value="<%- p.cantidad%>"required> 
+                </div>
+
+                <div class="btn-admin">
+                    <button type="submit">Crear</button>
+                </div>
+            </form>               
+        </div>
+        
+    </main>
+
+    <script src="../../js/menuAdmin.js"></script>
+</body>
+</html>
