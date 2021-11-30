@@ -12,11 +12,19 @@ let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
 let payRouter = require('./routes/payRouter')
 
+app.use(express.static('public'));
+
 /* set para ejs  */
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname , "views"))
 
-app.use(express.static('public'));
+/* METHOD OVERRIDE */
+let methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
+/* Capturar informacion */
+app.use(express.urlencoded({ extended : false}));
+app.use(express.json())
 
 /* Middlewares de rutas */
 app.use('/', homeRouter)

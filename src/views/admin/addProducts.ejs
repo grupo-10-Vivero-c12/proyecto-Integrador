@@ -7,43 +7,57 @@
     <main class="main-admin">
         <h2>Crear Producto</h2>
         <div class="form-create">
-            <form action="" class="form-container">
+            <form action="/admin/add" method="post" class="form-container">
             
                 <div class="form-contain name-form">
                     <label for="nom">Nombre del producto</label>
-                    <input type="text" id="nom" required>
+                    <input type="text" id="nom" name="nombre" required>
                 </div>
                 
                 <div class="form-contain descripcion-form">
                     <label for="des">Descripción</label>
-                    <textarea name="" id="des" cols="30" rows="10" ></textarea>
+                    <textarea name="descripcion" id="des" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="form-contain descripcion-form">
+                    <label for="ubi">Ubicación</label>
+                    <input type="text" name="ubicacion" id="ubi" required>
+                </div>
+                <div class="form-contain descripcion-form">
+                    <label for="sus">Sustrato</label>
+                    <input type="text" name="sustrato" id="sus" required>
+                </div>
+
+                <div class="form-contain descripcion-form">
+                    <label for="flo">Floración</label>
+                    <input type="text" name="floracion" id="flo" required>
                 </div>
                 
                 <div class="form-contain img-form">
                     <label for="img">Imagen</label>
-                    <input type="file" id="img" accept=".jpg, .png" multiple required>
+                    <input type="file" id="img" accept=".jpg, .png, .jpeg" name="imagen" multiple required>
                 </div>
                 
                 <div class="form-contain categ-form">
                     <p>Categoria</p>
-                    <label for="cat1"><input type="radio" name="cat" id="cat1" required>Categoria1</label>
-                    <label for="cat2"><input type="radio" name="cat" id="cat2" required>Categoria2</label>
-                    <label for="cat3"><input type="radio" name="cat" id="cat3" required>Categoria3</label>
+                    <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" required>Planta</label>
+                    <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" required>Semilla</label>
+                    <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" required>Macetas</label>
                 </div>
                 
                 <div class="form-contain colo-form">
                     <label for="color">Color</label>
-                    <input type="text" id="color">
+                    <input type="text" id="color" name="color" required>
                 </div>
 
                 <div class="form-contain price-form">
                     <label for="precio">Precio</label>
-                    <input type="number" id="precio" required> 
+                    <input type="number" id="precio" name="precio" required> 
                 </div>
 
                 <div class="form-contain price-form">
                     <label for="cant">Cantidad</label>
-                    <input type="number" id="cant" required> 
+                    <input type="number" id="cant" name="cantidad" required> 
                 </div>
 
                 <div class="btn-admin">
