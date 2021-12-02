@@ -1,6 +1,6 @@
 Temática del Market place: "Vivero Timbó"
 
-# Proyecto integrador : Grupo 10
+* Proyecto integrador : Grupo 10
 
 ![logotipo](Desing\Logo.jpg)
 
