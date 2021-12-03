@@ -11,151 +11,151 @@
     <!-- Flechitas de carrusel -->
 
 <body>
-    <%- include('./partials/header.ejs')  %>
-    <!-- Carrusel -->
-    <div class="conteiner">
-        <div class="carrusel">
-            <div class="imagenCarrusel" id="img1">
-                <img src="/images/carrusel1.jpeg" alt="imagen 1">
+    <%- include('./partials/header.ejs') %>
+        <!-- Carrusel -->
+        <div class="conteiner">
+            <div class="carrusel">
+                <div class="imagenCarrusel" id="img1">
+                    <img src="/images/carrusel1.jpeg" alt="imagen 1">
+                </div>
+                <div class="flechas">
+                    <a href="#img3">
+                        <i class="fas fa-angle-left" _mstvisible="2"></i>
+                    </a>
+                    <a href="#img2">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="flechas">
-                <a href="#img3">
-                    <i class="fas fa-angle-left" _mstvisible="2"></i>
-                </a>
-                <a href="#img2">
-                    <i class="fas fa-angle-right"></i>
-                </a>
+            <div class="carrusel">
+                <div class="imagenCarrusel" id="img2">
+                    <img src="/images/carrusel2.jpeg" alt="imagen 2">
+                </div>
+                <div class="flechas">
+                    <a href="#img1">
+                        <i class="fas fa-angle-left" _mstvisible="2"></i>
+                    </a>
+                    <a href="#img3">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="carrusel">
-            <div class="imagenCarrusel" id="img2">
-                <img src="/images/carrusel2.jpeg" alt="imagen 2">
-            </div>
-            <div class="flechas">
-                <a href="#img1">
-                    <i class="fas fa-angle-left" _mstvisible="2"></i>
-                </a>
-                <a href="#img3">
-                    <i class="fas fa-angle-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="carrusel">
-            <div class="imagenCarrusel" id="img3">
-                <img src="/img/prueba3.vivero.jpg" alt="imagen 3">
-            </div>
-            <div class="flechas">
-                <a href="#img2">
-                    <i class="fas fa-angle-left" _mstvisible="2"></i>
-                </a>
-                <a href="#img1">
-                    <i class="fas fa-angle-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Categoria -->
-    <section class="conteinerProduct">
-        <div class="categoriaMacetas">
-            <img src="/images/cat-macetitas.png" alt="Macetas">
-            <div class="data">
-                <h2>Macetas</h2>
-                <span>Rusticas,Lisas y Con Anillos</span>
+            <div class="carrusel">
+                <div class="imagenCarrusel" id="img3">
+                    <img src="/img/prueba3.vivero.jpg" alt="imagen 3">
+                </div>
+                <div class="flechas">
+                    <a href="#img2">
+                        <i class="fas fa-angle-left" _mstvisible="2"></i>
+                    </a>
+                    <a href="#img1">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="categoriaSemillas">
-            <img src="/images/cat-semillas.png" alt="semilla">
-            <div class="data1">
-                <h2>Semillas</h2>
-                <span>De diversas plantas y flores</span>
+        <!-- Categoria -->
+        <section class="conteinerProduct">
+            <div class="categoriaMacetas">
+                <img src="/images/cat-macetitas.png" alt="Macetas">
+                <div class="data">
+                    <h2>Macetas</h2>
+                    <span>Rusticas,Lisas y Con Anillos</span>
+                </div>
             </div>
-        </div>
-        <div class="categoriaPlantas">
-            <img src="/images/cat-plantas.jpeg" alt="plantas">
-            <div class="data2">
-                <h2>Plantas</h2>
-                <span>Interior, Esterior, Florales, Arbustos, Aromaticas y Catus</span>
+            <div class="categoriaSemillas">
+                <img src="/images/cat-semillas.png" alt="semilla">
+                <div class="data1">
+                    <h2>Semillas</h2>
+                    <span>De diversas plantas y flores</span>
+                </div>
             </div>
-        </div>
-    </section>
-    <!-- Prductos destacados -->
-    </section><!-- details-bot -->
-    <section class="related-products">
-        <h2>PRODUCTOS RELACIONADOS</h2>
-        <div class="products">
-            <div class="product">
-                <img src="images/canasto-con-asas.jpeg" alt="">
-                <p>CANASTO CON ASAS</p>
-                <p>$600</p>
-                <button class="btn">Comprar</button>
+            <div class="categoriaPlantas">
+                <img src="/images/cat-plantas.jpeg" alt="plantas">
+                <div class="data2">
+                    <h2>Plantas</h2>
+                    <span>Interior, Esterior, Florales, Arbustos, Aromaticas y Catus</span>
+                </div>
             </div>
-            <div class="product">
-                <img src="images/cat-macetas.jpeg" alt="">
-                <p>MACETAS GRANDES</p>
-                <p>$1000</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/cat-plantas.jpeg" alt="">
-                <p>PLANTINES</p>
-                <p>$400</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/cat-semillas.png" alt="">
-                <p>SEMILLAS</p>
-                <p>$500</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/malvón-italiano.png" alt="">
-                <p>malvón italiano</p>
-                <p>$800</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/orquidea-dendrobium.jpeg" alt="">
-                <p>orquidea</p>
-                <p>$700</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/rosa-china.jpg" alt="">
-                <p>Rosa china</p>
-                <p>$250</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/canasto-con-asas.jpeg" alt="">
-                <p>CANASTO CON ASAS</p>
-                <p>$600</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/cat-macetas.jpeg" alt="">
-                <p>MACETAS GRANDES</p>
-                <p>$1000</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/cat-plantas.jpeg" alt="">
-                <p>PLANTINES</p>
-                <p>$400</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/cat-semillas.png" alt="">
-                <p>SEMILLAS</p>
-                <p>$500</p>
-                <button class="btn">Comprar</button>
-            </div>
-            <div class="product">
-                <img src="images/malvón-italiano.png" alt="">
-                <p>malvón italiano</p>
-                <p>$800</p>
-                <button class="btn">Comprar</button>
-            </div>
-    </section>
-    <%- include('./partials/footer.ejs')  %>
+        </section>
+        <!-- Prductos destacados -->
+        </section><!-- details-bot -->
+        <section class="related-products">
+            <h2>PRODUCTOS RELACIONADOS</h2>
+            <div class="products">
+                <div class="product">
+                    <img src="images/canasto-con-asas.jpeg" alt="">
+                    <p>CANASTO CON ASAS</p>
+                    <p>$600</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/cat-macetas.jpeg" alt="">
+                    <p>MACETAS GRANDES</p>
+                    <p>$1000</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/cat-plantas.jpeg" alt="">
+                    <p>PLANTINES</p>
+                    <p>$400</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/cat-semillas.png" alt="">
+                    <p>SEMILLAS</p>
+                    <p>$500</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/malvón-italiano.png" alt="">
+                    <p>malvón italiano</p>
+                    <p>$800</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/orquidea-dendrobium.jpeg" alt="">
+                    <p>orquidea</p>
+                    <p>$700</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/rosa-china.jpg" alt="">
+                    <p>Rosa china</p>
+                    <p>$250</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/canasto-con-asas.jpeg" alt="">
+                    <p>CANASTO CON ASAS</p>
+                    <p>$600</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/cat-macetas.jpeg" alt="">
+                    <p>MACETAS GRANDES</p>
+                    <p>$1000</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/cat-plantas.jpeg" alt="">
+                    <p>PLANTINES</p>
+                    <p>$400</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/cat-semillas.png" alt="">
+                    <p>SEMILLAS</p>
+                    <p>$500</p>
+                    <button class="btn">Comprar</button>
+                </div>
+                <div class="product">
+                    <img src="images/malvón-italiano.png" alt="">
+                    <p>malvón italiano</p>
+                    <p>$800</p>
+                    <button class="btn">Comprar</button>
+                </div>
+        </section>
+        <%- include('./partials/footer.ejs') %>
 </body>
 </head>
