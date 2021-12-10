@@ -125,3 +125,12 @@
 .form-add-dropdown input{
     border: 2px solid rgb(116, 116, 5);
 }
+
+
+@media (min-width: 1100px) {
+    .all-categorys{
+        position: absolute;
+        top: 200px;
+        z-index: 1;
+    }
+}
