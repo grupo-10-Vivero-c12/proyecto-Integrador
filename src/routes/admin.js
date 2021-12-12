@@ -12,5 +12,14 @@ router.get("/all-category", controller.allCategory)
 router.get("/editProduct/:id", controller.edit)
 router.put("/editProduct/:id", controller.update)
 
+//-----------------------------------
+/* GET - Show all users */
+router.get('/users', controller.allUsers) 
+
+/* GET - Show user edit form */
+router.get('/users/edit/:id', controller.editUser)
+/* PUT - Update a user */
+router.put('/users/edit/:id',controller.updateUser)
+
 
 module.exports = router

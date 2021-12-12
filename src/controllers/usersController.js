@@ -29,7 +29,7 @@ let controller = {
 
         writeUsersJson(users)
 
-        res.send(newUser)
+        res.redirect("/")
     },
 }
 

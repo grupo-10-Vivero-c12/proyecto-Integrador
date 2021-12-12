@@ -1,4 +1,4 @@
-let {productos, writeJson} = require('../data/dataBase.js')
+let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
 
 let categorias = []
 productos.forEach(element => {
@@ -102,7 +102,36 @@ let controller = {
         writeJson(resultProductos)
         res.redirect('/admin/list-product')
 
-    }
+    },
+    allUsers: (req,res) =>{
+        res.render("admin/users/allUsers",{
+            users
+        })
+    },
+    editUser:(req,res) =>{
+        let userId = +req.params.id;
+        let user = users.find(user => user.id === userId)
+
+        res.render('admin/users/editUser', {
+            user
+        })
+    },
+    updateUser:(req,res) =>{
+        let userId = +req.params.id;
+        const {name, email, password} = req.body
+
+        users.forEach(user => {
+            if(user.id === userId){
+                user.name = name
+                user.email = email
+                user.password = password
+            }
+        });
+
+        writeUsersJson(users)
+
+        res.redirect("/admin/users")
+    },
 
 }
 

@@ -1,72 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./headAdmin')  %>
-<body>
-    <%- include('./headerAdmin-edit')  %>
+<%- include('./headAdmin') %>
 
-    <main class="main-admin">
-        <h2>Editar Producto</h2>
-        <div class="form-create">
-            <form action="/admin/editProduct/<%- p.id %>?_method=PUT " method="post" class="form-container">
-            
-                <div class="form-contain name-form">
-                    <label for="nom">Nombre del producto</label>
-                    <input type="text" id="nom" value="<%- p.nombre %> " name="nombre" required>
-                </div>
-                
-                <div class="form-contain descripcion-form">
-                    <label for="des">Descripción</label>
-                    <textarea name="descripcion" id="des" cols="30" rows="10"><%- p.descripcion %> </textarea>
-                </div>
-                <div class="form-contain descripcion-form">
-                    <label for="ubi">Ubicación</label>
-                    <input type="text" name="ubicacion" value="<%- p.ubicacion %> " id="ubi" required>
-                </div>
-                <div class="form-contain descripcion-form">
-                    <label for="sus">Sustrato</label>
-                    <input type="text" name="sustrato" id="sus" value="<%= p.sustrato %> " required>
+    <body>
+        <%- include('./headerAdmin-edit') %>
+
+            <main class="main-admin">
+                <h2>Editar Producto</h2>
+                <div class="form-create">
+                    <form action="/admin/editProduct/<%- p.id %>?_method=PUT " method="post" class="form-container">
+
+                        <div class="form-contain name-form">
+                            <label for="nom">Nombre del producto</label>
+                            <input type="text" id="nom" value="<%- p.nombre %> " name="nombre" required>
+                        </div>
+
+                        <div class="form-contain descripcion-form">
+                            <label for="des">Descripción</label>
+                            <textarea name="descripcion" id="des" cols="30" rows="10"><%- p.descripcion %> </textarea>
+                        </div>
+                        <div class="form-contain descripcion-form">
+                            <label for="ubi">Ubicación</label>
+                            <input type="text" name="ubicacion" value="<%- p.ubicacion %> " id="ubi" required>
+                        </div>
+                        <div class="form-contain descripcion-form">
+                            <label for="sus">Sustrato</label>
+                            <input type="text" name="sustrato" id="sus" value="<%= p.sustrato %> " required>
+                        </div>
+
+                        <div class="form-contain descripcion-form">
+                            <label for="flo">Floración</label>
+                            <input type="text" name="floracion" id="flo" value="<%= p.floracion %> " required>
+                        </div>
+
+                        <div class="form-contain img-form">
+                            <label for="img">Imagen</label>
+                            <input type="file" id="img" accept=".jpg, .png" name="imagen" multiple>
+                        </div>
+
+                        <div class="form-contain categ-form">
+                            <p>Categoria</p>
+                            <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta"
+                                    required>Planta</label>
+                            <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla"
+                                    required>Semilla</label>
+                            <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas"
+                                    required>Macetas</label>
+                        </div>
+
+                        <div class="form-contain colo-form">
+                            <label for="color">Color</label>
+                            <input type="text" id="color" value="<%- p.color%>" name="color">
+                        </div>
+
+                        <div class="form-contain price-form">
+                            <label for="precio">Precio</label>
+                            <input type="number" id="precio" value="<%- p.precio%>" name="precio" required>
+                        </div>
+
+                        <div class="form-contain price-form">
+                            <label for="cant">Cantidad</label>
+                            <input type="number" id="cant" value="<%- p.cantidad%>" name="cantidad" required>
+                        </div>
+
+                        <div class="btn-admin">
+                            <button type="submit">Editar</button>
+                        </div>
+                    </form>
                 </div>
 
-                <div class="form-contain descripcion-form">
-                    <label for="flo">Floración</label>
-                    <input type="text" name="floracion" id="flo" value="<%= p.floracion %> " required>
-                </div>
-                
-                <div class="form-contain img-form">
-                    <label for="img">Imagen</label>
-                    <input type="file" id="img" accept=".jpg, .png" name="imagen" multiple>
-                </div>
-                
-                <div class="form-contain categ-form">
-                    <p>Categoria</p>
-                    <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" required>Planta</label>
-                    <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" required>Semilla</label>
-                    <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" required>Macetas</label>
-                </div>
-                
-                <div class="form-contain colo-form">
-                    <label for="color">Color</label>
-                    <input type="text" id="color" value="<%- p.color%>" name="color">
-                </div>
+            </main>
 
-                <div class="form-contain price-form">
-                    <label for="precio">Precio</label>
-                    <input type="number" id="precio" value="<%- p.precio%>" name="precio" required> 
-                </div>
+            <script src="../../js/menuAdmin.js"></script>
+    </body>
 
-                <div class="form-contain price-form">
-                    <label for="cant">Cantidad</label>
-                    <input type="number" id="cant" value="<%- p.cantidad%>" name="cantidad"required> 
-                </div>
-
-                <div class="btn-admin">
-                    <button type="submit">Editar</button>
-                </div>
-            </form>               
-        </div>
-        
-    </main>
-
-    <script src="../../js/menuAdmin.js"></script>
-</body>
 </html>
