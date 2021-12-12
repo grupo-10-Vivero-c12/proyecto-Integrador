@@ -4,13 +4,12 @@ let path = require('path');
 let PORT = 3000;
 
 /* Enrutadores */
-let homeRouter = require('./routes/home');
-let loginRouter = require('./routes/login');
+let homeRouter = require('./routes/home'); 
 let productDetailRouter = require('./routes/productDetail');
-let registerRouter = require('./routes/register');
 let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
 let payRouter = require('./routes/payRouter')
+let usersRouter = require('./routes/users')
 
 app.use(express.static('public'));
 
@@ -28,9 +27,8 @@ app.use(express.json())
 
 /* Middlewares de rutas */
 app.use('/', homeRouter)
-app.use('/login', loginRouter)
+app.use('/users', usersRouter)
 app.use('/productDetail', productDetailRouter)
-app.use('/register', registerRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
 app.use('/payment', payRouter)
