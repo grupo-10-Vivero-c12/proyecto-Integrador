@@ -132,6 +132,23 @@ let controller = {
 
         res.redirect("/admin/users")
     },
+    destroyUser: (req, res) => {
+        let userId = +req.params.id;
+
+		users.forEach(user => {
+			if(user.id === userId){
+				let userToDestroyIndex = users.indexOf(user) 
+				if(userToDestroyIndex !== -1) {
+					users.splice(userToDestroyIndex, 1)
+				}else{ 
+					console.log('No encontré el usuario')
+				}
+			}
+		})
+
+		writeUsersJson(users)
+		res.redirect("/admin/users")
+    }
 
 }
 

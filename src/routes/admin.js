@@ -15,11 +15,12 @@ router.put("/editProduct/:id", controller.update)
 //-----------------------------------
 /* GET - Show all users */
 router.get('/users', controller.allUsers) 
-
 /* GET - Show user edit form */
 router.get('/users/edit/:id', controller.editUser)
 /* PUT - Update a user */
 router.put('/users/edit/:id',controller.updateUser)
+/* DELETE - Delete one user */
+router.delete('/users/delete/:id', controller.destroyUser)
 
 
 module.exports = router

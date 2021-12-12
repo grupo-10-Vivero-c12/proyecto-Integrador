@@ -36,8 +36,7 @@
 
                                 <td><a href="/admin/users/edit/<%= user.id %>"><button class="btn-table modi"><i
                                                 class="far fa-edit"></i></button></a>
-                                    <form action="/admin/users/list-product/<%- user.id %>?_method=DELETE"
-                                        method="post">
+                                    <form action="/admin/users/delete/<%- user.id %>?_method=DELETE" method="post">
                                         <button class="btn-table delete"><i class="far fa-trash-alt"></i></button>
                                 </td>
                                 </form>
