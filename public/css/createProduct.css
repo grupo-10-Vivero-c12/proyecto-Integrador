@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    
 }
 
 
@@ -15,6 +16,7 @@
 
 .form-create{
     width: 90%;
+    
 }
 
 .form-create, .form-container{
@@ -49,10 +51,10 @@
 .form-contain input, .form-contain textarea{
     outline: none;
     border: none;
-    background-color: rgb(156, 156, 156);
+    background-color: rgba(212, 212, 212, 0.534);
     border-radius: 10px;
     padding: 9px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .form-contain textarea{

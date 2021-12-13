@@ -3,6 +3,10 @@ let btnProduct = document.querySelector('#btn-product')
 let btnUsers = document.querySelector('#btn-user')
 let btnProductDekstop = document.querySelector('#btn-product-desktop');
 let btnUserDekstop = document.querySelector('#btn-user-desktop');
+let arrowProduct = document.querySelector('#arrow-product');
+let arrowUser = document.querySelector('#arrow-user');
+let btnDrop = document.querySelector('#btn-drop');
+let btnDrop2 = document.querySelector('#btn-drop2');
 
 
 function dropMenu(){
@@ -36,22 +40,34 @@ function dropSubCategory2(){
 function dropSubCategory3(){
     if(btnProductDekstop.style.top === "-1px"){
         btnProductDekstop.style.top = "58px";
+        arrowProduct.style.transform= "rotate(-180deg)";
+        btnDrop.style.backgroundColor = "#e0d678";
         if(btnUserDekstop.style.top === "58px"){
             btnUserDekstop.style.top = "-1px"
+            arrowUser.style.transform= "rotate(0deg)";
+            btnDrop2.style.backgroundColor = "#c5b523";
         }
     } else{
         btnProductDekstop.style.top = "-1px";
+        arrowProduct.style.transform= "rotate(0deg)";
+        btnDrop.style.backgroundColor = "#c5b523";
     } 
 }
 
 function dropSubCategory4(){
     if(btnUserDekstop.style.top === "-1px"){
         btnUserDekstop.style.top = "58px";
+        arrowUser.style.transform= "rotate(-180deg)";
+        btnDrop2.style.backgroundColor = "#e0d678";
         if(btnProductDekstop.style.top === "58px"){
-            btnProductDekstop.style.top = "-1px"
+            btnProductDekstop.style.top = "-1px";
+            arrowProduct.style.transform = "rotate(0deg)";
+            btnDrop.style.backgroundColor = "#c5b523";
         }
     } else{
         btnUserDekstop.style.top = "-1px";
+        arrowUser.style.transform= "rotate(0deg)";
+        btnDrop2.style.backgroundColor = "#c5b523";
     } 
     
 }

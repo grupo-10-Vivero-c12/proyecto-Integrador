@@ -24,8 +24,11 @@ li{
 .nav-admin a i{
     font-size: 1.5rem;
     color: black;
+    transition: all 0.5s ease;
 }
-
+.home-icon i:hover{
+    transform: scale(1.4,1.4);
+}
 
 .nav-admin ul{
     display: flex;
@@ -130,6 +133,15 @@ li{
         flex-grow: 0.1;
         text-align: center;
     }
+    .home-icon a i{
+        color: black;
+        font-size: 1.5rem;
+        transition: all 0.5s ease;
+    }
+
+    .home-icon a i:hover{
+        transform: scale(1.4,1.4);
+    }
     .container-btn{
         flex-grow: 0.45;
         position: relative;
@@ -143,18 +155,19 @@ li{
         width: fit-content;
         padding: 20px 20px ;
         cursor: pointer;
-        
+
         
     }
 
     .menu-btn-product:hover, .menu-btn-user:hover{
-        background-color: #e0d678;
-        border-radius: 4px;
-        box-shadow: 0px 0px 5px 5px rgba(148, 138, 44, 0.281);
+        border-radius: 4px 4px 0 0; 
     }
-    .menu-btn-product:active, .menu-btn-user:active{
-        border-radius: 20px 20px 0 0;
+
+    .menu-btn-product:hover a, .menu-btn-user:hover a{
+        color: grey;
+        text-decoration: underline;
     }
+    
     .menu-btn-list{
         background-color: #e0d678;
     }
@@ -181,6 +194,29 @@ li{
         top: -1px;
         transition: all 0.6s;
     }
+
+    .arrow{
+        transition: 0.5s;
+    }
+    .menu-btn-list li a{
+        color: gray;
+        
+        
+    }
+    .menu-btn-list li:hover{
+        background:  none;
+        transform: scale(1.1, 1.1);
+        
+    }
+    .menu-btn-list li a:hover{
+        text-decoration: underline;
+        color: rgb(255, 249, 249);
+        
+    }
+    
+
+    
+    
 }
 
 

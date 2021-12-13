@@ -26,6 +26,8 @@ table {
     width: 50%;
     border-top: 1px solid #DDD;
     border-left: 1px solid #DDD;
+    background-color: #feffff;
+    
     
 
 }
@@ -35,6 +37,7 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #DDD;
     border-right: 1px solid #DDD;
+
 }
   
 td button{
