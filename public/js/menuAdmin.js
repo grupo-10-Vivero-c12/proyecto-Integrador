@@ -1,6 +1,8 @@
 let btnMenu = document.querySelector("#navigation-bar-mobile");
 let btnProduct = document.querySelector('#btn-product')
 let btnUsers = document.querySelector('#btn-user')
+let btnProductDekstop = document.querySelector('#btn-product-desktop');
+let btnUserDekstop = document.querySelector('#btn-user-desktop');
 
 
 function dropMenu(){
@@ -30,6 +32,30 @@ function dropSubCategory2(){
         btnUsers.style.display = "block";
     }
 }
+
+function dropSubCategory3(){
+    if(btnProductDekstop.style.top === "-1px"){
+        btnProductDekstop.style.top = "58px";
+        if(btnUserDekstop.style.top === "58px"){
+            btnUserDekstop.style.top = "-1px"
+        }
+    } else{
+        btnProductDekstop.style.top = "-1px";
+    } 
+}
+
+function dropSubCategory4(){
+    if(btnUserDekstop.style.top === "-1px"){
+        btnUserDekstop.style.top = "58px";
+        if(btnProductDekstop.style.top === "58px"){
+            btnProductDekstop.style.top = "-1px"
+        }
+    } else{
+        btnUserDekstop.style.top = "-1px";
+    } 
+    
+}
+
 
 
 /* EVENTOS CATEGORIAS */
