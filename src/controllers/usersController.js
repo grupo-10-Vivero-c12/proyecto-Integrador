@@ -31,6 +31,30 @@ let controller = {
 
         res.redirect("/")
     },
+    edit: (req, res) => {
+        let userId = +req.params.id;
+        let user = users.find(user => user.id === userId)
+
+        res.render('users/editProfile',{
+            user
+        })
+    },
+    update: (req, res) => {
+        let userId = +req.params.id;
+        const {name, email, password} = req.body
+
+        users.forEach(user => {
+            if(user.id === userId){
+                user.name = name
+                user.email = email
+                user.password = password
+            }
+        });
+
+        writeUsersJson(users)
+
+        res.redirect("/")
+    },
 }
 
 module.exports = controller

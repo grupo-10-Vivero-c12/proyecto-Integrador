@@ -1,1 +1,21 @@
-[{"id":2,"name":"Pepe Argentino","email":"pepe_argento@gmail.com","password":"asdasdasd"},{"id":3,"name":"Lionel Messi","email":"lio_messi@gmail.com","password":"1010101010"},{"id":4,"name":"Goku","email":"goku_maquina@gmail.com","password":"jajajajaja"}]
+[{
+    "id": 2,
+    "name": "Pepe Argento",
+    "email": "pepe_argentino@gmail.com",
+    "password": "asdasdasd"
+}, {
+    "id": 4,
+    "name": "Goku",
+    "email": "goku_maquina@gmail.com",
+    "password": "jajajajaja"
+}, {
+    "id": 5,
+    "name": "Juan Perez",
+    "email": "juanfnasndkasf@gmail.com",
+    "password": "12345678"
+}, {
+    "id": 6,
+    "name": "Carlos",
+    "email": "carlos@gmail.com",
+    "password": "sdafsadfasd"
+}]
