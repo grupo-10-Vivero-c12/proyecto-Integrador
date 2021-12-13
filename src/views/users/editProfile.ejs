@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Editar perfil</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -21,57 +21,45 @@
                 <span>/</span>
                 <a href="/Mi cuenta">Mi cuenta</a>
                 <span>/</span>
-                <a href="/register">Crear cuenta</a>
+                <a href="/editProfile">Editar cuenta</a>
             </div>
 
-            <h2>Crear Cuenta</h2>
+            <h2>Editar Cuenta</h2>
             <div class="form-container">
-                <form action="/users/store" method="POST">
+                <form action="/users/edit/<%- user.id %>?_method=PUT" method="POST">
                     <div class="form">
                         <div class="input-container">
                             <label for="name">Nombre</label>
-                            <input type="text" id="name" name="name" placeholder="Nombre" required>
+                            <input type="text" id="name" name="name" placeholder="Nombre" value="<%- user.name %>"
+                                required>
                         </div>
                         <div class="input-container">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com"
+                                value="<%- user.email %>" required>
                             <span class="error-message">Ya existe una cuenta registrada con ese email</span>
                         </div>
-
                         <div class="input-container">
-                            <label for="pass">Contraseña</label>
-                            <input type="password" id="pass" name="password" placeholder="password" required>
+                            <label for="currentPass">Contraseña actual</label>
+                            <input type="password" id="currentPass" name="currentPass" value="<%- user.password %>"
+                                placeholder="password" required>
                         </div>
                         <div class="input-container">
-                            <label for="pass">Confirmar contraseña</label>
-                            <input type="password" id="pass" name="password2" placeholder="password" required>
+                            <label for="pass">Nueva Contraseña</label>
+                            <input type="password" id="pass" name="password" value="<%- user.password %>"
+                                placeholder="password" required>
+                        </div>
+                        <div class="input-container">
+                            <label for="pass">Confirmar nueva contraseña</label>
+                            <input type="password" id="pass" name="password2" value="<%- user.password %>"
+                                placeholder="password" required>
                             <span class="error-message">Las contraseñas no coinciden</span>
                         </div>
-
                         <div class="button-submit">
-                            <button type="submit">Crear</button>
+                            <button type="submit">Guardar Cambios</button>
                         </div>
-
-                        <div class="create-count">
-                            <a href="./login">¿Ya tenés cuenta? Iniciá sesión</a>
-                        </div>
-
-
-                        <hr>
-
                     </div>
-
-
-
-
-
                 </form>
-
-
-
-                <div class="log-in-google">
-                    <a href="#"><img src="images/logo-google.png" alt="google"> Iniciar con Google</a>
-                </div>
             </div>
         </main>
 
