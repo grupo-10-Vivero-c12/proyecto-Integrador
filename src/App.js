@@ -10,6 +10,7 @@ let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
 let payRouter = require('./routes/payRouter')
 let usersRouter = require('./routes/users')
+let perfilUsuarioRouter = require('./routes/perfilUsuario');
 
 app.use(express.static('public'));
 
@@ -32,6 +33,7 @@ app.use('/productDetail', productDetailRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
 app.use('/payment', payRouter)
+app.use('/perfilUsuario', perfilUsuarioRouter);
 
 app.listen(PORT, () => console.log(`
 Servidor levantado en el puerto ${PORT}
