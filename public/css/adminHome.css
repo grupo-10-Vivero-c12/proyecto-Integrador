@@ -21,3 +21,10 @@
 .main-home-admin h2{
     text-align: center;
 }
+
+
+@media (min-width: 1100px) {
+    .main-home-admin{
+        position: relative;
+    }
+}
