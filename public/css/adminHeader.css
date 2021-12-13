@@ -8,11 +8,7 @@ body{
    background-color: rgba(216, 255, 43, 0.541);
     
 }
-.nav-admin-desktop{
-    display: none;
-}
-
-.nav-admin-mobile{
+.nav-admin{
     background-color: #c5b523;
 }
 
@@ -20,18 +16,18 @@ li{
     list-style: none;
 }
 
-.nav-admin-mobile a{
+.nav-admin a{
     text-decoration: none;
     
 }
 
-.nav-admin-mobile a i{
+.nav-admin a i{
     font-size: 1.5rem;
     color: black;
 }
 
 
-.nav-admin-mobile ul{
+.nav-admin ul{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -116,65 +112,80 @@ li{
 }
 
 @media (min-width: 1100px){
-    .nav-admin-mobile{
+    .nav-admin{
         display: none;
     }
-    .nav-admin-desktop{
-        width: 100%;
+    .menu-dropdown-desktop{
+        display: block;
+        background-color: #c5b523;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        background-color: #c5b523;
-        z-index: 50;
+        justify-content: space-around;
     }
-
-    .nav-admin-desktop ul.icon-home{
-        width: 20%;
+    .home-icon{
+        flex-grow: 0.1;
         text-align: center;
-    }
-    .menu-desktop{
-        width: 80%;
-        text-align: center;
-        display: flex;
-        flex-direction: row;   
-        flex-wrap: wrap;
-        justify-content: center;
-
     }
     .container-btn{
-        width: 50%;
+        flex-grow: 0.45;
+        position: relative;
+    }
+    .btn-nav-drop{
         display: flex;
         flex-direction: row;
         justify-content: center;
-        position: relative;
     }
-    
-    
-    .btn-menu{
-        border-radius: 20px 20px 0 0;
+    .menu-btn-product, .menu-btn-user{
         width: fit-content;
-        padding: 10px 30px;
+        padding: 20px 20px ;
         cursor: pointer;
+        
         
     }
 
-    .btn-menu:hover{
-        background-color: #f0e589;
+    .menu-btn-product:hover, .menu-btn-user:hover{
+        background-color: #e0d678;
+        border-radius: 4px;
+        box-shadow: 0px 0px 5px 5px rgba(148, 138, 44, 0.281);
     }
-    .menu-list-users{
-        display: none;
+    .menu-btn-product:active, .menu-btn-user:active{
+        border-radius: 20px 20px 0 0;
     }
-    .menu-list-product{
-        width: 61vw;
-        position: absolute;
-        bottom: -40px;
+    .menu-btn-list{
+        background-color: #e0d678;
+    }
+    .menu-btn-list li{
+        border: none;
+    }
+    .menu-btn-list li a{
+        text-decoration: none;
+        color: white;
+    }
+
+    .nProduct, .nUser{
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
-        z-index: 50;
-        left: -8px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
     }
+    /* Animacion desplegable */
+
+    .nProduct, .nUser{
+        position: absolute;
+        width: 100%;
+        top: -1px;
+        transition: all 0.6s;
+        z-index: -1;
+        
+    }
+
+    
+
+
+    
 
 }
 

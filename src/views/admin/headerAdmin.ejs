@@ -1,5 +1,5 @@
 <header class="header">
-    <nav class="nav-admin-mobile">
+    <nav class="nav-admin">
         <ul>
             <li class="burger-menu" onclick="dropMenu()"><i class="fas fa-bars"></i></li>
             <li><a href="/admin"><i class="fas fa-home"></i></a></li>
@@ -29,31 +29,36 @@
         </ul>
     </div>
 
-    <nav class="nav-admin-desktop">
-        <ul class="icon-home">
-            <li><a href="/admin"><i class="fas fa-home"></i></a></li>
-        </ul>
-        <div class="menu-desktop" id="navigation-bar-mobile">
-            <div class="container-btn">
-                <p class="menu-btn-desktop">Productos</p>
-                <ul class="menu-list-product" id="btn-product" >
-                    <li><a href="/admin/list-product">Ver Productos</a> </li>
-                    <li><a href="/admin/add">Agregar Productos</a> </li>
-                    <li><a href="/admin/all-category">Ver Categorias</a></li>
-                    <li><a href="">Productos y categorias eliminados</a></li>
-                </ul> 
-            </div>
-            <div class="container-btn">
-                <p class="menu-btn-desktop">Usuarios</p>
-                 <ul class="menu-list-users" id="btn-user">
-                    <li><a href="">Ver Usuarios</a></li>
-                    <li><a href="">Agregar Usuario</a></li>
-                    <li><a href="">Usuarios desabilitados</a></li> 
-                </ul>
-            </div>  
+    <nav class="menu-dropdown-desktop" id="navigation-bar-mobile">
+        <div class="home-icon">
+            <a href="/admin"><i class="fas fa-home"></i></a>
         </div>
-        
-    </nav>
 
-    
+        <div class="container-btn">
+            <ul class="btn-nav-drop">
+                <li class="menu-btn-product" onclick="dropSubCategory3()"><a >Productos</a></li>
+            </ul>
+            
+        </div>
+        <div class="container-btn">
+            <ul class="btn-nav-drop">
+                <li class="menu-btn-user" onclick="dropSubCategory4()"><a>Usuarios</a></li>
+            </ul>
+            
+        
+        </div>
+    </nav>
+    <div class="sub-menu-nav">
+        <ul class="menu-btn-list nProduct" id="btn-product-desktop" >
+            <li><a href="/admin/list-product">Ver Productos</a> </li>
+            <li><a href="/admin/add">Agregar Productos</a> </li>
+            <li><a href="/admin/all-category">Ver Categorias</a></li>
+            <li><a href="">Productos y categorias eliminados</a></li>
+        </ul> 
+        <ul class="menu-btn-list nUser" id="btn-user-desktop">
+            <li><a href="">Ver Usuarios</a></li>
+            <li><a href="">Agregar Usuario</a></li>
+            <li><a href="">Usuarios desabilitados</a></li> 
+        </ul>
+    </div>
 </header>
