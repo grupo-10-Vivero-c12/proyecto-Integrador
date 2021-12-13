@@ -100,6 +100,7 @@ let controller = {
     delete: (req,res) =>{
         let resultProductos = productos.filter(pro => pro.id != req.params.id);
         writeJson(resultProductos)
+        
         res.redirect('/admin/list-product')
 
     }
