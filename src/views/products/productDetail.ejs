@@ -2,26 +2,21 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles de producto</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <%- include('../partials/head.ejs') %>
+    <title>Detalle de producto</title> 
 </head>
 
 <body class="product-detail">
     <%- include('../partials/header.ejs') %>
         <div class="content">
-            <h3>Inicio/Categoría/Sub-categoría/Nombre del producto</h3>
+            <h3>Inicio/<%= product.categoria%>/Sub-categoría/<%= product.nombre%></h3>
             <section class="detail-top">
                 <div class="img-content">
-                    <img src="images/rosa-china.jpg" alt="">
+                    <img src="/images/<%= product.imagen %>" alt="">
                 </div>
                 <div class="sale-detail">
-                    <p>Nombre del producto</p>
-                    <p>$ 250,50</p>
+                    <p><%= product.nombre%></p>
+                    <p>$ <%= product.precio%></p>
                     <hr>
                     <div class="color-select">
                         COLOR:
@@ -46,10 +41,10 @@
                     <div class="quantity-selector">
                         <label for="quantity">CANTIDAD:</label>
                         <select name="quantity" id="quantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <% for (let index = 1; index <= product.cantidad; index++) {%>
+                                <option value="<%= index %>"><%= index %> </option>
+                                
+                            <%  } %> 
                         </select>
                     </div>
                     <button class="btn">Agregar al carrito</button>
@@ -61,20 +56,16 @@
                 <div class="description">
                     <h3>Descripción</h3>
                     <p>
-                        UBICACIÓN: Exterior a pleno sol.
+                        UBICACIÓN: <%= product.ubicacion %> 
                     </p>
                     <p>
-                        SUSTRATO: Fértil, ácido, bien drenado, aunque es tolerante.
+                        SUSTRATO: <%= product.sustrato %>
                     </p>
                     <p>
-                        FLORACIÓN: Todo el año si se colocan en un lugar protegido.
+                        FLORACIÓN: <%= product.froracion %>
                     </p>
                     <p>
-                        OBSERVACIONES: A pleno sol se comportan como perennes y florecen permanentemente. En lugares
-                        húmedos
-                        es susceptible al oídio, un hongo que mancha sus hojas e impide su floración. Se pueden recortar
-                        a
-                        fin del Invierno, y del Verano para mantenerlas compactas.
+                        OBSERVACIONES: <%= product.descripcion %>
                     </p>
                 </div>
 
@@ -121,78 +112,15 @@
             <section class="related-products">
                 <h2>PRODUCTOS RELACIONADOS</h2>
                 <div class="products">
-                    <div class="product">
-                        <img src="images/canasto-con-asas.jpeg" alt="">
-                        <p>CANASTO CON ASAS</p>
-                        <p>$600</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/cat-macetas.jpeg" alt="">
-                        <p>MACETAS GRANDES</p>
-                        <p>$1000</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/cat-plantas.jpeg" alt="">
-                        <p>PLANTINES</p>
-                        <p>$400</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/cat-semillas.png" alt="">
-                        <p>SEMILLAS</p>
-                        <p>$500</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/malvón-italiano.png" alt="">
-                        <p>malvón italiano</p>
-                        <p>$800</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/orquidea-dendrobium.jpeg" alt="">
-                        <p>orquidea</p>
-                        <p>$700</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/rosa-china.jpg" alt="">
-                        <p>Rosa china</p>
-                        <p>$250</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/canasto-con-asas.jpeg" alt="">
-                        <p>CANASTO CON ASAS</p>
-                        <p>$600</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/cat-macetas.jpeg" alt="">
-                        <p>MACETAS GRANDES</p>
-                        <p>$1000</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/cat-plantas.jpeg" alt="">
-                        <p>PLANTINES</p>
-                        <p>$400</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/cat-semillas.png" alt="">
-                        <p>SEMILLAS</p>
-                        <p>$500</p>
-                        <button class="btn">Comprar</button>
-                    </div>
-                    <div class="product">
-                        <img src="images/malvón-italiano.png" alt="">
-                        <p>malvón italiano</p>
-                        <p>$800</p>
-                        <button class="btn">Comprar</button>
-                    </div>
+                    <% productosCategoria.forEach(producto => {%> 
+                        <div class="product">
+                            <img src="/images/<%= producto.imagen %>" alt="">
+                            <p><%= producto.nombre %></p>
+                            <p>$<%= producto.precio %></p>
+                            <button class="btn">Comprar</button>
+                        </div>
+                    <% }); %> 
+                    
                 </div><!-- products -->
             </section><!-- related-products -->
         </div><!-- content -->

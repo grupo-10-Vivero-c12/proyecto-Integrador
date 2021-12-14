@@ -73,8 +73,9 @@ let controller = {
 
     },
     store: (req, res) =>{
-        let lastId = productos.length
-        let {nombre, imagen, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
+        let lastId = productos.length +1
+        console.log(lastId);
+        let {nombre, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
         
         let nuevoProducto = {
             id: lastId + 1,
@@ -83,7 +84,7 @@ let controller = {
             color : color,
             cantidad : cantidad,
             categoria : categoria,
-            imagen : imagen,
+            imagen : req.file.filename,
             descripcion : descripcion,
             ubicacion : ubicacion,
             sustrato : sustrato,

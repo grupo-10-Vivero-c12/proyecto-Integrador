@@ -2,14 +2,9 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://kit.fontawesome.com/f102f36a5d.js" crossorigin="anonymous"></script>
-    <!-- Flechitas de carrusel -->
-
+    <%- include('./partials/head.ejs') %>
+    <title>Home</title> 
+</head>
 <body>
     <%- include('./partials/header.ejs') %>
         <!-- Carrusel -->
@@ -83,13 +78,21 @@
         <section class="related-products">
             <h2>PRODUCTOS RELACIONADOS</h2>
             <div class="products">
-                <div class="product">
-                    <img src="images/canasto-con-asas.jpeg" alt="">
-                    <p>CANASTO CON ASAS</p>
-                    <p>$600</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
+                <%  productos.forEach(producto => {%>
+                    <div class="product">
+                        <a class="link-container" href="/productDetail/<%= producto.id %> ">
+                            <img src="images/<%= producto.imagen %>" alt="">
+                            <p><%= producto.nombre %> </p>
+                            <p>$<%= producto.precio %></p>
+                            <button class="btn">Comprar</button>
+                        </a>
+                    </div>
+                    
+
+
+                    
+                <% });%>
+                <!-- <div class="product">
                     <img src="images/cat-macetas.jpeg" alt="">
                     <p>MACETAS GRANDES</p>
                     <p>$1000</p>
@@ -154,8 +157,7 @@
                     <p>malvón italiano</p>
                     <p>$800</p>
                     <button class="btn">Comprar</button>
-                </div>
+                </div> -->
         </section>
         <%- include('./partials/footer.ejs') %>
 </body>
-</head>

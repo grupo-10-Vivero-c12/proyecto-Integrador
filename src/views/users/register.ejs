@@ -2,13 +2,8 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <%- include('../partials/head.ejs') %>
+    <title>Crear Cuenta</title> 
 </head>
 
 <body>
@@ -53,7 +48,7 @@
                         </div>
 
                         <div class="create-count">
-                            <a href="./login">¿Ya tenés cuenta? Iniciá sesión</a>
+                            <a href="/users/login">¿Ya tenés cuenta? Iniciá sesión</a>
                         </div>
 
 
@@ -70,7 +65,7 @@
 
 
                 <div class="log-in-google">
-                    <a href="#"><img src="images/logo-google.png" alt="google"> Iniciar con Google</a>
+                    <a href="#"><img src="/images/logo-google.png" alt="google"> Iniciar con Google</a>
                 </div>
             </div>
         </main>

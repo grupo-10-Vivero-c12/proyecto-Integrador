@@ -1,11 +1,12 @@
 let express = require("express");
 let router = express.Router();
 let controller = require("../controllers/adminControllers")
+let upload = require('../middlewares/uploadProductFiles');
 
 /* GET - Home page */
 router.get("/", controller.home)
 router.get("/add", controller.add)
-router.post("/add", controller.store)
+router.post("/add",upload.single('imagen'), controller.store)
 router.get("/list-product", controller.allProducts)
 router.delete("/list-product/:id", controller.delete)
 router.get("/all-category", controller.allCategory)
