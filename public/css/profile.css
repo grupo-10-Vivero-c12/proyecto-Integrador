@@ -1,0 +1,141 @@
+.rute {
+  font-family: var(--font-roboto);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+main .rute a:hover {
+  color: brown;
+}
+main h2 {
+  text-align: center;
+  font-family: var(--font-rum);
+  font-weight: 100;
+  font-size: 2rem;
+  padding: 10px;
+  margin: 5px;
+}
+main .form-container .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .form-container .form .input-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 500px;
+  margin: 10px 0;
+}
+main .form-container .form .recover-password a,
+main .form-container .form .create-count a {
+  font-size: 0.9rem;
+}
+
+main .form-container .form .input-container .error-message {
+  color: red;
+  font-size: 12px;
+  margin: 5px 0 0;
+  display: none;
+}
+
+main .form-container .form .input-container label {
+  padding-bottom: 10px;
+}
+
+main .form-container .form .input-container input {
+  height: 2rem;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid rgb(248, 248, 248);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+main .form-container .form .input-container input:focus {
+  border: 2px solid rgb(218, 243, 180);
+  box-shadow: 0 4px 8px 0 rgba(151, 151, 151, 0.2),
+    0 6px 20px 0 rgba(151, 151, 151, 0.2);
+}
+main .form-container .form .input-container input::placeholder {
+  font-style: italic;
+  font-weight: lighter;
+  color: gainsboro;
+}
+
+main .form-container .form .recover-password,
+main .form-container .form .create-count {
+  width: 90%;
+  max-width: 500px;
+  margin: 0.5rem 0 1rem;
+}
+
+main .form-container .form .recover-password a,
+main .form-container .form .create-count a {
+  font-weight: bold;
+  font-size: 0.6rem;
+}
+
+main .form-container .form .recover-password a:hover,
+main .form-container .form .create-count a:hover {
+  color: rgba(139, 0, 0, 0.568);
+  text-decoration: underline;
+}
+
+main .form-container .form .recover-password a:active,
+main .form-container .form .create-count a:active {
+  color: rgb(201, 2, 2);
+}
+
+main .form-container .form .create-count {
+  text-align: center;
+}
+
+main .form-container .form .button-submit {
+  width: 90%;
+  max-width: 500px;
+  margin: 0.5rem 0 1rem;
+}
+
+main .form-container .form .button-submit button {
+  height: 2rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: #a9db45;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  font-weight: bold;
+}
+
+main .form-container .form .button-submit button:hover {
+  background-color: #d1f785;
+  box-shadow: 0 5px 20px 0 rgba(143, 143, 143, 0.24),
+    0 5px 20px 0 rgba(126, 126, 126, 0.19);
+}
+
+main .form-container .form .button-submit button:active {
+  transform: translateY(4px);
+  background-color: #83b323;
+}
+
+@media (min-width: 768px) {
+  main .form-container .form .input-container label {
+    font-size: 1.5rem;
+  }
+
+  main .form-container .form .input-container input {
+    height: 3rem;
+  }
+
+  main .form-container .form .recover-password a,
+  main .form-container .form .create-count a {
+    font-size: 0.9rem;
+  }
+
+  main .form-container .form .button-submit button {
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+}
