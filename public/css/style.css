@@ -5,7 +5,6 @@
 /* Variable */
 @import url("variables.css");
 
-
 /*Generales*/
 
 @import url("header.css");
@@ -25,7 +24,7 @@
 @import url("payment.css");
 @import url("carousel.css");
 
-
+@import url("profile.css");
 
 * {
   margin: 0;
@@ -33,9 +32,9 @@
   box-sizing: border-box;
 }
 
-a{
-    color: black;
-    text-decoration: none;
+a {
+  color: black;
+  text-decoration: none;
 }
 body {
   margin-top: 100px;
@@ -44,7 +43,6 @@ body {
 .content {
   width: 90%;
   margin: 0 auto;
-
 }
 
 .btn {
@@ -70,4 +68,3 @@ body {
   transform: translateY(4px);
   background-color: #83b323;
 }
-

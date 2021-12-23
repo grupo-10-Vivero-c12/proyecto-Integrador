@@ -55,6 +55,9 @@ let controller = {
 
         res.redirect("/")
     },
+    profile:(req, res) => {
+        res.render('users/perfilUsuario')
+    }
 }
 
 module.exports = controller

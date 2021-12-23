@@ -17,4 +17,7 @@ router.get('/edit/:id', controller.edit)
 /* PUT - Update a user (User)*/
 router.put('/edit/:id',controller.update)
 
+/* GET - Show profile user */
+/* router.get('/profile', controller.profile) */
+
 module.exports = router
