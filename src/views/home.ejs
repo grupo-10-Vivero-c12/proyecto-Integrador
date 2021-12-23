@@ -7,48 +7,8 @@
 </head>
 <body>
     <%- include('./partials/header.ejs') %>
-        <!-- Carrusel -->
-        <div class="conteiner">
-            <div class="carrusel">
-                <div class="imagenCarrusel" id="img1">
-                    <img src="/images/carrusel1.jpeg" alt="imagen 1">
-                </div>
-                <div class="flechas">
-                    <a href="#img3">
-                        <i class="fas fa-angle-left" _mstvisible="2"></i>
-                    </a>
-                    <a href="#img2">
-                        <i class="fas fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="carrusel">
-                <div class="imagenCarrusel" id="img2">
-                    <img src="/images/carrusel2.jpeg" alt="imagen 2">
-                </div>
-                <div class="flechas">
-                    <a href="#img1">
-                        <i class="fas fa-angle-left" _mstvisible="2"></i>
-                    </a>
-                    <a href="#img3">
-                        <i class="fas fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="carrusel">
-                <div class="imagenCarrusel" id="img3">
-                    <img src="/img/prueba3.vivero.jpg" alt="imagen 3">
-                </div>
-                <div class="flechas">
-                    <a href="#img2">
-                        <i class="fas fa-angle-left" _mstvisible="2"></i>
-                    </a>
-                    <a href="#img1">
-                        <i class="fas fa-angle-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <%- include('./partials/carrousel.ejs') %>
+
         <!-- Categoria -->
         <section class="conteinerProduct">
             <div class="categoriaMacetas">
@@ -160,4 +120,5 @@
                 </div> -->
         </section>
         <%- include('./partials/footer.ejs') %>
+        <%- include('./partials/script.ejs') %>
 </body>
