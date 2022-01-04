@@ -36,7 +36,6 @@ main .form-container .form .input-container .error-message {
   color: red;
   font-size: 12px;
   margin: 5px 0 0;
-  display: none;
 }
 
 main .form-container .form .input-container label {
