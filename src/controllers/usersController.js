@@ -7,7 +7,7 @@ let controller = {
     register: (req, res) => {
         res.render('users/register')
     },
-    store: (req, res) => {
+    processRegister: (req, res) => {
         let lastId = 1;
 
         users.forEach(user => {
@@ -22,14 +22,15 @@ let controller = {
             id: lastId + 1,
             name: name,
             email: email,
-            password: password
+            password: password,
+            avatar: req.file ? req.file.filename : "default-image.png",
         }
 
         users.push(newUser)
 
         writeUsersJson(users)
 
-        res.redirect("/")
+        res.redirect("/users/login")
     },
     edit: (req, res) => {
         let userId = +req.params.id;
@@ -56,7 +57,7 @@ let controller = {
         res.redirect("/")
     },
     profile:(req, res) => {
-        res.render('users/perfilUsuario')
+        res.render('users/')
     }
 }
 

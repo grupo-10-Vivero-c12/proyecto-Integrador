@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <title>Crear Cuenta</title> 
+        <title>Crear Cuenta</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 
             <h2>Crear Cuenta</h2>
             <div class="form-container">
-                <form action="/users/store" method="POST">
+                <form action="/users/register" method="POST" enctype="multipart/form-data">
                     <div class="form">
                         <div class="input-container">
                             <label for="name">Nombre</label>
@@ -31,6 +31,10 @@
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com" required>
                             <span class="error-message">Ya existe una cuenta registrada con ese email</span>
+                        </div>
+                        <div class="input-container">
+                            <label for="avatar">Avatar</label>
+                            <input type="file" id="avatar" name="avatar">
                         </div>
 
                         <div class="input-container">
