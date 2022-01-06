@@ -60,17 +60,17 @@
         "oferta": false
     },
     {
-        "id": 6,
-        "nombre": "Orquidea",
+        "id": 1,
+        "nombre": "Orquidea ",
         "precio": "700",
         "color": "Blanca",
         "cantidad": "50",
         "categoria": "Planta",
         "imagen": "orquidea-dendrobium.jpeg",
-        "descripcion": "Orquidea muy hermosas",
-        "ubicacion": "Interior",
-        "sustrato": ".............",
-        "floracion": "..............",
+        "descripcion": "Orquidea muy hermosas ",
+        "ubicacion": "Interior ",
+        "sustrato": "............. ",
+        "floracion": ".............. ",
         "opiniones": [],
         "oferta": false
     },
