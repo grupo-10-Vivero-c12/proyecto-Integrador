@@ -14,53 +14,71 @@
                 
                     <div class="form-contain name-form">
                         <label for="nom">Nombre del producto</label>
-                        <input type="text" id="nom" name="nombre" required>
+                        <input type="text" id="nom" name="nombre" value="<%= locals.old && old.nombre %>">
+                        <% if (locals.errors && errors.nombre) { %>
+                            <small class="error-message"> <%= errors.nombre.msg %> </small>
+                        <% } %>
                     </div>
                     
                     <div class="form-contain descripcion-form">
                         <label for="des">Descripción</label>
-                        <textarea name="descripcion" id="des" cols="30" rows="10"></textarea>
+                        <textarea name="descripcion" id="des" cols="30" rows="10"><%= locals.old && old.descripcion %></textarea>
+                        <% if (locals.errors && errors.descripcion) { %>
+                            <small class="error-message"> <%= errors.descripcion.msg %> </small>
+                        <% } %>
                     </div>
 
                     <div class="form-contain descripcion-form">
                         <label for="ubi">Ubicación</label>
-                        <input type="text" name="ubicacion" id="ubi" required>
+                        <input type="text" name="ubicacion" id="ubi" value="<%= locals.old && old.ubicacion %>">
+                        <% if (locals.errors && errors.ubicacion) { %>
+                            <small class="error-message"> <%= errors.ubicacion.msg %> </small>
+                        <% } %>
                     </div>
                     <div class="form-contain descripcion-form">
                         <label for="sus">Sustrato</label>
-                        <input type="text" name="sustrato" id="sus" required>
+                        <input type="text" name="sustrato" id="sus" >
                     </div>
 
                     <div class="form-contain descripcion-form">
                         <label for="flo">Floración</label>
-                        <input type="text" name="floracion" id="flo" required>
+                        <input type="text" name="floracion" id="flo" >
                     </div>
                     
                     <div class="form-contain img-form">
                         <label for="img">Imagen</label>
-                        <input type="file" id="img" accept=".jpg, .png, .jpeg" name="imagen" multiple required>
+                        <input type="file" id="img" accept=".jpg, .png, .jpeg" name="imagen" multiple >
                     </div>
                     
                     <div class="form-contain categ-form">
                         <p>Categoria</p>
-                        <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" required>Planta</label>
-                        <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" required>Semilla</label>
-                        <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" required>Macetas</label>
+                        <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" <%= (locals.old && old.categoria) === "Planta" ? "checked" : "" %>  >Planta</label>
+                        <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" <%= (locals.old && old.categoria) === "Semilla" ? "checked" : "" %>>Semilla</label>
+                        <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" <%= (locals.old && old.categoria) === "Macetas" ? "checked" : "" %> >Macetas</label>
+                        <% if (locals.errors && errors.categoria) { %>
+                            <small class="error-message"> <%= errors.categoria.msg %> </small>
+                        <% } %>
                     </div>
                     
                     <div class="form-contain colo-form">
                         <label for="color">Color</label>
-                        <input type="text" id="color" name="color" required>
+                        <input type="text" id="color" name="color" >
                     </div>
 
                     <div class="form-contain price-form">
                         <label for="precio">Precio</label>
-                        <input type="number" id="precio" name="precio" required> 
+                        <input type="number" id="precio" name="precio" value="<%= locals.old && old.precio %>"> 
+                        <% if (locals.errors && errors.precio) { %>
+                            <small class="error-message"> <%= errors.precio.msg %> </small>
+                        <% } %>
                     </div>
 
                     <div class="form-contain price-form">
                         <label for="cant">Cantidad</label>
-                        <input type="number" id="cant" name="cantidad" required> 
+                        <input type="number" id="cant" name="cantidad" value="<%= locals.old && old.cantidad%>"> 
+                        <% if (locals.errors && errors.cantidad) { %>
+                            <small class="error-message"> <%= errors.cantidad.msg %> </small>
+                        <% } %>
                     </div>
 
                     <div class="btn-admin">

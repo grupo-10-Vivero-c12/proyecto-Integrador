@@ -39,13 +39,13 @@ let controller = {
             }
         });
 
-        const {name,  email, password} = req.body
+        const {name,  email, password1} = req.body
 
         let newUser = {
             id: lastId + 1,
             name: name,
             email: email,
-            password: password,
+            password: password1,
             avatar: req.file ? req.file.filename : "default-image.png",
         }
 

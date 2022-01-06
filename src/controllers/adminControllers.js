@@ -1,5 +1,5 @@
 let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
-
+let { validationResult } = require('express-validator')
 let categorias = []
 productos.forEach(element => {
     if(categorias.includes(element.categoria)){
@@ -50,7 +50,7 @@ let controller = {
         productos.forEach(product =>{
             if (product.id == idProducto) {
                 
-                product.id = 1,
+                product.id = product.id,
                 product.nombre = nombre,
                 product.precio = precio,
                 product.color = color,
@@ -73,30 +73,43 @@ let controller = {
 
     },
     store: (req, res) =>{
-        let lastId = productos.length +1
-        console.log(lastId);
-        let {nombre, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
-        
-        let nuevoProducto = {
-            id: lastId + 1,
-            nombre : nombre,
-            precio : precio,
-            color : color,
-            cantidad : cantidad,
-            categoria : categoria,
-            imagen : req.file.filename,
-            descripcion : descripcion,
-            ubicacion : ubicacion,
-            sustrato : sustrato,
-            floracion : floracion,
-            opiniones : [],
-            oferta : false
-        }
-        
-        productos.push(nuevoProducto);
-        writeJson(productos)
-        res.redirect('/admin/list-product')
 
+        let errors = validationResult(req)
+
+        if (errors.isEmpty()) {
+            let lastId = productos.length + 1
+        
+            let {nombre, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
+            
+            let nuevoProducto = {
+                id: lastId + 1,
+                nombre : nombre,
+                precio : precio,
+                color : color,
+                cantidad : cantidad,
+                categoria : categoria,
+                imagen : req.file ? req.file.filename : "",
+                descripcion : descripcion,
+                ubicacion : ubicacion,
+                sustrato : sustrato,
+                floracion : floracion,
+                opiniones : [],
+                oferta : false
+            }
+            
+            productos.push(nuevoProducto);
+            writeJson(productos)
+            res.redirect('/admin/list-product')
+
+        } else{
+            console.log(errors.mapped());
+            res.render('admin/addProducts',{
+                errors : errors.mapped(),
+                old : req.body
+            })
+        }
+
+        
     },
     delete: (req,res) =>{
         let resultProductos = productos.filter(pro => pro.id != req.params.id);

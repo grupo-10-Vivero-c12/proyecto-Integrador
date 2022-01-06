@@ -1,16 +1,16 @@
 [
     {
         "id": 2,
-        "nombre": "Canasto con Asas",
-        "precio": "600",
+        "nombre": "Canasto con Asas ",
+        "precio": "100",
         "color": "Marron",
         "cantidad": "12",
-        "categoria": "Macetas",
+        "categoria": "Planta",
         "imagen": "canasto-con-asas.jpeg",
-        "descripcion": "Canasto artesanal",
-        "ubicacion": "Interior y exterior",
-        "sustrato": "................",
-        "floracion": "-------------",
+        "descripcion": "Canasto artesanal ",
+        "ubicacion": "Interior y exterior ",
+        "sustrato": "................ ",
+        "floracion": "------------- ",
         "opiniones": [],
         "oferta": false
     },
@@ -101,6 +101,21 @@
         "ubicacion": "---",
         "sustrato": "---",
         "floracion": "---",
+        "opiniones": [],
+        "oferta": false
+    },
+    {
+        "id": 9,
+        "nombre": "Flor",
+        "precio": "213",
+        "color": "",
+        "cantidad": "12",
+        "categoria": "Planta",
+        "imagen": "",
+        "descripcion": "",
+        "ubicacion": "Exterior",
+        "sustrato": "",
+        "floracion": "",
         "opiniones": [],
         "oferta": false
     }

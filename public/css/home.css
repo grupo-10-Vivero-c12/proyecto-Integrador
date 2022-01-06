@@ -121,8 +121,7 @@ img{
 }
 
 .related-products .products .product img{
-    width: 100%;
-    border-radius: 20px;
+    
 }
 
 .related-products .products .product button{
@@ -133,7 +132,12 @@ img{
     text-transform: uppercase;
     text-align: center;
 }
-
+.link-container{
+    width: 100%;
+}
+.product img{
+    object-fit: fill;
+}
 /* QUERIES */
 
 /*Tablet*/

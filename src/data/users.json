@@ -1,31 +1,44 @@
-[{
-    "id": 2,
-    "name": "Pepe Argento",
-    "email": "pepe_argentino@gmail.com",
-    "avatar": "default-image.png",
-    "password": "asdasdasd"
-}, {
-    "id": 4,
-    "name": "Goku",
-    "email": "goku_maquina@gmail.com",
-    "avatar": "default-image.png",
-    "password": "jajajajaja"
-}, {
-    "id": 5,
-    "name": "Juan Perez",
-    "email": "juanfnasndkasf@gmail.com",
-    "avatar": "default-image.png",
-    "password": "12345678"
-}, {
-    "id": 6,
-    "name": "Carlos",
-    "email": "carlos@gmail.com",
-    "avatar": "default-image.png",
-    "password": "sdafsadfasd"
-}, {
-    "id": 7,
-    "name": "Sol",
-    "email": "sol@gmail.com",
-    "password": "prueba",
-    "avatar": "1641294060051_img_.jpg"
-}]
+[
+    {
+        "id": 2,
+        "name": "Pepe Argento",
+        "email": "pepe_argentino@gmail.com",
+        "avatar": "default-image.png",
+        "password": "asdasdasd"
+    },
+    {
+        "id": 4,
+        "name": "Goku",
+        "email": "goku_maquina@gmail.com",
+        "avatar": "default-image.png",
+        "password": "jajajajaja"
+    },
+    {
+        "id": 5,
+        "name": "Juan Perez",
+        "email": "juanfnasndkasf@gmail.com",
+        "avatar": "default-image.png",
+        "password": "12345678"
+    },
+    {
+        "id": 6,
+        "name": "Carlos",
+        "email": "carlos@gmail.com",
+        "avatar": "default-image.png",
+        "password": "sdafsadfasd"
+    },
+    {
+        "id": 7,
+        "name": "Sol",
+        "email": "sol@gmail.com",
+        "password": "prueba",
+        "avatar": "1641294060051_img_.jpg"
+    },
+    {
+        "id": 8,
+        "name": "marcos",
+        "email": "marcos@mail.com",
+        "password": "123456",
+        "avatar": "default-image.png"
+    }
+]
