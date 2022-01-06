@@ -10,9 +10,15 @@ let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
 let payRouter = require('./routes/payRouter')
 let usersRouter = require('./routes/users')
+let session = require('express-session')
 /* let perfilUsuarioRouter = require('./routes/perfilUsuario'); */
 
 app.use(express.static('public'));
+app.use(session({
+    secret: "viveroTimbo",
+    resave: false,
+    saveUninitialized: true
+}))
 
 /* set para ejs  */
 app.set('view engine','ejs')
