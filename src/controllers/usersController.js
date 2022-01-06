@@ -3,7 +3,9 @@ const { validationResult } = require('express-validator')
 
 let controller = {
     login: (req, res) => {
-        res.render('users/login')
+        res.render('users/login', {
+            session: req.session
+        })
     },
     processLogin: (req, res) => {
         let errors = validationResult(req);
@@ -24,11 +26,14 @@ let controller = {
         }else{
             res.render('users/login', {
                 errors: errors.mapped(),
+                session: req.session
             })
         }
     },
     register: (req, res) => {
-        res.render('users/register')
+        res.render('users/register', {
+            session: req.session
+        })
     },
     processRegister: (req, res) => {
         let errors = validationResult(req);
@@ -48,7 +53,7 @@ let controller = {
                 id: lastId + 1,
                 name,
                 email, 
-                pass: password1,
+                password: password1,
                 avatar: req.file ? req.file.filename : "default-image.png",
             }
 
@@ -62,6 +67,7 @@ let controller = {
             /* res.send(errors.mapped()) */
             res.render('users/register', {
                 errors: errors.mapped(),
+                session: req.session
             })
         }
     },
@@ -90,7 +96,9 @@ let controller = {
         res.redirect("/")
     },
     profile:(req, res) => {
-        res.render('users/')
+        res.render('users/userProfile',{
+            session: req.session
+        })
     }
 }
 

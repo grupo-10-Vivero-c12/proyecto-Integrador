@@ -38,6 +38,12 @@
     "id": 9,
     "name": "Jonathan",
     "email": "joni@gmail.com",
-    "pass": "11111111",
+    "password": "11111111",
     "avatar": "default-image.png"
+}, {
+    "id": 10,
+    "name": "Luis",
+    "email": "luis@luis.com",
+    "password": "123123123",
+    "avatar": "1641508071134_img_.jpg"
 }]

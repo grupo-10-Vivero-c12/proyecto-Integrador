@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+        <title>Perfil de usuario</title>
+</head>
+
+<body class="profile">
+
+    <%- include('../partials/header.ejs') %>
+
+        <main>
+            <div class="rute">
+                <a href="/home">Home</a>
+                <span>/</span>
+                <a href="/Mi perfil">Mi perfil</a><span>/</span>
+                <a href="/perfilUsuario">Mis datos</a>
+            </div>
+            <h2>Mis Datos</h2>
+            <div class="form-container">
+                <form action="">
+                    <div class="form">
+
+
+                        <div class="create-count">
+                            <a href="/users/edit">Editar</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>
