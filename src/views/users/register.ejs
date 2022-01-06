@@ -6,7 +6,7 @@
         <title>Crear Cuenta</title>
 </head>
 
-<body>
+<body class="register">
 
     <%- include('../partials/header.ejs') %>
 
@@ -26,11 +26,20 @@
                         <div class="input-container">
                             <label for="name">Nombre</label>
                             <input type="text" id="name" name="name" placeholder="Nombre">
+                            <% if (locals.errors && errors.name) { %>
+                                <small class="error-message">
+                                    <%= errors.name.msg %>
+                                </small>
+                                <% } %>
                         </div>
                         <div class="input-container">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com">
-                            <span class="error-message">Ya existe una cuenta registrada con ese email</span>
+                            <% if (locals.errors && errors.email) { %>
+                                <small class="error-message">
+                                    <%= errors.email.msg %>
+                                </small>
+                                <% } %>
                         </div>
                         <div class="input-container">
                             <label for="avatar">Avatar</label>
@@ -40,11 +49,20 @@
                         <div class="input-container">
                             <label for="password1">Contraseña</label>
                             <input type="password" id="password1" name="password1" placeholder="password">
+                            <% if (locals.errors && errors.password1) { %>
+                                <small class="error-message">
+                                    <%= errors.password1.msg %>
+                                </small>
+                                <% } %>
                         </div>
                         <div class="input-container">
                             <label for="password2">Confirmar contraseña</label>
                             <input type="password" id="password2" name="password2" placeholder="password">
-                            <span class="error-message">Las contraseñas no coinciden</span>
+                            <% if (locals.errors && errors.password2) { %>
+                                <small class="error-message">
+                                    <%= errors.password2.msg %>
+                                </small>
+                                <% } %>
                         </div>
 
                         <div class="button-submit">
@@ -54,20 +72,10 @@
                         <div class="create-count">
                             <a href="/users/login">¿Ya tenés cuenta? Iniciá sesión</a>
                         </div>
-
-
                         <hr>
 
                     </div>
-
-
-
-
-
                 </form>
-
-
-
                 <div class="log-in-google">
                     <a href="#"><img src="/images/logo-google.png" alt="google"> Iniciar con Google</a>
                 </div>

@@ -31,29 +31,39 @@ let controller = {
         res.render('users/register')
     },
     processRegister: (req, res) => {
-        let lastId = 1;
+        let errors = validationResult(req);
+       
+        if(errors.isEmpty()){
+            let lastId = 1;
 
-        users.forEach(user => {
-            if(user.id > lastId){
-                lastId = user.id
+            users.forEach(user => {
+                if(user.id > lastId){
+                    lastId = user.id
+                }
+            });
+
+            let { name, email, password1 } = req.body
+
+            let newUser = {
+                id: lastId + 1,
+                name,
+                email, 
+                pass: password1,
+                avatar: req.file ? req.file.filename : "default-image.png",
             }
-        });
 
-        const {name,  email, password1} = req.body
+            users.push(newUser)
 
-        let newUser = {
-            id: lastId + 1,
-            name: name,
-            email: email,
-            password: password1,
-            avatar: req.file ? req.file.filename : "default-image.png",
+            writeUsersJson(users)
+
+            res.redirect('/users/login')
+
+        }else{
+            /* res.send(errors.mapped()) */
+            res.render('users/register', {
+                errors: errors.mapped(),
+            })
         }
-
-        users.push(newUser)
-
-        writeUsersJson(users)
-
-        res.redirect("/users/login")
     },
     edit: (req, res) => {
         let userId = +req.params.id;

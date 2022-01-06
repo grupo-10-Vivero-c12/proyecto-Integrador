@@ -28,6 +28,10 @@ main .form-container .form {
   align-items: center;
 }
 
+main .form-container .form {
+  font-family: var(--font-ruluko);
+}
+
 main .form-container .form .input-container {
   display: flex;
   flex-direction: column;
@@ -65,7 +69,8 @@ main .form-container .form .input-container input:focus {
 main .form-container .form .input-container input::placeholder {
   font-style: italic;
   font-weight: lighter;
-  color: gainsboro;
+  color: black;
+  opacity: 1;
 }
 
 main .form-container .form .recover-password,
