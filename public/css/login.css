@@ -28,6 +28,10 @@ main .form-container .form {
   align-items: center;
 }
 
+main .form-container .form {
+  font-family: var(--font-ruluko);
+}
+
 main .form-container .form .input-container {
   display: flex;
   flex-direction: column;
@@ -55,7 +59,9 @@ main .form-container .form .input-container input {
   transition: 0.5s;
   outline: none;
 }
-
+main .form-container .form .input-container .is-invalid {
+  border: 1px red solid;
+}
 main .form-container .form .input-container input:focus {
   border: 2px solid rgb(218, 243, 180);
   box-shadow: 0 4px 8px 0 rgba(151, 151, 151, 0.2),
@@ -65,7 +71,8 @@ main .form-container .form .input-container input:focus {
 main .form-container .form .input-container input::placeholder {
   font-style: italic;
   font-weight: lighter;
-  color: gainsboro;
+  color: black;
+  opacity: 1;
 }
 
 main .form-container .form .recover-password,

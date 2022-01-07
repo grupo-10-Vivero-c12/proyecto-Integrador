@@ -40,5 +40,26 @@
         "email": "marcos@mail.com",
         "password": "123456",
         "avatar": "default-image.png"
+    },
+    {
+        "id": 9,
+        "name": "Jonathan",
+        "email": "joni@gmail.com",
+        "password": "11111111",
+        "avatar": "default-image.png"
+    },
+    {
+        "id": 10,
+        "name": "Luis",
+        "email": "luis@luis.com",
+        "password": "123123123",
+        "avatar": "1641508071134_img_.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Marcos",
+        "email": "marcos@gmail.com",
+        "password": "123456",
+        "avatar": "default-image.png"
     }
 ]

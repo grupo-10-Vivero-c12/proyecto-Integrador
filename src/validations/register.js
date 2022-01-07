@@ -1,5 +1,5 @@
 const { check, body } = require('express-validator');
-const { users } = require('../data/dataBase')
+const { users } = require("../data/dataBase")
 
 
 module.exports = [
@@ -8,6 +8,8 @@ module.exports = [
     .withMessage('El nombre es requerido'),
 
     check('email')
+    .notEmpty()
+    .withMessage('Debes ingresar un email')
     .isEmail()
     .withMessage('Debes ingresar un email válido'),
 

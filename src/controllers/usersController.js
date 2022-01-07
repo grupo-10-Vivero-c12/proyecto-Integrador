@@ -3,7 +3,9 @@ const { validationResult } = require('express-validator')
 
 let controller = {
     login: (req, res) => {
-        res.render('users/login')
+        res.render('users/login', {
+            session: req.session
+        })
     },
     processLogin: (req, res) => {
         let errors = validationResult(req);
@@ -24,36 +26,51 @@ let controller = {
         }else{
             res.render('users/login', {
                 errors: errors.mapped(),
+                session: req.session
             })
         }
     },
     register: (req, res) => {
-        res.render('users/register')
+        res.render('users/register', {
+            session: req.session
+        })
     },
     processRegister: (req, res) => {
-        let lastId = 1;
+        let errors = validationResult(req);
+       
+        if(errors.isEmpty()){
+            let lastId = 1;
 
-        users.forEach(user => {
-            if(user.id > lastId){
-                lastId = user.id
+            users.forEach(user => {
+                if(user.id > lastId){
+                    lastId = user.id
+                }
+            });
+
+            let { name, email, password1 } = req.body
+
+            let newUser = {
+                id: lastId + 1,
+                name,
+                email, 
+                password: password1,
+                avatar: req.file ? req.file.filename : "default-image.png",
             }
-        });
 
-        const {name,  email, password1} = req.body
+            users.push(newUser)
 
-        let newUser = {
-            id: lastId + 1,
-            name: name,
-            email: email,
-            password: password1,
-            avatar: req.file ? req.file.filename : "default-image.png",
+            writeUsersJson(users)
+
+            res.redirect('/users/login')
+
+        }else{
+            /* res.send(errors.mapped()) */
+            res.render('users/register', {
+                errors: errors.mapped(),
+                session: req.session,
+                oldData : req.body
+            })
         }
-
-        users.push(newUser)
-
-        writeUsersJson(users)
-
-        res.redirect("/users/login")
     },
     edit: (req, res) => {
         let userId = +req.params.id;
@@ -80,7 +97,9 @@ let controller = {
         res.redirect("/")
     },
     profile:(req, res) => {
-        res.render('users/')
+        res.render('users/userProfile',{
+            session: req.session
+        })
     }
 }
 

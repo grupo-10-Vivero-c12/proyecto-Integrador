@@ -4,7 +4,8 @@ let {productos} = require('../data/dataBase')
 let controller = {
     index:function (req, res) {
         return res.render('home',{
-            productos
+            productos,
+            session: req.session
         })
     }
 }

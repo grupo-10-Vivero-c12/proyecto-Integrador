@@ -30,8 +30,19 @@
             </div>
 
             <nav class="user_navbar">
-                <a href="/users/login"><i class="far fa-user-circle"></i></a>
-                <a href="/shoppingCart"><i class="fas fa-shopping-cart"></i></a>
+                <% if (typeof session.user=="undefined" ) { %>
+                    <a href="/users/login"><i class="far fa-user-circle"></i></a>
+                    <% }else{ %>
+                        <a class="avatar" href="/users/profile">
+                            <div class="avatar-img"><img src="/images/users/<%= session.user.avatar %>"
+                                    alt="imagen de perfil">
+                                <span class="session"></span>
+                            </div>
+                        </a>
+
+                        <% } %>
+
+                            <a href="/shoppingCart"><i class="fas fa-shopping-cart"></i></a>
             </nav>
         </header>
     </div>
