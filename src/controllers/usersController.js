@@ -18,6 +18,7 @@ let controller = {
                 name: user.name,
                 email: user.email,
                 avatar: user.avatar,
+                rol : user.rol
             }
 
             res.locals.user = req.session.user;
@@ -55,6 +56,7 @@ let controller = {
                 email, 
                 password: password1,
                 avatar: req.file ? req.file.filename : "default-image.png",
+                rol : "USER"
             }
 
             users.push(newUser)

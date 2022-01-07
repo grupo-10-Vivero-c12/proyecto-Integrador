@@ -9,7 +9,8 @@ let controller = {
         
         res.render("products/productDetail.ejs", {
             product,
-            productosCategoria
+            productosCategoria,
+            session: req.session
         })
     }
 }

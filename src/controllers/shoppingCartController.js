@@ -2,10 +2,14 @@ let path = require('path');
 
 let controller = {
     index:function (req, res) {
-        return res.render('shoppingCart')
+        res.render('shoppingCart',{
+            session: req.session
+        })
     },
     payment:function (req, res) {
-        res.sendFile(path.join(__dirname, '../views/payment.html'))
+        res.render('payment',{
+            session: req.session
+        })
     }
 }
 

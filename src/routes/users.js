@@ -4,14 +4,15 @@ let controller = require('../controllers/usersController');
 let loginValidator = require('../validations/login')
 let uploadFile = require('../middlewares/uploadAvatar')
 let registerValidator = require("../validations/register")
+let { isLogin }= require('../middlewares/isLoging')
 
 /* GET - Show login form */
-router.get('/login', controller.login)
+router.get('/login', isLogin ,controller.login)
 /* POST - Login Data */
 router.post('/login', loginValidator, controller.processLogin)
 
 /* GET - Show register form */
-router.get('/register', controller.register)
+router.get('/register', isLogin ,controller.register)
 /* POST - Register data */
 router.post('/register',uploadFile.single('avatar'),registerValidator, controller.processRegister)
 

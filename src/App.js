@@ -8,7 +8,6 @@ let homeRouter = require('./routes/home');
 let productDetailRouter = require('./routes/productDetail');
 let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
-let payRouter = require('./routes/payRouter')
 let usersRouter = require('./routes/users')
 let session = require('express-session')
 /* let perfilUsuarioRouter = require('./routes/perfilUsuario'); */
@@ -38,7 +37,7 @@ app.use('/users', usersRouter)
 app.use('/productDetail', productDetailRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
-app.use('/payment', payRouter)
+
 /* app.use('/perfilUsuario', perfilUsuarioRouter); */
 
 app.listen(PORT, () => console.log(`
