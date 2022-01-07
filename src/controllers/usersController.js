@@ -19,7 +19,16 @@ let controller = {
                 email: user.email,
                 avatar: user.avatar,
                 rol : user.rol
-            }
+            };
+
+            if(req.body.remember){
+                const TIME_IN_MILISEG = 300000
+                res.cookie("userTimbo", req.session.user,{
+                    expires: new Date(Date.now() + TIME_IN_MILISEG),
+                    httpOnly: true,
+                    secure: true,
+                })
+            };
 
             res.locals.user = req.session.user;
             res.redirect('/')

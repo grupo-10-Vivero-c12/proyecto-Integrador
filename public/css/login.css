@@ -120,6 +120,14 @@ main .form-container .form .button-submit button {
   font-weight: bold;
 }
 
+main .form-container .form .checkbox {
+  width: 75%;
+  max-width: 500px;
+  margin: 0.5rem 0 1rem;
+  background-color: transparent;
+}
+
+
 main .form-container .form .button-submit button:hover {
   background-color: #d1f785;
   box-shadow: 0 5px 20px 0 rgba(143, 143, 143, 0.24),
@@ -188,6 +196,13 @@ hr {
     height: 3rem;
     font-size: 1.2rem;
   }
+
+  main .form-container .form .checkbox {
+    height: 3rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+  }
+
 
   main .log-in-google a {
     padding: 10px;
