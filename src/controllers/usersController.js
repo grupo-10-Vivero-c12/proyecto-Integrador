@@ -67,7 +67,8 @@ let controller = {
             /* res.send(errors.mapped()) */
             res.render('users/register', {
                 errors: errors.mapped(),
-                session: req.session
+                session: req.session,
+                oldData : req.body
             })
         }
     },
