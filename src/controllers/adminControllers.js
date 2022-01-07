@@ -13,7 +13,9 @@ let controller = {
         res.render('admin/adminHome');
     },
     add: (req, res) => {
-        res.render('admin/addProducts')
+        res.render('admin/addProducts',{
+            fileValidator : req.fileValidationError
+        })
     },
     allProducts: (req, res) => {
         res.render('admin/allProducts', {
@@ -35,7 +37,8 @@ let controller = {
             }
         })
         res.render('admin/editProduct', {
-            p
+            p,
+            fileValidator : req.fileValidationError
         })
         
 
@@ -45,30 +48,44 @@ let controller = {
       
     update: (req, res) =>{
         let idProducto = +req.params.id
-        
-        let {nombre, imagen, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
-        productos.forEach(product =>{
-            if (product.id == idProducto) {
-                
-                product.id = product.id,
-                product.nombre = nombre,
-                product.precio = precio,
-                product.color = color,
-                product.cantidad = cantidad,
-                product.categoria = categoria,
-                product.imagen = imagen == "" ? product.imagen : imagen,
-                product.descripcion = descripcion,
-                product.ubicacion = ubicacion,
-                product.sustrato = sustrato,
-                product.floracion = floracion,
-                product.opiniones = product.opiniones
-                product.oferta = false
-            }
-        })
-        
 
-        writeJson(productos)
-        res.redirect('/admin/list-product')
+        let errors = validationResult(req);
+        
+        if (errors.isEmpty() && !req.fileValidationError) {
+            let {nombre, imagen, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
+            productos.forEach(product =>{
+                if (product.id == idProducto) {
+                    console.log(req.body);
+                    product.id = product.id,
+                    product.nombre = nombre,
+                    product.precio = precio,
+                    product.color = color,
+                    product.cantidad = cantidad,
+                    product.categoria = categoria,
+                    product.imagen = req.file ? req.file.filename : product.imagen,
+                    product.descripcion = descripcion,
+                    product.ubicacion = ubicacion,
+                    product.sustrato = sustrato,
+                    product.floracion = floracion,
+                    product.opiniones = product.opiniones
+                    product.oferta = false
+                }
+            })
+            
+
+            writeJson(productos)
+            res.redirect('/admin/list-product')
+        } else {
+            let p 
+            res.render('admin/editProduct', {
+                errors : errors.mapped(),
+                p,
+                old : req.body,
+                id : idProducto,
+                fileValidator : req.fileValidationError
+            })
+        }
+        
         
 
     },
@@ -76,7 +93,8 @@ let controller = {
 
         let errors = validationResult(req)
 
-        if (errors.isEmpty()) {
+
+        if (errors.isEmpty() && !req.fileValidationError) {
             let lastId = productos.length + 1
         
             let {nombre, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
@@ -102,10 +120,11 @@ let controller = {
             res.redirect('/admin/list-product')
 
         } else{
-            console.log(errors.mapped());
+            
             res.render('admin/addProducts',{
                 errors : errors.mapped(),
-                old : req.body
+                old : req.body,
+                fileValidator : req.fileValidationError
             })
         }
 

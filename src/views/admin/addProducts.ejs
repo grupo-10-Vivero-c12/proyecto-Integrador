@@ -3,9 +3,6 @@
     <%- include('./headAdmin')  %>
 <body class="add-product-admin">
     <%- include('./headerAdmin')  %>
-    <div class="image-back-add">
-
-    </div>
     <main class="main-admin">
         <div class="form-container-add-product">
             <h2>Crear Producto</h2>
@@ -48,6 +45,9 @@
                     <div class="form-contain img-form">
                         <label for="img">Imagen</label>
                         <input type="file" id="img" accept=".jpg, .png, .jpeg" name="imagen" multiple >
+                        <% if (fileValidator) { %>
+                            <small class="error-message"> <%= fileValidator %> </small>
+                        <% } %>
                     </div>
                     
                     <div class="form-contain categ-form">

@@ -3,6 +3,7 @@ let router = express.Router();
 let controller = require("../controllers/adminControllers")
 let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
+let editProductValidator = require('../validations/editProduct')
 
 /* GET - Home page */
 router.get("/", controller.home)
@@ -12,7 +13,7 @@ router.get("/list-product", controller.allProducts)
 router.delete("/list-product/:id", controller.delete)
 router.get("/all-category", controller.allCategory)
 router.get("/editProduct/:id", controller.edit)
-router.put("/editProduct/:id", controller.update)
+router.put("/editProduct/:id", upload.single('imagen'), editProductValidator ,controller.update)
 
 //-----------------------------------
 /* GET - Show all users */
