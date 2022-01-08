@@ -38,7 +38,7 @@ app.use(session({
 }))
 
 app.use(cookieParser());
-app.use(cookieSession());
+app.use(cookieSession);
 
 /* Capturar informacion */
 app.use(express.urlencoded({ extended : false}));

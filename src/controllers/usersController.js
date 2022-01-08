@@ -29,7 +29,6 @@ let controller = {
                     secure: true,
                 })
             };
-
             res.locals.user = req.session.user;
             res.redirect('/')
 
