@@ -109,6 +109,7 @@
 
 .main-header .user_navbar {
   display: none;
+  position: relative;
 }
 
 .main-header .user_navbar a {
@@ -149,6 +150,27 @@
     gap: 10px;
   }
 
+  .menu-user {
+    display: none;
+    position: absolute;
+    font-size: 1rem;
+    background-color: #6a442d;
+    width: 120px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    top: 50px;
+    border: 1px solid white;
+  }
+  .menu-user a {
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .menu-user a:hover {
+    transform: scale(1.05);
+  }
+  .main-header .user_navbar:hover .menu-user {
+    display: block;
+  }
   .main-header .navbar_main_header {
     display: flex;
   }

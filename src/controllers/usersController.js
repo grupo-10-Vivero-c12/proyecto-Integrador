@@ -19,8 +19,16 @@ let controller = {
                 email: user.email,
                 avatar: user.avatar,
                 rol : user.rol
-            }
+            };
 
+            if(req.body.remember){
+                const TIME_IN_MILISEG = 300000
+                res.cookie("userTimbo", req.session.user,{
+                    expires: new Date(Date.now() + TIME_IN_MILISEG),
+                    httpOnly: true,
+                    secure: true,
+                })
+            };
             res.locals.user = req.session.user;
             res.redirect('/')
 
@@ -102,7 +110,14 @@ let controller = {
         res.render('users/userProfile',{
             session: req.session
         })
-    }
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        if(req.cookies.userTimbo){
+            res.cookie('userTimbo', "", { maxAge: -1 })
+        }
+        res.redirect('/')
+    }, 
 }
 
 module.exports = controller
