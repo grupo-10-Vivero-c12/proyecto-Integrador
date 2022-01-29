@@ -17,11 +17,15 @@ router.get('/register', isLogin ,controller.register)
 router.post('/register',uploadFile.single('avatar'),registerValidator, controller.processRegister)
 
 /* GET - Show user edit form (User)*/
-router.get('/edit/:id', controller.edit)
+router.get('/edit/:id',isLogin, controller.edit)
 /* PUT - Update a user (User)*/
 router.put('/edit/:id',controller.update)
 
 /* GET - Show profile user */
-router.get('/profile', controller.profile) 
+router.get('/profile', /* isLogin, */ controller.profile) 
+
+/* GEt - Logout*/
+router.get('/logout', controller.logout)
+
 
 module.exports = router

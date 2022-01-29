@@ -110,7 +110,14 @@ let controller = {
         res.render('users/userProfile',{
             session: req.session
         })
-    }
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        if(req.cookies.userTimbo){
+            res.cookie('userTimbo', "", { maxAge: -1 })
+        }
+        res.redirect('/')
+    }, 
 }
 
 module.exports = controller
