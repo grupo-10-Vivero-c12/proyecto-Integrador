@@ -26,5 +26,10 @@ router.put('/users/edit/:id',controller.updateUser)
 /* DELETE - Delete one user */
 router.delete('/users/delete/:id', controller.destroyUser)
 
+//------------------------------------
+router.get('/', isAdmin , controller.home)
+
+/* POST - Login Data */
+router.post('adminHome', controller.store)
 
 module.exports = router
