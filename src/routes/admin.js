@@ -19,6 +19,7 @@ router.put("/editProduct/:id", upload.single('imagen'), editProductValidator ,co
 //-----------------------------------
 /* GET - Show all users */
 router.get('/users', isAdmin, controller.allUsers) 
+
 /* GET - Show user edit form (Admin)*/
 router.get('/users/edit/:id', isAdmin, controller.editUser)
 /* PUT - Update a user (Admin)*/
@@ -28,6 +29,7 @@ router.delete('/users/delete/:id', controller.destroyUser)
 
 //------------------------------------
 router.get('/', isAdmin , controller.home)
+
 
 /* POST - Login Data */
 router.post('adminHome', controller.store)

@@ -9,11 +9,11 @@ productos.forEach(element => {
 });
 
 let controller = {
-    home:(req, res) =>{
+   home:(req, res) =>{
         res.render('admin/adminHome',{
             session: req.session
-        });
-    },
+        })
+    }, 
     add: (req, res) => {
         res.render('admin/addProducts',{
             fileValidator : req.fileValidationError
