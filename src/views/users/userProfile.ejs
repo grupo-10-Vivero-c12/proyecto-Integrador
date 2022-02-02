@@ -19,8 +19,24 @@
             </div>
             <h2>Mis Datos</h2>
             <div class="form-container">
-                <form action="">
+                <form action="/users/userProfile" method="POST" enctype="multipart/form-data"></form>
                     <div class="form">
+
+                        <div class="input-container">
+                                <label for="name">Nombre</label> <input type="text" id="name" name="name" placeholder="Nombre">
+                                
+                                <div class="input-container">
+                                  <label for="email">Apellido</label>
+                                  <input type="text" id="apellido" name="apellido" placeholder="Apellido">
+                                         
+                                     <div class="input-container">
+                                      <label for="email">Email</label>
+                                      <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com">
+                                     
+                                      <div class="input-container">
+                                        <label for="avatar">Avatar</label>
+                                        <input type="file" id="avatar" name="avatar">
+                                    </div>
 
 
                         <div class="create-count">
