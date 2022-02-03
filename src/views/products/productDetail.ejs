@@ -109,21 +109,24 @@
                     </div>
                 </div><!-- opinions -->
             </section><!-- details-bot -->
-            <section class="related-products">
-                <h2>PRODUCTOS RELACIONADOS</h2>
-                <div class="products">
-                    <% productosCategoria.forEach(producto => {%> 
-                        <div class="product">
+            <!-- related-products -->
+        </div>
+        <section class="container-products">
+            <h2>PRODUCTOS RELACIONADOS</h2>
+            <div class="products">
+                <%  productosCategoria.forEach(producto => {%>
+                    <div class="product-related">
+                        <div class="image-product">
                             <img src="/images/<%= producto.imagen %>" alt="">
+                        </div>
+                        <div class="description-product">
                             <p><%= producto.nombre %></p>
-                            <p>$<%= producto.precio %></p>
+                            <p><%= producto.precio %></p>
                             <button class="btn">Comprar</button>
                         </div>
-                    <% }); %> 
-                    
-                </div><!-- products -->
-            </section><!-- related-products -->
-        </div><!-- content -->
+                    </div>
+                <% });%>
+        </section><!-- content -->
         <%- include('../partials/footer.ejs') %>
 </body>
 

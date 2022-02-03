@@ -5,7 +5,7 @@
     <%- include('./partials/head.ejs') %>
     <title>Home</title> 
 </head>
-<body>
+<body class="home">
     <%- include('./partials/header.ejs') %>
     <%- include('./partials/carrousel.ejs') %>
 
@@ -35,89 +35,21 @@
         </section>
         <!-- Prductos destacados -->
         </section><!-- details-bot -->
-        <section class="related-products">
+        <section class="container-products">
             <h2>PRODUCTOS RELACIONADOS</h2>
             <div class="products">
                 <%  productos.forEach(producto => {%>
-                    <div class="product">
-                        <a class="link-container" href="/productDetail/<%= producto.id %> ">
+                    <div class="product-related">
+                        <div class="image-product">
                             <img src="images/<%= producto.imagen %>" alt="">
-                            <p><%= producto.nombre %> </p>
-                            <p>$<%= producto.precio %></p>
+                        </div>
+                        <div class="description-product">
+                            <p><%= producto.nombre %></p>
+                            <p><%= producto.precio %></p>
                             <button class="btn">Comprar</button>
-                        </a>
+                        </div>
                     </div>
-                    
-
-
-                    
                 <% });%>
-                <!-- <div class="product">
-                    <img src="images/cat-macetas.jpeg" alt="">
-                    <p>MACETAS GRANDES</p>
-                    <p>$1000</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-plantas.jpeg" alt="">
-                    <p>PLANTINES</p>
-                    <p>$400</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-semillas.png" alt="">
-                    <p>SEMILLAS</p>
-                    <p>$500</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/malvón-italiano.png" alt="">
-                    <p>malvón italiano</p>
-                    <p>$800</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/orquidea-dendrobium.jpeg" alt="">
-                    <p>orquidea</p>
-                    <p>$700</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/rosa-china.jpg" alt="">
-                    <p>Rosa china</p>
-                    <p>$250</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/canasto-con-asas.jpeg" alt="">
-                    <p>CANASTO CON ASAS</p>
-                    <p>$600</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-macetas.jpeg" alt="">
-                    <p>MACETAS GRANDES</p>
-                    <p>$1000</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-plantas.jpeg" alt="">
-                    <p>PLANTINES</p>
-                    <p>$400</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-semillas.png" alt="">
-                    <p>SEMILLAS</p>
-                    <p>$500</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/malvón-italiano.png" alt="">
-                    <p>malvón italiano</p>
-                    <p>$800</p>
-                    <button class="btn">Comprar</button>
-                </div> -->
         </section>
         <%- include('./partials/footer.ejs') %>
         <%- include('./partials/script.ejs') %>
