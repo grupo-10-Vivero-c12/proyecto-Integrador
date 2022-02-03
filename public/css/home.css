@@ -134,10 +134,10 @@ img{
 
 
 
-.product p {
+.description-product p {
     text-transform: uppercase;
     text-align: center;
-    font-weight: 600;
+
 }
 .link-container{
     width: 100%;
