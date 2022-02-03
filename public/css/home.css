@@ -92,22 +92,35 @@ img{
 /* Prductos destacados*/
 
 /*related-products*/
-.related-products{
-    margin: 5px;
+.container-products{
+    margin-top:  20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.related-products h2{
+.container-product h2{
     text-align: center;
-    margin-bottom: 10px;
 }
 
-.related-products .products{
+.products{
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap:23px;
 }
 
-.related-products .products .product{
-    width: 43%;
+.product-related{
+    width: 100%;
+    min-width: 250px;
+    max-width: 350px;
+    height: auto;
+    min-height: 300px;
+    max-height: 450px;
     margin-bottom: 20px;
     background-color: rgba(216, 179, 132, 0.2);
     padding: 10px;
@@ -116,28 +129,41 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap:5px
+    gap:23px;
 }
 
-.related-products .products .product img{
-    
-}
 
-.related-products .products .product button{
-    margin-top: 5px;
-}
 
-.related-products .products .product p {
+.description-product p {
     text-transform: uppercase;
     text-align: center;
+
 }
 .link-container{
     width: 100%;
 }
-.product img{
+/* //////////////////////////////////////////// */
+
+
+.image-product{
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    border-radius: 20px;
+    
+}
+img {   
+    border-radius: 20px;
+    width: 100%;
     object-fit: fill;
 }
+
+.description-product{
+    width: 90%;
+    text-align: center;
+
+}
+
 /* QUERIES */
 
 /*Tablet*/
@@ -196,14 +222,9 @@ img{
         font-size: 16px;
     }
 
-    /*related-products*/
-    
-    .related-products .products .product{
-        width: 30%;
-    }
-
-    .related-products .products .product p {
-        font-size: 22px;
+    .description-product p {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
     }
 }
 
@@ -217,8 +238,8 @@ img{
         font-size: 24px;
     }
 
-    /*related-products*/
-    .related-products .products .product{
-        width: 22%;
+    .products{
+        width: 80%;
     }
+
 }
