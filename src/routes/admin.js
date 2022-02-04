@@ -7,6 +7,7 @@ let editProductValidator = require('../validations/editProduct')
 let { isAdmin } = require('../middlewares/isLoging')
 
 /* GET - Home page */
+
 router.get("/", isAdmin,controller.home)
 router.get("/add", isAdmin,  controller.add)
 router.post("/add",upload.single('imagen'), addProductValidator ,controller.store)

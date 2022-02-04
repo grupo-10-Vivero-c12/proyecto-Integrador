@@ -2,11 +2,11 @@ let { check} = require('express-validator')
 
 
 module.exports = [
-    check('nombre')
+    check('name')
     .notEmpty()
     .withMessage('Ingrese un nombre al producto'),
 
-    check('descripcion')
+    check('description')
     .isLength({ max : 400})
     .withMessage('Maximo 400 caracteres'),
 
@@ -14,17 +14,17 @@ module.exports = [
     .notEmpty()
     .withMessage('Ingrese lugar (exterior o interior)'),
 
-    check('categoria')
+    check('category')
     .notEmpty()
     .withMessage('Seleccione una categoria'),
 
-    check('precio')
+    check('price')
     .notEmpty()
     .withMessage('Ingrese un precio para el producto').bail()
     .isNumeric()
     .withMessage('Debe ingresar numeros para el precio'),
 
-    check('cantidad')
+    check('stock')
     .notEmpty()
     .withMessage('Ingrese la cantidad del producto').bail()
     .isNumeric()
