@@ -18,13 +18,13 @@
                   <th>Precio</th>
                   <th></th>
                 </tr>
-                <% productos.forEach(element => {%>
+                <% products.forEach(element => {%>
                     <tr>
                         <td><%= element.id %></td>
-                        <td><%= element.nombre %></td>
-                        <td><%= element.categoria %></td>
-                        <td><%= element.cantidad %></td>
-                        <td><%= element.precio %></td>
+                        <td><%= element.name %></td>
+                        <td><%= element.category.name %></td>
+                        <td><%= element.stock %></td>
+                        <td><%= element.price %></td>
                         <td><a href="editProduct/<%- element.id %> "><button class="btn-table modi"><i class="far fa-edit"></i></button></a>
                             <form action="/admin/list-product/<%- element.id %>?_method=DELETE " method="post">
                                 <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>

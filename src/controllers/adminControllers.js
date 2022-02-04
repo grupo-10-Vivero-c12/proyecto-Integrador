@@ -1,6 +1,13 @@
 let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
 let { validationResult } = require('express-validator')
 let categorias = []
+
+
+const db = require('../database/models')
+const Products = db.Product
+const Categories = db.Categorie
+
+
 productos.forEach(element => {
     if(categorias.includes(element.categoria)){
     } else{
@@ -14,22 +21,68 @@ let controller = {
             session: req.session
         })
     }, 
-    add: (req, res) => {
-        res.render('admin/addProducts',{
-            fileValidator : req.fileValidationError
-        })
-    },
     allProducts: (req, res) => {
-        res.render('admin/allProducts', {
-            productos
+        Products.findAll({
+            include : [{association : "category"}]
         })
+        .then((products) =>{
+            res.render('admin/allProducts', {
+                products
+            })
+        })
+        
     },
     allCategory: (req, res) => {
-        
-        res.render('admin/allCategorys',{
-            categorias
+        Categories.findAll()
+        .then((categories) =>{
+            res.render('admin/allCategorys',{
+                categories
+            })
         })
+        
     },
+    add: (req, res) => {
+        Categories.findAll()
+        .then((categories)=>{
+            res.render('admin/addProducts',{
+                fileValidator : req.fileValidationError,
+                categories
+            })
+        })
+        
+    },
+
+    store: (req, res) =>{
+
+        let errors = validationResult(req)
+
+
+        if (errors.isEmpty() && !req.fileValidationError) {
+            
+        
+            let { name, category, price, color, stock, images } = req.body
+            
+            res.send(req.body)
+
+
+        } else{
+            Categories.findAll()
+            .then((categories)=>{
+                res.render('admin/addProducts',{
+                    errors : errors.mapped(),
+                    old : req.body,
+                    fileValidator : req.fileValidationError,
+                    categories
+                })
+            })
+            
+           
+        }
+
+        
+    },
+    
+    
     edit: (req, res) =>{
         let obId = +req.params.id
         let p = null
@@ -90,47 +143,6 @@ let controller = {
         
         
 
-    },
-    store: (req, res) =>{
-
-        let errors = validationResult(req)
-
-
-        if (errors.isEmpty() && !req.fileValidationError) {
-            let lastId = productos.length + 1
-        
-            let {nombre, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
-            
-            let nuevoProducto = {
-                id: lastId + 1,
-                nombre : nombre,
-                precio : precio,
-                color : color,
-                cantidad : cantidad,
-                categoria : categoria,
-                imagen : req.file ? req.file.filename : "",
-                descripcion : descripcion,
-                ubicacion : ubicacion,
-                sustrato : sustrato,
-                floracion : floracion,
-                opiniones : [],
-                oferta : false
-            }
-            
-            productos.push(nuevoProducto);
-            writeJson(productos)
-            res.redirect('/admin/list-product')
-
-        } else{
-            
-            res.render('admin/addProducts',{
-                errors : errors.mapped(),
-                old : req.body,
-                fileValidator : req.fileValidationError
-            })
-        }
-
-        
     },
     delete: (req,res) =>{
         let resultProductos = productos.filter(pro => pro.id != req.params.id);
