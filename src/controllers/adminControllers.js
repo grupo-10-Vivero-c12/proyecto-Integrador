@@ -1,6 +1,7 @@
 let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
 let { validationResult } = require('express-validator')
-let categorias = []
+let fs = require('fs')
+let path = require('path')
 
 
 const db = require('../database/models')
@@ -8,12 +9,6 @@ const Products = db.Product
 const Categories = db.Categorie
 
 
-productos.forEach(element => {
-    if(categorias.includes(element.categoria)){
-    } else{
-        categorias.push(element.categoria)
-     }     
-});
 
 let controller = {
    home:(req, res) =>{
@@ -59,10 +54,21 @@ let controller = {
 
         if (errors.isEmpty() && !req.fileValidationError) {
             
-        
             let { name, category, price, color, stock, images } = req.body
+            Products.create({
+                name,
+                price,
+                color: color ? color : null,
+                stock,
+                images : req.file ? req.file.filename : "default-image.png",
+                id_category : category
+
+            })
+            .then((result) =>{
+                res.redirect("/admin/list-product")
+            })
+            .catch(errors => {res.send(errors)})
             
-            res.send(req.body)
 
 
         } else{
@@ -84,17 +90,21 @@ let controller = {
     
     
     edit: (req, res) =>{
-        let obId = +req.params.id
-        let p = null
-        productos.forEach(product =>{
-            if (product.id == obId) {
-                p = product
-            }
+
+        let oneProduct = Products.findByPk(req.params.id,{
+            include :[{ association : "category"}]
         })
-        res.render('admin/editProduct', {
-            p,
-            fileValidator : req.fileValidationError
+        let allCategories = Categories.findAll()
+        Promise.all([oneProduct, allCategories])
+        .then(([product, categories]) =>{
+            res.render('admin/editProduct', {
+                product,
+                categories,
+                fileValidator : req.fileValidationError
+            })
         })
+       
+        
         
 
     },
@@ -102,42 +112,55 @@ let controller = {
   
       
     update: (req, res) =>{
-        let idProducto = +req.params.id
 
         let errors = validationResult(req);
         
         if (errors.isEmpty() && !req.fileValidationError) {
-            let {nombre, imagen, categoria, color, precio, cantidad, descripcion, ubicacion, sustrato, floracion } = req.body
-            productos.forEach(product =>{
-                if (product.id == idProducto) {
-                    console.log(req.body);
-                    product.id = product.id,
-                    product.nombre = nombre,
-                    product.precio = precio,
-                    product.color = color,
-                    product.cantidad = cantidad,
-                    product.categoria = categoria,
-                    product.imagen = req.file ? req.file.filename : product.imagen,
-                    product.descripcion = descripcion,
-                    product.ubicacion = ubicacion,
-                    product.sustrato = sustrato,
-                    product.floracion = floracion,
-                    product.opiniones = product.opiniones
-                    product.oferta = false
+            let { name, category, price, color, stock, images, lastImage } = req.body
+            Products.findByPk(req.params.id)
+            .then((product)=>{
+                if(req.file){
+                    if (fs.existsSync('./public/images/products/', product.images) && product.images !== "default-image.png") {
+                        fs.unlinkSync(`./public/images/products/${product.images}`)
+                    } else {
+                        console.log('no se encontro el archivo')
+                    }
                 }
+                Products.update({
+                    name,
+                    price,
+                    color: color ? color : null,
+                    stock,
+                    images : req.file ? req.file.filename : product.image,
+                    id_category : category
+        
+                },{
+                    where : {id : req.params.id}
+                })
+                .then((result) =>{
+                    res.redirect("/admin/list-product")
+                })
+                .catch(errors => {res.send(errors)})
             })
             
+           
+            
 
-            writeJson(productos)
-            res.redirect('/admin/list-product')
         } else {
-            let p 
-            res.render('admin/editProduct', {
-                errors : errors.mapped(),
-                p,
-                old : req.body,
-                id : idProducto,
-                fileValidator : req.fileValidationError
+
+            let oneProduct = Products.findByPk(req.params.id,{
+                include :[{ association : "category"}]
+            })
+            let allCategories = Categories.findAll()
+            Promise.all([oneProduct, allCategories])
+            .then(([product, categories]) =>{
+                res.render('admin/editProduct', {
+                    product,
+                    categories,
+                    fileValidator : req.fileValidationError,
+                    old : req.body,
+                    errors : errors.mapped()
+                })
             })
         }
         
@@ -145,10 +168,25 @@ let controller = {
 
     },
     delete: (req,res) =>{
-        let resultProductos = productos.filter(pro => pro.id != req.params.id);
-        writeJson(resultProductos)
+            Products.findByPk(req.params.id)
+            .then((product) =>{
+                if (fs.existsSync('./public/images/products', product.images) && product.images !== "default-image.png") {
+                    fs.unlinkSync(`./public/images/products/${product.images}`)
+                } else {
+                    console.log('no se encontro el archivo')
+                }
+                Products.destroy({
+                    where : {
+                        id : req.params.id
+                    }
+                })
+                .then((result) =>{
+                    res.redirect('/admin/list-product')
+                })
+            })
+            .catch(errors => res.send(errors))
+            
         
-        res.redirect('/admin/list-product')
 
     },
     allUsers: (req,res) =>{
