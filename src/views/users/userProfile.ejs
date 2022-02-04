@@ -14,15 +14,18 @@
             <div class="rute">
                 <a href="/home">Home</a>
                 <span>/</span>
-                <a href="/Mi perfil">Mi perfil</a><span>/</span>
+               <a href="/Mi perfil">Mi perfil</a><span>/</span> 
                 <a href="/perfilUsuario">Mis datos</a>
             </div>
             <h2>Mis Datos</h2>
             <div class="form-container">
                 <form action="/users/userProfile" method="POST" enctype="multipart/form-data"></form>
                     <div class="form">
-
                         <div class="input-container">
+                            <label for="avatar">Avatar</label>
+                            <input type="file" id="avatar" name="avatar">
+                        </div>
+                         <div class="input-container">
                                 <label for="name">Nombre</label> <input type="text" id="name" name="name" placeholder="Nombre">
                                 
                                 <div class="input-container">
@@ -32,15 +35,22 @@
                                      <div class="input-container">
                                       <label for="email">Email</label>
                                       <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com">
-                                     
+                                   
                                       <div class="input-container">
-                                        <label for="avatar">Avatar</label>
-                                        <input type="file" id="avatar" name="avatar">
+                                        <label for="email">Teléfono</label>
+                                        <input type="int" id="telefono" name="telefono" placeholder="Telefono">
+                                       
+                                        <div class="input-container">
+                                            <label for="date_birth">Fecha de nacimiento</label>
+                                            <input type="date" id="date_birth" name="date_birth" placeholder="date_birth">
+                                          </div> 
+                                    </div> 
+
+                                      <div class="button">
+                                       <a href="./editProfile">Editar</a>
+                                       <div class="button-submit">
+                                        <button type="submit">Guardar Cambios</button>
                                     </div>
-
-
-                        <div class="create-count">
-                            <a href="/users/edit">Editar</a>
                         </div>
 
                     </div>
@@ -52,3 +62,5 @@
 </body>
 
 </html>
+
+<!--   para poner las flechitas al costado para subir o bajar numeros-->

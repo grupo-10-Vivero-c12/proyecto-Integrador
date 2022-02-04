@@ -23,6 +23,8 @@ router.put('/edit/:id',controller.update)
 
 /* GET - Show profile user */
 router.get('/profile', /* isLogin, */ controller.profile) 
+router.get('/editProfile', /* isLogin, */ controller.edit) 
+
 
 /* GEt - Logout*/
 router.get('/logout', controller.logout)

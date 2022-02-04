@@ -1,4 +1,4 @@
-let {users, writeUsersJson} = require('../data/dataBase.js')
+let {users, writeUsersJson} = require('../data/dataBase')
 const { validationResult } = require('express-validator')
 
 let controller = {
@@ -16,19 +16,20 @@ let controller = {
             req.session.user = {
                 id: user.id,
                 name: user.name,
+                last_name: user.last_name,
                 email: user.email,
                 avatar: user.avatar,
                 rol : user.rol
             };
 
-            if(req.body.remember){
+           if(req.body.remember){
                 const TIME_IN_MILISEG = 300000
                 res.cookie("userTimbo", req.session.user,{
                     expires: new Date(Date.now() + TIME_IN_MILISEG),
                     httpOnly: true,
                     secure: true,
-                })
-            };
+                }) 
+            }; 
             res.locals.user = req.session.user;
             res.redirect('/')
 
@@ -61,6 +62,7 @@ let controller = {
             let newUser = {
                 id: lastId + 1,
                 name,
+                last_name,
                 email, 
                 password: password1,
                 avatar: req.file ? req.file.filename : "default-image.png",
@@ -78,7 +80,7 @@ let controller = {
             res.render('users/register', {
                 errors: errors.mapped(),
                 session: req.session,
-                oldData : req.body
+                oldData : req.body 
             })
         }
     },
@@ -86,10 +88,10 @@ let controller = {
         let userId = +req.params.id;
         let user = users.find(user => user.id === userId)
 
-        res.render('users/editProfile',{
+        res.render('edit/editProfile',{
             user
-        })
-    },
+        }) 
+    }, 
     update: (req, res) => {
         let userId = +req.params.id;
         const {name, email, password} = req.body
@@ -97,6 +99,7 @@ let controller = {
         users.forEach(user => {
             if(user.id === userId){
                 user.name = name
+                user.last_name = last_name
                 user.email = email
                 user.password = password
             }
