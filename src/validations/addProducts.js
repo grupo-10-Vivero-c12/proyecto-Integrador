@@ -10,9 +10,9 @@ module.exports = [
     .isLength({ max : 400})
     .withMessage('Maximo 400 caracteres'),
 
-    check('ubicacion')
-    .notEmpty()
-    .withMessage('Ingrese lugar (exterior o interior)'),
+    // check('ubicacion')
+    // .notEmpty()
+    // .withMessage('Ingrese lugar (exterior o interior)'),
 
     check('category')
     .notEmpty()
