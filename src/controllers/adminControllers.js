@@ -120,7 +120,7 @@ let controller = {
             Products.findByPk(req.params.id)
             .then((product)=>{
                 if(req.file){
-                    if (fs.existsSync('./public/images/products/', product.images) && product.images !== "default-image.png") {
+                    if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
                         fs.unlinkSync(`./public/images/products/${product.images}`)
                     } else {
                         console.log('no se encontro el archivo')
@@ -170,7 +170,7 @@ let controller = {
     delete: (req,res) =>{
             Products.findByPk(req.params.id)
             .then((product) =>{
-                if (fs.existsSync('./public/images/products', product.images) && product.images !== "default-image.png") {
+                if (fs.existsSync('./public/images/products' + product.images) && product.images !== "default-image.png") {
                     fs.unlinkSync(`./public/images/products/${product.images}`)
                 } else {
                     console.log('no se encontro el archivo')
