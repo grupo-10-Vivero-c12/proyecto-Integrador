@@ -1,17 +1,21 @@
-let path = require('path');
-let {productos} = require('../data/dataBase')
+
+let db = require('../database/models')
+let Products = db.Product
+let Categories = db.Categorie
 
 let controller = {
     index:function (req, res) {
-        let productId = +req.params.id
-        let product = productos.find(producto => producto.id === productId )
-        let productosCategoria = productos.filter(prod => product.categoria === prod.categoria)
-        
-        res.render("products/productDetail.ejs", {
-            product,
-            productosCategoria,
-            session: req.session
-        })
+        let oneProduct = Products.findByPk(req.params.id, { include : [{association : "category"}]})
+        let allCategories = Categories.findAll({include :[{ association : "products"}]})
+        Promise.all([oneProduct, allCategories])
+        .then(([product, categories])=>{
+
+            res.render("products/productDetail.ejs", {
+                product,
+                categories,
+                session: req.session
+            })
+        })    
     }
 }
 

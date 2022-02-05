@@ -9,14 +9,14 @@
 <body class="product-detail">
     <%- include('../partials/header.ejs') %>
         <div class="content">
-            <h3>Inicio/<%= product.categoria%>/Sub-categoría/<%= product.nombre%></h3>
+            <h3>Inicio/<%= product.category.name%>/Sub-categoría/<%= product.name%></h3>
             <section class="detail-top">
                 <div class="img-content">
-                    <img src="/images/<%= product.imagen %>" alt="">
+                    <img src="/images/products/<%= product.images %>" alt="">
                 </div>
                 <div class="sale-detail">
-                    <p><%= product.nombre%></p>
-                    <p>$ <%= product.precio%></p>
+                    <p><%= product.name%></p>
+                    <p>$ <%= product.price%></p>
                     <hr>
                     <div class="color-select">
                         COLOR:
@@ -41,7 +41,7 @@
                     <div class="quantity-selector">
                         <label for="quantity">CANTIDAD:</label>
                         <select name="quantity" id="quantity">
-                            <% for (let index = 1; index <= product.cantidad; index++) {%>
+                            <% for (let index = 1; index <= product.stock; index++) {%>
                                 <option value="<%= index %>"><%= index %> </option>
                                 
                             <%  } %> 
@@ -114,17 +114,21 @@
         <section class="container-products">
             <h2>PRODUCTOS RELACIONADOS</h2>
             <div class="products">
-                <%  productosCategoria.forEach(producto => {%>
-                    <div class="product-related">
-                        <div class="image-product">
-                            <img src="/images/<%= producto.imagen %>" alt="">
-                        </div>
-                        <div class="description-product">
-                            <p><%= producto.nombre %></p>
-                            <p>$<%= producto.precio %></p>
-                            <button class="btn">Comprar</button>
-                        </div>
-                    </div>
+                <%  categories.forEach(category => {%>
+                    <% if (category.id === product.id_category) { %>
+                        <% category.products.forEach(product => { %>
+                            <div class="product-related">
+                                <div class="image-product">
+                                    <img src="/images/products/<%= product.images %>" alt="">
+                                </div>
+                                <div class="description-product">
+                                    <p><%= product.name %></p>
+                                    <p>$<%= product.price %></p>
+                                    <button class="btn">Comprar</button>
+                                </div>
+                            </div>
+                        <% }) %>
+                    <% } %>
                 <% });%>
         </section><!-- content -->
         <%- include('../partials/footer.ejs') %>
