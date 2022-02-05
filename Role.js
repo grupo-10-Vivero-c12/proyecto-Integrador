@@ -1,7 +1,7 @@
 // const { DataTypes } = require("sequelize/dist");
 
 // module.exports = (sequelize, DataTypes) => {
-// const Rol = sequelize.define("Rol", {
+// const Role = sequelize.define("Role", {
 //         id: {
 //             type: DataTypes.INTEGER
 //         },
