@@ -5,10 +5,6 @@ module.exports = [
     .notEmpty()
     .withMessage('No puede estar vacio'),
 
-    // check('ubicacion')
-    // .notEmpty()
-    // .withMessage('No puede estar vacio'),
-
     check('category')
     .notEmpty()
     .withMessage('Debes seleccionar una opción'),

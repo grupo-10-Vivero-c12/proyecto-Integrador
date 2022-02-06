@@ -20,11 +20,12 @@
                 </tr>
                 <% products.forEach(element => {%>
                     <tr>
+        
                         <td><%= element.id %></td>
                         <td><%= element.name %></td>
                         <td><%= element.category.name %></td>
                         <td><%= element.stock %></td>
-                        <td><%= element.price %></td>
+                        <td><%= toThousand(element.price) %></td>
                         <td><a href="editProduct/<%- element.id %> "><button class="btn-table modi"><i class="far fa-edit"></i></button></a>
                             <form action="/admin/list-product/<%- element.id %>?_method=DELETE " method="post">
                                 <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>

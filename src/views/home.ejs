@@ -45,7 +45,7 @@
                         </div>
                         <div class="description-product">
                             <a href="/productDetail/<%= product.id %> "><p><%= product.name %></p></a>
-                            <p>$<%= product.price %></p>
+                            <p>$<%= toThousand(product.price) %></p>
                             <button class="btn">Comprar</button>
                         </div>
                     </div>

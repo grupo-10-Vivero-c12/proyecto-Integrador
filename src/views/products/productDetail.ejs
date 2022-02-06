@@ -16,7 +16,7 @@
                 </div>
                 <div class="sale-detail">
                     <p><%= product.name%></p>
-                    <p>$ <%= product.price%></p>
+                    <p>$ <%= toThousand(product.price)%></p>
                     <hr>
                     <div class="color-select">
                         COLOR:
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="description-product">
                                     <p><%= product.name %></p>
-                                    <p>$<%= product.price %></p>
+                                    <p>$<%= toThousand(product.price) %></p>
                                     <button class="btn">Comprar</button>
                                 </div>
                             </div>

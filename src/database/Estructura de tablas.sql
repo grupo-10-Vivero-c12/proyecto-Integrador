@@ -13,15 +13,16 @@ CREATE TABLE IF NOT EXISTS categories (
 
 create table IF NOT EXISTS description(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    content VARCHAR(300) NOT NULL,
-    sustrato VARCHAR(300) NOT NULL,
-    floración VARCHAR(300) NOT NULL
+    description VARCHAR(300),
+    substratum VARCHAR(300),
+	flowering VARCHAR(300),
+    location VARCHAR(300)
 );
 
 
 create table IF NOT EXISTS products (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) not null,
+    name VARCHAR(50) not null,
     discount INT default 0 not null,
     price INT NOT NULL DEFAULT 0,
     color VARCHAR(20),

@@ -3,6 +3,8 @@ let { validationResult } = require('express-validator')
 let fs = require('fs')
 let path = require('path')
 
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 
 const db = require('../database/models')
 const Products = db.Product
@@ -22,7 +24,8 @@ let controller = {
         })
         .then((products) =>{
             res.render('admin/allProducts', {
-                products
+                products,
+                toThousand
             })
         })
         
@@ -147,7 +150,10 @@ let controller = {
             
 
         } else {
-
+            res.send({
+                errors : errors.mapped(),
+                body : req.body
+            })
             let oneProduct = Products.findByPk(req.params.id,{
                 include :[{ association : "category"}]
             })
