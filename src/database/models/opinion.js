@@ -2,7 +2,7 @@ module.exports = (sequelize, dataTypes) =>{
     let alias = "Opinion"
     let cols = {
         id : {
-            type: dataTypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER(10).UNSIGNED,
             notNull: true,
             autoIncrement : true,
             primaryKey : true,
@@ -15,11 +15,11 @@ module.exports = (sequelize, dataTypes) =>{
             notNull : true,
         },
         starts: {
-         type: dataTypes.INTEGER,
+         type: dataTypes.INTEGER(11),
          notNull: true,
         },
         id_product : {
-            type: dataTypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER(10).UNSIGNED,
             notNull: true,
         },
 

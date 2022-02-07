@@ -2,13 +2,13 @@ module.exports = (sequelize, dataTypes) =>{
     let alias = "Product"
     let cols = {
         id : {
-            type : dataTypes.INTEGER.UNSIGNED,
+            type : dataTypes.INTEGER(10).UNSIGNED,
             primaryKey : true,
             autoIncrement : true,
             allowNull : false,
         },
         name : {
-            type : dataTypes.STRING(20),
+            type : dataTypes.STRING(50),
             allowNull : false
         },
         discount : {
@@ -17,7 +17,7 @@ module.exports = (sequelize, dataTypes) =>{
             defaultValue : 0
         },
         price : {
-            type : dataTypes.INTEGER,
+            type : dataTypes.INTEGER(11),
             allowNull : false,
             defaultValue : 0
         },
@@ -26,7 +26,7 @@ module.exports = (sequelize, dataTypes) =>{
             allowNull : true
         },
         stock : {
-            type : dataTypes.INTEGER,
+            type : dataTypes.INTEGER(11),
             allowNull : false
         },
         images : {
@@ -35,20 +35,15 @@ module.exports = (sequelize, dataTypes) =>{
             defaultValue : "default-image.png"
         },
         id_category : {
-            type : dataTypes.INTEGER.UNSIGNED,
+            type : dataTypes.INTEGER(10).UNSIGNED,
             allowNull : false,
             defaultValue : 1
         },
         id_description : {
-            type : dataTypes.INTEGER.UNSIGNED,
+            type : dataTypes.INTEGER(10).UNSIGNED,
             allowNull : false,
             defaultValue : 1
         },
-        id_opinion : {
-           type : dataTypes.INTEGER.UNSIGNED,
-           allowNull : false,
-           defaultValue : 1
-    }
 
     }
 

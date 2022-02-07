@@ -3,7 +3,7 @@ module.exports = (sequelize, dataTypes) =>{
      let alias = "Usuario"
     let cols = { 
         id : {
-            type : dataTypes.INTEGER.UNSIGNED,
+            type : dataTypes.INTEGER(10).UNSIGNED,
             notNull: true,
             autoIncrement : true,
             primaryKey : true,
@@ -41,7 +41,7 @@ module.exports = (sequelize, dataTypes) =>{
             allowNull : true,
         },
         cp : {
-            type : dataTypes.INTEGER,
+            type : dataTypes.INTEGER(4),
             allowNull : true,
         },
         province : {
@@ -58,11 +58,11 @@ module.exports = (sequelize, dataTypes) =>{
             allowNull : true,
         },
         age: {
-            type : dataTypes.INTEGER,
+            type : dataTypes.INTEGER(3),
             allowNull : true,
         },
         id_rol : {
-            type : dataTypes.INTEGER.UNSIGNED,
+            type : dataTypes.INTEGER(10).UNSIGNED,
             notNull : true,
             defaultValue: 2,
         },
