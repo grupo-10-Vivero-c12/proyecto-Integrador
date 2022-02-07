@@ -2,21 +2,31 @@ module.exports = (sequelize, dataTypes) =>{
     let alias = "Opinion"
     let cols = {
         id : {
-            type : dataTypes.INTEGER.UNSIGNED,
-            primaryKey : true,
+            type: dataTypes.INTEGER.UNSIGNED,
+            notNull: true,
             autoIncrement : true,
-            allowNull : false,
+            primaryKey : true,
+            constraint: 'opinions_ibfk_1',
+            FOREIGNKEY: 'id_product',
+            KEY: 'id_product',
         },
-        id_Producto : {
-            type : dataTypes.INTEGER.UNSIGNED,
-            allowNull : false,
-            defaultValue : 1
+        content :{
+            type: dataTypes.STRING(300),
+            notNull : true,
+        },
+        starts: {
+         type: dataTypes.INTEGER,
+         notNull: true,
+        },
+        id_product : {
+            type: dataTypes.INTEGER.UNSIGNED,
+            notNull: true,
         },
 
     }
 
     let config ={
-        tableName : "Opinion",
+        tableName : "opinion",
         timestamps : false
     }
 
@@ -25,8 +35,8 @@ module.exports = (sequelize, dataTypes) =>{
 
     Opinion.associate = (models)=>{
         Opinion.hasMany(models.Product,{
-            as : "Product",
-            foreignKey : "id_Opinion"
+            as : "opinion",
+            foreignKey : "id_opinion"
         })
     }
 

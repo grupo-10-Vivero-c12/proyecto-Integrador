@@ -2,35 +2,34 @@ module.exports = (sequelize, dataTypes) =>{
     let alias = "Description"
     let cols = {
         id : {
-            type : dataTypes.INTEGER.UNSIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
+            notNull: true,
+            autoIncrement : true,
             primaryKey : true,
-            allowNull : false,
+            
         },
-        ambiente : {
-            type : TEXT,
-            allowNull : false,
-            defaultValue : 1
+        description : {
+            type: dataTypes.STRING(300),
+            allowNull : true,
+
         },
-        sustrato : {
-            type : dataTypes.INTEGER,
-            allowNull : false,
-            defaultValue : 1
+        substratum : {
+            type: dataTypes.STRING(300),
+            allowNull : true,
         },
-        floracion : {
-            type : dataTypes.INTEGER,
-            allowNull : false,
-            defaultValue : 1
+        flowering : {
+            type: dataTypes.STRING(300),
+            allowNull : true,
         },
-        id_Producto : {
-            type : dataTypes.INTEGER.UNSIGNED,
-            allowNull : false,
-            defaultValue : 1
+        location : {
+            type: dataTypes.STRING(300),
+            allowNull : true,
         },
 
     }
 
     let config ={
-        tableName : "Description",
+        tableName : "description",
         timestamps : false
     }
 
@@ -39,11 +38,11 @@ module.exports = (sequelize, dataTypes) =>{
 
     Description.associate = (models)=>{
         Description.belongsTo(models.Product,{
-            as : "Description",
+            as : "description",
             foreignKey : "id_description"
         })
     }
 
-    return Category
+    return Description
 
 }
