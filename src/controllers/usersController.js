@@ -1,5 +1,10 @@
-let {users, writeUsersJson} = require('../data/dataBase')
-const { validationResult } = require('express-validator')
+//const { users, writeUsersJSON } = require('../database/dataBase');
+let { validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const db = require('../database/models');
+const { includes } = require('../validations/register');
+
+const Users = db.Users
 
 let controller = {
     login: (req, res) => {
@@ -11,28 +16,32 @@ let controller = {
         let errors = validationResult(req);
        
         if(errors.isEmpty()){
-            let user = users.find(user => user.email === req.body.email);
-           
-            req.session.user = {
+            Users.findOne({
+                where: {
+                    email: req.body.email
+                }
+            })
+           .then(user => {
+             req.session.user = {
                 id: user.id,
                 name: user.name,
-                last_name: user.last_name,
                 email: user.email,
                 avatar: user.avatar,
                 rol : user.rol
             };
 
-           if(req.body.remember){
+            if(req.body.remember){
                 const TIME_IN_MILISEG = 300000
                 res.cookie("userTimbo", req.session.user,{
                     expires: new Date(Date.now() + TIME_IN_MILISEG),
                     httpOnly: true,
                     secure: true,
-                }) 
-            }; 
+                })
+            };
             res.locals.user = req.session.user;
+            
             res.redirect('/')
-
+           })
         }else{
             res.render('users/login', {
                 errors: errors.mapped(),
@@ -49,78 +58,44 @@ let controller = {
         let errors = validationResult(req);
        
         if(errors.isEmpty()){
-            let lastId = 1;
-
-            users.forEach(user => {
-                if(user.id > lastId){
-                    lastId = user.id
-                }
-            });
-
-            let { name, email, password1 } = req.body
-
-            let newUser = {
-                id: lastId + 1,
-                name,
+            let { name, last_name, email, password1 } = req.body;
+            Users.create({
+                name, 
                 last_name,
-                email, 
-                password: password1,
-                avatar: req.file ? req.file.filename : "default-image.png",
-                rol : "USER"
-            }
-
-            users.push(newUser)
-
-            writeUsersJson(users)
-
-            res.redirect('/users/login')
-
+                email,
+                pass: bcrypt.hashSync(password1, 10),
+                avatar: req.file ? req.file.filename : 'default-image.png',
+                rol: 0,
+            })
+            .then(() => {
+                res.redirect('/users/login')
+            })
         }else{
-            /* res.send(errors.mapped()) */
-            res.render('users/register', {
+            res.render('register', {
                 errors: errors.mapped(),
-                session: req.session,
-                oldData : req.body 
+                old: req.body,
+                session: req.session
             })
         }
-    },
-    edit: (req, res) => {
-        let userId = +req.params.id;
-        let user = users.find(user => user.id === userId)
-
-        res.render('edit/editProfile',{
-            user
-        }) 
-    }, 
-    update: (req, res) => {
-        let userId = +req.params.id;
-        const {name, email, password} = req.body
-
-        users.forEach(user => {
-            if(user.id === userId){
-                user.name = name
-                user.last_name = last_name
-                user.email = email
-                user.password = password
-            }
-        });
-
-        writeUsersJson(users)
-
-        res.redirect("/")
-    },
-    profile:(req, res) => {
-        res.render('users/userProfile',{
-            session: req.session
-        })
     },
     logout: (req, res) => {
         req.session.destroy();
         if(req.cookies.userTimbo){
-            res.cookie('userTimbo', "", { maxAge: -1 })
+            res.cookie('userTimbo', "", {maxAge: -1})
         }
         res.redirect('/')
     }, 
+    profile: (req, res) => {
+        Users.findByPk(req.session.user.id, {
+            include: [{association: 'Rol'}]
+        })
+        .then((user) => {
+            res.render('userProfile', {
+                user, 
+                session: req.session
+            })
+        })
+    }
 }
 
 module.exports = controller
