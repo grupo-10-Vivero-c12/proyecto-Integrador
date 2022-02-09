@@ -56,16 +56,16 @@
                 <div class="description">
                     <h3>Descripción</h3>
                     <p>
-                        UBICACIÓN: <%= product.ubicacion %> 
+                        UBICACIÓN: <%= description.location %> 
                     </p>
                     <p>
-                        SUSTRATO: <%= product.sustrato %>
+                        SUSTRATO: <%= description.substratum %>
                     </p>
                     <p>
-                        FLORACIÓN: <%= product.froracion %>
+                        FLORACIÓN: <%= description.flowering %>
                     </p>
                     <p>
-                        OBSERVACIONES: <%= product.descripcion %>
+                        OBSERVACIONES: <%= description.description %>
                     </p>
                 </div>
 
@@ -79,9 +79,7 @@
                             <i class="fas fa-star not_painted"></i>
                             <i class="fas fa-star not_painted"></i>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error natus veritatis illo at,
-                            dolor
-                            laboriosam qui quas enim non corporis!</p>
+                        <p><%= opinions ? opinions.content : " " %> </p>
                     </div>
                     <div class="opinion">
                         <div class="stars">
@@ -91,9 +89,7 @@
                             <i class="fas fa-star painted"></i>
                             <i class="fas fa-star not_painted"></i>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error natus veritatis illo at,
-                            dolor
-                            laboriosam qui quas enim non corporis!</p>
+                        <p><%= opinions ? opinions.content : " " %></p>
                     </div>
                     <div class="opinion">
                         <div class="stars">
@@ -103,9 +99,7 @@
                             <i class="fas fa-star not_painted"></i>
                             <i class="fas fa-star not_painted"></i>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error natus veritatis illo at,
-                            dolor
-                            laboriosam qui quas enim non corporis!</p>
+                        <p><%= opinions ? opinions.content : " " %></p>
                     </div>
                 </div><!-- opinions -->
             </section><!-- details-bot -->

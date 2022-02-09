@@ -54,8 +54,6 @@ let controller = {
     },
 
     store: (req, res) =>{
-        
-
         let errors = validationResult(req)
 
 
@@ -93,9 +91,6 @@ let controller = {
                 })
                 .catch(errors => {res.send(errors)})
             })
-            
-
-
         } else{
             Categories.findAll()
             .then((categories)=>{
@@ -106,13 +101,8 @@ let controller = {
                     categories
                 })
             })
-            
-           
         }
-
-        
     },
-    
     
     edit: (req, res) =>{
 
@@ -130,14 +120,8 @@ let controller = {
                 description : product.description
             })
         })
-       
-        
-        
-
     },
 
-  
-      
     update: (req, res) =>{
 
         let errors = validationResult(req);
@@ -154,30 +138,22 @@ let controller = {
                     }
                 }
                 if (product.id_description != 1) {
-                    let updateProduct = Products.update({
-                        name,
-                        price,
-                        color: color ? color : null,
-                        stock,
-                        images : req.file ? req.file.filename : product.image,
-                        id_category : category
-            
+                    let updateProduct = Products.update({ name, price, color: color ? color : null, stock, images : req.file ? req.file.filename : product.image,
+                         id_category : category
                     },{
                         where : {id : req.params.id}
                     })
-                    let updateDescription = Descriptions.update({
-                            description,
-                            location,
-                            substratum,
-                            flowering
+                    let updateDescription = Descriptions.update({ description, location, substratum, flowering
                         },{
                         where : { id : product.id_description}
                         })
+
                     Promise.all([updateProduct, updateDescription])
                     .then((result) =>{
                         res.redirect("/admin/list-product")
                     })
                     .catch(errors => {res.send(errors)})
+
                 } else{
                     Descriptions.create({
                         description,
@@ -203,12 +179,10 @@ let controller = {
                         })
                         .catch(errors => {res.send(errors)})
                     })
+                    .catch(errors => {res.send(errors)})
                 }
-                
             })
-           
-            
-        
+    
         } else {
             let oneProduct = Products.findByPk(req.params.id,{
                 include :[{ association : "category"}]
@@ -227,9 +201,6 @@ let controller = {
                 })
             })
         }
-        
-        
-
     },
     delete: (req,res) =>{
             Products.findByPk(req.params.id)
@@ -256,9 +227,6 @@ let controller = {
                 
             })
             .catch(errors => res.send(errors))
-            
-        
-
     },
     allUsers: (req,res) =>{
         res.render("admin/users/allUsers",{
