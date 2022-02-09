@@ -4,26 +4,26 @@ module.exports = (sequelize, DataTypes) =>{
 
     let cols = {
         id : {
-            type: DataTypes.INTERGER, 
-            notNull: true,
+            type: DataTypes.INTEGER.UNSIGNED, 
+            allowNull : false,
             autoIncrement : true,
             primaryKey : true,
         },
         name : {
-           type: DataTypes.STRING(20),
-            notNull: true,
+            type: DataTypes.STRING(20),
+            allowNull : false
         },
     }
 
     let config = {
-        tableName : "categorie",
+        tableName : "categories",
         timestamps : false
     }
 
     const Categorie = sequelize.define(alias, cols, config)
 
     Categorie.associate = (models)=>{
-        Categorie.belongsTo(models.Product,{
+        Categorie.hasMany(models.Product,{
             as : "products",
             foreignKey : "id_category"
         })

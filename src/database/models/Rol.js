@@ -3,20 +3,19 @@ module.exports = (sequelize, dataTypes) =>{
   let cols = {
         id : {
             type : dataTypes.INTEGER(10).UNSIGNED,
-            notNull: true,
+            allowNull : false,
             autoIncrement: true,
             primaryKey : true,
-            uniqueKey: "name",
         },
         name : {
             type : dataTypes.STRING(5),
-            notNull: true,
+            allowNull : false
         },
 
   }
 
     let config ={
-        tableName : "Rol",
+        tableName : "roles",
         timestamps : false
     }
 
@@ -24,9 +23,9 @@ module.exports = (sequelize, dataTypes) =>{
     const Rol = sequelize.define(alias, cols, config)
 
     Rol.associate = (models)=>{
-        Rol.belongsTo(models.Usuario,{
-            as : "Uusario",
-            foreignKey : "id_usuario"
+        Rol.hasMany(models.User,{
+            as : "users",
+            foreignKey : "id_rol"
         })
     }
 

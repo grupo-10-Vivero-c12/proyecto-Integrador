@@ -3,7 +3,7 @@ module.exports = (sequelize, dataTypes) =>{
     let cols = {
         id : {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            notNull: true,
+            allowNull: false,
             autoIncrement : true,
             primaryKey : true,
             
@@ -29,19 +29,19 @@ module.exports = (sequelize, dataTypes) =>{
     }
 
     let config ={
-        tableName : "description",
+        tableName : "descriptions",
         timestamps : false
     }
 
 
     const Description = sequelize.define(alias, cols, config)
 
-    Description.associate = (models)=>{
-        Description.belongsTo(models.Product,{
-            as : "description",
-            foreignKey : "id_description"
-        })
-    }
+    // Description.associate = (models)=>{
+    //     Description.belongsTo(models.Product,{
+    //         as : "product",
+    //         foreignKey : "id_description"
+    //     })
+    // }
 
     return Description
 

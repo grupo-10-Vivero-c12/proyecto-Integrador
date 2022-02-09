@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const { includes } = require('../validations/register');
 
-const Users = db.Users
+// const Users = db.Users
 
 let controller = {
     login: (req, res) => {

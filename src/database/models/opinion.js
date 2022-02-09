@@ -3,30 +3,27 @@ module.exports = (sequelize, dataTypes) =>{
     let cols = {
         id : {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            notNull: true,
+            allowNull: false,
             autoIncrement : true,
-            primaryKey : true,
-            constraint: 'opinions_ibfk_1',
-            FOREIGNKEY: 'id_product',
-            KEY: 'id_product',
+            primaryKey : true
         },
         content :{
             type: dataTypes.STRING(300),
-            notNull : true,
+            allowNull : true,
         },
-        starts: {
-         type: dataTypes.INTEGER(11),
-         notNull: true,
+        stars: {
+            type: dataTypes.INTEGER(11),
+            allowNull: true,
         },
         id_product : {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            notNull: true,
+            notNull: false,
         },
 
     }
 
     let config ={
-        tableName : "opinion",
+        tableName : "opinions",
         timestamps : false
     }
 
@@ -34,9 +31,9 @@ module.exports = (sequelize, dataTypes) =>{
     const Opinion = sequelize.define(alias, cols, config)
 
     Opinion.associate = (models)=>{
-        Opinion.hasMany(models.Product,{
-            as : "opinion",
-            foreignKey : "id_opinion"
+        Opinion.belongsTo(models.Product,{
+            as : "product",
+            foreignKey : "id_product"
         })
     }
 

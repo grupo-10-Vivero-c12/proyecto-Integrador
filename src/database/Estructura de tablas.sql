@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS categories (
     name VARCHAR(20) NOT NULL
 );
 
-create table IF NOT EXISTS description(
+create table IF NOT EXISTS descriptions(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     description VARCHAR(300),
     substratum VARCHAR(300),
@@ -30,7 +30,7 @@ create table IF NOT EXISTS products (
     images VARCHAR(100) DEFAULT "default-image.png",
     id_category INT UNSIGNED ,
     id_description INT UNSIGNED,
-    FOREIGN KEY(id_description) REFERENCES description(id),
+    FOREIGN KEY(id_description) REFERENCES descriptions(id),
     FOREIGN KEY(id_category) REFERENCES categories(id)
 );
 

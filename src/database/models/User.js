@@ -1,35 +1,33 @@
 module.exports = (sequelize, dataTypes) =>{
    
-     let alias = "Usuario"
+    let alias = "User"
     let cols = { 
         id : {
             type : dataTypes.INTEGER(10).UNSIGNED,
-            notNull: true,
+            allowNull: false,
             autoIncrement : true,
             primaryKey : true,
-            uniqueKey: "email",
-            key: 'id_rol',
-            constraint: 'users_ibfk_1',
-            foreignKey: 'id_rol',
         },
         first_name : {
             type : dataTypes.STRING(50),
-            notNull : true,
+            allowNull : false,
         },
         last_name : {
             type : dataTypes.STRING(50),
-            notNull : true,
+            allowNull : false,
         },
         email : {
-                type : dataTypes.STRING(50),
-                notNull : true,
+            type : dataTypes.STRING(50),
+            allowNull : false,
+            unique: true
         },
         password : {
             type : dataTypes.STRING(80),
-            notNull : true,
+            allowNull : false,
         },
         avatar : {
             type : dataTypes.STRING(100),
+            allowNull : false,
             defaultValue : "default-image.png"
         },
         address : {
@@ -63,27 +61,27 @@ module.exports = (sequelize, dataTypes) =>{
         },
         id_rol : {
             type : dataTypes.INTEGER(10).UNSIGNED,
-            notNull : true,
+            allowNull : false,
             defaultValue: 2,
         },
     };  
 
 
     let config = {
-        tableName : "User",
+        tableName : "users",
         timestamps : false
     }
 
 
-    const Usuario = sequelize.define(alias, cols, config)
+    const User = sequelize.define(alias, cols, config)
 
-    Usuario.associate = (models)=>{
-        Usuario.belongsTo(models.Rol,{
-            as : "Rol",
-            foreignKey : "id_Usuario"
+    User.associate = (models)=>{
+        User.belongsTo(models.Rol,{
+            as : "rol",
+            foreignKey : "id_rol"
         });
     }
 
-    return Usuario
+    return User
 
 }

@@ -1,109 +1,3 @@
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: categories
-# ------------------------------------------------------------
-
-drop database vivero_timbo;
-
-create database vivero_timbo;
-use vivero_timbo;
-
-
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8mb4;
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: description
-# ------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `description` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `description` varchar(300) DEFAULT NULL,
-  `substratum` varchar(300) DEFAULT NULL,
-  `flowering` varchar(300) DEFAULT NULL,
-  `location` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4;
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: opinions
-# ------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `opinions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `content` varchar(300) NOT NULL,
-  `stars` int(11) NOT NULL,
-  `id_product` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_product` (`id_product`),
-  CONSTRAINT `opinions_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: products
-# ------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  `discount` int(11) NOT NULL DEFAULT 0,
-  `price` int(11) NOT NULL DEFAULT 0,
-  `color` varchar(20) DEFAULT NULL,
-  `stock` int(11) NOT NULL,
-  `images` varchar(100) DEFAULT 'default-image.png',
-  `id_category` int(10) unsigned DEFAULT NULL,
-  `id_description` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_description` (`id_description`),
-  KEY `id_category` (`id_category`),
-  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`id_description`) REFERENCES `description` (`id`),
-  CONSTRAINT `products_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 20 DEFAULT CHARSET = utf8mb4;
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: roles
-# ------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `roles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(5) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8mb4;
-
-# ------------------------------------------------------------
-# SCHEMA DUMP FOR TABLE: users
-# ------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(80) NOT NULL,
-  `avatar` varchar(100) DEFAULT 'default-image.png',
-  `address` varchar(50) DEFAULT NULL,
-  `phone` bigint(20) DEFAULT NULL,
-  `cp` int(4) DEFAULT NULL,
-  `province` varchar(20) DEFAULT NULL,
-  `country` varchar(20) DEFAULT NULL,
-  `date_birth` date DEFAULT NULL,
-  `age` int(3) DEFAULT NULL,
-  `id_rol` int(10) unsigned NOT NULL DEFAULT 2,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  KEY `id_rol` (`id_rol`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: categories
@@ -123,11 +17,11 @@ VALUES
   (3, 'Plantas');
 
 # ------------------------------------------------------------
-# DATA DUMP FOR TABLE: description
+# DATA DUMP FOR TABLE: descriptions
 # ------------------------------------------------------------
 
 INSERT INTO
-  `description` (
+  `descriptions` (
     `id`,
     `description`,
     `substratum`,
@@ -615,15 +509,7 @@ INSERT INTO
   `roles` (`id`, `name`)
 VALUES
   (2, 'USER');
-
-# ------------------------------------------------------------
-# DATA DUMP FOR TABLE: users
-# ------------------------------------------------------------
-
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  
+  
+INSERT INTO users(first_name, last_name, email, password, id_rol)
+value("admin_prueba", "prueba", "admin@mail.com", "123456", 1);

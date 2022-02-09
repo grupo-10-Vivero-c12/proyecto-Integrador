@@ -17,13 +17,13 @@ router.get('/register', isLogin ,controller.register)
 router.post('/register',uploadFile.single('avatar'),registerValidator, controller.processRegister)
 
 /* GET - Show user edit form (User)*/
-router.get('/edit/:id',isLogin, controller.edit)
+// router.get('/edit/:id',isLogin, controller.edit)
 /* PUT - Update a user (User)*/
-router.put('/edit/:id',controller.update)
+// router.put('/edit/:id',controller.update)
 
 /* GET - Show profile user */
 router.get('/profile', /* isLogin, */ controller.profile) 
-router.get('/editProfile', /* isLogin, */ controller.edit) 
+// router.get('/editProfile', /* isLogin, */ controller.edit) 
 
 
 /* GEt - Logout*/
