@@ -9,6 +9,9 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models')
 const Products = db.Product
 const Categories = db.Categorie
+const Descriptions = db.Description
+const Opinions = db.Opinion
+
 
 
 
@@ -51,26 +54,45 @@ let controller = {
     },
 
     store: (req, res) =>{
+        
 
         let errors = validationResult(req)
 
 
         if (errors.isEmpty() && !req.fileValidationError) {
             
-            let { name, category, price, color, stock, images } = req.body
-            Products.create({
-                name,
-                price,
-                color: color ? color : null,
-                stock,
-                images : req.file ? req.file.filename : "default-image.png",
-                id_category : category
+            let { name, category, price, color, stock, description, location,substratum, flowering } = req.body
+            Descriptions.create({
+                description,
+                substratum,
+                flowering,
+                location
+            })
+            .then((descripcionProduct)=>{
+                Products.create({
+                    name,
+                    price,
+                    color: color ? color : null,
+                    stock,
+                    images : req.file ? req.file.filename : "default-image.png",
+                    id_category : category,
+                    id_description : descripcionProduct.id
 
+                })
+                .then((product) =>{
+                    
+                    Opinions.create({
+                        content : "Sin comentarios",
+                        stars : 0,
+                        id_product : product.id 
+                    })
+                    .then(()=>{
+                        res.redirect("/admin/list-product")
+                    })
+                    
+                })
+                .catch(errors => {res.send(errors)})
             })
-            .then((result) =>{
-                res.redirect("/admin/list-product")
-            })
-            .catch(errors => {res.send(errors)})
             
 
 
@@ -95,15 +117,17 @@ let controller = {
     edit: (req, res) =>{
 
         let oneProduct = Products.findByPk(req.params.id,{
-            include :[{ association : "category"}]
+            include :[{ association : "category"}, {association : "description"}]
         })
         let allCategories = Categories.findAll()
         Promise.all([oneProduct, allCategories])
         .then(([product, categories]) =>{
+
             res.render('admin/editProduct', {
                 product,
                 categories,
-                fileValidator : req.fileValidationError
+                fileValidator : req.fileValidationError,
+                description : product.description
             })
         })
        
@@ -119,7 +143,7 @@ let controller = {
         let errors = validationResult(req);
         
         if (errors.isEmpty() && !req.fileValidationError) {
-            let { name, category, price, color, stock, images, lastImage } = req.body
+            let { name, category, price, color, stock, description, location,substratum, flowering } = req.body
             Products.findByPk(req.params.id)
             .then((product)=>{
                 if(req.file){
@@ -129,31 +153,63 @@ let controller = {
                         console.log('no se encontro el archivo')
                     }
                 }
-                Products.update({
-                    name,
-                    price,
-                    color: color ? color : null,
-                    stock,
-                    images : req.file ? req.file.filename : product.image,
-                    id_category : category
-        
-                },{
-                    where : {id : req.params.id}
-                })
-                .then((result) =>{
-                    res.redirect("/admin/list-product")
-                })
-                .catch(errors => {res.send(errors)})
-            })
+                if (product.id_description != 1) {
+                    let updateProduct = Products.update({
+                        name,
+                        price,
+                        color: color ? color : null,
+                        stock,
+                        images : req.file ? req.file.filename : product.image,
+                        id_category : category
             
+                    },{
+                        where : {id : req.params.id}
+                    })
+                    let updateDescription = Descriptions.update({
+                            description,
+                            location,
+                            substratum,
+                            flowering
+                        },{
+                        where : { id : product.id_description}
+                        })
+                    Promise.all([updateProduct, updateDescription])
+                    .then((result) =>{
+                        res.redirect("/admin/list-product")
+                    })
+                    .catch(errors => {res.send(errors)})
+                } else{
+                    Descriptions.create({
+                        description,
+                        substratum,
+                        flowering,
+                        location
+                    })
+                    .then((descripcionProduct)=>{
+                        Products.update({
+                            name,
+                            price,
+                            color: color ? color : null,
+                            stock,
+                            images : req.file ? req.file.filename : product.image,
+                            id_category : category,
+                            id_description : descripcionProduct.id
+        
+                        },{
+                            where : {id : req.params.id}
+                        })
+                        .then((result) =>{
+                            res.redirect("/admin/list-product")
+                        })
+                        .catch(errors => {res.send(errors)})
+                    })
+                }
+                
+            })
            
             
-
+        
         } else {
-            res.send({
-                errors : errors.mapped(),
-                body : req.body
-            })
             let oneProduct = Products.findByPk(req.params.id,{
                 include :[{ association : "category"}]
             })
@@ -163,8 +219,10 @@ let controller = {
                 res.render('admin/editProduct', {
                     product,
                     categories,
+                    description : product.description,
                     fileValidator : req.fileValidationError,
                     old : req.body,
+                    
                     errors : errors.mapped()
                 })
             })
@@ -176,19 +234,26 @@ let controller = {
     delete: (req,res) =>{
             Products.findByPk(req.params.id)
             .then((product) =>{
-                if (fs.existsSync('./public/images/products' + product.images) && product.images !== "default-image.png") {
+                if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
                     fs.unlinkSync(`./public/images/products/${product.images}`)
                 } else {
                     console.log('no se encontro el archivo')
                 }
-                Products.destroy({
-                    where : {
-                        id : req.params.id
-                    }
+                
+
+                Opinions.destroy({where : { id_product : req.params.id}})
+                .then(()=>{
+                    let deleteProduct = Products.destroy({ where : { id : req.params.id }})
+                    let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
+                    Promise.all([deleteProduct,deleteDescription])
+                    .then((result) =>{
+                        res.redirect('/admin/list-product')
+                    })
+                    .catch(errors => res.send(errors))
                 })
-                .then((result) =>{
-                    res.redirect('/admin/list-product')
-                })
+                .catch(errors => res.send(errors))
+                
+                
             })
             .catch(errors => res.send(errors))
             

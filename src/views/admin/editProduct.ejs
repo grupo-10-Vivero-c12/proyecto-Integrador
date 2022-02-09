@@ -20,23 +20,23 @@
 
                             <div class="form-contain descripcion-form">
                                 <label for="des">Descripción</label>
-                                <textarea name="description" id="des" cols="30" rows="10"><%- product ? product.description : locals.old && old.description %></textarea>
+                                <textarea name="description" id="des" cols="30" rows="10"><%- product ? description.description : locals.old && old.description %></textarea>
                             </div>
                             <div class="form-contain descripcion-form">
                                 <label for="ubi">Ubicación</label>
-                                <input type="text" name="ubicacion" value="<%- product ? product.ubicacion : locals.old && old.ubicacion %>" id="ubi" >
-                                <% if (locals.errors && errors.ubicacion) { %>
-                                    <small class="error-message"> <%= errors.ubicacion.msg %> </small>
+                                <input type="text" name="location" value="<%- product ? description.location : locals.old && old.location %>" id="ubi" >
+                                <% if (locals.errors && errors.location) { %>
+                                    <small class="error-message"> <%= errors.location.msg %> </small>
                                 <% } %>
                             </div>
                             <div class="form-contain descripcion-form">
                                 <label for="sus">Sustrato</label>
-                                <input type="text" name="sustrato" id="sus" value="<%- product ? product.sustrato : locals.old && old.sustrato %>" >
+                                <input type="text" name="substratum" id="sus" value="<%- product ? description.substratum : locals.old && old.substratum %>" >
                             </div>
 
                             <div class="form-contain descripcion-form">
                                 <label for="flo">Floración</label>
-                                <input type="text" name="floracion" id="flo" value="<%- product ? product.floracion : locals.old && old.floracion %>" >
+                                <input type="text" name="flowering" id="flo" value="<%- product ? description.flowering : locals.old && old.flowering %>" >
                             </div>
 
                             <div class="form-contain img-form">
