@@ -3,6 +3,7 @@ let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const { includes } = require('../validations/register');
+const Users = db.User
 
 // const Users = db.Users
 
@@ -24,10 +25,10 @@ let controller = {
            .then(user => {
              req.session.user = {
                 id: user.id,
-                name: user.name,
+                name: user.first_name,
                 email: user.email,
                 avatar: user.avatar,
-                rol : user.rol
+                rol : user.id_rol
             };
 
             if(req.body.remember){
@@ -60,18 +61,17 @@ let controller = {
         if(errors.isEmpty()){
             let { name, last_name, email, password1 } = req.body;
             Users.create({
-                name, 
-                last_name,
+                first_name : name,
+                last_name, 
                 email,
-                pass: bcrypt.hashSync(password1, 10),
+                password: bcrypt.hashSync(password1, 10),
                 avatar: req.file ? req.file.filename : 'default-image.png',
-                rol: 0,
             })
             .then(() => {
                 res.redirect('/users/login')
             })
         }else{
-            res.render('register', {
+            res.render('users/register', {
                 errors: errors.mapped(),
                 old: req.body,
                 session: req.session

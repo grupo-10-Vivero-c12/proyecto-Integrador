@@ -8,7 +8,7 @@ let cookieSession = require('./middlewares/cookieSession')
 
 /* Enrutadores */
 let homeRouter = require('./routes/home'); 
-let productDetailRouter = require('./routes/productDetail');
+let productDetailRouter = require('./routes/product');
 let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin')
 let usersRouter = require('./routes/users')
@@ -47,7 +47,7 @@ app.use(express.json())
 /* Middlewares de rutas */
 app.use('/', homeRouter)
 app.use('/users', usersRouter)
-app.use('/productDetail', productDetailRouter)
+app.use('/product', productDetailRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
 

@@ -35,6 +35,17 @@
                                     <% } %>
                         </div>
                         <div class="input-container">
+                            <label for="lname">Apellido</label>
+                            <input type="text" id="lname" name="last_name" placeholder="Apellido"
+                                class="<%= (locals.errors && errors.last_name) ? " is-invalid" : "" %>"
+                            value="<%= (locals.oldData) ? oldData.last_name : "" %>">
+                                <% if (locals.errors && errors.last_name) { %>
+                                    <small class="error-message">
+                                        <%= errors.last_name.msg %>
+                                    </small>
+                                    <% } %>
+                        </div>
+                        <div class="input-container">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com"
                                 class="<%= (locals.errors && errors.email) ? " is-invalid" : "" %>"
