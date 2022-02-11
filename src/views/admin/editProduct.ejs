@@ -52,7 +52,7 @@
                             <div class="form-contain categ-form">
                                 <p>Categoria</p>
 
-                                <select name="category" id="category">
+                                <select class="select-admin"  name="category" id="category">
                                     <option value=""></option>
                                     <% categories.forEach(category => { %>
                                         <option value="<%= category.id %>" <%= (locals.old && old.category) ==  category.id  ? "selected" : (category.id == product.id_category ? "selected" : "") %>><%= category.name %></option>

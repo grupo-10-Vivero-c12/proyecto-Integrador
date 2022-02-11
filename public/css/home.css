@@ -17,10 +17,12 @@ img{
 .conteinerProduct h2{
     font-family: var(--font-rum);
     font-size: 55px;
+    color: white;
 }
 .conteinerProduct span{
     font-family: var(--font-roboto);
     font-size: 20px;
+    color: white;
 
 }
 .conteinerProduct {
@@ -47,7 +49,6 @@ img{
     position: relative;
 }
 .data{
-    color: white;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -56,13 +57,13 @@ img{
     align-items: center;
     flex-direction: column;
 }
+
 .categoriaSemillas{
     display: flex;
     flex-direction: column;
     position: relative;
 }
 .data1{
-    color: white;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -77,7 +78,6 @@ img{
     position: relative;
 }
 .data2{
-    color: white;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -152,7 +152,7 @@ img{
     border-radius: 20px;
     
 }
-img {   
+.image-product img {   
     border-radius: 20px;
     width: 100%;
     object-fit: fill;

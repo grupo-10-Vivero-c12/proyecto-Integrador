@@ -7,23 +7,35 @@
 </head>
 <body class="home">
     <%- include('../partials/header.ejs') %>
-    <div>
-        <h2>Categoria Nombre</h2>
+    <div class="title">
+        <div class="rute-container">
+            <div class="rute cate-product">
+                <a href="/">Home</a>
+                <span>/</span>
+                <a href="/product">Productos</a>
+                <span>/</span>
+                <a href="/product/category/<%= categorie.id %>"><%= categorie.name %></a>
+            </div>
+        </div>
+        
+        <h2><%= categorie.name %> </h2>
     </div>
-    <div>
+    <div class="filter">
         <form action="/product/category/<%= products[0].id_category %>" method="get">
-            <label for="">Ordenar por</label>
-            <select name="filter" id="">
-                <option value=""></option>
-                <option value="priceMin">Menor precio</option>
-                <option value="priceMay">Mayor precio</option>
-                <option value="nameAsc">Nombre Ascendente</option>
-                <option value="nameDesc">Nombre Descendente</option>
-            </select>
-            <button type="submit">Filtrar</button>
+            <label for="filter">Ordenar por:</label>
+            <div class="select-container">
+                <select class="select" name="filter" id="filter">
+                    <option value=""></option>
+                    <option value="priceMin">Menor precio</option>
+                    <option value="priceMay">Mayor precio</option>
+                    <option value="nameAsc">Nombre Ascendente</option>
+                    <option value="nameDesc">Nombre Descendente</option>
+                </select>
+                <button type="submit">Filtrar</button>
+            </div>
+            
         </form>
     </div>
-
     <section class="container-products">
         <div class="products">
             <%  products.forEach(product => {%>

@@ -5,22 +5,32 @@
     <%- include('../partials/head.ejs') %>
     <title>Home</title> 
 </head>
-<body class="home">
+<body class="all-products">
     <%- include('../partials/header.ejs') %>
-    <div>
+    <div class="title">
+        <div class="rute-container">
+            <div class="rute cate-product">
+                <a href="/">Home</a>
+                <span>/</span>
+                <a href="/product">Productos</a>
+            </div>
+        </div>  
         <h2>Todos Nuestros Productos</h2>
     </div>
-    <div>
+    <div class="filter">
         <form action="/product" method="get">
-            <label for="">Ordenar por</label>
-            <select name="filter" id="">
-                <option value=""></option>
-                <option value="priceMin">Menor precio</option>
-                <option value="priceMay">Mayor precio</option>
-                <option value="nameAsc">Nombre Ascendente</option>
-                <option value="nameDesc">Nombre Descendente</option>
-            </select>
-            <button type="submit">Filtrar</button>
+            <label for="filter">Ordenar por:</label>
+            <div class="select-container">
+                <select class="select" name="filter" id="filter">
+                    <option value=""></option>
+                    <option value="priceMin">Menor precio</option>
+                    <option value="priceMay">Mayor precio</option>
+                    <option value="nameAsc">Nombre Ascendente</option>
+                    <option value="nameDesc">Nombre Descendente</option>
+                </select>
+                <button type="submit">Filtrar</button>
+            </div>
+            
         </form>
     </div>
 

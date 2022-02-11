@@ -41,11 +41,13 @@ let controller = {
                 filterProduct  = Products.findAll({ where: {id_category : req.params.id}})
                 break;
         }
-        Promise.all([filterProduct])
-        .then(([products]) =>{
+        let allCategories = Categories.findByPk(req.params.id)
+        Promise.all([filterProduct, allCategories])
+        .then(([products, categorie]) =>{
             res.render("products/productsForCategory", {
                 products,
                 toThousand,
+                categorie,
                 session: req.session
             })
         })

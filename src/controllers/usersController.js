@@ -5,7 +5,6 @@ const db = require('../database/models');
 const { includes } = require('../validations/register');
 const Users = db.User
 
-// const Users = db.Users
 
 let controller = {
     login: (req, res) => {
@@ -87,10 +86,10 @@ let controller = {
     }, 
     profile: (req, res) => {
         Users.findByPk(req.session.user.id, {
-            include: [{association: 'Rol'}]
+            include: [{association: 'rol'}]
         })
         .then((user) => {
-            res.render('userProfile', {
+            res.render('users/userProfile', {
                 user, 
                 session: req.session
             })
