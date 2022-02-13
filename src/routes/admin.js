@@ -11,10 +11,15 @@ let { isAdmin } = require('../middlewares/isLoging')
 router.get("/", isAdmin,controller.home)
 router.get("/add", isAdmin,  controller.add)
 router.post("/add",upload.single('images'), addProductValidator ,controller.store)
-router.get("/list-product", isAdmin, controller.allProducts)
+// GET - Show products list
+router.get("/list-product",isAdmin, controller.allProducts)
+//DELETE - delete one product
 router.delete("/list-product/:id", controller.delete)
+
 router.get("/all-category", isAdmin, controller.allCategory)
+//editor-formulario de productos
 router.get("/editProduct/:id", isAdmin, controller.edit)
+
 router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controller.update)
 
 //-----------------------------------

@@ -1,7 +1,10 @@
-let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
-let { validationResult } = require('express-validator')
-let fs = require('fs')
-let path = require('path')
+//let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
+const session = require('express-session');
+let { validationResult } = require('express-validator');
+const req = require('express/lib/request');
+const res = require('express/lib/response');
+//let fs = require('fs')
+//let path = require('path')
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -22,10 +25,11 @@ let controller = {
         })
     }, 
     allProducts: (req, res) => {
-        Products.findAll({
-            include : [{association : "category"}]
-        })
-        .then((products) =>{
+        Products.findAll(//{
+            //include : [{association : "category"}]
+        //}
+        )
+        .then(products =>{
             res.render('admin/allProducts', {
                 products,
                 toThousand
@@ -33,6 +37,7 @@ let controller = {
         })
         
     },
+
     allCategory: (req, res) => {
         Categories.findAll()
         .then((categories) =>{
@@ -42,6 +47,18 @@ let controller = {
         })
         
     },
+
+    // create: (req, res) => {
+    //     let allCategories = Categories.findAll();
+    //     Promise.all([allCategories])
+    //     .then(([categories]) => {
+    //         res.render('admin/products', {
+    //             categories,
+    //             session: req.session 
+    //         })   
+    //     })
+    // },
+
     add: (req, res) => {
         Categories.findAll()
         .then((categories)=>{

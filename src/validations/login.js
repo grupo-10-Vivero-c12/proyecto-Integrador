@@ -24,7 +24,7 @@ module.exports = [
             }
         })
         .then(user => {      
-            if(!bcrypt.compareSync(req.body.password, user.password)){
+            if(!bcrypt.compareSync(req.body.pass, user.dataValues.pass)){
                 return Promise.reject()
             }
         })
