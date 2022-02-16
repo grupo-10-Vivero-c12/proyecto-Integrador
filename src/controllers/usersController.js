@@ -1,5 +1,6 @@
 let {users, writeUsersJson} = require('../data/dataBase.js')
 const { validationResult } = require('express-validator')
+let bcrypt = require("bcryptjs")
 
 let controller = {
     login: (req, res) => {
