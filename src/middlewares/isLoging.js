@@ -9,7 +9,7 @@ let login = {
     isAdmin : (req, res, next)=>{
         if (req.session.user) {
 
-            if (req.session.user.rol === "ADMIN") {
+            if (req.session.user.rol === 1) {
                 next()
             } else {
                 res.redirect('/')

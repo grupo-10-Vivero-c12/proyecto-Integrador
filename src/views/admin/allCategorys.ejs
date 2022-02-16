@@ -6,12 +6,12 @@
     <main class="all-categorys">
         <h3>Listado de Categorias</h3>
         
-        <% categorias.forEach(cate => {%>
+        <% categories.forEach(category => {%>
             <div class="list-category">
                 <div class="category-detail">
                     <div class="vist-category">
                         <div class="name-category">
-                            <p><%= cate %> </p>
+                            <p><%= category.name %> </p>
                         </div>
                         <div class="edit-delete-category">
                             <button class="btn-table modi" onclick="editButtonDrop()"><i class="far fa-edit"></i></button>

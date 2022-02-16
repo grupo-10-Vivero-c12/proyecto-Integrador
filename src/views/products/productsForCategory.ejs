@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Home</title> 
+</head>
+<body class="home">
+    <%- include('../partials/header.ejs') %>
+    <div class="title">
+        <div class="rute-container">
+            <div class="rute cate-product">
+                <a href="/">Home</a>
+                <span>/</span>
+                <a href="/product">Productos</a>
+                <span>/</span>
+                <a href="/product/category/<%= categorie.id %>"><%= categorie.name %></a>
+            </div>
+        </div>
+        
+        <h2><%= categorie.name %> </h2>
+    </div>
+    <div class="filter">
+        <form action="/product/category/<%= products[0].id_category %>" method="get">
+            <label for="filter">Ordenar por:</label>
+            <div class="select-container">
+                <select class="select" name="filter" id="filter">
+                    <option value=""></option>
+                    <option value="priceMin">Menor precio</option>
+                    <option value="priceMay">Mayor precio</option>
+                    <option value="nameAsc">Nombre Ascendente</option>
+                    <option value="nameDesc">Nombre Descendente</option>
+                </select>
+                <button type="submit">Filtrar</button>
+            </div>
+            
+        </form>
+    </div>
+    <section class="container-products">
+        <div class="products">
+            <%  products.forEach(product => {%>
+                <div class="product-related">
+                    <div class="image-product">
+                        <a href="/product/detail/<%= product.id %>"><img src="/images/products/<%= product.images %>" alt=""></a>
+                    </div>
+                    <div class="description-product">
+                        <a href="/product/detail/<%= product.id %> "><p><%= product.name %></p></a>
+                        <p>$<%= toThousand(product.price) %></p>
+                        <button class="btn">Comprar</button>
+                    </div>
+                </div>
+            <% });%>
+    </section>
+        
+
+        
+        
+</body>
+<%- include('../partials/footer.ejs') %>
+</html>

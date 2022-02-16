@@ -10,53 +10,58 @@
                 <form action="/admin/add" method="post" class="form-container" enctype="multipart/form-data">
                 
                     <div class="form-contain name-form">
-                        <label for="nom">Nombre del producto</label>
-                        <input type="text" id="nom" name="nombre" value="<%= locals.old && old.nombre %>">
-                        <% if (locals.errors && errors.nombre) { %>
-                            <small class="error-message"> <%= errors.nombre.msg %> </small>
+                        <label for="name">Nombre del producto</label>
+                        <input type="text" id="name" name="name" value="<%= locals.old && old.name %>">
+                        <% if (locals.errors && errors.name) { %>
+                            <small class="error-message"> <%= errors.name.msg %> </small>
                         <% } %>
                     </div>
                     
                     <div class="form-contain descripcion-form">
                         <label for="des">Descripción</label>
-                        <textarea name="descripcion" id="des" cols="30" rows="10"><%= locals.old && old.descripcion %></textarea>
-                        <% if (locals.errors && errors.descripcion) { %>
-                            <small class="error-message"> <%= errors.descripcion.msg %> </small>
+                        <textarea name="description" id="des" cols="30" rows="10"><%= locals.old && old.description %></textarea>
+                        <% if (locals.errors && errors.description) { %>
+                            <small class="error-message"> <%= errors.description.msg %> </small>
                         <% } %>
                     </div>
 
                     <div class="form-contain descripcion-form">
                         <label for="ubi">Ubicación</label>
-                        <input type="text" name="ubicacion" id="ubi" value="<%= locals.old && old.ubicacion %>">
-                        <% if (locals.errors && errors.ubicacion) { %>
-                            <small class="error-message"> <%= errors.ubicacion.msg %> </small>
+                        <input type="text" name="location" id="ubi" value="<%= locals.old && old.location %>">
+                        <% if (locals.errors && errors.location) { %>
+                            <small class="error-message"> <%= errors.location.msg %> </small>
                         <% } %>
                     </div>
                     <div class="form-contain descripcion-form">
                         <label for="sus">Sustrato</label>
-                        <input type="text" name="sustrato" id="sus" >
+                        <input type="text" name="substratum" id="sus" >
                     </div>
 
                     <div class="form-contain descripcion-form">
                         <label for="flo">Floración</label>
-                        <input type="text" name="floracion" id="flo" >
+                        <input type="text" name="flowering" id="flo" >
                     </div>
                     
                     <div class="form-contain img-form">
                         <label for="img">Imagen</label>
-                        <input type="file" id="img" accept=".jpg, .png, .jpeg" name="imagen" multiple >
+                        <input type="file" id="img" accept=".jpg, .png, .jpeg" name="images" multiple >
                         <% if (fileValidator) { %>
                             <small class="error-message"> <%= fileValidator %> </small>
                         <% } %>
                     </div>
                     
                     <div class="form-contain categ-form">
-                        <p>Categoria</p>
-                        <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" <%= (locals.old && old.categoria) === "Planta" ? "checked" : "" %>  >Planta</label>
-                        <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" <%= (locals.old && old.categoria) === "Semilla" ? "checked" : "" %>>Semilla</label>
-                        <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" <%= (locals.old && old.categoria) === "Macetas" ? "checked" : "" %> >Macetas</label>
-                        <% if (locals.errors && errors.categoria) { %>
-                            <small class="error-message"> <%= errors.categoria.msg %> </small>
+                        <label for="category">Categoria</label>
+                        <select class="select-admin" name="category" id="category">
+                            <option value=""></option>
+                            <% categories.forEach(category => { %>
+                                <option value="<%= category.id %>" <%= (locals.old && old.category) ==  category.id  ? "selected" : "" %>><%= category.name %></option>
+                            <% }) %>
+                        </select>
+                        
+                        
+                        <% if (locals.errors && errors.category) { %>
+                            <small class="error-message"> <%= errors.category.msg %> </small>
                         <% } %>
                     </div>
                     
@@ -66,18 +71,18 @@
                     </div>
 
                     <div class="form-contain price-form">
-                        <label for="precio">Precio</label>
-                        <input type="number" id="precio" name="precio" value="<%= locals.old && old.precio %>"> 
-                        <% if (locals.errors && errors.precio) { %>
-                            <small class="error-message"> <%= errors.precio.msg %> </small>
+                        <label for="price">Precio</label>
+                        <input type="number" id="price" name="price" value="<%= locals.old && old.price %>"> 
+                        <% if (locals.errors && errors.price) { %>
+                            <small class="error-message"> <%= errors.price.msg %> </small>
                         <% } %>
                     </div>
 
                     <div class="form-contain price-form">
                         <label for="cant">Cantidad</label>
-                        <input type="number" id="cant" name="cantidad" value="<%= locals.old && old.cantidad%>"> 
-                        <% if (locals.errors && errors.cantidad) { %>
-                            <small class="error-message"> <%= errors.cantidad.msg %> </small>
+                        <input type="number" id="cant" name="stock" value="<%= locals.old && old.stock%>"> 
+                        <% if (locals.errors && errors.stock) { %>
+                            <small class="error-message"> <%= errors.stock.msg %> </small>
                         <% } %>
                     </div>
 

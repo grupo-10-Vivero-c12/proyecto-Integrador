@@ -41,7 +41,8 @@
         "sustrato": "......",
         "floracion": "............",
         "opiniones": [],
-        "oferta": false
+        "oferta": false,
+        "imagen": "1643853129794_img_.jpg"
     },
     {
         "id": 5,
@@ -75,12 +76,12 @@
     },
     {
         "id": 7,
-        "nombre": "PHILODENDRO PERUVIANO (MONSTERA ADANSONII)",
+        "nombre": "PHILODENDRO PERUVIANO ",
         "precio": "540",
         "color": "verde",
         "cantidad": "23",
         "categoria": "Planta",
-        "imagen": "1639444700868_img_.jpg",
+        "imagen": "1643853229898_img_.jpg",
         "descripcion": "Temperatura: 20-25 grados\r\nIluminación: alta sin sol directo\r\nRiego: abundante en verano moderado en invierno\r\nHumedad: muy alta\r\nAbono: liquido, durante la primavera y verano",
         "ubicacion": "Exterior",
         "sustrato": "asd",
@@ -95,7 +96,7 @@
         "color": "varios",
         "cantidad": "12",
         "categoria": "Planta",
-        "imagen": "1639444828220_img_.png",
+        "imagen": "1643853312827_img_.png",
         "descripcion": "---",
         "ubicacion": "---",
         "sustrato": "---",
@@ -110,11 +111,26 @@
         "color": "",
         "cantidad": "12",
         "categoria": "Planta",
-        "imagen": "",
+        "imagen": "1643853320235_img_.png",
         "descripcion": "",
         "ubicacion": "Exterior",
         "sustrato": "",
         "floracion": "",
+        "opiniones": [],
+        "oferta": false
+    },
+    {
+        "id": 10,
+        "nombre": "Prueba nueva",
+        "precio": "2332",
+        "color": "",
+        "cantidad": "123",
+        "categoria": "Semilla",
+        "imagen": "1643853356075_img_.png",
+        "descripcion": "aaaaaaaaaaa",
+        "ubicacion": "---",
+        "sustrato": "----",
+        "floracion": "---",
         "opiniones": [],
         "oferta": false
     }

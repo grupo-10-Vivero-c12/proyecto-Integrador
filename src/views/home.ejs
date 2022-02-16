@@ -5,7 +5,7 @@
     <%- include('./partials/head.ejs') %>
     <title>Home</title> 
 </head>
-<body>
+<body class="home">
     <%- include('./partials/header.ejs') %>
     <%- include('./partials/carrousel.ejs') %>
 
@@ -14,111 +14,45 @@
             <div class="categoriaMacetas">
                 <img src="/images/cat-macetitas.png" alt="Macetas">
                 <div class="data">
-                    <h2>Macetas</h2>
+                    <a href="/product/category/1"><h2>Macetas</h2></a>
                     <span>Rusticas,Lisas y Con Anillos</span>
                 </div>
             </div>
             <div class="categoriaSemillas">
                 <img src="/images/cat-semillas.png" alt="semilla">
                 <div class="data1">
-                    <h2>Semillas</h2>
+                    <a href="/product/category/2"><h2>Semillas</h2></a>
                     <span>De diversas plantas y flores</span>
                 </div>
             </div>
             <div class="categoriaPlantas">
                 <img src="/images/cat-plantas.jpeg" alt="plantas">
                 <div class="data2">
-                    <h2>Plantas</h2>
+                    <a href="/product/category/3"><h2>Plantas</h2></a>
                     <span>Interior, Esterior, Florales, Arbustos, Aromaticas y Catus</span>
                 </div>
             </div>
         </section>
         <!-- Prductos destacados -->
         </section><!-- details-bot -->
-        <section class="related-products">
+        <section class="container-products">
             <h2>PRODUCTOS RELACIONADOS</h2>
             <div class="products">
-                <%  productos.forEach(producto => {%>
-                    <div class="product">
-                        <a class="link-container" href="/productDetail/<%= producto.id %> ">
-                            <img src="images/<%= producto.imagen %>" alt="">
-                            <p><%= producto.nombre %> </p>
-                            <p>$<%= producto.precio %></p>
+                <%  products.forEach(product => {%>
+                    <div class="product-related">
+                        <div class="image-product">
+                            <a href="/product/detail/<%= product.id %>"><img src="images/products/<%= product.images %>" alt=""></a>
+                        </div>
+                        <div class="description-product">
+                            <a href="/product/detail/<%= product.id %> "><p><%= product.name %></p></a>
+                            <p>$<%= toThousand(product.price) %></p>
                             <button class="btn">Comprar</button>
-                        </a>
+                        </div>
                     </div>
-                    
-
-
-                    
                 <% });%>
-                <!-- <div class="product">
-                    <img src="images/cat-macetas.jpeg" alt="">
-                    <p>MACETAS GRANDES</p>
-                    <p>$1000</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-plantas.jpeg" alt="">
-                    <p>PLANTINES</p>
-                    <p>$400</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-semillas.png" alt="">
-                    <p>SEMILLAS</p>
-                    <p>$500</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/malvón-italiano.png" alt="">
-                    <p>malvón italiano</p>
-                    <p>$800</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/orquidea-dendrobium.jpeg" alt="">
-                    <p>orquidea</p>
-                    <p>$700</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/rosa-china.jpg" alt="">
-                    <p>Rosa china</p>
-                    <p>$250</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/canasto-con-asas.jpeg" alt="">
-                    <p>CANASTO CON ASAS</p>
-                    <p>$600</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-macetas.jpeg" alt="">
-                    <p>MACETAS GRANDES</p>
-                    <p>$1000</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-plantas.jpeg" alt="">
-                    <p>PLANTINES</p>
-                    <p>$400</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/cat-semillas.png" alt="">
-                    <p>SEMILLAS</p>
-                    <p>$500</p>
-                    <button class="btn">Comprar</button>
-                </div>
-                <div class="product">
-                    <img src="images/malvón-italiano.png" alt="">
-                    <p>malvón italiano</p>
-                    <p>$800</p>
-                    <button class="btn">Comprar</button>
-                </div> -->
         </section>
-        <%- include('./partials/footer.ejs') %>
+        
         <%- include('./partials/script.ejs') %>
 </body>
+<%- include('./partials/footer.ejs') %>
+</html>

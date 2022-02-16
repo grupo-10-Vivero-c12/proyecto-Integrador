@@ -9,40 +9,41 @@
                 <div class="form-container-add-product">
                     <h2>Editar Producto</h2>
                     <div class="form-create">
-                        <form action="/admin/editProduct/<%- p  ? p.id : id %>?_method=PUT " method="post" class="form-container" enctype="multipart/form-data">
-
+                        <form action="/admin/editProduct/<%- product.id %>?_method=PUT" method="post" class="form-container" enctype="multipart/form-data">
                             <div class="form-contain name-form">
                                 <label for="nom">Nombre del producto</label>
-                                <input type="text" id="nom" value="<%- p ? p.nombre : locals.old && old.nombre %>" name="nombre" >
-                                <% if (locals.errors && errors.nombre) { %>
-                                    <small class="error-message"> <%= errors.nombre.msg %> </small>
+                                <input type="text" id="nom" value="<%- product ? product.name : locals.old && old.name %>" name="name" >
+                                <% if (locals.errors && errors.name) { %>
+                                    <small class="error-message"> <%= errors.name.msg %> </small>
                                 <% } %>
                             </div>
 
                             <div class="form-contain descripcion-form">
                                 <label for="des">Descripción</label>
-                                <textarea name="descripcion" id="des" cols="30" rows="10"><%- p ? p.descripcion : locals.old && old.descripcion %></textarea>
+                                <textarea name="description" id="des" cols="30" rows="10"><%- product ? description.description : locals.old && old.description %></textarea>
                             </div>
                             <div class="form-contain descripcion-form">
                                 <label for="ubi">Ubicación</label>
-                                <input type="text" name="ubicacion" value="<%- p ? p.ubicacion : locals.old && old.ubicacion %>" id="ubi" >
-                                <% if (locals.errors && errors.ubicacion) { %>
-                                    <small class="error-message"> <%= errors.ubicacion.msg %> </small>
+                                <input type="text" name="location" value="<%- product ? description.location : locals.old && old.location %>" id="ubi" >
+                                <% if (locals.errors && errors.location) { %>
+                                    <small class="error-message"> <%= errors.location.msg %> </small>
                                 <% } %>
                             </div>
                             <div class="form-contain descripcion-form">
                                 <label for="sus">Sustrato</label>
-                                <input type="text" name="sustrato" id="sus" value="<%- p ? p.sustrato : locals.old && old.sustrato %>" >
+                                <input type="text" name="substratum" id="sus" value="<%- product ? description.substratum : locals.old && old.substratum %>" >
                             </div>
 
                             <div class="form-contain descripcion-form">
                                 <label for="flo">Floración</label>
-                                <input type="text" name="floracion" id="flo" value="<%- p ? p.floracion : locals.old && old.floracion %>" >
+                                <input type="text" name="flowering" id="flo" value="<%- product ? description.flowering : locals.old && old.flowering %>" >
                             </div>
 
                             <div class="form-contain img-form">
                                 <label for="img">Imagen</label>
-                                <input type="file" id="img" accept=".jpg, .png" name="imagen" multiple>
+                                <input type="file" id="img" accept=".jpg, .png" name="images" multiple>
+                                <label for="">Nombre imagen cargada</label>
+                                <input type="text" name="lastImage" disabled value="<%= product.images === "default-image.png" ? "No hay imagen cargada" : product.images %> ">
                                 <% if (fileValidator) { %>
                                     <small class="error-message"> <%= fileValidator %> </small>
                                 <% } %>
@@ -50,16 +51,15 @@
 
                             <div class="form-contain categ-form">
                                 <p>Categoria</p>
-                                <% if (p) { %>
-                                    <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" <%= p.categoria === "Planta" ? "checked" : "" %> >Planta</label>
-                                    <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" <%= p.categoria === "Semilla" ? "checked" : "" %>>Semilla</label>
-                                    <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" <%= p.categoria === "Macetas" ? "checked" : "" %>>Macetas</label>
-                                <% } %>
 
-                                <% if (locals.errors) { %>
-                                    <label for="cat1"><input type="radio" name="categoria" id="cat1" value="Planta" <%= locals.old && old.categoria === "Planta" ? "checked" : "" %> >Planta</label>
-                                    <label for="cat2"><input type="radio" name="categoria" id="cat2" value="Semilla" <%= locals.old && old.categoria === "Semilla" ? "checked" : "" %> >Semilla</label>
-                                    <label for="cat3"><input type="radio" name="categoria" id="cat3" value="Macetas" <%= locals.old && old.categoria === "Macetas" ? "checked" : "" %>  >Macetas</label>
+                                <select class="select-admin"  name="category" id="category">
+                                    <option value=""></option>
+                                    <% categories.forEach(category => { %>
+                                        <option value="<%= category.id %>" <%= (locals.old && old.category) ==  category.id  ? "selected" : (category.id == product.id_category ? "selected" : "") %>><%= category.name %></option>
+                                    <% }) %>
+                                </select>
+                                <% if (locals.errors && errors.category) { %>
+                                    <small class="error-message"> <%= errors.category.msg %> </small>
                                 <% } %>
                                 
                                 
@@ -67,22 +67,22 @@
 
                             <div class="form-contain colo-form">
                                 <label for="color">Color</label>
-                                <input type="text" id="color" value="<%- p ? p.color : locals.old && old.color %>" name="color">
+                                <input type="text" id="color" value="<%- product ? product.color : locals.old && old.color %>" name="color">
                             </div>
 
                             <div class="form-contain price-form">
-                                <label for="precio">Precio</label>
-                                <input type="number" id="precio" value="<%- p ? p.precio : locals.old && old.precio %>" name="precio" >
-                                <% if (locals.errors && errors.precio) { %>
-                                    <small class="error-message"> <%= errors.precio.msg %> </small>
+                                <label for="price">Precio</label>
+                                <input type="number" id="price" value="<%- product ? product.price : locals.old && old.price %>" name="price" >
+                                <% if (locals.errors && errors.price) { %>
+                                    <small class="error-message"> <%= errors.price.msg %> </small>
                                 <% } %>
                             </div>
 
                             <div class="form-contain price-form">
                                 <label for="cant">Cantidad</label>
-                                <input type="number" id="cant" value="<%- p ? p.cantidad : locals.old && old.cantidad %>" name="cantidad">
-                                <% if (locals.errors && errors.cantidad) { %>
-                                    <small class="error-message"> <%= errors.cantidad.msg %> </small>
+                                <input type="number" id="cant" value="<%- product ? product.stock : locals.old && old.stock %>" name="stock">
+                                <% if (locals.errors && errors.stock) { %>
+                                    <small class="error-message"> <%= errors.stock.msg %> </small>
                                 <% } %>
                             </div>
 

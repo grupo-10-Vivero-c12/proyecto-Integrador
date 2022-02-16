@@ -11,7 +11,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="editProfile">
 
     <%- include('../partials/header.ejs') %>
 
@@ -19,14 +19,15 @@
             <div class="rute">
                 <a href="/home">Home</a>
                 <span>/</span>
-                <a href="/Mi cuenta">Mi cuenta</a>
+                <a href="/mi cuenta">Mi cuenta</a>
                 <span>/</span>
                 <a href="/editProfile">Editar cuenta</a>
+
             </div>
 
             <h2>Editar Cuenta</h2>
             <div class="form-container">
-                <form action="/users/edit/<%- user.id %>?_method=PUT" method="POST">
+                <form action="/users/edit/<%- user.id %>?_method=PUT" method="POST"> 
                     <div class="form">
                         <div class="input-container">
                             <label for="name">Nombre</label>

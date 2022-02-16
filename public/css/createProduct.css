@@ -113,6 +113,20 @@ main.main-admin::after{
     margin: 5px 0 0;
 }
 
+.select-admin{
+    width: 30%;
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    background-color: rgba(212, 212, 212, 0.959);
+    border: none;
+
+}
+
+.select-admin:focus{
+    outline:rgb(255, 1, 170) 2px solid;
+}
+
 #des{
     height: 80px;
 }
