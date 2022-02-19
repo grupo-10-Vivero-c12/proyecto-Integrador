@@ -2,8 +2,8 @@
 const session = require('express-session');
 let { validationResult } = require('express-validator');
 
-//let fs = require('fs')
-//let path = require('path')
+let fs = require('fs')
+let path = require('path')
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -12,7 +12,7 @@ const db = require('../database/models')
 const Products = db.Product
 const Categories = db.Categorie
 const Descriptions = db.Description
-const Opinions = db.Opinions
+const Opinions = db.Opinion
 
 
 
@@ -232,12 +232,12 @@ let controller = {
                 .then((result)=>{
                     console.log('Paso por aca')
                     console.log(result)
-                    let deleteProduct = Products.destroy({ where : { id : req.params.id }})
-                    let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
-                    Promise.all([deleteProduct,deleteDescription])
-                    .then(() =>{
-                        res.redirect('/admin/list-product')
-                    })
+                    // let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
+                    // let deleteProduct = Products.destroy({ where : { id : req.params.id }})
+                    // Promise.all([deleteProduct,deleteDescription])
+                    // .then(() =>{
+                    //     res.redirect('/admin/list-product')
+                    // })
                     .catch(errors => res.send(errors))
                 })
                 .catch(errors => res.send(errors))
