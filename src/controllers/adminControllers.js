@@ -12,7 +12,7 @@ const db = require('../database/models')
 const Products = db.Product
 const Categories = db.Categorie
 const Descriptions = db.Description
-const Opinions = db.Opinion
+const Opinions = db.Opinions
 
 
 
@@ -229,11 +229,13 @@ let controller = {
                 
 
                 Opinions.destroy({where : { id_product : req.params.id}})
-                .then(()=>{
+                .then((result)=>{
+                    console.log('Paso por aca')
+                    console.log(result)
                     let deleteProduct = Products.destroy({ where : { id : req.params.id }})
                     let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
                     Promise.all([deleteProduct,deleteDescription])
-                    .then((result) =>{
+                    .then(() =>{
                         res.redirect('/admin/list-product')
                     })
                     .catch(errors => res.send(errors))
