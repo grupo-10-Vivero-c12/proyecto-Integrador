@@ -229,15 +229,13 @@ let controller = {
                 
 
                 Opinions.destroy({where : { id_product : req.params.id}})
-                .then((result)=>{
-                    console.log('Paso por aca')
-                    console.log(result)
-                    // let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
-                    // let deleteProduct = Products.destroy({ where : { id : req.params.id }})
-                    // Promise.all([deleteProduct,deleteDescription])
-                    // .then(() =>{
-                    //     res.redirect('/admin/list-product')
-                    // })
+                .then((result)=>{              
+                    let deleteProduct = Products.destroy({ where : { id : req.params.id }})
+                    let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
+                    Promise.all([deleteProduct,deleteDescription])
+                    .then(() =>{
+                        res.redirect('/admin/list-product')
+                    })
                     .catch(errors => res.send(errors))
                 })
                 .catch(errors => res.send(errors))
