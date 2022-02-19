@@ -1,8 +1,7 @@
 //let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
 const session = require('express-session');
 let { validationResult } = require('express-validator');
-const req = require('express/lib/request');
-const res = require('express/lib/response');
+
 //let fs = require('fs')
 //let path = require('path')
 
@@ -25,9 +24,9 @@ let controller = {
         })
     }, 
     allProducts: (req, res) => {
-        Products.findAll(//{
-            //include : [{association : "category"}]
-        //}
+        Products.findAll({
+            include : [{association : "category"}]
+        }
         )
         .then(products =>{
             res.render('admin/allProducts', {
@@ -48,16 +47,16 @@ let controller = {
         
     },
 
-    // create: (req, res) => {
-    //     let allCategories = Categories.findAll();
-    //     Promise.all([allCategories])
-    //     .then(([categories]) => {
-    //         res.render('admin/products', {
-    //             categories,
-    //             session: req.session 
-    //         })   
-    //     })
-    // },
+    create: (req, res) => {
+        let allCategories = Categories.findAll();
+        Promise.all([allCategories])
+        .then(([categories]) => {
+            res.render('admin/products', {
+                categories,
+                session: req.session 
+            })   
+        })
+    },
 
     add: (req, res) => {
         Categories.findAll()
@@ -245,6 +244,8 @@ let controller = {
             })
             .catch(errors => res.send(errors))
     },
+
+
     allUsers: (req,res) =>{
         res.render("admin/users/allUsers",{
             users
