@@ -214,8 +214,8 @@ let controller = {
 
                 Opinions.destroy({where : { id_product : req.params.id}})
                 .then(()=>{
-                    let deleteProduct = Products.destroy({ where : { id : req.params.id }})
                     let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
+                    let deleteProduct = Products.destroy({ where : { id : req.params.id }})
                     Promise.all([deleteProduct,deleteDescription])
                     .then((result) =>{
                         res.redirect('/admin/list-product')
