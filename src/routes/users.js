@@ -4,7 +4,7 @@ let controller = require('../controllers/usersController');
 let loginValidator = require('../validations/login')
 let uploadFile = require('../middlewares/uploadAvatar')
 let registerValidator = require("../validations/register")
-let { isLogin }= require('../middlewares/isLoging')
+let { isLogin, notLogin }= require('../middlewares/isLoging')
 
 /* GET - Show login form */
 router.get('/login', isLogin ,controller.login)
@@ -22,7 +22,11 @@ router.post('/register',uploadFile.single('avatar'),registerValidator, controlle
 // router.put('/edit/:id',controller.update)
 
 /* GET - Show profile user */
-router.get('/profile', /* isLogin, */ controller.profile) 
+<<<<<<< HEAD
+router.get('/profile',  isLogin,  controller.profile) 
+=======
+router.get('/profile', notLogin, controller.profile) 
+>>>>>>> fdde2719c2ac4e36606372e27c0b58cf278f3b14
 // router.get('/editProfile', /* isLogin, */ controller.edit) 
 
 

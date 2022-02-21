@@ -1,6 +1,6 @@
 const { check, body } = require('express-validator');
 const { users } = require('../data/dataBase');
-const db = require('../dataBase/models')
+const db = require('../dataBase/models');
 
 const Users = db.User;
 
@@ -8,6 +8,10 @@ module.exports = [
     check('name')
     .notEmpty()
     .withMessage('El nombre es requerido'),
+
+    check('last_name')
+    .notEmpty()
+    .withMessage('El apellido es requerido'),
 
     check('email')
     .isEmail()

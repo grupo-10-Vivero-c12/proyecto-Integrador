@@ -17,6 +17,14 @@ let login = {
         } else{
             res.redirect('/')
         }
+    },
+    notLogin: (req,res, next) =>{
+        if (!req.session.user) {
+            res.redirect('/')
+        } else{
+            next()
+        }
+
     }
 
 }
