@@ -1,7 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.rute-profile{
+    
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+.rute-profile p{
+    display: inline-block;
+
 }
 #buttonSubmit{
     display: none;
@@ -210,8 +214,11 @@ input#file[type="file"] {
 }
 
 @media (min-width : 1440px) {
+    .rute-profile{
+        padding-top: 30px;
+    }
     .body-profile{
-        margin-top: 100px;
+        margin-top: 40px;
         width: 80%;
         display: flex;
         flex-direction: row;
