@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-let {users, writeUsersJson} = require('../data/dataBase.js')
-const { validationResult } = require('express-validator')
-let bcrypt = require("bcryptjs")
-=======
 //const { users, writeUsersJSON } = require('../database/dataBase');
 let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
@@ -10,7 +5,6 @@ const db = require('../database/models');
 const { include } = require('../validations/register');
 const Users = db.User
 
->>>>>>> 1dfd1675a4d6739691041d535f13427792507818
 
 let controller = {
     login: (req, res) => {
@@ -71,6 +65,7 @@ let controller = {
                 email,
                 password: bcrypt.hashSync(password1, 10),
                 avatar: req.file ? req.file.filename : 'default-image.png',
+                id_rol: 1
             })
             .then(() => {
                 res.redirect('/users/login')

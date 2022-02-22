@@ -22,11 +22,7 @@ router.post('/register',uploadFile.single('avatar'),registerValidator, controlle
 // router.put('/edit/:id',controller.update)
 
 /* GET - Show profile user */
-<<<<<<< HEAD
-router.get('/profile',  isLogin,  controller.profile) 
-=======
 router.get('/profile', notLogin, controller.profile) 
->>>>>>> fdde2719c2ac4e36606372e27c0b58cf278f3b14
 // router.get('/editProfile', /* isLogin, */ controller.edit) 
 
 
