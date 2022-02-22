@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <title>Perfil de usuario</title>
+    <script src="/js/profile.js" defer></script>
+</head>
+    
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main class="profile">
+        <div class="body-profile">
+
+        
+            <section class="avatar-container">
+                <div class="image-container">
+                    <h3>Foto de perfil</h3>
+                    <div class="image">
+                        <img src="/images/users/1641294060051_img_.jpg" alt="">
+                    </div>
+                    
+                </div>
+                <div class="input-image">
+                    <form action="">
+                        <input type="file" id="file" name="avatar">
+                        <br>
+                        <button type="submit" class="btn-submit" id="submitFile">Guardar</button>
+                    </form>
+                    
+                </div>
+            </section>
+            <section class="data-user">
+                <form action="">
+                    <div class="title-profile">
+                        <h2>Mis datos</h2>
+                        <h2 id="edit">editar</h2>
+                        <button type="submit" class="btn-submit" id="buttonSubmit">Guardar</button>
+                    </div>
+                    <div class="data-container">
+                    
+                        <div class="input-contain">
+                            <label for="">Nombre:</label>
+                            <input type="text" id="inputName" name="name" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Apellido:</label>
+                            <input type="text" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Email:</label>
+                            <input type="email" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Contraseña:</label>
+                            <input type="password" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Dirección:</label>
+                            <input type="text" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Telefono:</label>
+                            <input type="number" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Codigo Postal:</label>
+                            <input type="number" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Pais:</label>
+                            <input type="text" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Provincia:</label>
+                            <input type="text" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">fecha de nacimiento:</label>
+                            <input type="date" class="input-js" disabled>
+                        </div>
+                        <div class="input-contain">
+                            <label for="">Edad:</label>
+                            <input type="number" class="input-js" disabled>
+                        </div>
+                
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

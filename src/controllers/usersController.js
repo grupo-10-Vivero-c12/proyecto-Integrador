@@ -89,11 +89,18 @@ let controller = {
             include: [{association: 'rol'}]
         })
         .then((user) => {
-            res.render('users/userProfile', {
-                user, 
+            res.render('users/profile',{
+                user,
                 session: req.session
             })
         })
+    },
+    profile2: (req, res) => {
+        
+        res.render('users/profile',{
+            session: req.session
+        })
+       
     }
 }
 

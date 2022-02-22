@@ -71,7 +71,7 @@ main .form-container .form .input-container input:focus {
 main .form-container .form .input-container input::placeholder {
   font-style: italic;
   font-weight: lighter;
-  color: black;
+  color: rgb(160, 160, 160);
   opacity: 1;
 }
 

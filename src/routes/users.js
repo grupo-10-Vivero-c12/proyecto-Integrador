@@ -23,6 +23,7 @@ router.post('/register',uploadFile.single('avatar'),registerValidator, controlle
 
 /* GET - Show profile user */
 router.get('/profile', notLogin, controller.profile) 
+router.get('/profile2', controller.profile2) 
 // router.get('/editProfile', /* isLogin, */ controller.edit) 
 
 
