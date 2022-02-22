@@ -86,12 +86,12 @@ let controller = {
         res.redirect('/')
     }, 
     profile: (req, res) => {
-        Users.findByPk(req.session.user, {
+        Users.findByPk(req.params.id, {
             include: [{association: 'rol'}]
         })
         .then((user) => {
-            res.render('userProfile', {
-                user, 
+            res.render('users/profile',{
+                user,
                 session: req.session
             })
         })
