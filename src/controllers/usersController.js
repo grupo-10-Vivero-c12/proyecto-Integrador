@@ -2,7 +2,7 @@
 let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
-const { includes } = require('../validations/register');
+const { include } = require('../validations/register');
 const Users = db.User
 
 
@@ -85,7 +85,7 @@ let controller = {
         res.redirect('/')
     }, 
     profile: (req, res) => {
-        Users.findByPk(req.session.user.id, {
+        Users.findByPk(req.params.id, {
             include: [{association: 'rol'}]
         })
         .then((user) => {
@@ -94,13 +94,6 @@ let controller = {
                 session: req.session
             })
         })
-    },
-    profile2: (req, res) => {
-        
-        res.render('users/profile',{
-            session: req.session
-        })
-       
     }
 }
 

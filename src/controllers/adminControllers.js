@@ -229,7 +229,9 @@ let controller = {
                 
 
                 Opinions.destroy({where : { id_product : req.params.id}})
+
                 .then((result)=>{              
+
                     let deleteProduct = Products.destroy({ where : { id : req.params.id }})
                     let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
                     Promise.all([deleteProduct,deleteDescription])
