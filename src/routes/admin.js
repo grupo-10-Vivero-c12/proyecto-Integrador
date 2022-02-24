@@ -5,6 +5,7 @@ let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
 let editProductValidator = require('../validations/editProduct')
 let { isAdmin } = require('../middlewares/isLoging')
+var adminControllers = require('../controllers/adminControllers');
 
 /* GET - Home page */
 
@@ -39,5 +40,22 @@ router.get('/', isAdmin , controller.home)
 
 /* POST - Login Data */
 router.post('adminHome', controller.store)
+
+/* crud de usuarios admin */
+// crear
+
+router.get('/crear', adminControllers.create);
+
+router.post('/crear', adminControllers.save);
+
+router.post('/', adminControllers.index);
+
+router.get('/:id', adminControllers.detail);
+
+router.post('/edit:id', adminControllers.update);
+
+router.post('/delete:id', adminControllers.delete);
+
+
 
 module.exports = router

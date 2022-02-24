@@ -10,8 +10,8 @@ let cookieSession = require('./middlewares/cookieSession')
 let homeRouter = require('./routes/home'); 
 let productDetailRouter = require('./routes/product');
 let shoppingRouter = require('./routes/shoppingCart');
-let adminRouter = require('./routes/admin')
-let usersRouter = require('./routes/users')
+let adminRouter = require('./routes/admin');
+let usersRouter = require('./routes/users');
 
 
 /* let perfilUsuarioRouter = require('./routes/perfilUsuario'); */
@@ -31,11 +31,11 @@ app.set('views',path.join(__dirname , "views"))
 let methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
-app.use(session({
+/*app.use(session({
     secret: "viveroTimbo",
     resave: false,
     saveUninitialized: true,
-}))
+})) */
 
 app.use(cookieParser());
 app.use(cookieSession);

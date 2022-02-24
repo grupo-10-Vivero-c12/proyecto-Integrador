@@ -298,3 +298,86 @@ let controller = {
 }
 
 module.exports = controller
+
+
+let adminControllers = {
+      create: function (req, res) {
+        db.Rol.findAll()
+        .then(function(rol) {
+          return res.render('/admin/allUsuarios', {rol:rol});
+        })
+      },
+      save: function (req, res) {
+          db.User.create({
+              name: req.body.name,
+              email: req.body.email,
+              password: req.body.password,
+              avatar: req.body.avatar,
+              adress: req.body.adress,
+              phone: req.body.phone,
+              cp: req.body.cp,
+              province: req.body.province,
+              country: req.body.country,
+              date_birth: req.body.date_birth,
+              age: req.body.age,
+              id_roles: req.body.rol,
+          });
+          res.redirect('/admin')
+      },
+      index: function(req, res) {
+         db.User.findAll(users)
+         .then (function(){
+             res.render('/admin/indexUser', {users: users});
+         })
+      },
+      detail: function(req, res) {
+          db.User.findByPk(req.params.id, {
+           include: [{association: 'rol'}]
+          
+        })
+          .then(function(user) {
+              res.render('/admin/userDetail', {user:user});
+          })
+      },
+      edit: function(req, res) {
+          let pedidoUser = db.User.findByPk(req.params.id);
+     
+          let pedidoRoles = db.Rol.findAll();
+
+          Promise.all([pedidoUser, pedidoRoles])
+            .then(function(users, rol) {
+            res.render('/admin/editUser', {users:users, rol:rol});
+            })
+        },
+        update: function(req, res) {
+            db.User.update({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                avatar: req.body.avatar,
+                adress: req.body.adress,
+                phone: req.body.phone,
+                cp: req.body.cp,
+                province: req.body.province,
+                country: req.body.country,
+                date_birth: req.body.date_birth,
+                age: req.body.age,
+                id_roles: req.body.rol,
+        }, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.redirect('/admin/users' + req.params.id)
+        },
+         delete: function(req, res) {
+             db.User.destroy({
+                 where: {
+                     id: req.params.id
+                 }
+             })
+             res.redirect('/admin/users');
+         }
+}
+
+module.exports = adminControllers
