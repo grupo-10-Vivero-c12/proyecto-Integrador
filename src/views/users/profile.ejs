@@ -16,32 +16,48 @@
                 <span>/</span>
                 <p>usuarios</p>
                 <span>/</span>
-                <a href="/users/profile">perfil</a>
+                <a href="/users/profile/<%= user.id %> ">perfil</a>
 
             </div>
         </div>  
         <div class="body-profile">
-
-        
             <section class="avatar-container">
                 <div class="image-container">
                     <h3>Foto de perfil</h3>
-                    <div class="image">
-                        <img src="/images/users/1641294060051_img_.jpg" alt="">
-                    </div>
-                    
+                    <img src="/images/users/<%= user.avatar%>" alt="">
                 </div>
                 <div class="input-image">
-                    <form action="">
-                        <input type="file" id="file" name="avatar">
-                        <br>
+                    <form class="form-updata-avatar" action="/users/update/<%= user.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+                        <div class="add-file">
+                            <label for="file" id="labelAvatar">Subir Foto</label>
+                            <input type="file" id="file" name="avatar">
+                        </div>
                         <button type="submit" class="btn-submit" id="submitFile">Guardar</button>
                     </form>
-                    
+                </div>
+                <div class="change-password-container">
+                    <h5 id="btn-change-password"><i class="fa-solid fa-key"></i>Cambiar Contraseña</h5>
+                    <div id="change-password" class="inputs-container-pass">
+                        <form action="/users/update/<%= user.id %>?_method=PUT" method="post">
+                            <div class="change-password">
+                                <label for="password">Contraseña Actual:</label>
+                                <input type="password" name="password" id="password">
+                            </div>
+                            <div class="change-password">
+                                <label for="newPassword">Nueva Contraseña:</label>
+                                <input type="password" id="newPassword" name="newPassword">
+                            </div>
+                            <div class="change-password">
+                                <label for="confimPassword">Repetir Contraseña:</label>
+                                <input type="password" id="confiPassword" name="pass2">
+                            </div>
+                            <button type="submit">Guardar contraseña</button>
+                        </form>
+                    </div>
                 </div>
             </section>
             <section class="data-user">
-                <form action="">
+                <form action="/users/update/<%= user.id %>?_method=PUT" method="post">
                     <div class="title-profile">
                         <h2>Mis datos</h2>
                         <h2 id="edit">editar</h2>
@@ -50,50 +66,47 @@
                     <div class="data-container">
                     
                         <div class="input-contain">
-                            <label for="">Nombre:</label>
-                            <input type="text" id="inputName" name="name" class="input-js" disabled>
+                            <label for="inputName">Nombre:</label>
+                            <input type="text" id="inputName" name="first_name" class="input-js" disabled value="<%= user.first_name %> ">
                         </div>
                         <div class="input-contain">
-                            <label for="">Apellido:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="last_name">Apellido:</label>
+                            <input type="text" id="last_name" name="last_name" class="input-js" disabled value="<%= user.last_name %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Email:</label>
-                            <input type="email" class="input-js" disabled>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="input-js" disabled value="<%= user.email %>">
+                        </div>
+                        
+                        <div class="input-contain">
+                            <label for="address">Dirección:</label>
+                            <input type="text" id="address" name="address" class="input-js" disabled value="<%= user.address %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Contraseña:</label>
-                            <input type="password" class="input-js" disabled>
+                            <label for="phone">Telefono:</label>
+                            <input type="number" id="phone" name="phone" class="input-js" disabled value="<%= user.phone %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Dirección:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="cp">Codigo Postal:</label>
+                            <input type="number" id="cp" name="cp" class="input-js" disabled value="<%= user.cp %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Telefono:</label>
-                            <input type="number" class="input-js" disabled>
+                            <label for="country">Pais:</label>
+                            <input type="text" id="country" name="country" class="input-js" disabled value="<%= user.country %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Codigo Postal:</label>
-                            <input type="number" class="input-js" disabled>
+                            <label for="province">Provincia:</label>
+                            <input type="text" id="province" name="province" class="input-js" disabled value="<%= user.province %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Pais:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="date">fecha de nacimiento:</label>
+                            <input type="date" id="date" name="date_birth" class="input-js" disabled value="<%= user.date_birth %>">
                         </div>
                         <div class="input-contain">
-                            <label for="">Provincia:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="age">Edad:</label>
+                            <input type="number" id="age" name="age" class="input-js" disabled value="<%= user.age %>">
                         </div>
-                        <div class="input-contain">
-                            <label for="">fecha de nacimiento:</label>
-                            <input type="date" class="input-js" disabled>
-                        </div>
-                        <div class="input-contain">
-                            <label for="">Edad:</label>
-                            <input type="number" class="input-js" disabled>
-                        </div>
-                
+                   
                     </div>
                 </form>
             </section>

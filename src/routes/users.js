@@ -22,12 +22,9 @@ router.post('/register',uploadFile.single('avatar'),registerValidator, controlle
 // router.put('/edit/:id',controller.update)
 
 /* GET - Show profile user */
-
-
-
 router.get('/profile/:id', notLogin,  controller.profile) 
-
-// router.get('/editProfile', /* isLogin, */ controller.edit) 
+/* PUT - Update a user (User)*/
+router.put('/update/:id',uploadFile.single('avatar'), notLogin,  controller.update) 
 
 
 /* GEt - Logout*/

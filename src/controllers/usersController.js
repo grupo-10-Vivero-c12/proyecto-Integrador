@@ -3,6 +3,8 @@ let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const { include } = require('../validations/register');
+const fs = require('fs')
+
 const Users = db.User
 
 
@@ -93,6 +95,33 @@ let controller = {
                 user,
                 session: req.session
             })
+        })
+    },
+    update : (req,res)=>{
+        let data = ()=>{
+            if (req.body.password) {
+                return {password :bcrypt.hashSync(req.body.newPassword, 10) }
+            } else if (req.file){
+                Users.findByPk(req.params.id)
+                .then(user =>{
+                    if (fs.existsSync('./public/images/users/' + user.avatar) && user.avatar !== "default-image.png") {
+                        fs.unlinkSync(`./public/images/users/${user.avatar}`)
+                    } else {
+                        console.log('no se encontro el archivo')
+                    }
+                })
+                return { avatar : req.file.filename }
+            } else {
+                return{...req.body}
+            }
+        }
+        
+       
+        
+     
+        Users.update( data() ,{ where : { id : req.params.id }})
+        .then(()=>{
+            res.redirect('/users/profile/' + req.params.id)
         })
     }
 }
