@@ -1,0 +1,18 @@
+<%- include('header') -%>
+  <h1><%=user.name</h1>
+ <li>
+     Dirección: <%=users.adress%>
+</li>
+<li>
+    Rol: <%=users.roles.name%>
+</li>
+<a href="/admin/users/edit">
+    <button>Editar</button>
+</a>
+<form action="/admin/users/delete/<%=user.id%>" method="POST">
+    <button type="submit">Borrar</button>
+</form>
+    
+</a>
+
+<%- includ('footer') -%>

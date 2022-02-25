@@ -1,43 +1,60 @@
 let express = require("express");
 let router = express.Router();
-let controller = require("../controllers/adminControllers")
 let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
 let editProductValidator = require('../validations/editProduct')
 let { isAdmin } = require('../middlewares/isLoging')
+var {controllerProducts, controllerUsers} = require('../controllers/adminControllers');
 
 /* GET - Home page */
 
-router.get("/", isAdmin,controller.home)
-router.get("/add", isAdmin,  controller.add)
-router.post("/add",upload.single('images'), addProductValidator ,controller.store)
+router.get("/", isAdmin,controllerProducts.home)
+router.get("/add", isAdmin,  controllerProducts.add)
+router.post("/add",upload.single('images'), addProductValidator ,controllerProducts.store)
 // GET - Show products list
-router.get("/list-product",isAdmin, controller.allProducts)
+router.get("/list-product",isAdmin, controllerProducts.allProducts)
 //DELETE - delete one product
-router.delete("/list-product/:id", controller.delete)
+router.delete("/list-product/:id", controllerProducts.delete)
 
-router.get("/all-category", isAdmin, controller.allCategory)
+router.get("/all-category", isAdmin, controllerProducts.allCategory)
 //editor-formulario de productos
-router.get("/editProduct/:id", isAdmin, controller.edit)
+router.get("/editProduct/:id", isAdmin, controllerProducts.edit)
 
-router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controller.update)
+router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controllerProducts.update)
 
 //-----------------------------------
 /* GET - Show all users */
-router.get('/users', isAdmin, controller.allUsers) 
+router.get('/users', isAdmin, controllerProducts.allUsers) 
 
 /* GET - Show user edit form (Admin)*/
-router.get('/users/edit/:id', isAdmin, controller.editUser)
+router.get('/users/edit/:id', isAdmin, controllerProducts.editUser)
 /* PUT - Update a user (Admin)*/
-router.put('/users/edit/:id',controller.updateUser)
+router.put('/users/edit/:id',controllerProducts.updateUser)
 /* DELETE - Delete one user */
-router.delete('/users/delete/:id', controller.destroyUser)
+router.delete('/users/delete/:id', controllerProducts.destroyUser)
 
 //------------------------------------
-router.get('/', isAdmin , controller.home)
+router.get('/', isAdmin , controllerProducts.home)
 
 
 /* POST - Login Data */
-router.post('adminHome', controller.store)
+router.post('adminHome', controllerProducts.store)
+
+/* crud de usuarios admin */
+// crear
+
+router.get('/crear', controllerUsers.create);
+
+router.post('/crear', controllerUsers.save);
+
+router.post('/', controllerUsers.index);
+
+router.get('/:id', controllerUsers.detail);
+
+router.post('/edit:id', controllerUsers.update);
+
+router.post('/delete:id', controllerUsers.delete);
+
+
 
 module.exports = router

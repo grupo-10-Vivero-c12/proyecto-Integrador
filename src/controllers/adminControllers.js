@@ -1,4 +1,4 @@
-//let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
+
 const session = require('express-session');
 let { validationResult } = require('express-validator');
 
@@ -17,7 +17,7 @@ const Opinions = db.Opinion
 
 
 
-let controller = {
+let controllerProducts = {
    home:(req, res) =>{
         res.render('admin/adminHome',{
             session: req.session
@@ -221,11 +221,11 @@ let controller = {
     delete: (req,res) =>{
             Products.findByPk(req.params.id)
             .then((product) =>{
-                if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
-                    fs.unlinkSync(`./public/images/products/${product.images}`)
-                } else {
-                    console.log('no se encontro el archivo')
-                }
+                // if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                //     fs.unlinkSync(`./public/images/products/${product.images}`)
+                // } else {
+                //     console.log('no se encontro el archivo')
+                // }
                 
 
                 Opinions.destroy({where : { id_product : req.params.id}})
@@ -236,6 +236,11 @@ let controller = {
                     let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
                     Promise.all([deleteProduct,deleteDescription])
                     .then(() =>{
+                        if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                            fs.unlinkSync(`./public/images/products/${product.images}`)
+                        } else {
+                            console.log('no se encontro el archivo')
+                        }
                         res.redirect('/admin/list-product')
                     })
                     .catch(errors => res.send(errors))
@@ -297,4 +302,86 @@ let controller = {
 
 }
 
-module.exports = controller
+
+
+let controllerUsers = {
+      create: function (req, res) {
+        db.Rol.findAll()
+        .then(function(rol) {
+          return res.render('/admin/allUsuarios', {rol:rol});
+        })
+      },
+      save: function (req, res) {
+          db.User.create({
+              name: req.body.name,
+              email: req.body.email,
+              password: req.body.password,
+              avatar: req.body.avatar,
+              adress: req.body.adress,
+              phone: req.body.phone,
+              cp: req.body.cp,
+              province: req.body.province,
+              country: req.body.country,
+              date_birth: req.body.date_birth,
+              age: req.body.age,
+              id_roles: req.body.rol,
+          });
+          res.redirect('/admin')
+      },
+      index: function(req, res) {
+         db.User.findAll(users)
+         .then (function(){
+             res.render('/admin/indexUser', {users: users});
+         })
+      },
+      detail: function(req, res) {
+          db.User.findByPk(req.params.id, {
+           include: [{association: 'rol'}]
+          
+        })
+          .then(function(user) {
+              res.render('/admin/userDetail', {user:user});
+          })
+      },
+      edit: function(req, res) {
+          let pedidoUser = db.User.findByPk(req.params.id);
+     
+          let pedidoRoles = db.Rol.findAll();
+
+          Promise.all([pedidoUser, pedidoRoles])
+            .then(function(users, rol) {
+            res.render('/admin/editUser', {users:users, rol:rol});
+            })
+        },
+        update: function(req, res) {
+            db.User.update({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+                avatar: req.body.avatar,
+                adress: req.body.adress,
+                phone: req.body.phone,
+                cp: req.body.cp,
+                province: req.body.province,
+                country: req.body.country,
+                date_birth: req.body.date_birth,
+                age: req.body.age,
+                id_roles: req.body.rol,
+        }, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.redirect('/admin/users' + req.params.id)
+        },
+         delete: function(req, res) {
+             db.User.destroy({
+                 where: {
+                     id: req.params.id
+                 }
+             })
+             res.redirect('/admin/users');
+         }
+}
+
+module.exports = {controllerProducts, controllerUsers}

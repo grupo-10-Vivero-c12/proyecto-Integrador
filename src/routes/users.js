@@ -16,11 +16,6 @@ router.get('/register', isLogin ,controller.register)
 /* POST - Register data */
 router.post('/register',uploadFile.single('avatar'),registerValidator, controller.processRegister)
 
-/* GET - Show user edit form (User)*/
-// router.get('/edit/:id',isLogin, controller.edit)
-/* PUT - Update a user (User)*/
-// router.put('/edit/:id',controller.update)
-
 /* GET - Show profile user */
 router.get('/profile/:id', notLogin,  controller.profile) 
 /* PUT - Update a user (User)*/
