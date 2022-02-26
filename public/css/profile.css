@@ -79,7 +79,9 @@
     border-radius: 23px;
 }
 
-
+#last_email{
+    display: none;
+}
 .image-container{
     display: flex;
     justify-content: center;
@@ -152,7 +154,7 @@
     flex-wrap: wrap;
 }
 
-.input-contain label, .input-contain input, .change-password label, .change-password input{
+.input-contain label, .input-contain input, .change-password label, .box-input input{
     display: block;
     margin: 4px 0;
     padding: 5px
@@ -168,10 +170,18 @@
     text-transform: capitalize;
     
 }
+.error-message{
+    color: red;
+    font-size: 16px;
+    margin: 5px 5px 10px;
+}
 
-.input-contain input, .change-password input{
-    background-color: aliceblue;
+.box-input, .box-data-input{
     width: 60%;
+}
+.change-password .box-input input, .input-contain .box-data-input input{
+    background-color: aliceblue;
+    width: 100%;
     border: none;
     border-radius: 5px;
     color: rgb(143, 143, 143);
@@ -186,7 +196,7 @@
   margin: 0; 
 }
 
-.input-contain input:focus, .change-password input:focus{
+.input-contain input:focus, .change-password .box-input input:focus{
     outline: none;
     color: black;
     border-bottom:  2px solid rgb(177, 177, 177);
@@ -213,6 +223,11 @@
     margin: 0;
     padding: 0;
 }
+
+.is-invalid{
+    border: 1px solid red !important;
+}
+
 @media (min-width : 775px) {
     .data-user{
         max-width: 700px;

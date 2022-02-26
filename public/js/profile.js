@@ -1,5 +1,5 @@
 window.onload = ()=>{
-    let $name = document.querySelector('#inputName')
+    let $inputPass = document.querySelectorAll('.input-pass')
     let $editar = document.querySelector('#edit')
     let $inputs = document.querySelectorAll('.input-js')
     let $button = document.querySelector('#buttonSubmit')
@@ -9,6 +9,26 @@ window.onload = ()=>{
     let btnSubmitFile = document.querySelector('#submitFile')
     
     btnSubmitFile.style.display = "none"
+
+    for (let i = 0; i < $inputs.length; i++) {
+        if ($inputs[i].classList.contains('is-invalid')) {
+            for (let i = 0; i < $inputs.length; i++) {
+                $editar.style.display = "none"
+                $inputs[i].disabled = false
+                $inputs[i].style.color = "black"
+                $button.style.display = "block"
+            } 
+            break
+        } 
+    } 
+    
+    for (let i = 0; i < $inputPass.length; i++) {
+        if ($inputPass[i].classList.contains('is-invalid')) {
+            changePassowrd.classList.toggle('ds-block')
+            break
+        } 
+    } 
+
 
     $editar.addEventListener('click', ()=>{
         if ($editar.innerText.toLowerCase() === "editar") {
@@ -26,6 +46,7 @@ window.onload = ()=>{
         }
         
     })
+
 
     $btnH5.addEventListener('click', ()=>{
         changePassowrd.classList.toggle('ds-block')
