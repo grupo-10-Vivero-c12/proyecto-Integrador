@@ -36,13 +36,11 @@ module.exports = (sequelize, dataTypes) =>{
         },
         id_category : {
             type : dataTypes.INTEGER(10).UNSIGNED,
-            allowNull : false,
-            defaultValue : 1
+            allowNull : false
         },
         id_description : {
             type : dataTypes.INTEGER(10).UNSIGNED,
-            allowNull : false,
-            defaultValue : 1
+            allowNull : false
         },
 
     }
