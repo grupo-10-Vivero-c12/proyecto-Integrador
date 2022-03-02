@@ -5,7 +5,7 @@ let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
 let editProductValidator = require('../validations/editProduct')
 let { isAdmin } = require('../middlewares/isLoging')
-var adminControllers = require('../controllers/adminControllers');
+var {adminControllers, controller} = require('../controllers/adminControllers');
 
 /* GET - Home page */
 

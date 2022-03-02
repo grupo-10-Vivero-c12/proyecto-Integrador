@@ -297,7 +297,7 @@ let controller = {
 
 }
 
-module.exports = controller
+
 
 
 let adminControllers = {
@@ -380,4 +380,4 @@ let adminControllers = {
          }
 }
 
-module.exports = adminControllers
+module.exports = {adminControllers, controller}
