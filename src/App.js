@@ -13,9 +13,6 @@ let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin');
 let usersRouter = require('./routes/users');
 
-
-/* let perfilUsuarioRouter = require('./routes/perfilUsuario'); */
-
 app.use(express.static('public'));
 app.use(session({
     secret: "viveroTimbo",
@@ -30,12 +27,6 @@ app.set('views',path.join(__dirname , "views"))
 /* METHOD OVERRIDE */
 let methodOverride = require('method-override')
 app.use(methodOverride('_method'))
-
-/*app.use(session({
-    secret: "viveroTimbo",
-    resave: false,
-    saveUninitialized: true,
-})) */
 
 app.use(cookieParser());
 app.use(cookieSession);

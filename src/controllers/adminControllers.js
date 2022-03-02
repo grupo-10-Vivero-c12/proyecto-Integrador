@@ -1,4 +1,4 @@
-//let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
+
 const session = require('express-session');
 let { validationResult } = require('express-validator');
 
@@ -17,7 +17,7 @@ const Opinions = db.Opinion
 
 
 
-let controller = {
+let controllerProducts = {
    home:(req, res) =>{
         res.render('admin/adminHome',{
             session: req.session
@@ -221,11 +221,11 @@ let controller = {
     delete: (req,res) =>{
             Products.findByPk(req.params.id)
             .then((product) =>{
-                if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
-                    fs.unlinkSync(`./public/images/products/${product.images}`)
-                } else {
-                    console.log('no se encontro el archivo')
-                }
+                // if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                //     fs.unlinkSync(`./public/images/products/${product.images}`)
+                // } else {
+                //     console.log('no se encontro el archivo')
+                // }
                 
 
                 Opinions.destroy({where : { id_product : req.params.id}})
@@ -236,6 +236,11 @@ let controller = {
                     let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
                     Promise.all([deleteProduct,deleteDescription])
                     .then(() =>{
+                        if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                            fs.unlinkSync(`./public/images/products/${product.images}`)
+                        } else {
+                            console.log('no se encontro el archivo')
+                        }
                         res.redirect('/admin/list-product')
                     })
                     .catch(errors => res.send(errors))
@@ -299,8 +304,7 @@ let controller = {
 
 
 
-
-let adminControllers = {
+let controllerUsers = {
       create: function (req, res) {
         db.Rol.findAll()
         .then(function(rol) {
@@ -380,4 +384,4 @@ let adminControllers = {
          }
 }
 
-module.exports = {adminControllers, controller}
+module.exports = {controllerProducts, controllerUsers}

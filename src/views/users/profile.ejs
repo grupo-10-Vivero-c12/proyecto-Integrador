@@ -16,32 +16,70 @@
                 <span>/</span>
                 <p>usuarios</p>
                 <span>/</span>
-                <a href="/users/profile">perfil</a>
+                <a href="/users/profile/<%= user.id %> ">perfil</a>
 
             </div>
         </div>  
         <div class="body-profile">
-
-        
             <section class="avatar-container">
                 <div class="image-container">
                     <h3>Foto de perfil</h3>
-                    <div class="image">
-                        <img src="/images/users/1641294060051_img_.jpg" alt="">
-                    </div>
-                    
+                    <img src="/images/users/<%= user.avatar%>" alt="">
                 </div>
                 <div class="input-image">
-                    <form action="">
-                        <input type="file" id="file" name="avatar">
+                    <form class="form-updata-avatar" action="/users/update/image-profile/<%= user.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+                        <div class="add-file">
+                            <label for="file" id="labelAvatar">Subir Foto</label>
+                            <input type="file" id="file" name="avatar">
+                        </div>
                         <br>
+                        <% if (fileValidator) { %>
+                            <small class="error-message"> <%= fileValidator %> </small>
+                        <% } %>
                         <button type="submit" class="btn-submit" id="submitFile">Guardar</button>
                     </form>
-                    
+                </div>
+                <div class="change-password-container">
+                    <h5 id="btn-change-password"><i class="fa-solid fa-key"></i>Cambiar Contraseña</h5>
+                    <div id="change-password" class="inputs-container-pass">
+                        <form action="/users/update/password/<%= user.id %>?_method=PUT" method="post">
+                            <div class="change-password">
+                                <label for="password">Contraseña Actual:</label>
+                                <div class="box-input">
+                                    <input type="password" name="password" id="password" class="input-pass <%= (locals.errors && errors.password) ? "is-invalid" : "" %>">
+                                    <% if (locals.errors && errors.password) { %>
+                                        <small class="error-message"><%= errors.password.msg %> </small>
+                                    <% } %>
+                                </div>
+
+                            </div>
+                            <div class="change-password">
+                                <label for="newPassword">Nueva Contraseña:</label>
+                                <div class="box-input">
+                                    <input type="password" id="newPassword" name="newPassword" class="input-pass <%= (locals.errors && errors.newPassword) ? "is-invalid" : "" %>">
+                                    <% if (locals.errors && errors.newPassword) { %>
+                                        <small class="error-message"><%= errors.newPassword.msg %> </small>
+                                    <% } %>
+                                </div>
+                                
+                            </div>
+                            <div class="change-password">
+                                <label for="confiPassword">Repetir Contraseña:</label>
+                                <div class="box-input">
+                                    <input type="password" id="confiPassword" name="pass2" class="input-pass <%= (locals.errors && errors.pass2) ? "is-invalid" : "" %>">
+                                    <% if (locals.errors && errors.pass2) { %>
+                                        <small class="error-message"><%= errors.pass2.msg %> </small>
+                                    <% } %>
+                                </div>
+                                
+                            </div>
+                            <button type="submit">Guardar contraseña</button>
+                        </form>
+                    </div>
                 </div>
             </section>
             <section class="data-user">
-                <form action="">
+                <form action="/users/update/<%= user.id %>?_method=PUT" method="post">
                     <div class="title-profile">
                         <h2>Mis datos</h2>
                         <h2 id="edit">editar</h2>
@@ -50,50 +88,104 @@
                     <div class="data-container">
                     
                         <div class="input-contain">
-                            <label for="">Nombre:</label>
-                            <input type="text" id="inputName" name="name" class="input-js" disabled>
+                            <label for="inputName">Nombre:</label>
+                            <div class="box-data-input">
+                                <input type="text" id="inputName" name="first_name" class="input-js <%= (locals.errors && errors.first_name) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.first_name : user.first_name %>">
+                                <% if (locals.errors && errors.first_name) { %>
+                                    <small class="error-message"><%= errors.first_name.msg %> </small>
+                                <% } %>
+                                
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Apellido:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="last_name">Apellido:</label>
+                            <div class="box-data-input">
+                                <input type="text" id="last_name" name="last_name" class="input-js <%= (locals.errors && errors.last_name) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.last_name : user.last_name %>">
+                                <% if (locals.errors && errors.last_name) { %>
+                                    <small class="error-message"><%= errors.last_name.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Email:</label>
-                            <input type="email" class="input-js" disabled>
+                            <label for="email">Email:</label>
+                            <div class="box-data-input">
+                                <input type="email" id="email" name="email" class="input-js <%= (locals.errors && errors.email) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.email : user.email %>">
+                                <% if (locals.errors && errors.email) { %>
+                                    <small class="error-message"><%= errors.email.msg %> </small>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="input-contain" id="last_email">
+                            <label for=""></label>
+                            <div class="box-data-input">
+                                <input type="email" id="" name="last_email" class="input-js" disabled value="<%= user.email %>">
+                            </div>
+                        </div>
+                        
+                        <div class="input-contain">
+                            <label for="address">Dirección:</label>
+                            <div class="box-data-input">
+                                <input type="text" id="address" name="address" class="input-js <%= (locals.errors && errors.address) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.address : user.address %>">
+                                <% if (locals.errors && errors.address) { %>
+                                    <small class="error-message"><%= errors.address.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Contraseña:</label>
-                            <input type="password" class="input-js" disabled>
+                            <label for="phone">Telefono:</label>
+                            <div class="box-data-input">
+                                <input type="number" id="phone" name="phone" class="input-js <%= (locals.errors && errors.phone) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.phone : user.phone %>">
+                                <% if (locals.errors && errors.phone) { %>
+                                    <small class="error-message"><%= errors.phone.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Dirección:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="cp">Codigo Postal:</label>
+                            <div class="box-data-input">
+                                <input type="number" id="cp" name="cp" class="input-js <%= (locals.errors && errors.cp) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.cp : user.cp %>">
+                                <% if (locals.errors && errors.cp) { %>
+                                    <small class="error-message"><%= errors.cp.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Telefono:</label>
-                            <input type="number" class="input-js" disabled>
+                            <label for="country">Pais:</label>
+                            <div class="box-data-input">
+                                <input type="text" id="country" name="country" class="input-js <%= (locals.errors && errors.country) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.country : user.country %>">
+                                <% if (locals.errors && errors.country) { %>
+                                    <small class="error-message"><%= errors.country.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Codigo Postal:</label>
-                            <input type="number" class="input-js" disabled>
+                            <label for="province">Provincia:</label>
+                            <div class="box-data-input">
+                                <input type="text" id="province" name="province" class="input-js <%= (locals.errors && errors.province) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.province : user.province %>">
+                                <% if (locals.errors && errors.province) { %>
+                                    <small class="error-message"><%= errors.province.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Pais:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="date">fecha de nacimiento:</label>
+                            <div class="box-data-input">
+                                <input type="date" id="date" name="date_birth" class="input-js <%= (locals.errors && errors.date_birth) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.date_birth : user.date_birth %>">
+                                <% if (locals.errors && errors.date_birth) { %>
+                                    <small class="error-message"><%= errors.date_birth.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="input-contain">
-                            <label for="">Provincia:</label>
-                            <input type="text" class="input-js" disabled>
+                            <label for="age">Edad:</label>
+                            <div class="box-data-input">
+                                <input type="number" id="age" name="age" class="input-js <%= (locals.errors && errors.age) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.age : user.age %>">
+                                <% if (locals.errors && errors.age) { %>
+                                    <small class="error-message"><%= errors.age.msg %> </small>
+                                <% } %>
+                            </div>
                         </div>
-                        <div class="input-contain">
-                            <label for="">fecha de nacimiento:</label>
-                            <input type="date" class="input-js" disabled>
-                        </div>
-                        <div class="input-contain">
-                            <label for="">Edad:</label>
-                            <input type="number" class="input-js" disabled>
-                        </div>
-                
+                   
                     </div>
                 </form>
             </section>

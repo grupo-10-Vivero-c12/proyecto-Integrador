@@ -36,12 +36,12 @@ module.exports = (sequelize, dataTypes) =>{
 
     const Description = sequelize.define(alias, cols, config)
 
-    // Description.associate = (models)=>{
-    //     Description.belongsTo(models.Product,{
-    //         as : "product",
-    //         foreignKey : "id_description"
-    //     })
-    // }
+    Description.associate = (models)=>{
+        Description.hasOne(models.Product,{
+            as : "product",
+            foreignKey : "id_description"
+        })
+    }
 
     return Description
 
