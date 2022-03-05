@@ -11,16 +11,19 @@
                     <div class="form-create">
                         <form action="/admin/editProduct/<%- product.id %>?_method=PUT" method="post" class="form-container" enctype="multipart/form-data">
                             <div class="form-contain name-form">
-                                <label for="nom">Nombre del producto</label>
-                                <input type="text" id="nom" value="<%- product ? product.name : locals.old && old.name %>" name="name" >
+                                <label for="name">Nombre del producto</label>
+                                <input type="text" id="name" value="<%- product ? product.name : locals.old && old.name %>" name="name" >
                                 <% if (locals.errors && errors.name) { %>
                                     <small class="error-message"> <%= errors.name.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="message-name"></small>
                             </div>
 
                             <div class="form-contain descripcion-form">
                                 <label for="des">Descripción</label>
                                 <textarea name="description" id="des" cols="30" rows="10"><%- product ? description.description : locals.old && old.description %></textarea>
+                                <p><small id="count">0</small>/300</p>
+                                <small class="error-message ds-none" id="message-description"></small>
                             </div>
                             <div class="form-contain descripcion-form">
                                 <label for="ubi">Ubicación</label>
@@ -28,15 +31,18 @@
                                 <% if (locals.errors && errors.location) { %>
                                     <small class="error-message"> <%= errors.location.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="message-location"></small>
                             </div>
                             <div class="form-contain descripcion-form">
                                 <label for="sus">Sustrato</label>
                                 <input type="text" name="substratum" id="sus" value="<%- product ? description.substratum : locals.old && old.substratum %>" >
+                                <small class="error-message ds-none" id="message-sustratum"></small>
                             </div>
 
                             <div class="form-contain descripcion-form">
                                 <label for="flo">Floración</label>
                                 <input type="text" name="flowering" id="flo" value="<%- product ? description.flowering : locals.old && old.flowering %>" >
+                                <small class="error-message ds-none" id="message-flowering"></small>
                             </div>
 
                             <div class="form-contain img-form">
@@ -47,6 +53,7 @@
                                 <% if (fileValidator) { %>
                                     <small class="error-message"> <%= fileValidator %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="message-image"></small>
                             </div>
 
                             <div class="form-contain categ-form">
@@ -61,6 +68,7 @@
                                 <% if (locals.errors && errors.category) { %>
                                     <small class="error-message"> <%= errors.category.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="message-category"></small>
                                 
                                 
                             </div>
@@ -68,6 +76,7 @@
                             <div class="form-contain colo-form">
                                 <label for="color">Color</label>
                                 <input type="text" id="color" value="<%- product ? product.color : locals.old && old.color %>" name="color">
+                                <small class="error-message ds-none" id="message-color"></small>
                             </div>
 
                             <div class="form-contain price-form">
@@ -76,6 +85,7 @@
                                 <% if (locals.errors && errors.price) { %>
                                     <small class="error-message"> <%= errors.price.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="message-price"></small>
                             </div>
 
                             <div class="form-contain price-form">
@@ -84,9 +94,11 @@
                                 <% if (locals.errors && errors.stock) { %>
                                     <small class="error-message"> <%= errors.stock.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="message-stock"></small>
                             </div>
 
                             <div class="btn-admin">
+                                <small class="error-message ds-none" id="submitError"></small>
                                 <button type="submit">Editar</button>
                             </div>
                         </form>
@@ -96,6 +108,7 @@
             </main>
 
             <script src="/js/menuAdmin.js"></script>
+            <script src="/js/validationEditProduct.js"></script>
     </body>
 
 </html>

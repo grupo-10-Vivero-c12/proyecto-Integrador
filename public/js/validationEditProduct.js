@@ -23,7 +23,7 @@ window.onload = ()=>{
     errorStock = document.querySelector('#message-stock'),
     submitError = document.querySelector('#submitError')
 
-    let regExAlphaNumeric = /^[a-zA-Z\sñáéíóúü1234567890., ]*$/,
+    let regExAlphaNumeric = /^[a-zA-Z\sñÑáÁéÉíÍóÓúÚü1234567890., ]*$/,
     regExDNI = /^[0-9]{7,8}$/,
     regExNumber = /^[0-9]{1,50}$/,
     regExPhone = /^[0-9]{8,10}$/,
@@ -335,4 +335,3 @@ window.onload = ()=>{
 
     })
 }
-
