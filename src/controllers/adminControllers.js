@@ -3,10 +3,9 @@ const session = require('express-session');
 let { validationResult } = require('express-validator');
 
 let fs = require('fs')
-let path = require('path')
+let fetch = require('node-fetch')
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
 
 const db = require('../database/models')
 const Products = db.Product
@@ -251,7 +250,6 @@ let controllerProducts = {
             })
             .catch(errors => res.send(errors))
     },
-
 
     allUsers: (req,res) =>{
         res.render("admin/users/allUsers",{

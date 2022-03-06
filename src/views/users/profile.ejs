@@ -5,6 +5,8 @@
     <%- include('../partials/head.ejs') %>
     <title>Perfil de usuario</title>
     <script src="/js/profile.js" defer></script>
+    <script src="/js/validationProfile.js" defer></script>
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
 </head>
     
 <body>
@@ -42,7 +44,7 @@
                 <div class="change-password-container">
                     <h5 id="btn-change-password"><i class="fa-solid fa-key"></i>Cambiar Contraseña</h5>
                     <div id="change-password" class="inputs-container-pass">
-                        <form action="/users/update/password/<%= user.id %>?_method=PUT" method="post">
+                        <form action="/users/update/password/<%= user.id %>?_method=PUT" method="post" id="formPass">
                             <div class="change-password">
                                 <label for="password">Contraseña Actual:</label>
                                 <div class="box-input">
@@ -50,6 +52,7 @@
                                     <% if (locals.errors && errors.password) { %>
                                         <small class="error-message"><%= errors.password.msg %> </small>
                                     <% } %>
+                                    <small class="error-message ds-none" id="message-password"></small>
                                 </div>
 
                             </div>
@@ -60,6 +63,7 @@
                                     <% if (locals.errors && errors.newPassword) { %>
                                         <small class="error-message"><%= errors.newPassword.msg %> </small>
                                     <% } %>
+                                    <small class="error-message ds-none" id="message-password2"></small>
                                 </div>
                                 
                             </div>
@@ -70,8 +74,11 @@
                                     <% if (locals.errors && errors.pass2) { %>
                                         <small class="error-message"><%= errors.pass2.msg %> </small>
                                     <% } %>
+                                    <small class="error-message ds-none" id="message-password3"></small>
+                                    <small class="error-message ds-none" id="message-password4"></small>
+                                    
                                 </div>
-                                
+                                <small class="error-message ds-none" id="message-password5"></small>
                             </div>
                             <button type="submit">Guardar contraseña</button>
                         </form>
@@ -79,14 +86,14 @@
                 </div>
             </section>
             <section class="data-user">
-                <form action="/users/update/<%= user.id %>?_method=PUT" method="post">
+                <form action="/users/update/<%= user.id %>?_method=PUT" method="post" id="form-data">
                     <div class="title-profile">
                         <h2>Mis datos</h2>
                         <h2 id="edit">editar</h2>
                         <button type="submit" class="btn-submit" id="buttonSubmit">Guardar</button>
                     </div>
                     <div class="data-container">
-                    
+                        <small class="error-message ds-none" id="error-submit"></small>
                         <div class="input-contain">
                             <label for="inputName">Nombre:</label>
                             <div class="box-data-input">
@@ -94,6 +101,7 @@
                                 <% if (locals.errors && errors.first_name) { %>
                                     <small class="error-message"><%= errors.first_name.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-name"></small>
                                 
                             </div>
                         </div>
@@ -104,6 +112,7 @@
                                 <% if (locals.errors && errors.last_name) { %>
                                     <small class="error-message"><%= errors.last_name.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-last-name"></small>
                             </div>
                         </div>
                         <div class="input-contain">
@@ -113,12 +122,13 @@
                                 <% if (locals.errors && errors.email) { %>
                                     <small class="error-message"><%= errors.email.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-email"></small>
                             </div>
                         </div>
                         <div class="input-contain" id="last_email">
                             <label for=""></label>
                             <div class="box-data-input">
-                                <input type="email" id="" name="last_email" class="input-js" disabled value="<%= user.email %>">
+                                <input type="email" id="last_email" name="last_email" class="input-js" disabled value="<%= user.email %>">
                             </div>
                         </div>
                         
@@ -129,6 +139,7 @@
                                 <% if (locals.errors && errors.address) { %>
                                     <small class="error-message"><%= errors.address.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-address"></small>
                             </div>
                         </div>
                         <div class="input-contain">
@@ -138,6 +149,7 @@
                                 <% if (locals.errors && errors.phone) { %>
                                     <small class="error-message"><%= errors.phone.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-phone"></small>
                             </div>
                         </div>
                         <div class="input-contain">
@@ -147,24 +159,37 @@
                                 <% if (locals.errors && errors.cp) { %>
                                     <small class="error-message"><%= errors.cp.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-cp"></small>
                             </div>
                         </div>
                         <div class="input-contain">
                             <label for="country">Pais:</label>
                             <div class="box-data-input">
-                                <input type="text" id="country" name="country" class="input-js <%= (locals.errors && errors.country) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.country : user.country %>">
+                                <select name="country" id="country" class="input-js <%= (locals.errors && errors.country) ? "is-invalid" : "" %>" disabled>
+                                    <option value=""></option>
+                                    <% countries.forEach(element => { %>
+                                        <option value="<%= element %>" <%= user.country === element ? "selected" : "" %> ><%= element %> </option>
+                                    <% }) %>
+                                </select>
                                 <% if (locals.errors && errors.country) { %>
                                     <small class="error-message"><%= errors.country.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-country"></small>
                             </div>
                         </div>
                         <div class="input-contain">
                             <label for="province">Provincia:</label>
                             <div class="box-data-input">
-                                <input type="text" id="province" name="province" class="input-js <%= (locals.errors && errors.province) ? "is-invalid" : "" %>" disabled value="<%= (locals.old) ? old.province : user.province %>">
+                                <select name="province" id="province" class="input-js <%= (locals.errors && errors.provinces) ? "is-invalid" : "" %>" disabled>
+                                    <option value=""></option>
+                                    <% provinces.forEach(element => { %>
+                                        <option value="<%= element %>" <%= user.province === element ? "selected" : "" %> ><%= element %> </option>
+                                    <% }) %>
+                                </select>
                                 <% if (locals.errors && errors.province) { %>
                                     <small class="error-message"><%= errors.province.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-province"></small>
                             </div>
                         </div>
                         <div class="input-contain">
@@ -174,6 +199,7 @@
                                 <% if (locals.errors && errors.date_birth) { %>
                                     <small class="error-message"><%= errors.date_birth.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-date"></small>
                             </div>
                         </div>
                         <div class="input-contain">
@@ -183,6 +209,7 @@
                                 <% if (locals.errors && errors.age) { %>
                                     <small class="error-message"><%= errors.age.msg %> </small>
                                 <% } %>
+                                <small class="error-message ds-none" id="error-age"></small>
                             </div>
                         </div>
                    
@@ -192,5 +219,7 @@
         </div>
     </main>
     <%- include('../partials/footer.ejs') %>
+    
+    
 </body>
 </html>

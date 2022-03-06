@@ -2,8 +2,8 @@
 let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
-const { include } = require('../validations/register');
 const fs = require('fs')
+let fetch = require('node-fetch');
 
 const Users = db.User
 
@@ -91,11 +91,23 @@ let controller = {
             include: [{association: 'rol'}]
         })
         .then((user) => {
-            res.render('users/profile',{
-                user,
-                session: req.session,
-                fileValidator : req.fileValidationError
+            fetch("http://localhost:3000/apiv1/countries")
+            .then(response => response.json())
+            .then(data =>{
+                fetch("http://localhost:3000/apiv1/provinces")
+                .then(response => response.json())
+                .then(provinces =>{
+                    res.render('users/profile',{
+                        user,
+                        session: req.session,
+                        fileValidator : req.fileValidationError,
+                        countries : data.data.nameCountries,
+                        provinces : provinces.data.provincesSort
+                    })
+                })
+               
             })
+            
         })
     },
     update : (req,res)=>{

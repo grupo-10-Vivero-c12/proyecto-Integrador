@@ -33,6 +33,7 @@ router.put('/users/edit/:id',controllerProducts.updateUser)
 /* DELETE - Delete one user */
 router.delete('/users/delete/:id', controllerProducts.destroyUser)
 
+
 //------------------------------------
 router.get('/', isAdmin , controllerProducts.home)
 

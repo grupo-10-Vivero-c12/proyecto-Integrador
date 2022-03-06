@@ -154,7 +154,7 @@
     flex-wrap: wrap;
 }
 
-.input-contain label, .input-contain input, .change-password label, .box-input input{
+.input-contain label, .input-contain input, .change-password label, .box-input input, .input-contain .box-data-input select{
     display: block;
     margin: 4px 0;
     padding: 5px
@@ -179,7 +179,7 @@
 .box-input, .box-data-input{
     width: 60%;
 }
-.change-password .box-input input, .input-contain .box-data-input input{
+.change-password .box-input input, .input-contain .box-data-input input, .input-contain .box-data-input select{
     background-color: aliceblue;
     width: 100%;
     border: none;
@@ -196,7 +196,7 @@
   margin: 0; 
 }
 
-.input-contain input:focus, .change-password .box-input input:focus{
+.input-contain input:focus, .change-password .box-input input:focus, .input-contain .box-data-input select:focus{
     outline: none;
     color: black;
     border-bottom:  2px solid rgb(177, 177, 177);
@@ -227,12 +227,23 @@
 .is-invalid{
     border: 1px solid red !important;
 }
+.is-valid{
+    border: 1px solid rgb(183, 240, 99);
+}
+.text-danger{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+.ds-none{
+    display: none;
+}
 
 @media (min-width : 775px) {
     .data-user{
         max-width: 700px;
     }
-    .input-contain label, .input-contain input{
+    .input-contain label, .input-contain input, .input-contain .box-data-input select{
         display: block;
         margin: 7px 0;
         padding: 7px;
@@ -241,7 +252,7 @@
     .input-contain label{
         font-weight: 500;
     }
-    .input-contain input:focus{
+    .input-contain input:focus, .input-contain .box-data-input select:focus{
         border-bottom:  3px solid rgb(177, 177, 177);
     }
     .avatar-container{
