@@ -1,4 +1,4 @@
-let express = require("express");
+let express = require('express');
 let router = express.Router();
 let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
@@ -22,38 +22,17 @@ router.get("/editProduct/:id", isAdmin, controllerProducts.edit)
 
 router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controllerProducts.update)
 
-//-----------------------------------
-/* GET - Show all users */
-router.get('/users', isAdmin, controllerProducts.allUsers) 
+/*  Users  */
+router.get("/", isAdmin,controllerUsers.home)
+router.get("/list-user", isAdmin,  controllerUsers.index)
+router.post("/list-user", controllerUsers.index)
+// GET - Show products list
+router.get("/list-User",isAdmin, controllerUsers.index)
 
-/* GET - Show user edit form (Admin)*/
-router.get('/users/edit/:id', isAdmin, controllerProducts.editUser)
-/* PUT - Update a user (Admin)*/
-router.put('/users/edit/:id',controllerProducts.updateUser)
-/* DELETE - Delete one user */
-router.delete('/users/delete/:id', controllerProducts.destroyUser)
+router.get("/list-user", isAdmin,  controllerUsers.permission)
 
-//------------------------------------
-router.get('/', isAdmin , controllerProducts.home)
-
-
-/* POST - Login Data */
-router.post('adminHome', controllerProducts.store)
-
-/* crud de usuarios admin */
-// crear
-
-router.get('/crear', controllerUsers.create);
-
-router.post('/crear', controllerUsers.save);
-
-router.post('/', controllerUsers.index);
-
-router.get('/:id', controllerUsers.detail);
-
-router.post('/edit:id', controllerUsers.update);
-
-router.post('/delete:id', controllerUsers.delete);
+//DELETE - delete one product
+router.delete("/list-user/:id", controllerUsers.delete)
 
 
 

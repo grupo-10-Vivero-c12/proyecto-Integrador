@@ -3,7 +3,8 @@ const session = require('express-session');
 let { validationResult } = require('express-validator');
 
 let fs = require('fs')
-let path = require('path')
+let path = require('path');
+const { nextTick } = require('process');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -13,6 +14,8 @@ const Products = db.Product
 const Categories = db.Categorie
 const Descriptions = db.Description
 const Opinions = db.Opinion
+const Users = db.User
+const Rol = db.Rol
 
 
 
@@ -257,82 +260,57 @@ let controllerProducts = {
 
 
 let controllerUsers = {
-      create: function (req, res) {
-        db.Rol.findAll()
-        .then(function(rol) {
-          return res.render('/admin/allUsuarios', {rol:rol});
+    home:(req, res) =>{
+        res.render('admin/adminHome',{
+            session: req.session
         })
-      },
-      save: function (req, res) {
-          db.User.create({
-              name: req.body.name,
-              email: req.body.email,
-              password: req.body.password,
-              avatar: req.body.avatar,
-              adress: req.body.adress,
-              phone: req.body.phone,
-              cp: req.body.cp,
-              province: req.body.province,
-              country: req.body.country,
-              date_birth: req.body.date_birth,
-              age: req.body.age,
-              id_roles: req.body.rol,
-          });
-          res.redirect('/admin')
-      },
-      index: function(req, res) {
-         db.User.findAll(users)
-         .then (function(){
-             res.render('/admin/indexUser', {users: users});
-         })
-      },
-      detail: function(req, res) {
-          db.User.findByPk(req.params.id, {
-           include: [{association: 'rol'}]
-          
-        })
-          .then(function(user) {
-              res.render('/admin/userDetail', {user:user});
-          })
-      },
-      edit: function(req, res) {
-          let pedidoUser = db.User.findByPk(req.params.id);
+    }, 
      
-          let pedidoRoles = db.Rol.findAll();
-
-          Promise.all([pedidoUser, pedidoRoles])
-            .then(function(users, rol) {
-            res.render('/admin/editUser', {users:users, rol:rol});
+    index: (req, res) => {
+        Users.findAll(
+        )
+        .then(Users =>{
+            res.render('admin/indexUser', {
+                Users,
+                toThousand
+                
+                
+            })
+        })
+        
+    },
+     
+      permission: (req, res) => {
+         Rol.findAll()
+            .then(() => {
+                let permissionOn = "Yes"
+                let permissionOff = "No"
+                if (Users.Rol != 2){
+                    permissionOff
+                }else{
+                    permissionOn
+                    
+                }
+            res.render('/admin/indexUser', {users:Users, rol:Rol});
             })
         },
-        update: function(req, res) {
-            db.User.update({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-                avatar: req.body.avatar,
-                adress: req.body.adress,
-                phone: req.body.phone,
-                cp: req.body.cp,
-                province: req.body.province,
-                country: req.body.country,
-                date_birth: req.body.date_birth,
-                age: req.body.age,
+        update: (req, res) => {
+            Users.update({
                 id_roles: req.body.rol,
         }, {
             where: {
                 id: req.params.id
             }
         });
-        res.redirect('/admin/users' + req.params.id)
+        res.redirect('/admin/indexUser' + req.params.id)
         },
-         delete: function(req, res) {
+         delete: (req, res) => {
              db.User.destroy({
                  where: {
                      id: req.params.id
                  }
              })
-             res.redirect('/admin/users');
+             res.redirect('/');
          }
 }
 

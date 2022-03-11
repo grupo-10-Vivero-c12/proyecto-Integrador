@@ -9,10 +9,10 @@ let login = {
     isAdmin : (req, res, next)=>{
         if (req.session.user) {
 
-            if (req.session.user.rol === 1) {
+            if (req.session.user.rol === 2) {
                 next()
             } else {
-                res.redirect('/')
+                res.redirect('/indexUser')
             }
         } else{
             res.redirect('/')
