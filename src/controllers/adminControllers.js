@@ -3,7 +3,7 @@ const session = require('express-session');
 let { validationResult } = require('express-validator');
 
 let fs = require('fs')
-let fetch = require('node-fetch')
+let fetch = require('node-fetch');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -12,8 +12,8 @@ const Products = db.Product
 const Categories = db.Categorie
 const Descriptions = db.Description
 const Opinions = db.Opinion
-
-
+const Users = db.User
+const Rol = db.Rol
 
 
 let controllerProducts = {

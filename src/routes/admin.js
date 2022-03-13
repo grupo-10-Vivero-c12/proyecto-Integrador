@@ -22,27 +22,17 @@ router.get("/editProduct/:id", isAdmin, controllerProducts.edit)
 
 router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controllerProducts.update)
 
-//-----------------------------------
-/* GET - Show all users */
-router.get('/users', isAdmin, controllerUsers.index) 
-
-/* GET - Show user edit form (Admin)*/
-router.get('/users/edit/:id', isAdmin, controllerProducts.editUser)
-/* PUT - Update a user (Admin)*/
-router.put('/users/edit/:id',controllerProducts.updateUser)
-/* DELETE - Delete one user */
-router.delete('/users/delete/:id', controllerProducts.destroyUser)
-
-
-//------------------------------------
-router.get('/', isAdmin , controllerProducts.home)
-
-
-/* POST - Login Data */
-router.post('adminHome', controllerProducts.store)
 
 /* crud de usuarios admin */
-// crear
+router.get("/", isAdmin,controllerUsers.home)
+router.get("/list-user", isAdmin,  controllerUsers.index)
+router.post("/list-user", controllerUsers.index)
+// GET - Show products list
+
+router.post("/permission", isAdmin,  controllerUsers.permission)
+
+//DELETE - delete one product
+router.delete("/list-user/:id", controllerUsers.delete)
 
 
 
