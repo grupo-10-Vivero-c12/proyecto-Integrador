@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('./headAdmin')  %>
+ 
+<%- include('./headAdmin')  %>
 <body class="list-user-admin">
      <div class="image-background">
      </div>
@@ -30,7 +31,9 @@
                         <td><%= User.last_name %></td>
                         <td><%= User.email %></td>
                         <td><label class="toggleSwitch nolabel" onclick="">
-                            <input type="checkbox" checked /> <span>SI</span>
+                          <input type="checkbox" <%= User.id_rol == 1 && 'checked' %>
+                           onclick="changeRol(<%= User.id %>,<%= User.id_rol %>)"/>
+                          <span>SI</span>
                               <a href=""></a> </label> </td>
                         
                         <td><a href="indexUser/<%- User.id %> "><button class="btn-table modi"></button></a>

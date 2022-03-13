@@ -27,9 +27,8 @@ router.get("/", isAdmin,controllerUsers.home)
 router.get("/list-user", isAdmin,  controllerUsers.index)
 router.post("/list-user", controllerUsers.index)
 // GET - Show products list
-router.get("/list-User",isAdmin, controllerUsers.index)
 
-router.get("/list-user", isAdmin,  controllerUsers.permission)
+router.post("/permission", isAdmin,  controllerUsers.permission)
 
 //DELETE - delete one product
 router.delete("/list-user/:id", controllerUsers.delete)

@@ -280,20 +280,35 @@ let controllerUsers = {
         
     },
      
-      permission: (req, res) => {
-         Rol.findAll()
-            .then(() => {
-                let permissionOn = "Yes"
-                let permissionOff = "No"
-                if (Users.Rol != 2){
-                    permissionOff
-                }else{
-                    permissionOn
-                    
-                }
-            res.render('/admin/indexUser', {users:Users, rol:Rol});
-            })
-        },
+      permission: async(req, res) => { 
+       
+        const {id, rol} = req.body;
+        
+
+        try {
+
+           let user = await Users.findByPk(id);
+           
+           await Users.update(
+               {
+                   id_rol : +rol === 1 ? 2 : 1
+               },
+               {
+                   where : {id}
+               }
+           )
+           user = await Users.findByPk(id)
+           return res.json({
+               ok : true,
+               data : user
+           })
+           
+
+        }catch (error) {
+           console.log(error)
+        }
+
+  },
         update: (req, res) => {
             Users.update({
                 id_roles: req.body.rol,
