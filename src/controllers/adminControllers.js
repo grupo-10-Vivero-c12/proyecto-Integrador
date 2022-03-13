@@ -249,96 +249,12 @@ let controllerProducts = {
                 
             })
             .catch(errors => res.send(errors))
+        
     },
 
-    allUsers: (req,res) =>{
-        res.render("admin/users/allUsers",{
-            users
-        })
-    },
-    editUser:(req,res) =>{
-        let userId = +req.params.id;
-        let user = users.find(user => user.id === userId)
-
-        res.render('admin/users/editUser', {
-            user
-        })
-    },
-    updateUser:(req,res) =>{
-        let userId = +req.params.id;
-        const {name, email, password} = req.body
-
-        users.forEach(user => {
-            if(user.id === userId){
-                user.name = name
-                user.email = email
-                user.password = password
-            }
-        });
-
-        writeUsersJson(users)
-
-        res.redirect("/admin/users")
-    },
-    destroyUser: (req, res) => {
-        let userId = +req.params.id;
-
-		users.forEach(user => {
-			if(user.id === userId){
-				let userToDestroyIndex = users.indexOf(user) 
-				if(userToDestroyIndex !== -1) {
-					users.splice(userToDestroyIndex, 1)
-				}else{ 
-					console.log('No encontré el usuario')
-				}
-			}
-		})
-
-		writeUsersJson(users)
-		res.redirect("/admin/users")
-    }
-
-}
-
-
+   
 
 let controllerUsers = {
-    index: function(req, res) {
-        db.User.findAll()
-        .then (users=>{
-            res.render('admin/users/allUsers', {
-                users: users
-            });
-        })
-    },
-    update: function(req, res) {
-        db.User.update({
-            id_roles: req.body.rol,
-        }, {
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(()=>{
-        res.redirect('/admin/users' + req.params.id)
-    })
-    
-    },
-
-    softDelete: (req,res)=>{
-
-    },
-    delete: function(req, res) {
-        db.User.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(()=>{
-            res.redirect('/admin/users');
-        })
-             
-    }
-}
+  
 
 module.exports = {controllerProducts, controllerUsers}
