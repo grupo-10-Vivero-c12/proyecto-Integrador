@@ -251,10 +251,76 @@ let controllerProducts = {
             .catch(errors => res.send(errors))
         
     },
-
-   
-
+}
 let controllerUsers = {
+    home:(req, res) =>{
+        res.render('admin/adminHome',{
+            session: req.session
+        })
+    }, 
+     
+    index: (req, res) => {
+        Users.findAll(
+        )
+        .then(Users =>{
+            res.render('admin/indexUser', {
+                Users,
+                toThousand
+                
+                
+            })
+        })
+        
+    },
+     
+      permission: async(req, res) => { 
+       
+        const {id, rol} = req.body;
+        
+
+        try {
+
+           let user = await Users.findByPk(id);
+           
+           await Users.update(
+               {
+                   id_rol : +rol === 1 ? 2 : 1
+               },
+               {
+                   where : {id}
+               }
+           )
+           user = await Users.findByPk(id)
+           return res.json({
+               ok : true,
+               data : user
+           })
+           
+
+        }catch (error) {
+           console.log(error)
+        }
+
+  },
+        update: (req, res) => {
+            Users.update({
+                id_roles: req.body.rol,
+        }, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.redirect('/admin/indexUser' + req.params.id)
+        },
+         delete: (req, res) => {
+             db.User.destroy({
+                 where: {
+                     id: req.params.id
+                 }
+             })
+             res.redirect('/');
+         }
+}
   
 
 module.exports = {controllerProducts, controllerUsers}
