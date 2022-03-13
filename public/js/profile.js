@@ -1,4 +1,4 @@
-window.onload = ()=>{
+window.addEventListener('load', ()=>{
     let $inputPass = document.querySelectorAll('.input-pass')
     let $editar = document.querySelector('#edit')
     let $inputs = document.querySelectorAll('.input-js')
@@ -59,4 +59,4 @@ window.onload = ()=>{
     
 
     
-}
+})

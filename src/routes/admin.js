@@ -24,7 +24,7 @@ router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,co
 
 //-----------------------------------
 /* GET - Show all users */
-router.get('/users', isAdmin, controllerProducts.allUsers) 
+router.get('/users', isAdmin, controllerUsers.index) 
 
 /* GET - Show user edit form (Admin)*/
 router.get('/users/edit/:id', isAdmin, controllerProducts.editUser)
@@ -32,6 +32,7 @@ router.get('/users/edit/:id', isAdmin, controllerProducts.editUser)
 router.put('/users/edit/:id',controllerProducts.updateUser)
 /* DELETE - Delete one user */
 router.delete('/users/delete/:id', controllerProducts.destroyUser)
+
 
 //------------------------------------
 router.get('/', isAdmin , controllerProducts.home)
@@ -43,13 +44,7 @@ router.post('adminHome', controllerProducts.store)
 /* crud de usuarios admin */
 // crear
 
-router.get('/crear', controllerUsers.create);
-
-router.post('/crear', controllerUsers.save);
-
 router.post('/', controllerUsers.index);
-
-router.get('/:id', controllerUsers.detail);
 
 router.post('/edit:id', controllerUsers.update);
 

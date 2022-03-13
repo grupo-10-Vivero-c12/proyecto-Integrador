@@ -13,6 +13,9 @@ let shoppingRouter = require('./routes/shoppingCart');
 let adminRouter = require('./routes/admin');
 let usersRouter = require('./routes/users');
 
+// Api
+let apiRouter = require('./routes/api/api')
+
 app.use(express.static('public'));
 app.use(session({
     secret: "viveroTimbo",
@@ -41,6 +44,7 @@ app.use('/users', usersRouter)
 app.use('/product', productDetailRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
+app.use('/apiv1', apiRouter)
 
 /* app.use('/perfilUsuario', perfilUsuarioRouter); */
 
