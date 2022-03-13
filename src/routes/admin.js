@@ -44,11 +44,6 @@ router.post('adminHome', controllerProducts.store)
 /* crud de usuarios admin */
 // crear
 
-router.post('/', controllerUsers.index);
-
-router.post('/edit:id', controllerUsers.update);
-
-router.post('/delete:id', controllerUsers.delete);
 
 
 
