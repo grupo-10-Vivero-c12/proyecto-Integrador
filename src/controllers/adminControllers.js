@@ -1,23 +1,22 @@
-//let {productos, writeJson, users, writeUsersJson} = require('../data/dataBase.js')
+
 const session = require('express-session');
 let { validationResult } = require('express-validator');
 
 let fs = require('fs')
-let path = require('path')
+let fetch = require('node-fetch');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
 
 const db = require('../database/models')
 const Products = db.Product
 const Categories = db.Categorie
 const Descriptions = db.Description
 const Opinions = db.Opinion
+const Users = db.User
+const Rol = db.Rol
 
 
-
-
-let controller = {
+let controllerProducts = {
    home:(req, res) =>{
         res.render('admin/adminHome',{
             session: req.session
@@ -221,11 +220,11 @@ let controller = {
     delete: (req,res) =>{
             Products.findByPk(req.params.id)
             .then((product) =>{
-                if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
-                    fs.unlinkSync(`./public/images/products/${product.images}`)
-                } else {
-                    console.log('no se encontro el archivo')
-                }
+                // if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                //     fs.unlinkSync(`./public/images/products/${product.images}`)
+                // } else {
+                //     console.log('no se encontro el archivo')
+                // }
                 
 
                 Opinions.destroy({where : { id_product : req.params.id}})
@@ -236,6 +235,11 @@ let controller = {
                     let deleteDescription = Descriptions.destroy({ where : { id : product.id_description }})
                     Promise.all([deleteProduct,deleteDescription])
                     .then(() =>{
+                        if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                            fs.unlinkSync(`./public/images/products/${product.images}`)
+                        } else {
+                            console.log('no se encontro el archivo')
+                        }
                         res.redirect('/admin/list-product')
                     })
                     .catch(errors => res.send(errors))
@@ -245,56 +249,78 @@ let controller = {
                 
             })
             .catch(errors => res.send(errors))
+        
     },
-
-
-    allUsers: (req,res) =>{
-        res.render("admin/users/allUsers",{
-            users
+}
+let controllerUsers = {
+    home:(req, res) =>{
+        res.render('admin/adminHome',{
+            session: req.session
         })
-    },
-    editUser:(req,res) =>{
-        let userId = +req.params.id;
-        let user = users.find(user => user.id === userId)
-
-        res.render('admin/users/editUser', {
-            user
+    }, 
+     
+    index: (req, res) => {
+        Users.findAll(
+        )
+        .then(Users =>{
+            res.render('admin/indexUser', {
+                Users,
+                toThousand
+                
+                
+            })
         })
+        
     },
-    updateUser:(req,res) =>{
-        let userId = +req.params.id;
-        const {name, email, password} = req.body
+     
+      permission: async(req, res) => { 
+       
+        const {id, rol} = req.body;
+        
 
-        users.forEach(user => {
-            if(user.id === userId){
-                user.name = name
-                user.email = email
-                user.password = password
+        try {
+
+           let user = await Users.findByPk(id);
+           
+           await Users.update(
+               {
+                   id_rol : +rol === 1 ? 2 : 1
+               },
+               {
+                   where : {id}
+               }
+           )
+           user = await Users.findByPk(id)
+           return res.json({
+               ok : true,
+               data : user
+           })
+           
+
+        }catch (error) {
+           console.log(error)
+        }
+
+  },
+        update: (req, res) => {
+            Users.update({
+                id_roles: req.body.rol,
+        }, {
+            where: {
+                id: req.params.id
             }
         });
-
-        writeUsersJson(users)
-
-        res.redirect("/admin/users")
-    },
-    destroyUser: (req, res) => {
-        let userId = +req.params.id;
-
-		users.forEach(user => {
-			if(user.id === userId){
-				let userToDestroyIndex = users.indexOf(user) 
-				if(userToDestroyIndex !== -1) {
-					users.splice(userToDestroyIndex, 1)
-				}else{ 
-					console.log('No encontré el usuario')
-				}
-			}
-		})
-
-		writeUsersJson(users)
-		res.redirect("/admin/users")
-    }
-
+        res.redirect('/admin/indexUser' + req.params.id)
+        },
+         delete: (req, res) => {
+             db.User.destroy({
+                 where: {
+                     id: req.params.id
+                 }
+             })
+             res.redirect('/');
+         }
 }
+  
 
-module.exports = controller
+module.exports = {controllerProducts, controllerUsers}

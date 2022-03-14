@@ -14,6 +14,14 @@ let controller = {
         })
         
         
+    },
+    prueba : (req,res)=>{
+        db.Description.findAll({
+            include : [{association : "product"}]
+        })
+        .then(result =>{
+            res.send(result)
+        })
     }
 
 }

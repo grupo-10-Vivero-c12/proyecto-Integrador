@@ -29,9 +29,37 @@
     font-weight: 400;
 }
 
+.inputs-container-pass{
+    display: none;
+}
+
+.ds-block {
+    display: block;
+}
+
+
 #submitFile{
     margin-top: 10px;
     font-size: 1rem;
+
+}
+#btn-change-password{
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.inputs-container-pass button{
+    padding: 3px;
+    border: none;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: none;
+    background-color: #5678EF;
+    color: white;
 }
 
 .profile{
@@ -51,7 +79,9 @@
     border-radius: 23px;
 }
 
-
+#last_email{
+    display: none;
+}
 .image-container{
     display: flex;
     justify-content: center;
@@ -59,7 +89,7 @@
     align-items: center;
 }
 
-.image-container .image{
+.image-container img{
     overflow: hidden;
     width: 150px;
     height: 150px;
@@ -70,36 +100,29 @@
 }
 .input-image{
     text-align: center;
+    margin: 10px 0 30px 0;
 }
+#labelAvatar{
+    width: 200px;
+    background-color: #5678EF;
+    padding: 5px 30px;
+    color: white;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
 
 #file{
-    position: relative;
-    display: inline-block;
-}
-  
-#file::before {
-    background-color: #5678EF;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    content: 'Subir foto';
     position: absolute;
+    top:0;
     left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  
-input#file[type="file"] {
-    opacity: 1;
-    width: 200px;
-    height: 32px;
-    display: inline-block;
+    width: 10px;
+    opacity: 0;
 }
-
-
+  
 
 .btn-submit:hover{
     color: rgb(201, 201, 201);
@@ -124,20 +147,20 @@ input#file[type="file"] {
 .data-container{
     padding-top: 1rem;
 }
-.input-contain{
+.input-contain, .change-password{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.input-contain label, .input-contain input{
+.input-contain label, .input-contain input, .change-password label, .box-input input, .input-contain .box-data-input select{
     display: block;
     margin: 4px 0;
     padding: 5px
     
 }
-.input-contain label{
+.input-contain label, .change-password label{
     width: 40%;
     font-family: Ruluko;
     font-style: normal;
@@ -147,10 +170,18 @@ input#file[type="file"] {
     text-transform: capitalize;
     
 }
+.error-message{
+    color: red;
+    font-size: 16px;
+    margin: 5px 5px 10px;
+}
 
-.input-contain input{
-    background-color: aliceblue;
+.box-input, .box-data-input{
     width: 60%;
+}
+.change-password .box-input input, .input-contain .box-data-input input, .input-contain .box-data-input select{
+    background-color: aliceblue;
+    width: 100%;
     border: none;
     border-radius: 5px;
     color: rgb(143, 143, 143);
@@ -165,7 +196,7 @@ input#file[type="file"] {
   margin: 0; 
 }
 
-.input-contain input:focus{
+.input-contain input:focus, .change-password .box-input input:focus, .input-contain .box-data-input select:focus{
     outline: none;
     color: black;
     border-bottom:  2px solid rgb(177, 177, 177);
@@ -192,11 +223,27 @@ input#file[type="file"] {
     margin: 0;
     padding: 0;
 }
+
+.is-invalid{
+    border: 1px solid red !important;
+}
+.is-valid{
+    border: 1px solid rgb(183, 240, 99);
+}
+.text-danger{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+.ds-none{
+    display: none;
+}
+
 @media (min-width : 775px) {
     .data-user{
         max-width: 700px;
     }
-    .input-contain label, .input-contain input{
+    .input-contain label, .input-contain input, .input-contain .box-data-input select{
         display: block;
         margin: 7px 0;
         padding: 7px;
@@ -205,7 +252,7 @@ input#file[type="file"] {
     .input-contain label{
         font-weight: 500;
     }
-    .input-contain input:focus{
+    .input-contain input:focus, .input-contain .box-data-input select:focus{
         border-bottom:  3px solid rgb(177, 177, 177);
     }
     .avatar-container{

@@ -8,7 +8,21 @@
     z-index: 10;
     
 }
+.is-invalid{
+    border: 1px solid red !important;
+}
+.is-valid{
+    border: 1px solid rgb(183, 240, 99);
+}
+.text-danger{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
 
+.ds-none{
+    display: none;
+}
 .form-container-add-product{
     width: 100%;
     display: flex;

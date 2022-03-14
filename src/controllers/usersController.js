@@ -2,7 +2,9 @@
 let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
-const { include } = require('../validations/register');
+const fs = require('fs')
+let fetch = require('node-fetch');
+
 const Users = db.User
 
 
@@ -90,11 +92,107 @@ let controller = {
             include: [{association: 'rol'}]
         })
         .then((user) => {
-            res.render('users/profile',{
-                user,
-                session: req.session
+            fetch("http://localhost:3000/apiv1/countries")
+            .then(response => response.json())
+            .then(data =>{
+                fetch("http://localhost:3000/apiv1/provinces")
+                .then(response => response.json())
+                .then(provinces =>{
+                    res.render('users/profile',{
+                        user,
+                        session: req.session,
+                        fileValidator : req.fileValidationError,
+                        countries : data.data.nameCountries,
+                        provinces : provinces.data.provincesSort
+                    })
+                })
+               
             })
+            
         })
+    },
+    update : (req,res)=>{
+        
+        let errors = validationResult(req)
+
+        if (errors.isEmpty()) {
+            let {first_name, last_name, email, address, phone, cp, country, province, date_birth, age} = req.body
+            
+            Users.update( {first_name, last_name, email, address, phone, cp, country, province, date_birth, age} ,{ where : { id : req.params.id }})
+            .then(()=>{
+                res.redirect('/users/profile/' + req.params.id)
+            }) 
+        } else{
+            Users.findByPk(req.params.id, {
+                include: [{association: 'rol'}]
+            })
+            .then((user) => {
+                res.render('users/profile',{
+                    user,
+                    session: req.session,
+                    errors : errors.mapped(),
+                    old : req.body,
+                    fileValidator : req.fileValidationError
+                })
+            })
+        }
+            
+    },
+    updatePassword : (req,res)=>{
+
+        let errors = validationResult(req)
+
+        if (errors.isEmpty()) {
+            
+            Users.update( {password :bcrypt.hashSync(req.body.newPassword, 10) } ,{ where : { id : req.params.id }})
+            .then(()=>{
+                res.redirect('/users/profile/' + req.params.id)
+            })
+        } else {
+            Users.findByPk(req.params.id, {
+                include: [{association: 'rol'}]
+            })
+            .then((user) => {
+                res.render('users/profile',{
+                    user,
+                    session: req.session,
+                    errors : errors.mapped(),
+                    fileValidator : req.fileValidationError
+                   
+                })
+            })
+        }
+    },
+    updateAvatar : (req,res)=>{
+        if (!req.fileValidationError) {
+            Users.findByPk(req.params.id)
+                .then(user =>{
+                    if (fs.existsSync('./public/images/users/' + user.avatar) && user.avatar !== "default-image.png") {
+                        fs.unlinkSync(`./public/images/users/${user.avatar}`)
+                    } else {
+                                console.log('no se encontro el archivo')
+                    }
+                    Users.update( { avatar : req.file.filename } ,{ where : { id : req.params.id }})
+                    .then(()=>{
+                        res.redirect('/users/profile/' + req.params.id)
+                    })
+                })
+        } else {
+            
+            Users.findByPk(req.params.id, {
+                include: [{association: 'rol'}]
+            })
+            .then((user) => {
+                res.render('users/profile',{
+                    user,
+                    session: req.session,
+                    fileValidator : req.fileValidationError
+                   
+                })
+            })
+        }
+
+        
     }
 }
 

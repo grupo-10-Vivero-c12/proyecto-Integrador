@@ -4,7 +4,10 @@ let controller = require('../controllers/usersController');
 let loginValidator = require('../validations/login')
 let uploadFile = require('../middlewares/uploadAvatar')
 let registerValidator = require("../validations/register")
-let { isLogin, notLogin }= require('../middlewares/isLoging')
+let editUserValidator = require("../validations/updateProfile")
+let { isLogin, notLogin }= require('../middlewares/isLoging');
+const updateProfile = require('../validations/updateProfile');
+const passwordValidator = require('../validations/changePassword');
 
 /* GET - Show login form */
 router.get('/login', isLogin ,controller.login)
@@ -16,18 +19,12 @@ router.get('/register', isLogin ,controller.register)
 /* POST - Register data */
 router.post('/register',uploadFile.single('avatar'),registerValidator, controller.processRegister)
 
-/* GET - Show user edit form (User)*/
-// router.get('/edit/:id',isLogin, controller.edit)
-/* PUT - Update a user (User)*/
-// router.put('/edit/:id',controller.update)
-
 /* GET - Show profile user */
-
-
-
 router.get('/profile/:id', notLogin,  controller.profile) 
-
-// router.get('/editProfile', /* isLogin, */ controller.edit) 
+/* PUT - Update a user (User)*/
+router.put('/update/:id', notLogin, updateProfile,  controller.update) 
+router.put('/update/password/:id',notLogin, passwordValidator , controller.updatePassword) 
+router.put('/update/image-profile/:id',uploadFile.single('avatar'),notLogin,  controller.updateAvatar) 
 
 
 /* GEt - Logout*/

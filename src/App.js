@@ -10,11 +10,11 @@ let cookieSession = require('./middlewares/cookieSession')
 let homeRouter = require('./routes/home'); 
 let productDetailRouter = require('./routes/product');
 let shoppingRouter = require('./routes/shoppingCart');
-let adminRouter = require('./routes/admin')
-let usersRouter = require('./routes/users')
+let adminRouter = require('./routes/admin');
+let usersRouter = require('./routes/users');
 
-
-/* let perfilUsuarioRouter = require('./routes/perfilUsuario'); */
+// Api
+let apiRouter = require('./routes/api/api')
 
 app.use(express.static('public'));
 app.use(session({
@@ -31,12 +31,6 @@ app.set('views',path.join(__dirname , "views"))
 let methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
-app.use(session({
-    secret: "viveroTimbo",
-    resave: false,
-    saveUninitialized: true,
-}))
-
 app.use(cookieParser());
 app.use(cookieSession);
 
@@ -50,6 +44,7 @@ app.use('/users', usersRouter)
 app.use('/product', productDetailRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
+app.use('/apiv1', apiRouter)
 
 /* app.use('/perfilUsuario', perfilUsuarioRouter); */
 
