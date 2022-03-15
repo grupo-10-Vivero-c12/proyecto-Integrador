@@ -70,6 +70,7 @@ let controller = {
                 email,
                 password: bcrypt.hashSync(password1, 10),
                 avatar: req.file ? req.file.filename : 'default-image.png',
+                id_rol: 1
             })
             .then(() => {
                 let subject = "registro"

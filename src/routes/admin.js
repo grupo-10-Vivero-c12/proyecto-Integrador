@@ -1,4 +1,4 @@
-let express = require("express");
+let express = require('express');
 let router = express.Router();
 let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
@@ -8,7 +8,7 @@ var {controllerProducts, controllerUsers} = require('../controllers/adminControl
 
 /* GET - Home page */
 
-router.get("/", isAdmin,controllerProducts.home)
+router.get("/", isAdmin ,controllerProducts.home)
 router.get("/add", isAdmin,  controllerProducts.add)
 router.post("/add",upload.single('images'), addProductValidator ,controllerProducts.store)
 // GET - Show products list
@@ -22,33 +22,16 @@ router.get("/editProduct/:id", isAdmin, controllerProducts.edit)
 
 router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controllerProducts.update)
 
-//-----------------------------------
-/* GET - Show all users */
-router.get('/users', isAdmin, controllerUsers.index) 
-
-/* GET - Show user edit form (Admin)*/
-router.get('/users/edit/:id', isAdmin, controllerProducts.editUser)
-/* PUT - Update a user (Admin)*/
-router.put('/users/edit/:id',controllerProducts.updateUser)
-/* DELETE - Delete one user */
-router.delete('/users/delete/:id', controllerProducts.destroyUser)
-
-
-//------------------------------------
-router.get('/', isAdmin , controllerProducts.home)
-
-
-/* POST - Login Data */
-router.post('adminHome', controllerProducts.store)
 
 /* crud de usuarios admin */
-// crear
+router.get("/list-user", isAdmin,  controllerUsers.index)
+router.post("/list-user", controllerUsers.index)
+// GET - Show products list
 
-router.post('/', controllerUsers.index);
+router.post("/permission", isAdmin,  controllerUsers.permission)
 
-router.post('/edit:id', controllerUsers.update);
-
-router.post('/delete:id', controllerUsers.delete);
+//DELETE - delete one product
+router.delete("/list-user/:id", controllerUsers.delete)
 
 
 

@@ -3,7 +3,8 @@ const session = require('express-session');
 let { validationResult } = require('express-validator');
 
 let fs = require('fs')
-let fetch = require('node-fetch')
+let path = require('path');
+const { nextTick } = require('process');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -12,6 +13,8 @@ const Products = db.Product
 const Categories = db.Categorie
 const Descriptions = db.Description
 const Opinions = db.Opinion
+const Users = db.User
+const Rol = db.Rol
 
 
 
@@ -249,96 +252,78 @@ let controllerProducts = {
                 
             })
             .catch(errors => res.send(errors))
+        
     },
-
-    allUsers: (req,res) =>{
-        res.render("admin/users/allUsers",{
-            users
-        })
-    },
-    editUser:(req,res) =>{
-        let userId = +req.params.id;
-        let user = users.find(user => user.id === userId)
-
-        res.render('admin/users/editUser', {
-            user
-        })
-    },
-    updateUser:(req,res) =>{
-        let userId = +req.params.id;
-        const {name, email, password} = req.body
-
-        users.forEach(user => {
-            if(user.id === userId){
-                user.name = name
-                user.email = email
-                user.password = password
-            }
-        });
-
-        writeUsersJson(users)
-
-        res.redirect("/admin/users")
-    },
-    destroyUser: (req, res) => {
-        let userId = +req.params.id;
-
-		users.forEach(user => {
-			if(user.id === userId){
-				let userToDestroyIndex = users.indexOf(user) 
-				if(userToDestroyIndex !== -1) {
-					users.splice(userToDestroyIndex, 1)
-				}else{ 
-					console.log('No encontré el usuario')
-				}
-			}
-		})
-
-		writeUsersJson(users)
-		res.redirect("/admin/users")
-    }
-
 }
-
-
-
 let controllerUsers = {
-    index: function(req, res) {
-        db.User.findAll()
-        .then (users=>{
-            res.render('admin/users/allUsers', {
-                users: users
-            });
+    home:(req, res) =>{
+        res.render('admin/adminHome',{
+            session: req.session
         })
+    }, 
+     
+    index: (req, res) => {
+        Users.findAll(
+        )
+        .then(Users =>{
+            res.render('admin/indexUser', {
+                Users,
+                toThousand
+                
+                
+            })
+        })
+        
     },
-    update: function(req, res) {
-        db.User.update({
-            id_roles: req.body.rol,
-        }, {
-        where: {
-            id: req.params.id
+     
+      permission: async(req, res) => { 
+       
+        const {id, rol} = req.body;
+        
+
+        try {
+
+           let user = await Users.findByPk(id);
+           
+           await Users.update(
+               {
+                   id_rol : +rol === 1 ? 2 : 1
+               },
+               {
+                   where : {id}
+               }
+           )
+           user = await Users.findByPk(id)
+           return res.json({
+               ok : true,
+               data : user
+           })
+           
+
+        }catch (error) {
+           console.log(error)
         }
-    })
-    .then(()=>{
-        res.redirect('/admin/users' + req.params.id)
-    })
-    
-    },
 
-    softDelete: (req,res)=>{
-
-    },
-    delete: function(req, res) {
-        db.User.destroy({
+  },
+        update: (req, res) => {
+            Users.update({
+                id_roles: req.body.rol,
+        }, {
             where: {
                 id: req.params.id
             }
-        })
-        .then(()=>{
-            res.redirect('/admin/users');
-        })
-             
-    }
+        });
+        res.redirect('/admin/indexUser' + req.params.id)
+        },
+         delete: (req, res) => {
+             db.User.destroy({
+                 where: {
+                     id: req.params.id
+                 }
+             })
+             res.redirect('/');
+         }
 }
+  
 
 module.exports = {controllerProducts, controllerUsers}

@@ -7,17 +7,17 @@ let login = {
         }
     },
     isAdmin : (req, res, next)=>{
-        // if (req.session.user) {
+         if (req.session.user) {
 
-        //     if (req.session.user.rol === 1) {
-        //         next()
-        //     } else {
-        //         res.redirect('/')
-        //     }
-        // } else{
-        //     res.redirect('/')
-        // }
-        next()
+            if (req.session.user.rol === 1) {
+                 next()
+            } else {
+                 res.redirect('/')
+             }
+         } else{
+           res.redirect('/')
+         }
+        
     },
     notLogin: (req,res, next) =>{
         if (!req.session.user) {
