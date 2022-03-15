@@ -2,14 +2,18 @@
     <nav class="nav-admin">
         <ul>
             <li class="burger-menu" onclick="dropMenu()"><i class="fas fa-bars"></i></li>
-            <li><a href="/admin" class="home-icon"><i class="fas fa-home"></i></a></li>
+            <li><a href="/admin" class="home-icon">
+                <i class="fas fa-home" aria-hidden="true">
+                    
+                </i></a></li>
 
         </ul>
     </nav>
-
-    <div class="menu-dropdown-mobile" id="navigation-bar-mobile">
+    <a href="/admin" ><i class="fas fa-home"></i></a>
+</div>
         <ul class="product-btn">
-            <li class="menu-btn" onclick="dropSubCategory1()" >Productos</li>
+            <li class="menu-btn" onclick="dropSubCategory1()">Productos</li>
+            <div class="menu-dropdown-mobile" id="navigation-bar-mobile">
         </ul>
         <ul class="menu-btn-list" id="btn-product" >
             <li><a href="/admin/list-product">Ver Productos</a> </li>
@@ -22,7 +26,12 @@
             <li class="menu-btn" onclick="dropSubCategory2()">Usuarios</li>
         </ul>
         <ul class="menu-btn-list" id="btn-user">
+<<<<<<< HEAD
             <li><a href="/admin/list-user">Ver Usuarios</a></li>
+=======
+<<<<<<< HEAD
+            <li><a href="/admin/users">Ver Usuarios</a></li>
+>>>>>>> 4b94eb6600387a131ffa6e729c51a9ce776f4972
             <!-- <li><a href="">Agregar Usuario</a></li> -->
             <li><a href="">Usuarios desabilitados</a></li>
             
@@ -60,5 +69,13 @@
             <!-- <li><a href="">Agregar Usuario</a></li> -->
             <li><a href="">Usuarios desabilitados</a></li> 
         </ul>
+=======
+            <li><a href="/admin/list-user">Lista de Usuarios</a></li>
+            </ul>
+    </div>
+  </nav>
+    </div>
+       
+>>>>>>> entrega
     </div>
 </header>

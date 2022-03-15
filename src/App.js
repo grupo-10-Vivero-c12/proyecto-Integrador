@@ -9,7 +9,7 @@ let cookieSession = require('./middlewares/cookieSession')
 /* Enrutadores */
 let homeRouter = require('./routes/home'); 
 let productDetailRouter = require('./routes/product');
-let shoppingRouter = require('./routes/shoppingCart');
+let shoppingRouter = require('./routes/shoppingCart')
 let adminRouter = require('./routes/admin');
 let usersRouter = require('./routes/users');
 

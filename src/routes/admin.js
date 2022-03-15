@@ -1,4 +1,4 @@
-let express = require("express");
+let express = require('express');
 let router = express.Router();
 let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
@@ -32,7 +32,6 @@ router.post("/permission", isAdmin,  controllerUsers.permission)
 
 //DELETE - delete one product
 router.delete("/list-user/:id", controllerUsers.delete)
-
 
 
 
