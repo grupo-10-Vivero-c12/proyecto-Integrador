@@ -1,10 +1,12 @@
 //const { users, writeUsersJSON } = require('../database/dataBase');
+require('dotenv').config();
 let { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const fs = require('fs')
 let fetch = require('node-fetch');
-let nodemailer = require('../mylibs/app')
+let nodemailer = require('../mylibs/app2')
+const jwt = require('jsonwebtoken')
 
 const Users = db.User
 const getUrl = (req) => `${req.protocol}://${req.get('host')}`
@@ -53,7 +55,6 @@ let controller = {
         }
     },
     register: (req, res) => {
-        console.log(getUrl(req))
         res.render('users/register', {
             session: req.session
         })
@@ -71,8 +72,9 @@ let controller = {
                 avatar: req.file ? req.file.filename : 'default-image.png',
             })
             .then(() => {
-                
-                nodemailer(email, name, last_name, getUrl(req))
+                let subject = "registro"
+                let type = 'main.html'
+                nodemailer(email,subject, name, last_name, type)
                 res.redirect('/users/login')
             })
         }else{
@@ -196,6 +198,28 @@ let controller = {
         }
 
         
+    },
+    recoverPassword : (req, res)=>{
+        res.render('users/recoverPassword',{
+            session: req.session,
+        })
+    },
+    processRecover : (req, res)=>{
+
+        let email = req.body.email
+        let subject = "Recupero de contraseña"
+        let type = 'emailRecoverPassword.html'
+        let name = "Marcos"
+        let last_name = "britos"
+        function generateAccessToken(user) {
+            return jwt.sign(user, process.env.SECRET, {expiresIn: '5m'})
+        }
+        const accessToken = generateAccessToken({email:email})
+        console.log(accessToken)
+        
+        nodemailer(email,subject, name, last_name, type)
+
+        res.redirect('/users/login')
     }
 }
 

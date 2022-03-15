@@ -26,6 +26,8 @@ router.put('/update/:id', notLogin, updateProfile,  controller.update)
 router.put('/update/password/:id',notLogin, passwordValidator , controller.updatePassword) 
 router.put('/update/image-profile/:id',uploadFile.single('avatar'),notLogin,  controller.updateAvatar) 
 
+router.get('/recover-password', isLogin ,controller.recoverPassword)
+router.post('/recover-password', isLogin ,controller.processRecover)
 
 /* GEt - Logout*/
 router.get('/logout', controller.logout)
