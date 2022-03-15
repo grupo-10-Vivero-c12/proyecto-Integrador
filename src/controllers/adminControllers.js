@@ -15,11 +15,8 @@ const Descriptions = db.Description
 const Opinions = db.Opinion
 const Users = db.User
 const Rol = db.Rol
-<<<<<<< HEAD
-=======
 
 
->>>>>>> entrega
 
 
 let controllerProducts = {
@@ -257,10 +254,6 @@ let controllerProducts = {
             .catch(errors => res.send(errors))
         
     },
-<<<<<<< HEAD
-=======
-
->>>>>>> entrega
 }
 let controllerUsers = {
     home:(req, res) =>{
