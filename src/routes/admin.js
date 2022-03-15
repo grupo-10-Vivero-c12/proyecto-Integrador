@@ -8,7 +8,7 @@ var {controllerProducts, controllerUsers} = require('../controllers/adminControl
 
 /* GET - Home page */
 
-router.get("/", isAdmin,controllerProducts.home)
+router.get("/", isAdmin ,controllerProducts.home)
 router.get("/add", isAdmin,  controllerProducts.add)
 router.post("/add",upload.single('images'), addProductValidator ,controllerProducts.store)
 // GET - Show products list
@@ -24,7 +24,6 @@ router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,co
 
 
 /* crud de usuarios admin */
-router.get("/", isAdmin,controllerUsers.home)
 router.get("/list-user", isAdmin,  controllerUsers.index)
 router.post("/list-user", controllerUsers.index)
 // GET - Show products list
