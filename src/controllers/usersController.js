@@ -4,9 +4,10 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const fs = require('fs')
 let fetch = require('node-fetch');
+let nodemailer = require('../mylibs/app')
 
 const Users = db.User
-
+const getUrl = (req) => `${req.protocol}://${req.get('host')}`
 
 let controller = {
     login: (req, res) => {
@@ -52,6 +53,7 @@ let controller = {
         }
     },
     register: (req, res) => {
+        console.log(getUrl(req))
         res.render('users/register', {
             session: req.session
         })
@@ -69,6 +71,8 @@ let controller = {
                 avatar: req.file ? req.file.filename : 'default-image.png',
             })
             .then(() => {
+                
+                nodemailer(email, name, last_name, getUrl(req))
                 res.redirect('/users/login')
             })
         }else{
