@@ -1,71 +1,52 @@
-<%- include('header') -%>
-<h1> Crear Usuario</h1>
-<ul>
-    <% for (let i = 0; i < users.length; i++) { %>
-       <li>
-           <a href="/users/<%users[i].id%>">
-               
-           </a>
-           <%=users[i].name%>
-       </li>
-    <%  } %>
-</ul>
-<form action='/adminControllers/create' method="POST">
-    <div>
-        <label for="">Nombre</label>
-        <input type="text" name="name">
-    </div>
-    <div>
-        <label for="">Email</label>
-        <input type="text" name="email">
-    </div>
-    <div>
-        <label for="">Password</label>
-        <input type="int" name="password">
-    </div>
-    <div>
-        <label for="">Avatar</label>
-        <input type="img" name="avatar">
-    </div>
-    <div>
-        <label for="">Dirección</label>
-        <input type="int" name="adress">
-    </div>
-    <div>
-        <label for="">Teléfono</label>
-        <input type="date" name="phone">
-    </div>
-    <div>
-        <label for="">CP</label>
-        <input type="int" name="cp">
-    </div>
-    <div>
-        <label for="">Provincia</label>
-        <input type="text" name="province">
-    </div>
-    <div>
-        <label for="">Pais</label>
-        <input type="text" name="country">
-    </div>
-    <div>
-        <label for="">Fecha de nacimiento</label>
-        <input type="date" name="date_birth">
-    </div>
-    <div>
-        <label for="">Edad</label>
-        <input type="date" name="age">
-    </div>
-    <div>
-        <label for="">Rol</label>
-        <select name="rol" >
-            <% for (let i = 0; i < rol.length; i++) { %>
+<!DOCTYPE html>
+<html lang="en">
+ 
+<%- include('./headAdmin')  %>
+<body class="list-user-admin">
+     <div class="image-background">
+     </div>
+  <%- include('./headerAdmin')  %>
+    
+        
+        
+ <main class="list-user">
+     
+        <h3>Listado de Usuarios</h3>
+        <div class="list-container">
+                 
+            <table>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Email</th>
+                  <th>Permiso de administrador</th>
+                  <th></th>
+                </tr>
+                <% Users.forEach(User => {%>
+                    <tr>
+        
+                        <td><%= User.id %></td>
+                        <td><%= User.first_name %></td>
+                        <td><%= User.last_name %></td>
+                        <td><%= User.email %></td>
+                        <td><label class="toggleSwitch nolabel" onclick="">
+                          <input type="checkbox" <%= User.id_rol == 1 && 'checked' %>
+                           onclick="changeRol(<%= User.id %>,<%= User.id_rol %>)"/>
+                          <span>SI</span>
+                              <a href=""></a> </label> </td>
+                        
+                        <td><a href="indexUser/<%- User.id %> "><button class="btn-table modi"></button></a>
+                            <form action="/admin/list-user/<%- Users.id %>?_method=DELETE " method="post">
+                                <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>
+                            </form>
+                            
+                    </tr>
+                <% }); %>     
+              </table>
 
-             <option value="<%=rol[i].id">
-                 <%rol[i].name %>
-              <% } %>
-            </option>
-        </select>
-    </div>
-    <button type="submit"> Crear</button>
-</form>
-<%- include('footer') -%>
+        </div>
+    </main>
+    <script src="../js/menuAdmin.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-let express = require("express");
+let express = require('express');
 let router = express.Router();
 let upload = require('../middlewares/uploadProductFiles');
 let addProductValidator = require('../validations/addProducts')
@@ -22,8 +22,7 @@ router.get("/editProduct/:id", isAdmin, controllerProducts.edit)
 
 router.put("/editProduct/:id" ,upload.single('images'),  editProductValidator,controllerProducts.update)
 
-
-/* crud de usuarios admin */
+/*  Users  */
 router.get("/", isAdmin,controllerUsers.home)
 router.get("/list-user", isAdmin,  controllerUsers.index)
 router.post("/list-user", controllerUsers.index)
@@ -33,7 +32,6 @@ router.post("/permission", isAdmin,  controllerUsers.permission)
 
 //DELETE - delete one product
 router.delete("/list-user/:id", controllerUsers.delete)
-
 
 
 
