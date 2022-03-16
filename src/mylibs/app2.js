@@ -11,7 +11,7 @@ module.exports = async function sendEmail(email, subject, name, surname, type, t
   const template = await handlebars.compile(source);
   const replacements = {
     nombre: `${name} ${surname}`,
-    redirect : `/users/login`
+    redirect : `/users/new-password/${token}`
   };
   const htmlToSend = await template(replacements);
   const transporter = await nodemailer.createTransport({

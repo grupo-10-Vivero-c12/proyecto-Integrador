@@ -206,21 +206,77 @@ let controller = {
         })
     },
     processRecover : (req, res)=>{
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
+            let subject = "Recupero de contraseña"
+            let type = 'emailRecoverPassword.html'
 
-        let email = req.body.email
-        let subject = "Recupero de contraseña"
-        let type = 'emailRecoverPassword.html'
-        let name = "Marcos"
-        let last_name = "britos"
-        function generateAccessToken(user) {
-            return jwt.sign(user, process.env.SECRET, {expiresIn: '5m'})
+            Users.findOne({ where : { email : req.body.email }})
+            .then(user =>{
+                function generateAccessToken(user) {
+                return jwt.sign(user, process.env.SECRET, {expiresIn: '10m'})
+                }
+                const accessToken = generateAccessToken({
+                    id : user.id,
+                    surname : user.last_name,
+                    email : user.email
+                })
+              
+                nodemailer(user.email,subject, user.first_name, user.last_name, type,accessToken)
+
+                res.redirect('/')
+            })
+        } else {
+            res.render('users/recoverPassword',{
+                session: req.session,
+                errors : errors.mapped(),
+            })
         }
-        const accessToken = generateAccessToken({email:email})
-        console.log(accessToken)
         
-        nodemailer(email,subject, name, last_name, type)
-
-        res.redirect('/users/login')
+    },
+    newPassword : (req, res) =>{
+        let user = jwt.verify(req.params.token, process.env.SECRET, (err, user)=>{
+            return user
+        })
+        Users.findOne({
+            where:{
+                id : user.id,
+                last_name : user.surname,
+                email : user.email
+            }
+        })
+        .then((user)=>{
+            if (user) {
+                res.render('users/newPassword',{
+                    session: req.session,
+                    token : req.params.token
+                })
+            } else{
+                res.send('no existe')
+            }
+        })
+    },
+    ProcessNewPassword : (req, res) =>{
+        let user = jwt.verify(req.params.token, process.env.SECRET, (err, user)=>{
+            return user
+        })
+        Users.update({
+            password : bcrypt.hashSync(req.body.password, 10)
+        },
+        {
+            where:{
+                id : user.id,
+                last_name : user.surname,
+                email : user.email
+        }
+        })
+        .then(()=>{
+            res.redirect('/users/login')
+        })
+        .catch((error)=>{
+            console.log(error)
+            res.redirect('/')
+        })
     }
 }
 
