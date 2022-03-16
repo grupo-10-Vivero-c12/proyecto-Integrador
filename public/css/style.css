@@ -26,6 +26,7 @@
 
 @import url("profile.css");
 @import url("allProducts.css");
+@import url("recover-password.css");
 
 * {
   margin: 0;

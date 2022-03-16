@@ -23,7 +23,7 @@ module.exports = [
             }
         })
         .catch(() => {
-            return Promise.reject('Ingrese un email valido')
+            return Promise.reject('No existe un email registrado ')
         })
     })
 ]
