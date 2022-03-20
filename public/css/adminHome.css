@@ -8,14 +8,13 @@
 }
 
 
-.image-background{
-    background-image: url('../img/lonely-tree-on-the-field.jpg');
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    opacity: 0.5;
+.home-admin{
+    background-image: url('../img/lonely-tree-on-the-field2.png');
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    background-size:cover;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .logo-admin{

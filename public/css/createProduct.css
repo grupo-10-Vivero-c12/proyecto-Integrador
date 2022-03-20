@@ -1,3 +1,12 @@
+.add-product-admin, .edit-product-admin{
+    background-image: url('../img/ws_Old_Trees_2.png');
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .main-admin{
     width: 100%;
     display: flex;
@@ -41,20 +50,6 @@
     margin: 20px 0;
 }
 
-main.main-admin::after{
-    content:"";
-    display:block;
-    position:absolute;
-    top:0;
-    left:0;
-    background-image: url('../img/ws_Old_Trees_1920x1080.jpg');
-    width: 100%;
-    height: 105%;
-    z-index:-1;
-    opacity:0.6;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .form-create{
     width: 90%;
     

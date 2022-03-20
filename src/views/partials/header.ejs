@@ -15,8 +15,8 @@
                 <ul>
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/product">Productos</a></li>
-                    <li><a href="#">Locales</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="/locals">Locales</a></li>
+                    <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
                 </ul>
             </nav>
 
@@ -33,7 +33,7 @@
                 <% if (typeof session.user=="undefined" ) { %>
                     <a href="/users/login"><i class="far fa-user-circle"></i></a>
                     <% }else{ %>
-                        <a class="avatar" href="/users/profile">
+                        <a class="avatar" href="/users/profile/<%= session.user.id %>">
                             <div class="avatar-img"><img src="/images/users/<%= session.user.avatar %>"
                                     alt="imagen de perfil">
                                 <span class="session"></span>

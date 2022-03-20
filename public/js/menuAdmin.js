@@ -99,22 +99,21 @@ function addButtonDrop(){
 }
 const changeRol = async (id, rol) => {
 
-    try {
-  
-      let response = await fetch(`/admin/permission`,{
-          headers : {
-              'content-type' : 'application/json'
-          },
-          method : 'POST',
-          body : JSON.stringify({
-              id,
-              rol
-          }),
-      });
-      let result = await response.json();
-  
+  try {
+
+    let response = await fetch(`/admin/permission`,{
+        headers : {
+            'content-type' : 'application/json'
+        },
+        method : 'POST',
+        body : JSON.stringify({
+            id,
+            rol
+        }),
+    });
+    let result = await response.json();
+    location.reload()
     
-  
   } catch (error) {
   
   }
