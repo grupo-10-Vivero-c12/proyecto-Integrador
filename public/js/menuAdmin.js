@@ -114,6 +114,7 @@ const changeRol = async (id, rol) => {
         }),
     });
     let result = await response.json();
+    location.reload()
 
   
 
