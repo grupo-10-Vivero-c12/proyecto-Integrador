@@ -42,11 +42,15 @@
                         <div class="menu-user">
                             <a href="/users/profile/<%= session.user.id %>">Mis datos</a>
                             <a href="/users/logout">Cerrar sesión</a>
-                            <a href="/admin">Administrador</a>
+                            <% if (session.user.rol === 1) { %>
+                                <a href="/admin">Administrador</a>
+                            <% } %>
+                            
                         </div>
+                        <a href="/shoppingCart"><i class="fas fa-shopping-cart"></i></a>
                         <% } %>
 
-                            <a href="/shoppingCart"><i class="fas fa-shopping-cart"></i></a>
+                            
             </nav>
         </header>
     </div>
