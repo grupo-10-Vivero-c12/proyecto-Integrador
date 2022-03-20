@@ -180,6 +180,7 @@ let controller = {
                     }
                     Users.update( { avatar : req.file.filename } ,{ where : { id : req.params.id }})
                     .then(()=>{
+                        req.session.user.avatar = req.file.filename
                         res.redirect('/users/profile/' + req.params.id)
                     })
                 })

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+        <title>Búsqueda</title>
+</head>
+
+<body class="body-search">
+    <%- include('../partials/header.ejs') %>
+
+        <main class="search-box-container">
+            <div class="rute-container">
+                <div class="rute cate-product">
+                    <a href="/">Home</a>
+                    <span>/</span>
+                    <a href="/product/search">Busqueda</a>
+                </div>
+            </div>
+            <% if (products.length === 0) { %>
+                <div class="not-found-search">
+                    <h2>Upps.... </h2>
+                    <h3 style="text-align: center;">Hubo un error al buscar el producto ingresado</h3>
+                </div>
+            <% } else { %>
+                <section class="container-products">
+                    <h2>Resultados </h2>
+                    <div class="products">
+                        <%  products.forEach(product => {%>
+                            <div class="product-related">
+                                <div class="image-product">
+                                    <a href="/product/detail/<%= product.id %>"><img src="/images/products/<%= product.images %>" alt=""></a>
+                                </div>
+                                <div class="description-product">
+                                    <a href="/product/detail/<%= product.id %> "><p><%= product.name %></p></a>
+                                    <p>$<%= toThousand(product.price) %></p>
+                                    <button class="btn">Comprar</button>
+                                </div>
+                            </div>
+                        <% });%>
+                </section>
+            <% }  %>
+             
+            
+            
+        </main>
+
+
+
+        <%- include('../partials/script.ejs') %>
+
+</body>
+<%- include('../partials/footer.ejs') %>
+
+</html>
+
+
+
+

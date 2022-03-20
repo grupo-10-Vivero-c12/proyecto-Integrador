@@ -1,4 +1,4 @@
-
+const { Op } = require('sequelize');
 let db = require('../database/models')
 let Products = db.Product
 let Categories = db.Categorie
@@ -84,6 +84,20 @@ let controller = {
             })
 
         }) 
+    },
+    search : (req, res)=>{
+        Products.findAll({
+            where :{
+                name : {[Op.substring]: `%${req.query.search}%`}
+        }
+        })
+        .then(products=>{
+            res.render('products/search', {
+                products,
+                toThousand,
+                session: req.session
+            })
+        })
     }
     
 }
