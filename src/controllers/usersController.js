@@ -28,7 +28,12 @@ let controller = {
                 email: user.email,
                 avatar: user.avatar,
                 rol : user.id_rol
-            };
+            }.catch((error)=>{
+                res.status(400).json({
+                    success: false,
+                    error
+                })
+            })
 
             if(req.body.remember){
                 const TIME_IN_MILISEG = 300000
@@ -68,6 +73,11 @@ let controller = {
             })
             .then(() => {
                 res.redirect('/users/login')
+            }).catch((error)=>{
+                res.status(400).json({
+                    success: false,
+                    error
+                })
             })
         }else{
             res.render('users/register', {
@@ -89,11 +99,28 @@ let controller = {
             include: [{association: 'rol'}]
         })
         .then((user) => {
-            res.render('users/profile',{
+            res.render('../users/profile',{
                 user,
                 session: req.session
             })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
+            })
         })
+    },
+    getAllProfiles: async (req , res) =>{
+        let users;
+       try{
+           users = await Users.findAll();
+           if(users)
+           res.status(200).json(users);
+       }catch(error){
+           res.status(400).json({
+               message: "hola"
+           })
+       }
     }
 }
 

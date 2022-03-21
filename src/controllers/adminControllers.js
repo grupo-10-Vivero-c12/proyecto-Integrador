@@ -33,6 +33,11 @@ let controller = {
                 products,
                 toThousand
             })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
+            })
         })
         
     },
@@ -42,6 +47,11 @@ let controller = {
         .then((categories) =>{
             res.render('admin/allCategorys',{
                 categories
+            })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
             })
         })
         
@@ -55,6 +65,11 @@ let controller = {
                 categories,
                 session: req.session 
             })   
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
+            })
         })
     },
 
@@ -64,6 +79,11 @@ let controller = {
             res.render('admin/addProducts',{
                 fileValidator : req.fileValidationError,
                 categories
+            })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
             })
         })
         
@@ -106,6 +126,11 @@ let controller = {
                     
                 })
                 .catch(errors => {res.send(errors)})
+            }).catch((error)=>{
+                res.status(400).json({
+                    success: false,
+                    error
+                })
             })
         } else{
             Categories.findAll()
@@ -115,6 +140,11 @@ let controller = {
                     old : req.body,
                     fileValidator : req.fileValidationError,
                     categories
+                })
+            }).catch((error)=>{
+                res.status(400).json({
+                    success: false,
+                    error
                 })
             })
         }
@@ -134,6 +164,11 @@ let controller = {
                 categories,
                 fileValidator : req.fileValidationError,
                 description : product.description
+            })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
             })
         })
     },
@@ -197,6 +232,11 @@ let controller = {
                     })
                     .catch(errors => {res.send(errors)})
                 }
+            }).catch((error)=>{
+                res.status(400).json({
+                    success: false,
+                    error
+                })
             })
     
         } else {

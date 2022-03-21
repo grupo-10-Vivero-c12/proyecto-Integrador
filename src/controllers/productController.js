@@ -19,6 +19,11 @@ let controller = {
                 toThousand,
                 session: req.session
             })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
+            })
         })    
     },
     category : (req,res) =>{
@@ -49,6 +54,11 @@ let controller = {
                 toThousand,
                 categorie,
                 session: req.session
+            })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
             })
         })
     },
@@ -83,6 +93,11 @@ let controller = {
                 session: req.session
             })
 
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
+            })
         }) 
     }
     

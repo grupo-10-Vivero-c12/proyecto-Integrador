@@ -57,3 +57,14 @@ app.listen(PORT, () => console.log(`
 Servidor levantado en el puerto ${PORT}
 http://localhost:${PORT}
 `))
+
+
+//post
+
+//body
+
+//esto es lo que viene en req.body
+// {
+//     "name": "nicolas",
+//     "apellido": "espinoza"
+// }

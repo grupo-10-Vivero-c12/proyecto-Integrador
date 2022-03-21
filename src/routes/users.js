@@ -25,7 +25,8 @@ router.post('/register',uploadFile.single('avatar'),registerValidator, controlle
 
 
 
-router.get('/profile/:id', notLogin,  controller.profile) 
+router.get('/profile/:id', notLogin,  controller.profile)
+router.get('/profile/all' , controller.getAllProfiles ); 
 
 // router.get('/editProfile', /* isLogin, */ controller.edit) 
 

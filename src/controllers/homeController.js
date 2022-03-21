@@ -11,6 +11,11 @@ let controller = {
                 toThousand,
                 session: req.session
             })
+        }).catch((error)=>{
+            res.status(400).json({
+                success: false,
+                error
+            })
         })
         
         
