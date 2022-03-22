@@ -162,21 +162,7 @@
                                 <small class="error-message ds-none" id="error-cp"></small>
                             </div>
                         </div>
-                        <div class="input-contain">
-                            <label for="country">Pais:</label>
-                            <div class="box-data-input">
-                                <select name="country" id="country" class="input-js <%= (locals.errors && errors.country) ? "is-invalid" : "" %>" disabled>
-                                    <option value=""></option>
-                                    <% countries.forEach(element => { %>
-                                        <option value="<%= element %>" <%= user.country === element ? "selected" : "" %> ><%= element %> </option>
-                                    <% }) %>
-                                </select>
-                                <% if (locals.errors && errors.country) { %>
-                                    <small class="error-message"><%= errors.country.msg %> </small>
-                                <% } %>
-                                <small class="error-message ds-none" id="error-country"></small>
-                            </div>
-                        </div>
+                        
                         <div class="input-contain">
                             <label for="province">Provincia:</label>
                             <div class="box-data-input">

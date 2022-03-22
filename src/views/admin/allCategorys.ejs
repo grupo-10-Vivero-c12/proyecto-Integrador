@@ -6,7 +6,7 @@
     <main class="all-categorys">
         <h3>Listado de Categorias</h3>
         
-        <% categories.forEach(category => {%>
+        <% categories.forEach((category, index) => {%>
             <div class="list-category">
                 <div class="category-detail">
                     <div class="vist-category">
@@ -14,15 +14,15 @@
                             <p><%= category.name %> </p>
                         </div>
                         <div class="edit-delete-category">
-                            <button class="btn-table modi" onclick="editButtonDrop()"><i class="far fa-edit"></i></button>
+                            <button class="btn-table modi" onclick="editButtonDrop('form-drop-edit<%= index %>')"><i class="far fa-edit"></i></button>
                             <button class="btn-table delete"><i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     
                     <div class="edit-category">
                         <form action="">
-                            <div class="form-edit-dropdown" id="form-drop-edit">
-                                <input type="text" value="Categoria">
+                            <div class="form-edit-dropdown" id="form-drop-edit<%= index %>">
+                                <input type="text" value=<%= category.name%>>
                                 <button type="submit">Editar</button>
                             </div>
 

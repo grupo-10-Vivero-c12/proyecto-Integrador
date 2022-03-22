@@ -76,15 +76,15 @@ function dropSubCategory4(){
 
 /* EVENTOS CATEGORIAS */
 
-let editBtn = document.querySelector("#form-drop-edit")
+
 let addBtn = document.querySelector("#form-drop-add")
 
-function editButtonDrop(){
-    if (editBtn.style.display === "block"){
-        editBtn.style.display = "none";
+function editButtonDrop(id){
+    if (document.getElementById(id).style.display === "block"){
+        document.getElementById(id).style.display = "none";
         
     } else{
-        editBtn.style.display = "block";
+        document.getElementById(id).style.display = "block";
     }
 }
 
