@@ -71,6 +71,20 @@
                                 </small>
                                 <% } %>
                         </div>
+
+                    <div id="pswd_info">
+                     <h4>Recordá que la contraseña debe contener:</h4>
+                     <ul>
+                     <li id="letter" class="invalid">Al menos <strong>una letra minuscula</strong></li>
+                     <li id="capital" class="invalid">Al menos <strong>una letra mayúscula</strong></li>
+                     <li id="number" class="invalid">Al menos <strong>un número</strong></li>
+                     <li id="length" class="invalid">Al menos <strong>6 carácteres</strong></li>
+                     <li id="null" class="invalid">Debe <strong>confirmar la contraseña</strong></li>
+                     <li id="match" class="invalid">Las contraseñas <strong>deben ser iguales</strong></li>
+                     <li id="blank" class="invalid">Las contraseñas <strong>no deben tener espacios</strong></li>
+                     </ul>
+                    </div>
+
                         <div class="input-container">
                             <label for="password2">Confirmar contraseña</label>
                             <input type="password" id="password2" name="password2" placeholder="password"
