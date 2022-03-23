@@ -97,8 +97,6 @@ function addButtonDrop(){
         addBtn.style.display = "block";
     }
 }
-
-
 const changeRol = async (id, rol) => {
 
   try {
@@ -114,11 +112,10 @@ const changeRol = async (id, rol) => {
         }),
     });
     let result = await response.json();
-
+    location.reload()
+    
+  } catch (error) {
   
-
-} catch (error) {
-
-}
-
-}
+  }
+  
+  }

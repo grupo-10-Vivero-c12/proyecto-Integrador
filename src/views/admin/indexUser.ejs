@@ -2,13 +2,11 @@
 <html lang="en">
  
 <%- include('./headAdmin')  %>
+
+
 <body class="list-user-admin">
-     <div class="image-background">
-     </div>
   <%- include('./headerAdmin')  %>
     
-        
-        
  <main class="list-user">
      
         <h3>Listado de Usuarios</h3>
@@ -37,7 +35,7 @@
                               <a href=""></a> </label> </td>
                         
                         <td><a href="indexUser/<%- User.id %> "><button class="btn-table modi"></button></a>
-                            <form action="/admin/list-user/<%- Users.id %>?_method=DELETE " method="post">
+                            <form action="/admin/list-user/<%- User.id %>?_method=DELETE " method="post">
                                 <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>
                             </form>
                             

@@ -15,12 +15,14 @@ let controller = {
         
         
     },
-    prueba : (req,res)=>{
-        db.Description.findAll({
-            include : [{association : "product"}]
+    preguntas_frecuentes : (req,res)=>{
+        res.render('frequent_questions',{
+            session: req.session
         })
-        .then(result =>{
-            res.send(result)
+    },
+    locals : (req,res)=>{
+        res.render('locals',{
+            session: req.session
         })
     }
 

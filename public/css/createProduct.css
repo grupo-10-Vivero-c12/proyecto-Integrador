@@ -1,3 +1,12 @@
+.add-product-admin, .edit-product-admin{
+    background-image: url('../img/ws_Old_Trees_2.png');
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .main-admin{
     width: 100%;
     display: flex;
@@ -8,7 +17,21 @@
     z-index: 10;
     
 }
+.is-invalid{
+    border: 1px solid red !important;
+}
+.is-valid{
+    border: 1px solid rgb(183, 240, 99);
+}
+.text-danger{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
 
+.ds-none{
+    display: none;
+}
 .form-container-add-product{
     width: 100%;
     display: flex;
@@ -27,20 +50,6 @@
     margin: 20px 0;
 }
 
-main.main-admin::after{
-    content:"";
-    display:block;
-    position:absolute;
-    top:0;
-    left:0;
-    background-image: url('../img/ws_Old_Trees_1920x1080.jpg');
-    width: 100%;
-    height: 105%;
-    z-index:-1;
-    opacity:0.6;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .form-create{
     width: 90%;
     

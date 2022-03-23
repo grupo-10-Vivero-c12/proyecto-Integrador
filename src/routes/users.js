@@ -5,7 +5,9 @@ let loginValidator = require('../validations/login')
 let uploadFile = require('../middlewares/uploadAvatar')
 let registerValidator = require("../validations/register")
 let editUserValidator = require("../validations/updateProfile")
+let recoverValidation = require("../validations/recoverPassowordValidation")
 let { isLogin, notLogin }= require('../middlewares/isLoging');
+let validationToken = require('../middlewares/validationToken');
 const updateProfile = require('../validations/updateProfile');
 const passwordValidator = require('../validations/changePassword');
 
@@ -26,6 +28,10 @@ router.put('/update/:id', notLogin, updateProfile,  controller.update)
 router.put('/update/password/:id',notLogin, passwordValidator , controller.updatePassword) 
 router.put('/update/image-profile/:id',uploadFile.single('avatar'),notLogin,  controller.updateAvatar) 
 
+router.get('/recover-password', isLogin ,controller.recoverPassword)
+router.post('/recover-password', isLogin, recoverValidation ,controller.processRecover)
+router.get('/new-password/:token', isLogin, validationToken ,controller.newPassword)
+router.post('/new-password/:token', isLogin, validationToken ,controller.ProcessNewPassword)
 
 /* GEt - Logout*/
 router.get('/logout', controller.logout)

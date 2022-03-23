@@ -15,14 +15,17 @@
                         <% if (locals.errors && errors.name) { %>
                             <small class="error-message"> <%= errors.name.msg %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-name"></small>
                     </div>
                     
                     <div class="form-contain descripcion-form">
                         <label for="des">Descripción</label>
                         <textarea name="description" id="des" cols="30" rows="10"><%= locals.old && old.description %></textarea>
+                        <p><small id="count">0</small>/300</p>
                         <% if (locals.errors && errors.description) { %>
                             <small class="error-message"> <%= errors.description.msg %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-description"></small>
                     </div>
 
                     <div class="form-contain descripcion-form">
@@ -31,15 +34,18 @@
                         <% if (locals.errors && errors.location) { %>
                             <small class="error-message"> <%= errors.location.msg %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-location"></small>
                     </div>
                     <div class="form-contain descripcion-form">
                         <label for="sus">Sustrato</label>
                         <input type="text" name="substratum" id="sus" >
+                        <small class="error-message ds-none" id="message-sustratum"></small>
                     </div>
 
                     <div class="form-contain descripcion-form">
                         <label for="flo">Floración</label>
                         <input type="text" name="flowering" id="flo" >
+                        <small class="error-message ds-none" id="message-flowering"></small>
                     </div>
                     
                     <div class="form-contain img-form">
@@ -48,6 +54,7 @@
                         <% if (fileValidator) { %>
                             <small class="error-message"> <%= fileValidator %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-image"></small>
                     </div>
                     
                     <div class="form-contain categ-form">
@@ -63,11 +70,14 @@
                         <% if (locals.errors && errors.category) { %>
                             <small class="error-message"> <%= errors.category.msg %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-category"></small>
                     </div>
                     
                     <div class="form-contain colo-form">
                         <label for="color">Color</label>
                         <input type="text" id="color" name="color" >
+                        <small class="error-message"></small>
+                        <small class="error-message ds-none" id="message-color"></small>
                     </div>
 
                     <div class="form-contain price-form">
@@ -76,6 +86,7 @@
                         <% if (locals.errors && errors.price) { %>
                             <small class="error-message"> <%= errors.price.msg %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-price"></small>
                     </div>
 
                     <div class="form-contain price-form">
@@ -84,9 +95,11 @@
                         <% if (locals.errors && errors.stock) { %>
                             <small class="error-message"> <%= errors.stock.msg %> </small>
                         <% } %>
+                        <small class="error-message ds-none" id="message-stock"></small>
                     </div>
 
                     <div class="btn-admin">
+                        <small class="error-message ds-none" id="submitError"></small>
                         <button type="submit">Crear</button>
                     </div>
                 </form>               
@@ -97,5 +110,6 @@
     </main>
 
     <script src="../js/menuAdmin.js"></script>
+    <script src="../js/validationAddProduct.js"></script>
 </body>
 </html>
