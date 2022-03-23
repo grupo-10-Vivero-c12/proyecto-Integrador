@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('./headAdmin')  %>
-<body class="list-product-admin">
-    <%- include('./headerAdmin')  %>
+<%- include('./headAdmin') %>
 
-    <main class="all-productos">
-        <h3>Listado de Productos</h3>
-        <div class="list-container">
-                 
-            <table>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Categoria</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
-                  <th></th>
-                </tr>
-                <% products.forEach(element => {%>
-                    <tr>
-        
-                        <td><%= element.id %></td>
-                        <td><%= element.name %></td>
-                        <td><%= element.category.name %></td>
-                        <td><%= element.stock %></td>
-                        <td><%= toThousand(element.price) %></td>
-                        <td><a href="editProduct/<%- element.id %> "><button class="btn-table modi"><i class="far fa-edit"></i></button></a>
-                            <form action="/admin/list-product/<%- element.id %>?_method=DELETE " method="post">
-                                <button class="btn-table delete"><i class="far fa-trash-alt"></i></button></td>
-                            </form>
-                            
-                    </tr>
-                <% }); %>     
-              </table>
+    <body class="list-product-admin">
+        <%- include('./headerAdmin') %>
 
-        </div>
-    </main>
-    <script src="../js/menuAdmin.js"></script>
-</body>
+            <main class="all-productos">
+                <h3>Listado de Productos</h3>
+                <div class="list-container">
+
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th></th>
+                        </tr>
+                        <% products.forEach(element=> {%>
+                            <tr>
+
+                                <td>
+                                    <%= element.id %>
+                                </td>
+                                <td>
+                                    <%= element.name %>
+                                </td>
+                                <td>
+                                    <%= element.category.name %>
+                                </td>
+                                <td>
+                                    <%= element.stock %>
+                                </td>
+                                <td>
+                                    <%= toThousand(element.price) %>
+                                </td>
+                                <td><a href="editProduct/<%- element.id %> "><button class="btn-table modi"><i
+                                                class="far fa-edit"></i></button></a>
+                                    <form class="formDelete"
+                                        action="/admin/list-product/<%- element.id %>?_method=DELETE" method="post">
+                                        <button class="btn-table delete"><i class="far fa-trash-alt"></i></button>
+                                </td>
+                                </form>
+
+                            </tr>
+                            <% }); %>
+                    </table>
+
+                </div>
+            </main>
+            <script src="../js/menuAdmin.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="../js/sweetAlert.js"></script>
+    </body>
+
 </html>

@@ -1,4 +1,3 @@
-
 const session = require('express-session');
 let { validationResult } = require('express-validator');
 
@@ -231,7 +230,6 @@ let controllerProducts = {
                 //     console.log('no se encontro el archivo')
                 // }
 
-
                 Opinions.destroy({ where: { id_product: req.params.id } })
 
                     .then((result) => {
@@ -315,6 +313,7 @@ let controllerUsers = {
         res.redirect('/admin/indexUser' + req.params.id)
     },
     delete: (req, res) => {
+
         db.User.destroy({
             where: {
                 id: req.params.id
