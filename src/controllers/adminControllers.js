@@ -235,14 +235,18 @@ let controllerProducts = {
                     .then((result) => {
 
                         Products.destroy({ where: { id: req.params.id } })
-                        // let deleteDescription = Descriptions.destroy({ where: { id: product.id_description } })
                             .then(() => {
                                 if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
                                     fs.unlinkSync(`./public/images/products/${product.images}`)
                                 } else {
                                     console.log('no se encontro el archivo')
                                 }
-                                res.redirect('/admin/list-product')
+                                Descriptions.destroy({ where: { id: product.id_description } })
+                                .then(()=>{
+                                    res.redirect('/admin/list-product')
+                                })
+                                .catch(errors => res.send(errors))
+                                
                             })
                             .catch(errors => res.send(errors))
                     })
