@@ -236,9 +236,8 @@ let controllerProducts = {
 
                     .then((result) => {
 
-                        let deleteProduct = Products.destroy({ where: { id: req.params.id } })
-                        let deleteDescription = Descriptions.destroy({ where: { id: product.id_description } })
-                        Promise.all([deleteProduct, deleteDescription])
+                        Products.destroy({ where: { id: req.params.id } })
+                        // let deleteDescription = Descriptions.destroy({ where: { id: product.id_description } })
                             .then(() => {
                                 if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
                                     fs.unlinkSync(`./public/images/products/${product.images}`)
@@ -250,8 +249,6 @@ let controllerProducts = {
                             .catch(errors => res.send(errors))
                     })
                     .catch(errors => res.send(errors))
-
-
             })
             .catch(errors => res.send(errors))
 
