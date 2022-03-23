@@ -44,6 +44,10 @@ body {
   margin-top: 100px;
 }
 
+h2 {
+  font-family: var(--font-ruluko) !important;
+}
+
 .content {
   width: 90%;
   margin: 0 auto;
