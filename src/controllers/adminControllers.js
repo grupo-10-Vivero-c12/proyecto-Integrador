@@ -1,4 +1,3 @@
-
 const session = require('express-session');
 let { validationResult } = require('express-validator');
 
@@ -231,27 +230,27 @@ let controllerProducts = {
                 //     console.log('no se encontro el archivo')
                 // }
 
+                // Opinions.destroy({ where: { id_product: req.params.id } })
 
-                Opinions.destroy({ where: { id_product: req.params.id } })
+                    // .then((result) => {
 
-                    .then((result) => {
-
-                        let deleteProduct = Products.destroy({ where: { id: req.params.id } })
-                        let deleteDescription = Descriptions.destroy({ where: { id: product.id_description } })
-                        Promise.all([deleteProduct, deleteDescription])
-                            .then(() => {
-                                if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
-                                    fs.unlinkSync(`./public/images/products/${product.images}`)
-                                } else {
-                                    console.log('no se encontro el archivo')
-                                }
-                                res.redirect('/admin/list-product')
-                            })
-                            .catch(errors => res.send(errors))
-                    })
-                    .catch(errors => res.send(errors))
-
-
+                        // Products.destroy({ where: { id: req.params.id } })
+                        //     .then(() => {
+                if (fs.existsSync('./public/images/products/' + product.images) && product.images !== "default-image.png") {
+                    fs.unlinkSync(`./public/images/products/${product.images}`)
+                } else {
+                    console.log('no se encontro el archivo')
+                }
+                Descriptions.destroy({ where: { id: product.id_description } })
+                .then(()=>{
+                    res.redirect('/admin/list-product')
+                })
+                .catch(errors => res.send(errors))
+                        
+                    // })
+                    // .catch(errors => res.send(errors))
+                    // })
+                    // .catch(errors => res.send(errors))
             })
             .catch(errors => res.send(errors))
 
@@ -318,6 +317,7 @@ let controllerUsers = {
         res.redirect('/admin/indexUser' + req.params.id)
     },
     delete: (req, res) => {
+
         db.User.destroy({
             where: {
                 id: req.params.id

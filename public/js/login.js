@@ -1,13 +1,16 @@
 window.addEventListener('load', function() {
+let $inputPass = document.querySelectorAll('.input-pass')
+let form = document.querySelector('.form');
+let currentPassword = document.querySelectorAll('.password');
+let $button = document.querySelector('#buttonSubmit')
+console.log(form)
 
-var form = document.querySelector('.formContainer');
-var email = document.getElementById('#email');
-var password = document.getElementById('#password');
-var p1 = document.getElementById('password1');
-var p2 = document.getElementById('password2');
+let validarPassword = document.getElementById('#password');
+let p1 = document.getElementById('password1');
+let p2 = document.getElementById('password2');
 
 
-form.addEventListener('value', function(event) {
+currentPassword.addEventListener('check', function(event) {
     event.preventDefault();
         if(password.length < 6 ){ 
            value.remove('valid').add('invalid');
