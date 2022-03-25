@@ -67,7 +67,7 @@
   border: 1px solid lightgrey;
   border-radius: 2px;
 }
-.color-select input#pink + label {
+/* .color-select input#pink + label {
   background-color: pink;
 }
 .color-select input#red + label {
@@ -75,7 +75,7 @@
 }
 .color-select input#white + label {
   background-color: white;
-}
+} */
 
 /*size-selector*/
 .size-selector {
@@ -157,7 +157,6 @@
   text-shadow: 0 0 1px #000;
 }
 
-
 /* QUERIES */
 
 /*Tablet*/
@@ -214,7 +213,6 @@
   .detail-bot .opinions p {
     font-size: 16px;
   }
-
 }
 
 /*Desktop*/
@@ -226,5 +224,4 @@
   .product-detail .content h3 {
     font-size: 24px;
   }
-
 }

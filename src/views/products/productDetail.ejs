@@ -3,31 +3,29 @@
 
 <head>
     <%- include('../partials/head.ejs') %>
-    <title>Detalle de producto</title> 
+        <title>Detalle de producto</title>
 </head>
 
 <body class="product-detail">
     <%- include('../partials/header.ejs') %>
         <div class="content">
-            <h3>Inicio/<%= product.category.name%>/Sub-categoría/<%= product.name%></h3>
+            <h3>Inicio/<%= product.category.name%>/Sub-categoría/<%= product.name%>
+            </h3>
             <section class="detail-top">
                 <div class="img-content">
                     <img src="/images/products/<%= product.images %>" alt="">
                 </div>
                 <div class="sale-detail">
-                    <p><%= product.name%></p>
-                    <p>$ <%= toThousand(product.price)%></p>
+                    <p>
+                        <%= product.name%>
+                    </p>
+                    <p>$ <%= toThousand(product.price)%>
+                    </p>
                     <hr>
                     <div class="color-select">
                         COLOR:
-                        <input type="radio" name="color" id="red">
-                        <label for="red">
-                        </label>
-                        <input type="radio" name="color" id="pink">
-                        <label for="pink">
-                        </label>
-                        <input type="radio" name="color" id="white">
-                        <label for="white">
+                        <input type="radio" name="color" id="color">
+                        <label for="color" style="background-color:<%=product.color %>">
                         </label>
                     </div>
                     <div class="size-selector">
@@ -41,10 +39,12 @@
                     <div class="quantity-selector">
                         <label for="quantity">CANTIDAD:</label>
                         <select name="quantity" id="quantity">
-                            <% for (let index = 1; index <= product.stock; index++) {%>
-                                <option value="<%= index %>"><%= index %> </option>
-                                
-                            <%  } %> 
+                            <% for (let index=1; index <=product.stock; index++) {%>
+                                <option value="<%= index %>">
+                                    <%= index %>
+                                </option>
+
+                                <% } %>
                         </select>
                     </div>
                     <button class="btn">Agregar al carrito</button>
@@ -56,7 +56,7 @@
                 <div class="description">
                     <h3>Descripción</h3>
                     <p>
-                        UBICACIÓN: <%= description.location %> 
+                        UBICACIÓN: <%= description.location %>
                     </p>
                     <p>
                         SUSTRATO: <%= description.substratum %>
@@ -79,7 +79,9 @@
                             <i class="fas fa-star not_painted"></i>
                             <i class="fas fa-star not_painted"></i>
                         </div>
-                        <p><%= opinions ? opinions.content : " " %> </p>
+                        <p>
+                            <%= opinions ? opinions.content : " " %>
+                        </p>
                     </div>
                     <div class="opinion">
                         <div class="stars">
@@ -89,7 +91,9 @@
                             <i class="fas fa-star painted"></i>
                             <i class="fas fa-star not_painted"></i>
                         </div>
-                        <p><%= opinions ? opinions.content : " " %></p>
+                        <p>
+                            <%= opinions ? opinions.content : " " %>
+                        </p>
                     </div>
                     <div class="opinion">
                         <div class="stars">
@@ -99,7 +103,9 @@
                             <i class="fas fa-star not_painted"></i>
                             <i class="fas fa-star not_painted"></i>
                         </div>
-                        <p><%= opinions ? opinions.content : " " %></p>
+                        <p>
+                            <%= opinions ? opinions.content : " " %>
+                        </p>
                     </div>
                 </div><!-- opinions -->
             </section><!-- details-bot -->
@@ -108,22 +114,25 @@
         <section class="container-products">
             <h2>PRODUCTOS RELACIONADOS</h2>
             <div class="products">
-                <%  categories.forEach(category => {%>
-                    <% if (category.id === product.id_category) { %>
-                        <% category.products.forEach(product => { %>
+                <% categories.forEach(category=> {%>
+                    <% if (category.id===product.id_category) { %>
+                        <% category.products.forEach(product=> { %>
                             <div class="product-related">
                                 <div class="image-product">
                                     <img src="/images/products/<%= product.images %>" alt="">
                                 </div>
                                 <div class="description-product">
-                                    <p><%= product.name %></p>
-                                    <p>$<%= toThousand(product.price) %></p>
+                                    <p>
+                                        <%= product.name %>
+                                    </p>
+                                    <p>$<%= toThousand(product.price) %>
+                                    </p>
                                     <button class="btn">Comprar</button>
                                 </div>
                             </div>
-                        <% }) %>
-                    <% } %>
-                <% });%>
+                            <% }) %>
+                                <% } %>
+                                    <% });%>
         </section><!-- content -->
         <%- include('../partials/footer.ejs') %>
 </body>
