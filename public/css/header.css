@@ -16,7 +16,8 @@
 .main-header .avatar img {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .main-header .avatar div {
   width: 40px;
