@@ -75,6 +75,7 @@ let controller = {
                 .then(() => {
                     let subject = "registro"
                     let type = 'main.html'
+                    let rute = "/users/login"
                     nodemailer(email, subject, name, last_name, type)
                     res.redirect('/users/login')
                 })
@@ -217,8 +218,8 @@ let controller = {
                         surname: user.last_name,
                         email: user.email
                     })
-
-                    nodemailer(user.email, subject, user.first_name, user.last_name, type, accessToken)
+                    let rute = "/users/new-password/"
+                    nodemailer(user.email, subject, user.first_name, user.last_name, type, rute ,accessToken)
 
                     res.redirect('/')
                 })

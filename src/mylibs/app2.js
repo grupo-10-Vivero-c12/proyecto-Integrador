@@ -5,13 +5,13 @@ const fs = require('fs')
 const path = require('path')
 
 
-module.exports = async function sendEmail(email, subject, name, surname, type, token) {
+module.exports = async function sendEmail(email, subject, name, surname, type, rute, token) {
   const filePath = path.join(__dirname, '/template', type);
   const source = fs.readFileSync(filePath, 'utf-8').toString();
   const template = await handlebars.compile(source);
   const replacements = {
     nombre: `${name} ${surname}`,
-    redirect : `/users/new-password/${token}`
+    redirect : token ? `/users/new-password/${token}` : rute
   };
   const htmlToSend = await template(replacements);
   const transporter = await nodemailer.createTransport({
