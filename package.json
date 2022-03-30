@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "pagina web de vivero",
   "scripts": {
-    "start": "node ./src/App.js",
+    "start": "node ./App.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
