@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "pagina web de vivero",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./src/app.js",
     "web" : "node src/app.js"
   },
   "license": "ISC",
