@@ -1,7 +1,7 @@
 let express = require('Express');
 let app = express();
 let path = require('path');
-let PORT = 3000;
+let PORT = process.env.PORT || 3000;
 let session = require('express-session')
 let cookieParser = require ('cookie-parser')
 let cookieSession = require('./middlewares/cookieSession')
