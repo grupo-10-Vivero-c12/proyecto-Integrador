@@ -99,7 +99,7 @@ let controller = {
             include: [{ association: 'rol' }]
         })
             .then((user) => {
-                fetch("http://localhost:3000/apiv1/provinces")
+                fetch("https://vivero-timbo.herokuapp.com/apiv1/provinces")
                     .then(response => response.json())
                     .then(provinces => {
                         res.render('users/profile', {
