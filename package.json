@@ -3,19 +3,10 @@
   "version": "1.0.0",
   "description": "pagina web de vivero",
   "scripts": {
-    "start": "node ./App.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/app.js",
+    "web" : "node src/app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/grupo-10-Vivero-c12/proyecto-Integrador.git"
-  },
-  "author": "grupo-10",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/grupo-10-Vivero-c12/proyecto-Integrador/issues"
-  },
-  "homepage": "https://github.com/grupo-10-Vivero-c12/proyecto-Integrador#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
