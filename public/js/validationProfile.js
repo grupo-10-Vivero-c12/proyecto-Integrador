@@ -137,7 +137,7 @@ window.addEventListener('load', ()=>{
     regExAge = /^[0-9]{1,3}$/,
     regExEmail = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
 
-    let $form = document.querySelector('#form-data')
+    let $form2 = document.querySelector('#form-data')
 
 
     let name = document.querySelector('#inputName'),
@@ -328,21 +328,6 @@ window.addEventListener('load', ()=>{
                 break;
         }
     })
-    country.addEventListener('blur', ()=>{
-        switch (true) {
-            case !country.value.trim():
-                country.classList.add('is-invalid')
-                messageCountry.classList.remove('ds-none')
-                messageCountry.innerText = "No puede estar vacio"
-                errorData[6] = true
-                break;
-            default:
-                country.classList.remove('is-invalid')
-                messageCountry.classList.add('ds-none')
-                errorData[6] = false
-                break;
-        }
-    })
     province.addEventListener('blur', ()=>{
         switch (true) {
             case !province.value.trim():
@@ -402,9 +387,9 @@ window.addEventListener('load', ()=>{
                 break;
         }
     })
-    $form.addEventListener('submit', (e)=>{
+    $form2.addEventListener('submit', (e)=>{
         e.preventDefault()
-        let formElements = $form.elements
+        let formElements = $form2.elements
         let error2 = false
         for (let i = 0; i < formElements.length; i++) {
             if (formElements[i].value === "" && formElements[i].type !== "submit") {
@@ -416,7 +401,7 @@ window.addEventListener('load', ()=>{
             
         }
         if (!errorData.includes(true) && !error2) {
-            $form.submit()
+            $form2.submit()
         } 
     })
 })

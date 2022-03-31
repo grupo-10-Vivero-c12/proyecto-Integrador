@@ -129,13 +129,20 @@ let controller = {
                 include: [{ association: 'rol' }]
             })
                 .then((user) => {
-                    res.render('users/profile', {
-                        user,
-                        session: req.session,
-                        errors: errors.mapped(),
-                        old: req.body,
-                        fileValidator: req.fileValidationError
+                    fetch("http://localhost:3000/apiv1/provinces")
+                    .then(response => response.json())
+                    .then(provinces => {
+                        res.render('users/profile', {
+                            user,
+                            session: req.session,
+                            errors: errors.mapped(),
+                            old: req.body,
+                            fileValidator: req.fileValidationError,
+                            provinces: provinces.data.provincesSort
+                        })
                     })
+
+                    
                 })
         }
 
