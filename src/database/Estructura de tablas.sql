@@ -1,6 +1,5 @@
 drop database if exists vivero_timbo;
 
-
 create database if not exists vivero_timbo;
 
 use vivero_timbo;
