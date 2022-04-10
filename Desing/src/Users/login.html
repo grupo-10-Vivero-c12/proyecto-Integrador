@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <script src="https://kit.fontawesome.com/f102f36a5d.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/ico" sizes="32x32" href="img/icon.ico">
+    <title>Inisiar Sesión</title>
+    <script src="../js/login.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="content">
+            <header class="main-header">
+                <div class="burger_menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="logo_container">
+                    <a href="/">
+                        <img src="../../public/images/Logo.png" alt="logo">
+                    </a>
+                </div>
+
+                <nav class="navbar_main_header">
+                    <ul>
+                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/product">Productos</a></li>
+                        <li><a href="/locals">Locales</a></li>
+                        <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+                    </ul>
+                </nav>
+
+
+                <div class="search">
+                    <form action="/product/search" method="get">
+                        <input type="text" name="search" id="search" placeholder="Buscar">
+                        <button>
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <nav class="user_navbar">
+                   
+                </nav>
+            </header>
+        </div>
+        <nav class="navbar_mobile">
+
+            <div class="nav-contain" id="nav-mobile">
+                <hr>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/product">Productos</a></li>
+                    <li><a href="/locals">Locales</a></li>
+                    <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+                </ul>
+                <div class="search-mobile">
+                    <form action="/product/search" method="get">
+                        <input type="text" name="search" id="search" placeholder="Buscar">
+                        <button class="button-favicon">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+        <main class="login">
+            <div class="rute">
+                <a href="/home">Home</a>
+                <span>/</span>
+                <a href="/Mi cuenta">Mi cuenta</a>
+                <span>/</span>
+                <a href="/login">Inicio de sesión</a>
+            </div>
+
+            <h2>Inicio de sesión</h2>
+            <div class="form-container">
+                <form action="/users/login" method="POST">
+                    <div class="form">
+
+                        <div class="input-container">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com"
+                                class="<%= (locals.errors && errors.email) ? " is-invalid" : "" %>">
+                            <% if (locals.errors && errors.email) { %>
+                                <small class="error-message">
+                                    <%= errors.email.msg %>
+                                </small>
+                                <% } %>
+                        </div>
+
+                        <div class="input-container">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" name="password" placeholder="password"
+                                class="<%= (locals.errors && errors.password) ? " is-invalid" : "" %>">
+                            <% if (locals.errors && errors.password) { %>
+                                <small class="error-message">
+                                    <%= errors.password.msg %>
+                                </small>
+                                <% } %>
+                                    <% if (locals.errors && errors.custom && !(errors.password || errors.email)) { %>
+                                        <small class="error-message">
+                                            <%= errors.custom.msg %>
+                                        </small>
+                                        <% } %>
+                        </div>
+
+                        <div class="checkbox">
+                            <input type="checkbox" name="remember" id="check">
+                            <label for="check">Recordar</label>
+                        </div>
+
+                        <div class="recover-password">
+                            <a href="/users/recover-password">¿Olvidaste la Contraseña?</a>
+                        </div>
+
+                        <div class="button-submit">
+                            <button type="submit">Iniciar</button>
+                        </div>
+
+                        <div class="create-count">
+                            <a href="/users/register">¿No tenés una cuenta? Crear una</a>
+                        </div>
+                        <hr>
+                    </div>
+                </form>
+
+
+
+                <div class="log-in-google">
+                    <a href="#"><img src="../../public/images/logo-google.png" alt="google"> Crear cuenta con Google</a>
+                </div>
+            </div>
+        </main>
+        <script src="public/js/header.js"></script>
+        <footer class="footer">
+            <div class="content">
+                <div class="main_footer">
+                    <nav class="main_navbar_footer">
+                        <h4>Navegación</h4>
+                        <ul>
+                            <li><a href="/">Inicio</a></li>
+                            <li><a href="/product">Productos</a></li>
+                            <li><a href="/locals">Locales</a></li>
+                            <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="contacts">
+                        <h4>Contáctanos</h4>
+                        <ul>
+                            <li><a href="#">Teléfono</a></li>
+                            <li><a href="mailto:vivero.timbo.bs@gmail.com">E-mail</a>
+                            </li>
+                            <li><a href="/locals">Ubicación</a></li>
+                        </ul>
+                    </nav>
+                    <nav class="social">
+                        <h4>Redes Sociales</h4>
+                        <ul>
+                            <li><a href="https://api.whatsapp.com/send?phone=5491132331374&text=¡Hola!,%20Me%20gustaría%20solicitar%20más%20información"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-square"></i></a></li>
+                        </ul>
+                    </nav>
+                    <p>© Todos los derechos reservados. Marca Registrada</p>
+                </div>
+            </div>
+        </footer>
+
+    
+</body>
+
+</html>

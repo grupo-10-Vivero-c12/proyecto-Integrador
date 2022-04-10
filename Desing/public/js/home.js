@@ -4,7 +4,6 @@ window.addEventListener('load', () => {
     let divProducts = document.querySelector('#box-container')
     let navUser = document.querySelector('.user_navbar')
     let navUserMobile = document.querySelector('#nav-mobile')
-    console.log(navUser)
 
     let apiCall = async () => {
         try {
@@ -38,21 +37,16 @@ window.addEventListener('load', () => {
             console.log('error al mostrar los productos')
         }
 
+        if (result.meta.session) {
+            sessionStorage.setItem('user', JSON.stringify(result.meta.session))
+        }
     }
 
     imprimir()
-    let datos = {
-        id: 1,
-        user : 1,
-        rol : 1,
-        avatar : "1648169328979_img_.jpg"
-    }
-    sessionStorage.setItem('user', JSON.stringify(datos))
 
     let user = JSON.parse(sessionStorage.getItem('user'))
-    console.log(user)
     if (!sessionStorage.user) {
-        navUser.innerHTML += '<a href="/users/login"><i class="far fa-user-circle"></i></a>'
+        navUser.innerHTML += '<a href="/Desing/src/Users/login.html"><i class="far fa-user-circle"></i></a>'
     } else {
         navUser.innerHTML += `<a class="avatar" href="/users/profile/${user.id}">
         <div class="avatar-img">

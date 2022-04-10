@@ -11,7 +11,8 @@ let controller = {
                 res.status(200).json({
                     meta:{
                         response : true,
-                        length : products.length
+                        length : products.length,
+                        session : req.session.user
                     },
                     data : products
                 })
