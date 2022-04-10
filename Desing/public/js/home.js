@@ -46,7 +46,7 @@ window.addEventListener('load', () => {
 
     let user = JSON.parse(sessionStorage.getItem('user'))
     if (!sessionStorage.user) {
-        navUser.innerHTML += '<a href="/Desing/src/Users/login.html"><i class="far fa-user-circle"></i></a>'
+        navUser.innerHTML += '<a href="/src/Users/login.html"><i class="far fa-user-circle"></i></a>'
     } else {
         navUser.innerHTML += `<a class="avatar" href="/users/profile/${user.id}">
         <div class="avatar-img">
