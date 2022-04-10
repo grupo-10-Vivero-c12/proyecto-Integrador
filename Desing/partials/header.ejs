@@ -1,0 +1,92 @@
+<div class="header">
+    <div class="content">
+        <header class="main-header">
+            <div class="burger_menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="logo_container">
+                <a href="/">
+                    <img src="/images/Logo.png" alt="logo">
+                </a>
+            </div>
+
+            <nav class="navbar_main_header">
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/product">Productos</a></li>
+                    <li><a href="/locals">Locales</a></li>
+                    <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+                </ul>
+            </nav>
+
+            
+            <div class="search">
+                <form action="/product/search" method="get">
+                    <input type="text" name="search" id="search" placeholder="Buscar">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <nav class="user_navbar">
+                <% if (typeof session.user=="undefined" ) { %>
+                    <a href="/users/login"><i class="far fa-user-circle"></i></a>
+                    <% }else{ %>
+                        <a class="avatar" href="/users/profile/<%= session.user.id %>">
+                            <div class="avatar-img">
+                                <img src="/images/users/<%= session.user.avatar %>" alt="imagen de perfil">
+                                <span class="session"></span>
+                            </div>
+                        </a>
+
+                        <div class="menu-user">
+                            <a href="/users/profile/<%= session.user.id %>">Mis datos</a>
+                            <a href="/users/logout">Cerrar sesión</a>
+                            <% if (session.user.rol===1) { %>
+                                <a href="/admin">Administrador</a>
+                                <% } %>
+
+                        </div>
+                        
+                        <a href="/shoppingCart"><i class="fas fa-shopping-cart"></i></a>
+                        <% } %>
+
+
+            </nav>
+        </header>
+    </div>
+    <nav class="navbar_mobile">
+        
+        <div class="nav-contain">
+            <hr>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/product">Productos</a></li>
+                <li><a href="/locals">Locales</a></li>
+                <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+            </ul>
+            <div class="search-mobile">
+                <form action="/product/search" method="get">
+                    <input type="text" name="search" id="search" placeholder="Buscar">
+                    <button class="button-favicon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+            <% if (typeof session.user !=="undefined" ) { %>
+                <div class="menu-user-mobile">
+                    <hr>
+                    <a href="/users/profile/<%= session.user.id %>">Mis datos</a>
+                    <a href="/users/logout">Cerrar sesión</a>
+                    <% if (session.user.rol===1) { %>
+                        <a href="/admin">Administrador</a>
+                        <% } %>
+    
+                </div>
+            <% } %>
+        </div>
+        
+    </nav>
+</div><!-- haeder -->

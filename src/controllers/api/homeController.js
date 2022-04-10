@@ -36,16 +36,6 @@ let controller = {
         
         
     },
-    preguntas_frecuentes : (req,res)=>{
-        res.render('frequent_questions',{
-            session: req.session
-        })
-    },
-    locals : (req,res)=>{
-        res.render('locals',{
-            session: req.session
-        })
-    }
 
 }
 

@@ -5,6 +5,7 @@ let PORT = process.env.PORT || 3000;
 let session = require('express-session')
 let cookieParser = require ('cookie-parser')
 let cookieSession = require('./middlewares/cookieSession')
+let cors = require('cors')
 
 /* Enrutadores */
 let homeRouter = require('./routes/home'); 
@@ -27,7 +28,7 @@ app.use(session({
 /* set para ejs  */
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname , "views"))
-
+app.use(cors())
 /* METHOD OVERRIDE */
 let methodOverride = require('method-override');
 const { env } = require('process');

@@ -1,0 +1,149 @@
+
+main.shopping{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+
+main.shopping h2{
+    padding: 30px;
+    font-family: var(--font-rum);
+}
+
+
+main .list-products{
+    width: 90%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(146, 146, 146, 0.3);
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+
+}
+
+main .list-products .product-details{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 5px 0.1px rgb(148, 148, 148);
+    border-radius: 20px;
+    padding: 10px;
+    
+
+}
+
+main .list-products .product-details .price{
+    width: 15%;
+    text-align: center;
+    border-left: 1px solid gray;
+    font-weight: bold;
+}
+
+
+main .list-products .product-details img{
+    width: 50px;
+    border-radius: 20px;
+    
+}
+
+main .list-products .product-details .detail{
+    padding-left: 5px;
+    width: 40%;
+    max-height: 50px;
+}
+
+
+main .list-products .product-details .cant .btn-cant{
+    border: none;
+    border-radius: 50%;
+    background: none;
+    text-align: center;
+    cursor: pointer;
+    color: #3483fa;
+    line-height: 1;  
+}
+
+
+
+main .list-products .product-details .cant .btn-cant:active{
+    transform: translateY(1px);
+}
+
+main .list-products .product-details .cant span{
+    border: 1px solid rgba(92, 92, 92, 0.719);
+    background-color: white;
+    padding: 0 5px;
+}
+
+
+main .total-price {
+    background-color: rgba(146, 146, 146, 0.3);
+    width: 90%;
+    max-width: 700px;
+    border-radius: 0 0 20px 20px;
+    padding: 10px;
+    border-top: 1px solid rgb(167, 165, 165);
+    margin-bottom: 20px;
+}
+
+
+main .total-price .detail-price{
+    display: flex;
+}
+
+main .total-price .detail-price p{
+    display: inline-block;
+    width: 50%;
+    padding: 4px;
+    font-family: var(--font-ruluko);
+}
+
+main .total-price .detail-price p.price2{
+    text-align: right;
+    font-weight: bold;
+}
+
+
+main .buttom .paid{
+    width: 100px;
+}
+
+main .list-products .product-details .cant form input{
+    width: 20px;
+    text-align: center;
+    outline: none;
+    padding: 3px;
+}
+
+
+
+main.shopping .btn-remove-product{
+    margin-top: 3px;
+    width: 90%;
+}
+
+main.shopping .btn-remove-product button{
+    background: none;
+    border: none;
+    color: #3483fa;
+    text-decoration: underline;
+}
+
+main.shopping .btn-remove-product button:hover{
+    color:#74a6f1;
+}
+
+main.shopping .btn-remove-product button:active{
+    transform: translateY(1px);
+    color: #1c75fa;
+}

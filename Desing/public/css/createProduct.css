@@ -1,0 +1,204 @@
+.add-product-admin, .edit-product-admin{
+    background-image: url('../img/ws_Old_Trees_2.png');
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main-admin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 10;
+    
+}
+.is-invalid{
+    border: 1px solid red !important;
+}
+.is-valid{
+    border: 1px solid rgb(183, 240, 99);
+}
+.text-danger{
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+}
+
+.ds-none{
+    display: none;
+}
+.form-container-add-product{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(247, 247, 247, 0.459);
+    border-radius: 10px;
+   
+    
+    
+}
+
+
+.main-admin h2{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.form-create{
+    width: 90%;
+    
+}
+
+.form-create, .form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-container{
+    width: 100%;
+    max-width: 600px;
+}
+.form-contain{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.form-contain label, .form-contain p{
+    padding-bottom: 10px;
+}
+
+.form-contain p{
+    padding-bottom: 10;
+}
+
+.form-contain input, .form-contain textarea{
+    outline: none;
+    border: none;
+    background-color: rgba(212, 212, 212, 0.959);
+    border-radius: 10px;
+    padding: 9px;
+    color: rgb(0, 0, 0);
+}
+
+.form-contain input:focus, .form-contain textarea:focus{
+    outline:rgb(255, 1, 170) 2px solid;
+}
+
+.form-contain textarea{
+    width: 100%;
+    height: 60px;
+}
+
+.btn-admin{
+    width: 100%;
+}
+.btn-admin button{
+    width: 100%;
+    padding: 10px;
+    background: none;
+    border: none;
+    background-color: rgb(233, 107, 107);
+    border-radius: 7px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.error-message{
+    color: red;
+    font-size: 16px;
+    margin: 5px 0 0;
+}
+
+.select-admin{
+    width: 30%;
+    border-radius: 4px;
+    outline: none;
+    padding: 4px;
+    background-color: rgba(212, 212, 212, 0.959);
+    border: none;
+
+}
+
+.select-admin:focus{
+    outline:rgb(255, 1, 170) 2px solid;
+}
+
+#des{
+    height: 80px;
+}
+
+@media (min-width: 1100px){
+    .main-admin{
+       margin-top: 60px;
+
+    }
+    .name-form{
+        width: 200px;
+        order: 1;
+    }
+
+    .colo-form{
+        order: 2;
+        width: 200px;
+        margin-left: 20px ;
+    }
+
+    .descripcion-form{
+        order: 3;
+    }
+
+    .img-form{
+        order: 6;
+        width: fit-content;
+        width: -moz-fit-content;
+    }
+
+    .price-form{
+        order: 5;
+        width: fit-content;
+        width: -moz-fit-content;
+
+    }
+
+    .categ-form{
+        order: 5;
+   
+    }
+    .form-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-admin{
+        width: 100%;
+        order: 7;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-admin button{
+        width: 20%;
+    }
+
+    .form-container-add-product{
+        box-shadow: 1px 1px 6px 2px rgba(92,85,85,0.44);
+        -webkit-box-shadow: 1px 1px 6px 2px rgba(92,85,85,0.44);
+        -moz-box-shadow: 1px 1px 6px 2px rgba(92,85,85,0.44);
+        width: fit-content;
+    }
+}

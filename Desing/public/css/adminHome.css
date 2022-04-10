@@ -1,0 +1,56 @@
+.main-home-admin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+.home-admin{
+    background-image: url('../img/lonely-tree-on-the-field2.png');
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.logo-admin{
+    width: 20%;
+    z-index: 20;
+   
+}
+
+.welcome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    margin-top: 60px;
+}
+.main-home-admin img{
+    width: 100%;
+}
+
+.main-home-admin h2{
+    text-align: center;
+    z-index: 20;
+}
+
+
+
+
+@media (min-width: 1100px) {
+    .image-background{
+        background-image: url('../img/lonely-tree-on-the-field.jpg');
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        opacity: 0.5;
+        z-index: -1;
+        object-fit: cover;
+    }
+}
