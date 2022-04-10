@@ -15,6 +15,7 @@ let usersRouter = require('./routes/users');
 
 // Api
 let apiRouter = require('./routes/api/api')
+let apiHome = require('./routes/api/home')
 
 app.use(express.static('public'));
 app.use(session({
@@ -45,7 +46,8 @@ app.use('/users', usersRouter)
 app.use('/product', productDetailRouter)
 app.use('/shoppingCart', shoppingRouter)
 app.use('/admin', adminRouter)
-app.use('/apiv1', apiRouter)
+app.use(apiRouter)
+app.use(apiHome)
 
 /* app.use('/perfilUsuario', perfilUsuarioRouter); */
 
