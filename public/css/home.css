@@ -22,15 +22,6 @@ img {
   font-size: 20px;
   color: white;
 }
-.conteinerProduct {
-  width: 100%px;
-  height: auto;
-  padding-top: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
 .conteinerProduct img {
   border-radius: 15px;
   width: 320px;

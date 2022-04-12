@@ -7,10 +7,4 @@ function cookieSession (req, res, next) {
 }
 
 
-
-
-
-
-
-
 module.exports = cookieSession

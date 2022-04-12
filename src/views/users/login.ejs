@@ -5,9 +5,6 @@
     <%- include('../partials/head.ejs') %>
         <title>Iniciar Sesión</title>
 
-        <script src="/js/login.js" defer></script>
-        <script src="http://momentjs.com/downloads/moment.min.js"></script>
-
 </head>
 
 <body>
@@ -24,24 +21,27 @@
             </div>
 
             <h2>Inicio de sesión</h2>
-            <div class="form-container">
-                <form action="/users/login" method="POST">
+            <div class="form-container" >
+                <form action="/users/login" class="formulario" id="formulario" method="POST">
                     <div class="form">
 
-                        <div class="input-container">
+                        <div class="input-container" id="email">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="aaaaaaaaa@example.com"
+                            <input type="email" id="email2" name="email" class="email" placeholder="aaaaaaaaa@example.com"
                                 class="<%= (locals.errors && errors.email) ? " is-invalid" : "" %>">
                             <% if (locals.errors && errors.email) { %>
+                              <p>Debes ingresar un email correcto</p>
                                 <small class="error-message">
                                     <%= errors.email.msg %>
                                 </small>
-                                <% } %>
+                                <% } %> 
+                              
+                               
                         </div>
 
                         <div class="input-container">
                             <label for="password">Contraseña</label>
-                            <input type="password" id="password" name="password" class="input-pass placeholder="password"
+                            <input type="password" id="password" name="password" class="input-pass 
                                 class="<%= (locals.errors && errors.password) ? " is-invalid" : "" %>">
                             <% if (locals.errors && errors.password) { %>
                                 <small class="error-message">
@@ -53,6 +53,7 @@
                                             <%= errors.custom.msg %>
                                         </small>
                                         <% } %>
+                                      
                         </div>
 
                         <div class="checkbox">
@@ -83,7 +84,9 @@
             </div>
         </main>
         <%- include('../partials/footer.ejs') %>
-
+      
+        <script src="/js/login.js"></script>
+        
     
 </body>
 
