@@ -23,7 +23,7 @@ img {
   color: white;
 }
 .conteinerProduct {
-  width: 100%px;
+  width: 100%;
   height: auto;
   padding-top: 15px;
   display: flex;

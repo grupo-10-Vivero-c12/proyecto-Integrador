@@ -1,0 +1,10 @@
+:root{
+    --dark-brown : #6A442D;
+    --green : #72942C;
+    --cream : #FFF3E4;
+    --fond-product : #d8b484;    /* Fondo de la targeta de producto tiene que tener un 20% de opacidad */
+    --font-rum : 'Rum Raisin', sans-serif;
+    --font-roboto : 'Roboto', sans-serif;
+    --font-ruluko:'Ruluko', sans-serif;
+    
+}
