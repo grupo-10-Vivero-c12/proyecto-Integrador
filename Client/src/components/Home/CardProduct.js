@@ -1,15 +1,16 @@
 import React from 'react';
 
-const Cardproduct = () => {
+const Cardproduct = (props) => {
+    console.log(props)
     return (
-        <div class="product-related">
-            <div class="image-product">
-                <a href="/product/detail/<%= product.id %>"><img src="images/products/product.images" alt="" /></a>
+        <div className="product-related">
+            <div className="image-product">
+                <a href={`/product/detail/${props.id}`} ><img src={`images/products/${props.images}`} alt="" /></a>
             </div>
-            <div class="description-product">
-                <a href="/product/detail/<%= product.id %> "><p> product.name </p></a>
+            <div className="description-product">
+                <a href={`/product/detail/${props.id}`}><p> product.name </p></a>
                 <p>$ toThousand(product.price) </p>
-                <button class="btn">Comprar</button>
+                <button className="btn">Comprar</button>
             </div>
         </div>
     );
