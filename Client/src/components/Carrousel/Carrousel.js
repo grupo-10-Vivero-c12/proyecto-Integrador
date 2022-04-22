@@ -50,7 +50,7 @@ const Carrousel = () => {
     return (
         <div className="slide-container" >
             <div className="slide fade " >
-                <img ref={image} src={linkImage} alt="" />
+                <img className="fade"ref={image} src={linkImage} alt="" />
             </div>
         </div>
 

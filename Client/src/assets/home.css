@@ -1,0 +1,233 @@
+body {
+  background-color: rgba(255, 243, 228, 1);
+}
+.conteiner {
+  height: 150px;
+  width: auto;
+  overflow: hidden;
+}
+img {
+  height: auto;
+  width: 100%;
+}
+/* Categorias */
+
+.conteinerProduct h2 {
+  font-family: var(--font-rum);
+  font-size: 55px;
+  color: white;
+}
+.conteinerProduct span {
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  color: white;
+}
+.conteinerProduct {
+  width: 100%;
+  height: auto;
+  padding-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.conteinerProduct img {
+  border-radius: 15px;
+  width: 320px;
+  height: 300px;
+  display: flex;
+  filter: blur(1px);
+  filter: brightness(80%);
+}
+.categoriaMacetas {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.data {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.categoriaSemillas {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.data1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.categoriaPlantas {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.data2 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Prductos destacados*/
+
+/*related-products*/
+.container-products {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-product h2 {
+  text-align: center;
+}
+
+.products {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 23px;
+}
+
+.product-related {
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
+  height: auto;
+  min-height: 300px;
+  max-height: 450px;
+  margin-bottom: 20px;
+  background-color: rgba(216, 179, 132, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.49);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 23px;
+}
+
+.description-product p {
+  text-transform: uppercase;
+  text-align: center;
+  font-family: var(--font-ruluko);
+}
+.link-container {
+  width: 100%;
+}
+/* //////////////////////////////////////////// */
+
+.image-product {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.image-product img {
+  border-radius: 20px;
+  width: 100%;
+  object-fit: fill;
+}
+
+.description-product {
+  width: 90%;
+  text-align: center;
+}
+
+/* QUERIES */
+
+/*Tablet*/
+@media (min-width: 768px) {
+  /*Detalle producto*/
+  .btn {
+    font-size: 22px;
+  }
+
+  /*Detail top*/
+  .detail-top {
+    flex-direction: row;
+    margin: 15px auto;
+  }
+
+  .detail-top .img-content {
+    width: 50%;
+  }
+
+  .detail-top .sale-detail {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .detail-top .sale-detail p {
+    font-size: 32px;
+  }
+
+  .detail-top .sale-detail {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  /*detail-bot*/
+  .detail-bot {
+    flex-direction: row;
+    margin: 15px auto;
+  }
+
+  .detail-bot .description {
+    width: 50%;
+  }
+
+  .detail-bot .description p {
+    font-size: 16px;
+    margin: 10px;
+  }
+  .detail-bot .opinions {
+    width: 50%;
+  }
+
+  .detail-bot .opinions p {
+    font-size: 16px;
+  }
+
+  .description-product p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+}
+
+/*Desktop*/
+@media (min-width: 900px) {
+  /*Detalle producto*/
+  .content {
+    max-width: 900px;
+  }
+  .product-detail .content h3 {
+    font-size: 24px;
+  }
+
+  .products {
+    width: 80%;
+  }
+}
