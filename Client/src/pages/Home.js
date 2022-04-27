@@ -1,8 +1,8 @@
 import React from 'react';
 import Carrousel from '../components/Carrousel/Carrousel';
 import "../assets/home.css"
-import Cardcategorie from '../components/Home/CardCategorie';
-import Products from '../components/Home/Products';
+import Cardcategorie from '../components/Categories/CardCategorie';
+import Products from '../components/Products/Products';
 const Home = () => {
     let data = [
         {
@@ -34,7 +34,7 @@ const Home = () => {
                     })
                 }
             </section>
-            <Products />
+            <Products title={"PRODUCTOS"} />
         </div>
     );
 }

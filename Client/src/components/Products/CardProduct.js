@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Cardproduct = (props) => {
-    console.log(props)
     const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     return (
         <div className="product-related">

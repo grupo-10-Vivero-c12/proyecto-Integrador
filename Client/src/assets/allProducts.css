@@ -1,0 +1,71 @@
+.title{
+    text-align: center;
+    margin: 140px 0 0 0;
+}
+
+.title h2{
+    font-size: 2rem;
+}
+
+.filter{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.filter form{
+    width: 70%;
+
+}
+
+.select-container{
+    padding:  10px 0;
+}
+
+.select{
+    border: 0.5px solid rgb(184, 182, 182);
+    padding: 3px;
+    outline: none;
+    color: rgb(80, 80, 80);
+}
+
+.select option{
+    color: rgb(80, 80, 80);
+}
+
+.select-container button{
+    background: none;
+    border: none;
+    color: gray;
+}
+
+.select-container button:hover{
+    color: black;
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+.select-container button:active{
+    transform: scale(0.9);
+}
+.rute-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+.cate-product{
+    width: 80%;
+    text-align: left;
+    
+}
+
+@media (min-width : 768px) {
+    .filter form{
+        text-align: right;
+    
+    }
+}

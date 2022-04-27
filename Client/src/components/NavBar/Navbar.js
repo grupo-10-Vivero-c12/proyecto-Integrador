@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+
 import './header.css';
 import logo from './Logo.png'
 
@@ -74,10 +76,11 @@ const Navbar = () => {
 
                     <nav className="navbar_main_header">
                         <ul>
-                            <li><a href="/">Inicio</a></li>
-                            <li><a href="/product">Productos</a></li>
-                            <li><a href="/locals">Locales</a></li>
-                            <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+                            
+                            <li><Link to="/">Inicio</Link></li>
+                            <li><Link to="/products">Productos</Link></li>
+                            <li><Link to="/locals">Locales</Link></li>
+                            <li><Link to="/frequent-questions">Preguntas frecuentes</Link></li>
                         </ul>
                     </nav>
 
@@ -104,10 +107,10 @@ const Navbar = () => {
                 <div className="nav-contain" ref={navMobile}>
                     <hr />
                     <ul>
-                        <li><a href="/">Inicio</a></li>
-                        <li><a href="/product">Productos</a></li>
-                        <li><a href="/locals">Locales</a></li>
-                        <li><a href="/frequent-questions">Preguntas frecuentes</a></li>
+                        <li><Link to="/">Inicio</Link></li>
+                        <li><Link to="/product">Productos</Link></li>
+                        <li><Link to="/locals">Locales</Link></li>
+                        <li><Link to="/frequent-questions">Preguntas frecuentes</Link></li>
                     </ul>
                     <div className="search-mobile">
                         <form action="/product/search" method="get">
