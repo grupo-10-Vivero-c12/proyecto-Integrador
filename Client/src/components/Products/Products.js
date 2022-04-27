@@ -7,7 +7,7 @@ const Products = (props) => {
 
     const apiCall = async () =>{
         try {
-            let response = await fetch('http://localhost:3001/apiv1')
+            let response = await fetch('https://vivero-timbo.onrender.com/apiv1')
             let resolve = await response.json()
             setProducts(resolve.data)
         } catch (error) {
