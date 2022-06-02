@@ -75,6 +75,7 @@ let controller = {
                 .then(() => {
                     let subject = "registro"
                     let type = 'main.html'
+                    let rute = "/users/login"
                     nodemailer(email, subject, name, last_name, type)
                     res.redirect('/users/login')
                 })
@@ -98,7 +99,7 @@ let controller = {
             include: [{ association: 'rol' }]
         })
             .then((user) => {
-                fetch("http://localhost:3000/apiv1/provinces")
+                fetch("https://vivero-timbo.herokuapp.com/apiv1/provinces")
                     .then(response => response.json())
                     .then(provinces => {
                         res.render('users/profile', {
@@ -128,13 +129,20 @@ let controller = {
                 include: [{ association: 'rol' }]
             })
                 .then((user) => {
-                    res.render('users/profile', {
-                        user,
-                        session: req.session,
-                        errors: errors.mapped(),
-                        old: req.body,
-                        fileValidator: req.fileValidationError
+                    fetch("http://localhost:3000/apiv1/provinces")
+                    .then(response => response.json())
+                    .then(provinces => {
+                        res.render('users/profile', {
+                            user,
+                            session: req.session,
+                            errors: errors.mapped(),
+                            old: req.body,
+                            fileValidator: req.fileValidationError,
+                            provinces: provinces.data.provincesSort
+                        })
                     })
+
+                    
                 })
         }
 
@@ -217,8 +225,8 @@ let controller = {
                         surname: user.last_name,
                         email: user.email
                     })
-
-                    nodemailer(user.email, subject, user.first_name, user.last_name, type, accessToken)
+                    let rute = "/users/new-password/"
+                    nodemailer(user.email, subject, user.first_name, user.last_name, type, rute ,accessToken)
 
                     res.redirect('/')
                 })

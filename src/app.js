@@ -1,7 +1,7 @@
-let express = require('Express');
+let express = require('express');
 let app = express();
 let path = require('path');
-let PORT = 3000;
+let PORT = process.env.PORT || 3000;
 let session = require('express-session')
 let cookieParser = require ('cookie-parser')
 let cookieSession = require('./middlewares/cookieSession')
@@ -28,7 +28,8 @@ app.set('view engine','ejs')
 app.set('views',path.join(__dirname , "views"))
 
 /* METHOD OVERRIDE */
-let methodOverride = require('method-override')
+let methodOverride = require('method-override');
+const { env } = require('process');
 app.use(methodOverride('_method'))
 
 app.use(cookieParser());
@@ -52,3 +53,4 @@ app.listen(PORT, () => console.log(`
 Servidor levantado en el puerto ${PORT}
 http://localhost:${PORT}
 `))
+

@@ -1,6 +1,5 @@
 drop database if exists vivero_timbo;
 
-
 create database if not exists vivero_timbo;
 
 use vivero_timbo;
@@ -30,7 +29,7 @@ create table IF NOT EXISTS products (
     images VARCHAR(100) DEFAULT "default-image.png",
     id_category INT UNSIGNED ,
     id_description INT UNSIGNED,
-    FOREIGN KEY(id_description) REFERENCES descriptions(id),
+    FOREIGN KEY(id_description) REFERENCES descriptions(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(id_category) REFERENCES categories(id)
 );
 
@@ -39,7 +38,7 @@ create table if not exists opinions(
     content VARCHAR(300) NOT NULL,
     stars INT NOT NULL,
     id_product INT UNSIGNED NOT NULL,
-    FOREIGN KEY(id_product) REFERENCES products(id)
+    FOREIGN KEY(id_product) REFERENCES products(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table if not exists roles(
