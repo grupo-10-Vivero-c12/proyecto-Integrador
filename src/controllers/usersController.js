@@ -9,7 +9,7 @@ let nodemailer = require('../mylibs/app2')
 const jwt = require('jsonwebtoken')
 
 const Users = db.User
-const getUrl = (req) => `${req.protocol}://${req.get('host')}`
+//const getUrl = (req) => `${req.protocol}://${req.get('host')}`
 
 let controller = {
     login: (req, res) => {

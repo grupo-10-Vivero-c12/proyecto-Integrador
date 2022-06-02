@@ -1,14 +1,32 @@
 body {
   background-color: rgba(255, 243, 228, 1);
 }
-.conteiner {
-  height: 150px;
+section.categorys {
+  height: auto;
   width: auto;
   overflow: hidden;
+}
+div.categoriaPlantas {
+  width: 450px;
+  height: 450px;
+  
 }
 img {
   height: auto;
   width: 100%;
+}
+div.data {
+  top: 15px;
+  height: 60px;
+  text-align: center;
+  font-size: 20px;
+ 
+}
+div.data a {
+  color: wheat; /* AGREGAR A VARIABLES */
+}
+div.data span {
+  color: wheat; /* AGREGAR A VARIABLES */
 }
 /* Categorias */
 
