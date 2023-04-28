@@ -13,11 +13,11 @@
                     <table>
                         <tr>
                             <th>ID</th>
-                            <th>Images</th>
+                            <th>Imagen</th>
                             <th>Nombre</th>
-                            <th>Categoria</th>
-                            <th>Cantidad</th>
                             <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Categoria</th>
                             <th></th>
                         </tr>
                         <% products.forEach(element=> {%>
@@ -27,20 +27,23 @@
                                     <%= element.id %>
                                 </td>
                                 <td>
-                                    <%= element.images %>
+                                    <div class="imageProduct">
+                                    <img src="../images/products/<%= element.images %>" 
+                                    </div>
                                 </td>
                                 <td>
                                     <%= element.name %>
                                 </td>
                                 <td>
-                                    <%= element.category.name %>
+                                    <%= toThousand(element.price) %>
                                 </td>
                                 <td>
                                     <%= element.stock %>
                                 </td>
                                 <td>
-                                    <%= toThousand(element.price) %>
+                                    <%= element.category.name %>
                                 </td>
+                               
                                 <td><a href="editProduct/<%- element.id %> "><button class="btn-table modi"><i
                                                 class="far fa-edit"></i></button></a>
                                     <form class="formDelete"

@@ -30,6 +30,9 @@ let controller = {
             case "nameDesc":
                 filterProduct  = Products.findAll({ where: {id_category : req.params.id}, order : [["name", "DESC"]]})
                 break;
+                case "imageProduct":
+                filterProduct = Products.findAll({ where: {id_category : req.params.id}, order : [["image"]]})
+                break;
             case "priceMin":
                 filterProduct  = Products.findAll({ where: {id_category : req.params.id}, order : [["price", "ASC"]]})
                 console.log("paso por aca")
@@ -63,6 +66,9 @@ let controller = {
             case "nameDesc":
                 filterProduct  = Products.findAll({ include : [{association : "category"}, {association : "opinions"}, {association : "description"}], order : [["name", "DESC"]]})
                 break;
+                case "imageProduct":
+                    filterProduct = Products.findAll({ where: {id_category : req.params.id}, order : [["image"]]})
+                    break;
             case "priceMin":
                 filterProduct  = Products.findAll({ include : [{association : "category"}, {association : "opinions"}, {association : "description"}], order : [["price", "ASC"]]})
                 console.log("paso por aca")

@@ -52,6 +52,17 @@ th, td {
     border-right: 1px solid #DDD;
 
 }
+
+th, td div.imageProduct {
+    box-sizing: content-box;
+    width: fit-content;
+    height: fit-content;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
   
 td button{
     background: none;
