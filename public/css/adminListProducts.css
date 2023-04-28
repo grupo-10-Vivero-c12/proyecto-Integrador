@@ -4,6 +4,16 @@
     margin: 0;
 }
 
+main.all-productos {
+    padding: 0%;
+    width: 100%;
+    height: auto;
+    margin: 0%;
+    margin-top: 10px;
+    border: 0%;
+
+}
+
 body.list-product-admin{
     background-image: url('../img/5564410.png');
     width: 100%;
@@ -17,7 +27,7 @@ body.list-product-admin{
 
 
 .all-productos{
-    margin: 50px auto 0;
+    margin: 10px;
     width: 100%;
     height: 100%;   
 }
@@ -29,6 +39,7 @@ body.list-product-admin{
     font-size: 1.5rem;
 }
 .list-container{
+    margin: 10px;
     display: flex;
     justify-content: center;
     overflow-x: auto;
@@ -36,16 +47,22 @@ body.list-product-admin{
 }
 table {
     border-collapse: collapse;
-    width: 50%;
+    width: 100%;
     border-top: 1px solid #DDD;
     border-left: 1px solid #DDD;
     background-color: #feffff;
-    
-    
+}
+
+tbody {
+    width: 100%;
+    height: auto;
+    margin: 0%;
+    padding: 0%;
 
 }
   
 th, td {
+    width: fit-content;
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #DDD;

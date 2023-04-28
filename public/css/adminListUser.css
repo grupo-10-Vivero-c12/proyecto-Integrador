@@ -12,14 +12,14 @@
 
 main.list-user{
     margin-top: 40px;
-    padding: 20px;
+    padding: 5px;
 }
 
 main.list-user h3{
     text-align: center;
     color: #000000;
     font-size: 1.5rem;
-    padding: 20px;
+    padding: 5px;
 }
 .list-container{
     display: flex;
@@ -30,7 +30,7 @@ main.list-user h3{
 
 table {
     border-collapse: collapse;
-    width: 50%;
+    width: 100%;
     border-top: 1px solid #DDD;
     border-left: 1px solid #DDD;
     background-color: #feffff;
