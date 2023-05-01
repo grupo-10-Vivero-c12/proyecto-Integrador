@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--dark-brown);
+  background-color: rgb(105, 140, 72);
   font-family: var(--font-rum);
   position: fixed;
   width: 100%;
@@ -15,7 +15,7 @@
   justify-content: space-between;
   text-align: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 .main-header .avatar{
   display: none;
@@ -37,7 +37,7 @@
 }
 
 .main-header .logo_container {
-  width: 40px;
+  width: 50px;
   display: flex;
   align-items: center;
 }
@@ -72,7 +72,7 @@
 .main-header .navbar_main_header ul li {
   display: flex;
   align-items: center;
-  color: white;
+  color: rgb(38, 4, 4);
   transition: 0.3s ease all;
 }
 
