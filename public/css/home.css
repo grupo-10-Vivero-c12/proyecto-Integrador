@@ -12,6 +12,10 @@ img {
 }
 /* Categorias */
 
+section.conteinerProduct {
+  padding-top: 0%;
+}
+
 .conteinerProduct h2 {
   font-family: var(--font-rum);
   font-size: 25px;

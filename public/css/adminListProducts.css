@@ -62,7 +62,7 @@ tbody {
 }
   
 th, td {
-    width: fit-content;
+    
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #DDD;
@@ -72,8 +72,7 @@ th, td {
 
 th, td div.imageProduct {
     box-sizing: content-box;
-    width: fit-content;
-    height: fit-content;
+    
 }
 
 img {

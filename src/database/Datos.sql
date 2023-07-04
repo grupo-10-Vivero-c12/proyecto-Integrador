@@ -6,15 +6,27 @@
 INSERT INTO
   `categories` (`id`, `name`)
 VALUES
-  (1, 'Macetas');
+  (1, 'Plantas');
 INSERT INTO
   `categories` (`id`, `name`)
 VALUES
-  (2, 'Semillas');
+  (2, 'Huerta');
 INSERT INTO
   `categories` (`id`, `name`)
 VALUES
-  (3, 'Plantas');
+  (3, 'Macetas');
+  INSERT INTO
+  `categories` (`id`, `name`)
+VALUES
+  (4, 'Espacios');
+  INSERT INTO
+  `categories` (`id`, `name`)
+VALUES
+  (5, 'Ofertas');
+  INSERT INTO
+  `categories` (`id`, `name`)
+VALUES
+  (6, 'Institucional');
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: descriptions
